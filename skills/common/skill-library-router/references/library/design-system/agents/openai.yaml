@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design System"
+  short_description: "Build scalable tokens and component systems"
+  default_prompt: "Use $design-system to create or improve a scalable token and component architecture."

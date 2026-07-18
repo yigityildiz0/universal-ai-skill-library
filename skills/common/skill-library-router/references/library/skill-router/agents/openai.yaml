@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Router"
+  short_description: "Select and coordinate overlapping Codex skills"
+  default_prompt: "Use $skill-router to choose the right Codex skills, resolve overlap, and coordinate compatible skills for a user request."

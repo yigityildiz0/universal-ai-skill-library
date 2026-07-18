@@ -1,0 +1,4 @@
+interface:
+  display_name: "Banner Design"
+  short_description: "Create clear platform-ready banner systems"
+  default_prompt: "Use $banner-design to create a platform-ready banner concept with variants, safe zones, and validation."

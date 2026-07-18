@@ -1,0 +1,6 @@
+interface:
+  display_name: "Caveman Help"
+  short_description: "Show Caveman modes and manual skill commands"
+  default_prompt: "Use $caveman-help to show the compact Caveman reference card."
+policy:
+  allow_implicit_invocation: false

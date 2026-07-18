@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Agent Dev Kit"
+  short_description: "Claude-style agent kit adapted for Codex"
+  default_prompt: "Use $codex-agent-dev-kit to set up Codex skills, guardrails, project memory, and local plugins from Claude-style agent workflows."

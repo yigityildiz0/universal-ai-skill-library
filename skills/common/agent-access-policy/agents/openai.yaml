@@ -1,0 +1,3 @@
+interface:
+  display_name: Agent File Access Policy
+  short_description: Configure task-scoped file access guidance for AI coding agents using Codex sandbox/approval workflow and explicit task-scoped instructions. Restrict which files each agent can modify based on task scope.

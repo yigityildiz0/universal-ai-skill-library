@@ -1,0 +1,6 @@
+interface:
+  display_name: "Caveman Compress"
+  short_description: "Preview and validate safe text compression"
+  default_prompt: "Use $caveman-compress to preview a safe compression without overwriting the source."
+policy:
+  allow_implicit_invocation: false

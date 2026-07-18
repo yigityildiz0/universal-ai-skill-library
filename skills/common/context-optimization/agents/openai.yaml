@@ -1,0 +1,4 @@
+interface:
+  display_name: "Context Optimization"
+  short_description: "Reduce context bloat without losing evidence"
+  default_prompt: "Use $context-optimization to reduce this session's context load while preserving decisions, errors, and evidence."

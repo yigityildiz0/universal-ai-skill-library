@@ -1,0 +1,4 @@
+interface:
+  display_name: Comfyui Workflow
+  short_description: Help with Comfyui Workflow
+  default_prompt: Use $comfyui-workflow to help with this task.

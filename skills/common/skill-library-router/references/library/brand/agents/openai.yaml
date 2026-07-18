@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand System"
+  short_description: "Create and govern consistent brand systems"
+  default_prompt: "Use $brand to create or audit a governed brand system for this project."

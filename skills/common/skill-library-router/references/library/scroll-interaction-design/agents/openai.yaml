@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scroll Interaction Design"
+  short_description: "Build polished scroll, parallax, and 3D motion UI."
+  default_prompt: "Use $scroll-interaction-design to design and implement polished scroll, parallax, and 3D motion interactions."

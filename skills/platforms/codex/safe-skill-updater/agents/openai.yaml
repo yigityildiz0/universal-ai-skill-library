@@ -1,0 +1,4 @@
+interface:
+  display_name: "Safe Skill Updater"
+  short_description: "Evidence-first skill repair and merging"
+  default_prompt: "Use $safe-skill-updater to audit these skill variants, preserve their proven behavior, and apply only validated improvements."

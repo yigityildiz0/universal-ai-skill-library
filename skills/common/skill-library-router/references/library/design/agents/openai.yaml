@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Router"
+  short_description: "Route mixed visual design work coherently"
+  default_prompt: "Use $design to route this mixed design request across the right specialist workflows."

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If this curated repository supports your work, cite this software collection. Cite individual upstream skills as required by their licenses."
+title: "Universal AI Skill Library"
+type: software
+authors:
+  - family-names: "Yıldız"
+    given-names: "Yiğit"
+repository-code: "https://github.com/yigityildiz0/universal-ai-skill-library"
+url: "https://yigityildiz0.github.io/universal-ai-skill-library/"
+version: 1.0.0
+date-released: 2026-07-19

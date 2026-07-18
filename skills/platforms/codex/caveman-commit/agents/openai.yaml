@@ -1,0 +1,6 @@
+interface:
+  display_name: "Caveman Commit"
+  short_description: "Draft terse, evidence-based commit messages"
+  default_prompt: "Use $caveman-commit to draft a concise Conventional Commit message."
+policy:
+  allow_implicit_invocation: false

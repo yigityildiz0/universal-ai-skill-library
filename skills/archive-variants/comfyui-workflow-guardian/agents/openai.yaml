@@ -1,0 +1,7 @@
+interface:
+  display_name: "ComfyUI Workflow Guardian"
+  short_description: "ComfyUI workflow audit and stabilization"
+  default_prompt: "Use $comfyui-workflow-guardian to audit and safely optimize my ComfyUI workflow."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Styling"
+  short_description: "Implement accessible responsive interface styling"
+  default_prompt: "Use $ui-styling to implement this interface with accessible responsive states and existing project conventions."
