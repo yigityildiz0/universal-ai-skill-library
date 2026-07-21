@@ -1,5 +1,5 @@
 {
-  "description": "A bilingual compatibility index and download library for 531 Agent Skills across Claude Code, OpenAI Codex, and OpenCode.",
+  "description": "531 searchable AI Agent Skills for Claude Code, OpenAI Codex, and OpenCode — EN/TR catalog, platform and risk notes, direct ZIPs, and curated bundles.",
   "homepage": "https://yigityildiz0.github.io/universal-ai-skill-library/",
   "topics": [
     "agent-skills",
@@ -11,6 +11,9 @@
     "developer-tools",
     "prompt-engineering",
     "skill-library",
-    "automation"
+    "automation",
+    "bilingual",
+    "ai-coding",
+    "agentic-workflows"
   ]
 }

@@ -1,7 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="460" viewBox="0 0 1600 460" role="img" aria-labelledby="title desc">
-  <title id="title">Universal AI Skill Library</title><desc id="desc">A compatibility switchboard joining Claude Code, OpenAI Codex, and OpenCode to a common skill index.</desc>
-  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#19243d"/><stop offset="1" stop-color="#2b3858"/></linearGradient></defs><rect width="1600" height="460" fill="url(#bg)"/>
-  <g opacity=".11" stroke="#dce3f0"><path d="M0 76h1600M0 152h1600M0 228h1600M0 304h1600M0 380h1600"/><path d="M160 0v460M320 0v460M480 0v460M640 0v460M800 0v460M960 0v460M1120 0v460M1280 0v460M1440 0v460"/></g>
-  <text x="82" y="82" fill="#91a8ff" font-family="monospace" font-size="21" letter-spacing="4">ONE INDEX / THREE AGENTS / EN + TR</text><text x="78" y="194" fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="72" letter-spacing="-4">Universal AI Skill Library</text><text x="83" y="247" fill="#c7d1e5" font-family="Arial,sans-serif" font-size="24">531 names · common core · host overlays · compatibility notes · direct downloads</text>
-  <g transform="translate(84 318)" font-family="monospace" font-size="16"><g fill="#c96839"><text y="18">CLAUDE CODE</text><rect x="190" y="7" width="1110" height="7"/><circle cx="410" cy="10" r="14"/><circle cx="790" cy="10" r="14"/><circle cx="1170" cy="10" r="14"/></g><g transform="translate(0 48)" fill="#52a98f"><text y="18">OPENAI CODEX</text><rect x="190" y="7" width="1110" height="7"/><circle cx="410" cy="10" r="14"/><circle cx="790" cy="10" r="14"/><circle cx="1170" cy="10" r="14"/></g><g transform="translate(0 96)" fill="#718cff"><text y="18">OPENCODE</text><rect x="190" y="7" width="1110" height="7"/><circle cx="410" cy="10" r="14"/><circle cx="790" cy="10" r="14"/><circle cx="1170" cy="10" r="14"/></g></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="680" viewBox="0 0 1600 680" role="img" aria-labelledby="title desc">
+  <title id="title">Universal AI Skill Library</title>
+  <desc id="desc">A visual overview of 531 searchable Agent Skills for Claude Code, OpenAI Codex, and OpenCode, with platform counts, curated bundles, direct downloads, and risk and license notes.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#08111f"/>
+      <stop offset="0.52" stop-color="#101b31"/>
+      <stop offset="1" stop-color="#172441"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop stop-color="#86a2ff"/>
+      <stop offset="0.5" stop-color="#65c7ab"/>
+      <stop offset="1" stop-color="#f28c66"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+      <stop stop-color="#718cff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#718cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGreen" cx="50%" cy="50%" r="50%">
+      <stop stop-color="#65c7ab" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#65c7ab" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#020617" flood-opacity="0.36"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="680" fill="url(#background)"/>
+  <circle cx="1320" cy="90" r="360" fill="url(#glowBlue)"/>
+  <circle cx="950" cy="620" r="330" fill="url(#glowGreen)"/>
+  <g opacity="0.075" stroke="#dce6ff" stroke-width="1">
+    <path d="M0 85h1600M0 170h1600M0 255h1600M0 340h1600M0 425h1600M0 510h1600M0 595h1600"/>
+    <path d="M100 0v680M200 0v680M300 0v680M400 0v680M500 0v680M600 0v680M700 0v680M800 0v680M900 0v680M1000 0v680M1100 0v680M1200 0v680M1300 0v680M1400 0v680M1500 0v680"/>
+  </g>
+
+  <g font-family="Inter, ui-sans-serif, Segoe UI, Arial, sans-serif">
+    <g transform="translate(78 62)">
+      <rect width="385" height="42" rx="21" fill="#172642" stroke="#86a2ff" stroke-opacity="0.65"/>
+      <circle cx="24" cy="21" r="6" fill="#9cffb8"/>
+      <text x="43" y="28" fill="#dce6ff" font-size="19" font-weight="700" letter-spacing="2.2">OPEN · BILINGUAL · SEARCHABLE</text>
+    </g>
+
+    <text x="78" y="188" fill="#f8fafc" font-size="76" font-weight="760" letter-spacing="-3.4">Universal AI</text>
+    <text x="78" y="270" fill="#f8fafc" font-size="76" font-weight="760" letter-spacing="-3.4">Skill Library</text>
+    <rect x="78" y="294" width="710" height="5" rx="2.5" fill="url(#accent)"/>
+    <text x="82" y="346" fill="#d4deed" font-size="29">Search, compare, and install reusable Agent Skills</text>
+    <text x="82" y="386" fill="#aebdd3" font-size="25">across Claude Code, OpenAI Codex, and OpenCode.</text>
+
+    <g transform="translate(80 430)" font-size="19" font-weight="750" letter-spacing="1.3">
+      <g><rect width="150" height="52" rx="14" fill="#172642" stroke="#86a2ff"/><text x="75" y="33" fill="#eef2ff" text-anchor="middle">DISCOVER</text></g>
+      <path d="M166 26h34m-10-9 10 9-10 9" fill="none" stroke="#718cff" stroke-width="3"/>
+      <g transform="translate(216)"><rect width="150" height="52" rx="14" fill="#172642" stroke="#65c7ab"/><text x="75" y="33" fill="#eefcf7" text-anchor="middle">COMPARE</text></g>
+      <path d="M382 26h34m-10-9 10 9-10 9" fill="none" stroke="#65c7ab" stroke-width="3"/>
+      <g transform="translate(432)"><rect width="150" height="52" rx="14" fill="#172642" stroke="#f2b066"/><text x="75" y="33" fill="#fff7ed" text-anchor="middle">DOWNLOAD</text></g>
+      <path d="M598 26h34m-10-9 10 9-10 9" fill="none" stroke="#f2b066" stroke-width="3"/>
+      <g transform="translate(648)"><rect width="130" height="52" rx="14" fill="#f8fafc"/><text x="65" y="33" fill="#111c33" text-anchor="middle">INSTALL</text></g>
+    </g>
+  </g>
+
+  <g transform="translate(916 64)" font-family="Inter, ui-sans-serif, Segoe UI, Arial, sans-serif" filter="url(#softShadow)">
+    <rect width="606" height="470" rx="30" fill="#0d1729" fill-opacity="0.9" stroke="#8da4d4" stroke-opacity="0.32"/>
+    <text x="36" y="48" fill="#90a5c9" font-size="18" font-weight="700" letter-spacing="2.4">COMPATIBILITY MAP</text>
+    <text x="570" y="48" fill="#9cffb8" font-size="17" font-weight="700" text-anchor="end">EN + TR</text>
+
+    <g transform="translate(64 126)">
+      <circle cx="114" cy="106" r="103" fill="#172642" stroke="url(#accent)" stroke-width="5"/>
+      <circle cx="114" cy="106" r="84" fill="#101b31" stroke="#8fa5d2" stroke-opacity="0.28"/>
+      <text x="114" y="94" text-anchor="middle" fill="#ffffff" font-size="66" font-weight="800">531</text>
+      <text x="114" y="132" text-anchor="middle" fill="#b8c6dc" font-size="21" font-weight="700" letter-spacing="2">SKILLS</text>
+      <text x="114" y="160" text-anchor="middle" fill="#86a2ff" font-size="17">ONE INDEX</text>
+
+      <path d="M217 72C254 72 259 40 292 40" fill="none" stroke="#f28c66" stroke-width="4"/>
+      <path d="M217 106h75" fill="none" stroke="#65c7ab" stroke-width="4"/>
+      <path d="M217 140c37 0 42 34 75 34" fill="none" stroke="#86a2ff" stroke-width="4"/>
+
+      <g transform="translate(292 0)">
+        <rect width="248" height="82" rx="18" fill="#1a2233" stroke="#f28c66"/>
+        <circle cx="25" cy="26" r="7" fill="#f28c66"/>
+        <text x="43" y="33" fill="#fff4ef" font-size="23" font-weight="750">Claude Code</text>
+        <text x="24" y="62" fill="#f7b79f" font-size="18">524 catalog · 100 curated</text>
+      </g>
+      <g transform="translate(292 97)">
+        <rect width="248" height="82" rx="18" fill="#142a2b" stroke="#65c7ab"/>
+        <circle cx="25" cy="26" r="7" fill="#65c7ab"/>
+        <text x="43" y="33" fill="#edfff9" font-size="23" font-weight="750">OpenAI Codex</text>
+        <text x="24" y="62" fill="#98dfca" font-size="18">530 catalog · 106 curated</text>
+      </g>
+      <g transform="translate(292 194)">
+        <rect width="248" height="82" rx="18" fill="#172342" stroke="#86a2ff"/>
+        <circle cx="25" cy="26" r="7" fill="#86a2ff"/>
+        <text x="43" y="33" fill="#f0f3ff" font-size="23" font-weight="750">OpenCode</text>
+        <text x="24" y="62" fill="#b7c5ff" font-size="18">525 catalog · 101 curated</text>
+      </g>
+    </g>
+
+    <g transform="translate(38 410)" font-size="16" font-weight="700">
+      <rect width="166" height="38" rx="12" fill="#15213a"/><text x="83" y="25" fill="#cad5e8" text-anchor="middle">COMMON CORE</text>
+      <rect x="180" width="184" height="38" rx="12" fill="#15213a"/><text x="272" y="25" fill="#cad5e8" text-anchor="middle">HOST OVERLAYS</text>
+      <rect x="378" width="190" height="38" rx="12" fill="#15213a"/><text x="473" y="25" fill="#cad5e8" text-anchor="middle">DIRECT ZIP FILES</text>
+    </g>
+  </g>
+
+  <g transform="translate(78 574)" font-family="Inter, ui-sans-serif, Segoe UI, Arial, sans-serif">
+    <rect width="1444" height="72" rx="20" fill="#0b1526" fill-opacity="0.9" stroke="#8da4d4" stroke-opacity="0.28"/>
+    <g transform="translate(28 17)"><circle cx="18" cy="19" r="18" fill="#223258"/><text x="18" y="25" text-anchor="middle" fill="#9eb2ff" font-size="18" font-weight="800">✓</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">524 shared on all three</text></g>
+    <g transform="translate(408 17)"><circle cx="18" cy="19" r="18" fill="#15372f"/><text x="18" y="25" text-anchor="middle" fill="#98dfca" font-size="18" font-weight="800">↓</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">Individual + bundle ZIPs</text></g>
+    <g transform="translate(808 17)"><circle cx="18" cy="19" r="18" fill="#3a2b23"/><text x="18" y="25" text-anchor="middle" fill="#f7b79f" font-size="18" font-weight="800">!</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">Risk + license notes</text></g>
+    <g transform="translate(1130 17)"><circle cx="18" cy="19" r="18" fill="#252b45"/><text x="18" y="25" text-anchor="middle" fill="#c3ceff" font-size="15" font-weight="800">#</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">SHA-256 checksums</text></g>
+  </g>
 </svg>

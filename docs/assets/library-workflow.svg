@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">How the Universal AI Skill Library works</title>
+  <desc id="desc">Four steps: discover a skill, compare platform risk and license notes, download the right package, then install and verify it.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#091322"/><stop offset="1" stop-color="#152440"/></linearGradient>
+    <linearGradient id="line" x1="0" x2="1"><stop stop-color="#86a2ff"/><stop offset="0.5" stop-color="#65c7ab"/><stop offset="1" stop-color="#f28c66"/></linearGradient>
+  </defs>
+  <rect width="1600" height="720" rx="30" fill="url(#bg)"/>
+  <g opacity="0.07" stroke="#dbe6ff"><path d="M0 90h1600M0 180h1600M0 270h1600M0 360h1600M0 450h1600M0 540h1600M0 630h1600"/><path d="M100 0v720M200 0v720M300 0v720M400 0v720M500 0v720M600 0v720M700 0v720M800 0v720M900 0v720M1000 0v720M1100 0v720M1200 0v720M1300 0v720M1400 0v720M1500 0v720"/></g>
+  <g font-family="Inter, ui-sans-serif, Segoe UI, Arial, sans-serif">
+    <text x="80" y="76" fill="#91a8ff" font-size="19" font-weight="750" letter-spacing="3">FROM A QUESTION TO A WORKING SKILL</text>
+    <text x="80" y="132" fill="#f8fafc" font-size="43" font-weight="780">How the library works</text>
+    <text x="1520" y="122" text-anchor="end" fill="#aebdd3" font-size="22">Discover → compare → download → install</text>
+    <rect x="80" y="156" width="1440" height="4" rx="2" fill="url(#line)"/>
+
+    <g transform="translate(80 205)">
+      <rect width="320" height="324" rx="24" fill="#111d32" stroke="#86a2ff" stroke-opacity="0.72"/>
+      <circle cx="52" cy="54" r="28" fill="#25396d"/><text x="52" y="64" text-anchor="middle" fill="#b8c5ff" font-size="28" font-weight="800">1</text>
+      <text x="94" y="64" fill="#f1f4ff" font-size="29" font-weight="780">DISCOVER</text>
+      <text x="32" y="122" fill="#d5deed" font-size="22"><tspan x="32" dy="0">Search 531 skill names.</tspan><tspan x="32" dy="34">Filter by category, language,</tspan><tspan x="32" dy="34">platform, risk, and license.</tspan></text>
+      <g transform="translate(32 244)" font-size="17" font-weight="700"><rect width="104" height="40" rx="12" fill="#1d2b4b"/><text x="52" y="26" text-anchor="middle" fill="#b9c7ff">CATALOG</text><rect x="116" width="96" height="40" rx="12" fill="#1d2b4b"/><text x="164" y="26" text-anchor="middle" fill="#b9c7ff">EN + TR</text></g>
+    </g>
+    <path d="M411 367h42m-12-11 12 11-12 11" fill="none" stroke="#86a2ff" stroke-width="4"/>
+
+    <g transform="translate(440 205)">
+      <rect width="320" height="324" rx="24" fill="#10252a" stroke="#65c7ab" stroke-opacity="0.78"/>
+      <circle cx="52" cy="54" r="28" fill="#17453c"/><text x="52" y="64" text-anchor="middle" fill="#9ce4cf" font-size="28" font-weight="800">2</text>
+      <text x="94" y="64" fill="#effff9" font-size="29" font-weight="780">COMPARE</text>
+      <text x="32" y="122" fill="#d6ece5" font-size="22"><tspan x="32">Read the platform note.</tspan><tspan x="32" dy="34">Review tool permissions, risk</tspan><tspan x="32" dy="34">signals, and provenance.</tspan></text>
+      <g transform="translate(32 244)" font-size="17" font-weight="700"><rect width="94" height="40" rx="12" fill="#173b35"/><text x="47" y="26" text-anchor="middle" fill="#a7e5d3">RISK</text><rect x="106" width="122" height="40" rx="12" fill="#173b35"/><text x="167" y="26" text-anchor="middle" fill="#a7e5d3">LICENSE</text></g>
+    </g>
+    <path d="M771 367h42m-12-11 12 11-12 11" fill="none" stroke="#65c7ab" stroke-width="4"/>
+
+    <g transform="translate(800 205)">
+      <rect width="320" height="324" rx="24" fill="#2a211d" stroke="#f2a47f" stroke-opacity="0.8"/>
+      <circle cx="52" cy="54" r="28" fill="#603421"/><text x="52" y="64" text-anchor="middle" fill="#ffc2a8" font-size="28" font-weight="800">3</text>
+      <text x="94" y="64" fill="#fff5ef" font-size="29" font-weight="780">DOWNLOAD</text>
+      <text x="32" y="122" fill="#f3ddd3" font-size="22"><tspan x="32">Choose one skill ZIP, a</tspan><tspan x="32" dy="34">curated platform bundle, or</tspan><tspan x="32" dy="34">an expanded offline archive.</tspan></text>
+      <g transform="translate(32 244)" font-size="17" font-weight="700"><rect width="116" height="40" rx="12" fill="#4a2b20"/><text x="58" y="26" text-anchor="middle" fill="#ffc5ad">INDIVIDUAL</text><rect x="128" width="112" height="40" rx="12" fill="#4a2b20"/><text x="184" y="26" text-anchor="middle" fill="#ffc5ad">BUNDLES</text></g>
+    </g>
+    <path d="M1131 367h42m-12-11 12 11-12 11" fill="none" stroke="#f2a47f" stroke-width="4"/>
+
+    <g transform="translate(1160 205)">
+      <rect width="360" height="324" rx="24" fill="#171f35" stroke="#a7b7ff" stroke-opacity="0.72"/>
+      <circle cx="52" cy="54" r="28" fill="#2c386c"/><text x="52" y="64" text-anchor="middle" fill="#c4ceff" font-size="28" font-weight="800">4</text>
+      <text x="94" y="64" fill="#f4f6ff" font-size="29" font-weight="780">INSTALL &amp; VERIFY</text>
+      <text x="32" y="122" fill="#dce2f5" font-size="22"><tspan x="32">Extract to the correct root.</tspan><tspan x="32" dy="34">Confirm SKILL.md placement.</tspan><tspan x="32" dy="34">Verify the SHA-256 digest.</tspan></text>
+      <g transform="translate(32 244)" font-size="17" font-weight="700"><rect width="126" height="40" rx="12" fill="#28345f"/><text x="63" y="26" text-anchor="middle" fill="#c8d0ff">SKILL.MD</text><rect x="138" width="110" height="40" rx="12" fill="#28345f"/><text x="193" y="26" text-anchor="middle" fill="#c8d0ff">SHA-256</text></g>
+    </g>
+
+    <g transform="translate(80 574)">
+      <text x="0" y="0" fill="#90a5c9" font-size="17" font-weight="750" letter-spacing="2.2">DEFAULT PERSONAL INSTALL ROOTS</text>
+      <g transform="translate(0 24)"><rect width="456" height="78" rx="18" fill="#1d202c" stroke="#f28c66"/><text x="24" y="31" fill="#fff0e9" font-size="20" font-weight="760">Claude Code</text><text x="24" y="58" fill="#f7b79f" font-family="ui-monospace, Consolas, monospace" font-size="19">~/.claude/skills/</text></g>
+      <g transform="translate(492 24)"><rect width="456" height="78" rx="18" fill="#132a2b" stroke="#65c7ab"/><text x="24" y="31" fill="#effff9" font-size="20" font-weight="760">OpenAI Codex</text><text x="24" y="58" fill="#98dfca" font-family="ui-monospace, Consolas, monospace" font-size="19">~/.agents/skills/</text></g>
+      <g transform="translate(984 24)"><rect width="456" height="78" rx="18" fill="#182241" stroke="#86a2ff"/><text x="24" y="31" fill="#f1f4ff" font-size="20" font-weight="760">OpenCode</text><text x="24" y="58" fill="#b7c5ff" font-family="ui-monospace, Consolas, monospace" font-size="19">~/.config/opencode/skills/</text></g>
+    </g>
+  </g>
+</svg>
