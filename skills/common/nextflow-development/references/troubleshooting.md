@@ -57,8 +57,12 @@ nextflow run nf-core/<pipeline> -profile singularity ...
 # Check work directory exists
 ls -la work/
 
-# Force clean restart (loses cache)
-rm -rf work/ .nextflow*
+# Inspect recorded runs and preview a targeted cleanup first
+nextflow log
+nextflow clean <run_name> -n
+
+# After the user confirms the preview and accepts losing that run's cache
+nextflow clean <run_name> -f
 nextflow run nf-core/<pipeline> ...
 ```
 
