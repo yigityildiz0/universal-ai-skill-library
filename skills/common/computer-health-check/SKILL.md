@@ -1,6 +1,6 @@
 ---
 name: computer-health-check
-description: Perform a bounded, read-only health check of a Windows, macOS, or Linux computer, covering storage, memory pressure, CPU activity, startup load, battery where available, updates, and obvious errors. Use when asked to check PC health, diagnose a slow computer, inspect disk/RAM/CPU, or summarize system condition; request approval before any cleanup, install, update, or configuration change.
+description: "Perform a bounded, read-only health check of a Windows, macOS, or Linux computer, covering storage, memory pressure, CPU activity, startup load, battery where available, updates, and obvious errors. Use when asked to check PC health, diagnose a slow computer, inspect disk/RAM/CPU, or summarize system condition; request approval before any cleanup, install, update, or configuration change. Turkish triggers: bilgisayarı kontrol et, PC yavaş veya donuyor, CPU RAM disk ve hata kayıtları."
 ---
 
 # Computer Health Check

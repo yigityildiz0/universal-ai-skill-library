@@ -1,6 +1,6 @@
 ---
 name: product-tracking-business-case
-description: Write a concise, evidence-based business case for product telemetry or analytics instrumentation. Use when asked to justify tracking, telemetry ROI, an analytics investment, or a leadership brief before implementation.
+description: "Write a concise, evidence-based business case for product telemetry or analytics instrumentation. Use when asked to justify tracking, telemetry ROI, an analytics investment, or a leadership brief before implementation. Turkish triggers: ürün takibi iş gerekçesi, maliyet-fayda ve risk, neden ölçüm yapmalıyız."
 ---
 
 # Product Tracking: Business Case

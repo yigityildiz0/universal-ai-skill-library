@@ -1,6 +1,6 @@
 ---
 name: academic-presentations
-description: Plan, write, review, or improve academic presentations for thesis defenses, conferences, seminars, lab meetings, grant briefings, and research talks. Use when evidence, argument flow, citations, methods, results, and scholarly presentation quality matter.
+description: "Plan, write, review, or improve academic presentations for thesis defenses, conferences, seminars, lab meetings, grant briefings, and research talks. Use when evidence, argument flow, citations, methods, results, and scholarly presentation quality matter. Turkish triggers: tez sunumu, akademik sunum, konferans konuşması, sunumu iyileştir."
 ---
 
 # Academic Presentations

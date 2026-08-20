@@ -1,6 +1,6 @@
 ---
 name: product-tracking-model
-description: Model a product before telemetry work by defining users, value moments, entities, lifecycle states, and decision questions. Use when asked to map a product for analytics, define what a product does, prepare a tracking model, or establish a telemetry foundation.
+description: "Model a product before telemetry work by defining users, value moments, entities, lifecycle states, and decision questions. Use when asked to map a product for analytics, define what a product does, prepare a tracking model, or establish a telemetry foundation. Turkish triggers: ürün analitik veri modeli, event taksonomisi, kimlik ve property sözleşmesi."
 ---
 
 # Product Tracking: Model

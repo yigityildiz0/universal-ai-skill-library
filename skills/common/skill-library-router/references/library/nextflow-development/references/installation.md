@@ -10,16 +10,13 @@
 
 ## Quick install
 
-```bash
-# Nextflow
-Download Nextflow from its official installation page, verify it, and install it into a user-owned directory
-mv nextflow ~/bin/
-export PATH="$HOME/bin:$PATH"
+Use the current official Nextflow installation guide. Download the installer to
+a temporary file, inspect it, and verify any published checksum or signature
+before execution. Never pipe a remote response directly into a shell. After
+approval, place the verified `nextflow` executable in a user-owned directory
+already covered by the user's `PATH` policy.
 
-# Verify
-nextflow -version
-java -version  # Requires 11+
-```
+Then verify with `nextflow -version` and `java -version` (Java 11 or newer).
 
 ## Docker setup
 

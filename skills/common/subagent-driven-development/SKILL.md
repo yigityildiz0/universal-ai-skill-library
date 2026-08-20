@@ -1,6 +1,6 @@
 ---
 name: subagent-driven-development
-description: Execute an implementation plan through bounded implementer and independent reviewer agents with disjoint write ownership, explicit handoffs, evidence gates, and integration tests. Use when tasks are separable or independent review materially reduces risk; use the current host's native delegation without model/provider switching.
+description: "Execute an implementation plan through bounded implementer and independent reviewer agents with disjoint write ownership, explicit handoffs, evidence gates, and integration tests. Use when tasks are separable or independent review materially reduces risk; use the current host's native delegation without model/provider switching. Turkish triggers: planı alt ajanlarla uygula, görev başına bağımsız geliştirme ve inceleme."
 license: MIT
 ---
 

@@ -102,7 +102,7 @@ print(result)
 
 ### Advanced Usage
 
-See the the generated `docs/` directory for advanced features.
+See the [documentation](docs/) for advanced features.
 
 ## Configuration
 
@@ -114,11 +114,11 @@ See the the generated `docs/` directory for advanced features.
 
 ## Contributing
 
-See `CONTRIBUTING.md` for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-MIT License - see `LICENSE` for details.
+MIT License - see [LICENSE](LICENSE) for details.
 ```
 
 ### Installation Guide Template
@@ -302,15 +302,15 @@ mypackage doctor
 
 ## What's Next?
 
-- `usage.md` (Usage Guide) - Learn all features
-- `config.md` (Configuration) - Customize settings
-- `examples/` (Examples) - Real-world examples
-- `api.md` (API Reference) - Full API documentation
+- [Usage Guide](usage.md) - Learn all features
+- [Configuration](config.md) - Customize settings
+- [Examples](examples/) - Real-world examples
+- [API Reference](api.md) - Full API documentation
 
 ## Need Help?
 
-- `faq.md` (FAQ) - Common questions
-- `troubleshooting.md` (Troubleshooting) - Fix issues
+- [FAQ](faq.md) - Common questions
+- [Troubleshooting](troubleshooting.md) - Fix issues
 - [GitHub Issues](https://github.com/user/repo/issues) - Report bugs
 ```
 

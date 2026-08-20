@@ -2,7 +2,7 @@
   <title id="title">How the Universal AI Skill Library works</title>
   <desc id="desc">Four steps: discover a skill, compare platform risk and license notes, download the right package, then install and verify it.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#091322"/><stop offset="1" stop-color="#152440"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#091322"/><stop offset="1" stop-color="#158540"/></linearGradient>
     <linearGradient id="line" x1="0" x2="1"><stop stop-color="#86a2ff"/><stop offset="0.5" stop-color="#65c7ab"/><stop offset="1" stop-color="#f28c66"/></linearGradient>
   </defs>
   <rect width="1600" height="720" rx="30" fill="url(#bg)"/>
@@ -17,7 +17,7 @@
       <rect width="320" height="324" rx="24" fill="#111d32" stroke="#86a2ff" stroke-opacity="0.72"/>
       <circle cx="52" cy="54" r="28" fill="#25396d"/><text x="52" y="64" text-anchor="middle" fill="#b8c5ff" font-size="28" font-weight="800">1</text>
       <text x="94" y="64" fill="#f1f4ff" font-size="29" font-weight="780">DISCOVER</text>
-      <text x="32" y="122" fill="#d5deed" font-size="22"><tspan x="32" dy="0">Search 531 skill names.</tspan><tspan x="32" dy="34">Filter by category, language,</tspan><tspan x="32" dy="34">platform, risk, and license.</tspan></text>
+      <text x="32" y="122" fill="#d5deed" font-size="22"><tspan x="32" dy="0">Search 588 skill names.</tspan><tspan x="32" dy="34">Filter by category, language,</tspan><tspan x="32" dy="34">platform, risk, and license.</tspan></text>
       <g transform="translate(32 244)" font-size="17" font-weight="700"><rect width="104" height="40" rx="12" fill="#1d2b4b"/><text x="52" y="26" text-anchor="middle" fill="#b9c7ff">CATALOG</text><rect x="116" width="96" height="40" rx="12" fill="#1d2b4b"/><text x="164" y="26" text-anchor="middle" fill="#b9c7ff">EN + TR</text></g>
     </g>
     <path d="M411 367h42m-12-11 12 11-12 11" fill="none" stroke="#86a2ff" stroke-width="4"/>

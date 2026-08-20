@@ -1,6 +1,6 @@
 ---
 name: brand-voice
-description: Define, discover, apply, or audit a brand voice across copy, decks, pages, prompts, and product messaging. Use for tone of voice, messaging consistency, editorial rules, brand language, voice guidelines, or brand-copy review.
+description: "Define, discover, apply, or audit a brand voice across copy, decks, pages, prompts, and product messaging. Use for tone of voice, messaging consistency, editorial rules, brand language, voice guidelines, or brand-copy review. Turkish triggers: marka dili, ses tonu, metin tonunu tutarlı yap, üslup rehberi."
 ---
 
 # Brand Voice

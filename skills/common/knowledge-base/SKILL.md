@@ -1,6 +1,6 @@
 ---
 name: knowledge-base
-description: Create, organize, audit, or maintain a durable Markdown knowledge base with an index, atomic notes, stable identifiers, links, tags, and maintenance checks. Use for a personal or team knowledge base, research vault, documentation library, MOC, note organization, broken links, or knowledge-base cleanup; do not confuse it with short-term agent memory.
+description: "Create, organize, audit, or maintain a durable Markdown knowledge base with an index, atomic notes, stable identifiers, links, tags, and maintenance checks. Use for a personal or team knowledge base, research vault, documentation library, MOC, note organization, broken links, or knowledge-base cleanup; do not confuse it with short-term agent memory. Turkish triggers: bilgi tabanı kur, belgeleri düzenle, indeks ve bağlantılar, tekrar kullanılabilir bilgi."
 ---
 
 # Knowledge Base

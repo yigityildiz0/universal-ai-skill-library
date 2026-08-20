@@ -1,6 +1,6 @@
 ---
 name: accessibility-review
-description: Audit a web, mobile, desktop, document, or product flow for practical accessibility issues using current WCAG 2.2 AA-oriented checks, code, screenshots, and interaction evidence. Use for accessibility review, a11y audit, WCAG review, keyboard navigation, screen-reader issues, contrast, or inclusive UX.
+description: "Audit a web, mobile, desktop, document, or product flow for practical accessibility issues using current WCAG 2.2 AA-oriented checks, code, screenshots, and interaction evidence. Use for accessibility review, a11y audit, WCAG review, keyboard navigation, screen-reader issues, contrast, or inclusive UX. Turkish triggers: erişilebilirlik denetimi, WCAG kontrolü, klavye veya ekran okuyucu sorunu."
 ---
 
 # Accessibility Review

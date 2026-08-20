@@ -1,6 +1,6 @@
 ---
 name: k-mem
-description: Local-first, privacy-preserving working memory for recurring people, projects, terms, preferences, decisions, and task context. Use when the user asks to remember, recall, initialize or repair project memory, decode shorthand, migrate an existing memory system, or run /k-mem. Supports Codex, ChatGPT Desktop, Claude Code, and OpenCode without silently scanning private services.
+description: "Local-first, privacy-preserving working memory for recurring people, projects, terms, preferences, decisions, and task context. Use when the user asks to remember, recall, initialize or repair project memory, decode shorthand, migrate an existing memory system, or run /k-mem. Supports Codex, ChatGPT Desktop, Claude Code, and OpenCode without silently scanning private services. Turkish triggers: kalıcı bilgi veya karar kaydı, yerel hafıza, geçmiş bağlamı getir ve güncelle."
 license: MIT
 metadata:
   version: "2.0.0"

@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: Use when creating or developing anything, before writing code or implementation plans - refines rough ideas into fully-formed designs through structured Socratic questioning, alternative exploration, and incremental validation
+description: "Use when creating or developing anything, before writing code or implementation plans - refines rough ideas into fully-formed designs through structured Socratic questioning, alternative exploration, and incremental validation. Turkish triggers: fikir üret, birlikte düşünelim, seçenekleri geliştir, tasarımı netleştir."
 ---
 
 # Brainstorming Ideas Into Designs
@@ -17,8 +17,8 @@ Transform rough ideas into fully-formed designs through structured questioning a
 
 | Phase | Key Activities | Tool Usage | Output |
 |-------|---------------|------------|--------|
-| **1. Understanding** | Ask questions (one at a time) | AskUserQuestion for choices | Purpose, constraints, criteria |
-| **2. Exploration** | Propose 2-3 approaches | AskUserQuestion for approach selection | Architecture options with trade-offs |
+| **1. Understanding** | Ask questions (one at a time) | Structured user input for choices, when available | Purpose, constraints, criteria |
+| **2. Exploration** | Propose 2-3 approaches | Structured user input for approach selection, when available | Architecture options with trade-offs |
 | **3. Design Presentation** | Present in 200-300 word sections | Open-ended questions | Complete design with validation |
 | **4. Design Documentation** | Write design document | writing-clearly-and-concisely skill | Design doc in docs/plans/ |
 | **5. Worktree Setup** | Set up isolated workspace | using-git-worktrees skill | Ready development environment |
@@ -41,10 +41,10 @@ Brainstorming Progress:
 ### Phase 1: Understanding
 - Check current project state in working directory
 - Ask ONE question at a time to refine the idea
-- **Use AskUserQuestion tool** when you have multiple choice options
+- Use the current host's structured user-input mechanism when multiple-choice options would help; otherwise present the choices directly
 - Gather: Purpose, constraints, success criteria
 
-**Example using AskUserQuestion:**
+**Example structured question:**
 ```
 Question: "Where should the authentication data be stored?"
 Options:
@@ -56,10 +56,10 @@ Options:
 ### Phase 2: Exploration
 - Propose 2-3 different approaches
 - For each: Core architecture, trade-offs, complexity assessment
-- **Use AskUserQuestion tool** to present approaches as structured choices
+- Use the current host's structured user-input mechanism to present approaches when available, or present the same choices directly
 - Ask your human partner which approach resonates
 
-**Example using AskUserQuestion:**
+**Example structured question:**
 ```
 Question: "Which architectural approach should we use?"
 Options:
@@ -69,7 +69,7 @@ Options:
 ```
 
 ### Phase 3: Design Presentation
-- Pgent in 200-300 word sections
+- Present in 200-300 word sections
 - Cover: Architecture, components, data flow, error handling, testing
 - Ask after each section: "Does this look right so far?" (open-ended)
 - Use open-ended questions here to allow freeform feedback
@@ -77,14 +77,14 @@ Options:
 ### Phase 4: Design Documentation
 After design is validated, write it to a permanent document:
 - **File location:** `docs/plans/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
-- **RECOMMENDED SUB-SKILL:** Use elements-of-style:writing-clearly-and-concisely (if available) for documentation quality
+- **RECOMMENDED SUB-SKILL:** Use an installed writing or style skill, if available, to improve documentation quality
 - **Content:** Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
 - Commit the design document to git before proceeding
 
 ### Phase 5: Worktree Setup (for implementation)
 When design is approved and implementation will follow:
 - Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
-- **REQUIRED SUB-SKILL:** Use superpowers:using-git-worktrees
+- **REQUIRED SUB-SKILL:** Use the installed `using-git-worktrees` skill
 - Follow that skill's process for directory selection, safety verification, and setup
 - Return here when worktree ready
 
@@ -93,14 +93,14 @@ Ask: "Ready to create the implementation plan?"
 
 When your human partner confirms (any affirmative response):
 - Announce: "I'm using the writing-plans skill to create the implementation plan."
-- **REQUIRED SUB-SKILL:** Use superpowers:writing-plans
+- **REQUIRED SUB-SKILL:** Use the installed `writing-plans` skill
 - Create detailed plan in the worktree
 
 ## Question Patterns
 
-### When to Use AskUserQuestion Tool
+### When to Use Structured User Input
 
-**Use AskUserQuestion for:**
+**Use the host's structured user-input mechanism, when available, for:**
 - Phase 1: Clarifying questions with 2-4 clear options
 - Phase 2: Architectural approach selection (2-3 alternatives)
 - Any decision with distinct, mutually exclusive choices
@@ -120,7 +120,7 @@ When your human partner confirms (any affirmative response):
 - When structured options would limit creative input
 
 **Example decision flow:**
-- "What authentication method?" → Use AskUserQuestion (2-4 options)
+- "What authentication method?" → Present 2-4 structured options with trade-offs
 - "Does this design handle your use case?" → Open-ended (validation)
 
 ## When to Revisit Earlier Phases
@@ -156,8 +156,8 @@ digraph revisit_phases {
 
 | Principle | Application |
 |-----------|-------------|
-| **One question at a time** | Phase 1: Single question per message, use AskUserQuestion for choices |
-| **Structured choices** | Use AskUserQuestion tool for 2-4 options with trade-offs |
+| **One question at a time** | Phase 1: Single question per message; use structured input for choices when available |
+| **Structured choices** | Present 2-4 options with trade-offs through the host's supported interaction mechanism |
 | **YAGNI ruthlessly** | Remove unnecessary features from all designs |
 | **Explore alternatives** | Always propose 2-3 approaches before settling |
 | **Incremental validation** | Present design in sections, validate each |

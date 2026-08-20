@@ -1,6 +1,6 @@
 ---
 name: decision-council
-description: Stress-test an important decision by running a structured council of expert perspectives, surfacing tensions, and ending with a synthesized recommendation and next steps.
+description: "Stress-test an important decision through a structured council of expert perspectives, tensions, and a synthesized recommendation. Use when consequential options need independent challenge rather than one unopposed view. Turkish triggers: kararı farklı açılardan test et, seçenekleri eleştir, karar kurulu, bağımsız görüş."
 ---
 
 # Decision Council

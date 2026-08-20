@@ -1,4 +1,4 @@
-# Research 2026-05 — ComfyUI UI/Layout + Identity (RTX 5070 12GB, Flux 2 Klein 9B)
+# Research 2026-05 — ComfyUI UI/Layout + Identity (example 12 GB GPU and model workflow)
 
 Authoritative findings backing the UI-policy skill. Verified against the user's install.
 
@@ -48,7 +48,7 @@ Authoritative findings backing the UI-policy skill. Verified against the user's 
 - Disabled group = **zero compute cost** → ideal for optional modules (BFS pass, IFT lock, extra LoRAs, A/B recipe branches).
 - Mute vs Bypass: mute fully skips (downstream may error if it needed the output); bypass passes-through (safer when a model-patch node should be neutralized).
 
-## Identity methods (Flux 2 Klein 9B) — current verdicts
+## Identity methods for a representative image-edit workflow — current verdicts
 - **BFS head-swap** (MODIFIYELI): post-gen 2-pass; best in user tests (face+anatomy). Keep. Tune steps 4→6.
 - **IFT V3** (Flux2Klein-Enhancer, installed): model-level identity LOCK, single-pass, CFG=1. The "hard/medium/soft lock" node. New #3 workflow on **distilled** klein (no grain).
 - **PuLID** (installed): fragile (dark/green/dep-sensitive), ~12 failed user attempts → DON'T use.

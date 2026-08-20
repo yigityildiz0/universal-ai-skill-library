@@ -1,6 +1,6 @@
 ---
 name: capacity-planning
-description: Build an evidence-based capacity plan for teams, services, operations, budgets, or delivery work. Use for capacity planning, staffing scenarios, workload forecast, throughput planning, utilization, or demand-versus-capacity decisions.
+description: "Build an evidence-based capacity plan for teams, services, operations, budgets, or delivery work. Use for capacity planning, staffing scenarios, workload forecast, throughput planning, utilization, or demand-versus-capacity decisions. Turkish triggers: kapasite planı, ekip ihtiyacı, iş yükü ve talep, kaynak senaryosu."
 ---
 
 # Capacity Planning

@@ -1,6 +1,6 @@
 ---
 name: product-tracking-plan
-description: Design a privacy-aware product telemetry plan with event taxonomy, properties, identity rules, validation, and decision links. Use when asked what to track, to create an analytics plan, event schema, measurement plan, or telemetry specification.
+description: "Design a privacy-aware product telemetry plan with event taxonomy, properties, identity rules, validation, and decision links. Use when asked what to track, to create an analytics plan, event schema, measurement plan, or telemetry specification. Turkish triggers: ürün tracking planı, hangi event ve property, ölçüm kapsamı ve doğrulama."
 ---
 
 # Product Tracking: Design a Plan

@@ -1,6 +1,6 @@
 ---
 name: operations-runbook
-description: Create or improve an operational runbook for recurring operations, incidents, maintenance, onboarding, or controlled recovery. Use for runbook, operational procedure, escalation guide, recovery steps, or on-call documentation.
+description: "Create or improve an operational runbook for recurring operations, incidents, maintenance, onboarding, or controlled recovery. Use for runbook, operational procedure, escalation guide, recovery steps, or on-call documentation. Turkish triggers: runbook hazırla, işletim adımları, olay müdahalesi ve geri alma, nöbet rehberi."
 ---
 
 # Operations Runbook

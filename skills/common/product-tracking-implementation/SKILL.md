@@ -1,6 +1,6 @@
 ---
 name: product-tracking-implementation
-description: Implement approved product telemetry safely in a scoped codebase, preserving existing behavior and validating emitted event contracts. Use when a reviewed tracking plan and implementation guide already exist and the user asks to add or repair instrumentation.
+description: "Implement approved product telemetry safely in a scoped codebase, preserving existing behavior and validating emitted event contracts. Use when a reviewed tracking plan and implementation guide already exist and the user asks to add or repair instrumentation. Turkish triggers: onaylı ürün takibini kodla, event/property uygula ve test et."
 ---
 
 # Product Tracking: Implement

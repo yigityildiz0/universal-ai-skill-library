@@ -1,6 +1,6 @@
 ---
 name: data-analysis
-description: Perform defensible exploratory, descriptive, statistical, or diagnostic analysis on structured data. Use for analyze data, investigate a metric, statistics, data quality, trends, correlations, outliers, or evidence-based findings.
+description: "Perform defensible exploratory, descriptive, statistical, or diagnostic analysis on structured data. Use for analyze data, investigate a metric, statistics, data quality, trends, correlations, outliers, or evidence-based findings. Turkish triggers: veriyi analiz et, istatistik ve içgörü, hesaplamaları doğrula, sonuçları yorumla."
 ---
 
 # Data Analysis

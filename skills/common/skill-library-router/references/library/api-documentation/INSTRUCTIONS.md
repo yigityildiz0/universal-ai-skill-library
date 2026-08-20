@@ -447,7 +447,7 @@ Retrieve a paginated list of users.
 
 ```bash
 curl https://api.example.com/v1/users?page=1&limit=10 \
-  -H "Authorization: Bearer YOUR_TOKEN"
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..."
 ```
 ```
 

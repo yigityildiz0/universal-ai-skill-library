@@ -1,6 +1,6 @@
 ---
 name: engineering
-description: Engineering umbrella skill for implementation, debugging, review, architecture, and technical optimization. Use when Codex should make a technically grounded, minimally scoped, verifiable change or recommendation.
+description: "Engineering umbrella skill for implementation, debugging, review, architecture, and technical optimization. Use when Codex should make a technically grounded, minimally scoped, verifiable change or recommendation. Turkish triggers: yazılım mühendisliği işi, kodla veya düzelt, teknik görevi doğru akışa yönlendir."
 ---
 
 # Engineering

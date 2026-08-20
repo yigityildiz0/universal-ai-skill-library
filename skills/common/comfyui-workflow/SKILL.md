@@ -1,6 +1,6 @@
 ---
 name: comfyui-workflow
-description: Generate and debug ComfyUI workflow JSON files for FLUX, SDXL, SD3, Wan2.2, img2img, txt2img, txt2vid, img2vid, LoRA, ControlNet, IPAdapter, inpaint, and upscale tasks. Use when the user wants to build, modify, compare, or troubleshoot ComfyUI workflows.
+description: "Automatically design or substantially modify a ComfyUI workflow when the user wants a new image/video pipeline or capability for FLUX, SDXL, SD3, Wan, Hunyuan, LTXV, Mochi, Cosmos, txt2img, img2img, txt2vid, img2vid, LoRA, ControlNet, IPAdapter, PuLID, inpaint, or upscale. Start from the closest validated template, produce valid workflow JSON, and list models/custom nodes. For an existing JSON, runtime error, identity drift, VRAM/performance problem, broken links, or conservative repair of the primary workflow, co-use or route to comfyui-workflow-guardian. Turkish triggers: ComfyUI workflow yap, yeni görsel/video akışı, node ve model bağlantılarını kur."
 ---
 
 # ComfyUI Workflow
@@ -10,8 +10,8 @@ Use this skill when the user wants to create, modify, compare, or troubleshoot a
 ## Goals
 
 - Generate valid ComfyUI workflow JSON files
-- Start from the closest template in `templates/` whenever possible
-- Use `references/` to check node names, inputs, outputs, defaults, and constraints
+- Start from the closest template in `assets/comfyui-library.zip` whenever possible
+- Use the packaged references to check node names, inputs, outputs, defaults, and constraints
 - Keep explanations short and practical
 - Prefer working solutions over theory
 
@@ -64,7 +64,9 @@ If the user is vague, suggest a sane default configuration.
 
 ## Workflow generation rules
 
-- Use the closest file in `templates/` as the base whenever possible
+- Inspect `assets/comfyui-library.zip` with `unzip -Z1` before choosing a source.
+- Extract only the required file or small group of files to a scratch directory. Templates are under `templates/`; node and workflow documentation is under `references/`.
+- Use the closest packaged template as the base whenever possible.
 - Adapt the template instead of building everything from zero unless necessary
 - Output valid ComfyUI LiteGraph UI JSON
 - Include a short explanation of the pipeline

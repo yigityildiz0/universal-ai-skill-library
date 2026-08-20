@@ -33,12 +33,7 @@ fi
 
 # Clean previous build
 echo "🧹 Cleaning previous build..."
-build_root="$(pwd -P)"
-if [ -z "$build_root" ] || [ "$build_root" = "/" ]; then
-  echo "Refusing to clean an unsafe build root" >&2
-  exit 1
-fi
-rm -rf -- "$build_root/dist" "$build_root/bundle.html"
+rm -rf dist bundle.html
 
 # Build with Parcel
 echo "🔨 Building with Parcel..."

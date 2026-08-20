@@ -107,7 +107,7 @@ mkdir -p src/types src/utils tests .github/workflows
     "lint:fix": "eslint src tests --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf -- ./dist ./coverage",
+    "clean": "rm -rf dist coverage",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

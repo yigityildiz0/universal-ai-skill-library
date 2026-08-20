@@ -1,6 +1,6 @@
 ---
 name: content-research-writer
-description: Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.
+description: "Automatically help plan, research, draft, cite, and revise a substantial blog post, article, newsletter, tutorial, case study, thought-leadership piece, or sourced long-form content when the user asks to write or improve publishable material. Use for audience/argument framing, collaborative outlines, evidence gaps, hooks, section feedback, citation management, voice preservation, and final polish. Use deep/quick research plus evidence-integrity-guard before inserting factual claims. Do not activate for a short email, WhatsApp, complaint, or institutional message; use message-writer. Never reuse illustrative statistics, quotes, companies, or anecdotes in this skill as real evidence. Turkish triggers: kaynaklı içerik yaz, araştırıp makale hazırla, iddiaları doğrula, taslağı geliştir."
 ---
 
 # Content Research Writer
@@ -29,21 +29,6 @@ This skill acts as your writing partner, helping you research, outline, draft, a
 7. **Iterative Refinement**: Helps you improve through multiple drafts
 
 ## How to Use
-
-### Setup Your Writing Environment
-
-Create a dedicated folder for your article:
-```
-mkdir ~/writing/my-article-title
-cd ~/writing/my-article-title
-```
-
-Create your draft file:
-```
-touch article-draft.md
-```
-
-Open Codex from this directory and start writing.
 
 ### Basic Workflow
 
@@ -146,29 +131,20 @@ When a user requests writing assistance:
    - Extract key facts, quotes, and data
    - Add citations in requested format
    
-   Example output:
+   Safe example output:
    ```markdown
-   ## Research: AI Impact on Productivity
-   
-   Key Findings:
-   
-   1. **Productivity Gains**: Studies show 40% time savings for 
-      content creation tasks [1]
-   
-   2. **Adoption Rates**: 67% of knowledge workers use AI tools 
-      weekly [2]
-   
-   3. **Expert Quote**: "AI augments rather than replaces human 
-      creativity" - Dr. Jane Smith, MIT [3]
-   
-   Citations:
-   [1] McKinsey Global Institute. (2024). "The Economic Potential 
-       of Generative AI"
-   [2] Stack Overflow Developer Survey (2024)
-   [3] Smith, J. (2024). MIT Technology Review interview
-   
-   Added to outline under Section 2.
+   ## Research: [Exact topic]
+
+   | Draft claim | Evidence required | Inspected source | Status |
+   |---|---|---|---|
+   | [Atomic claim] | [Primary data/report] | [Exact title + URL + date] | VERIFIED / REMOVE |
+   | [Atomic claim] | [Independent evidence] | [Exact title + URL + date] | SUPPORTED / QUALIFY |
+
+   Counterevidence searched: [where and what was found]
+   Unresolved gap: [what cannot yet be claimed]
    ```
+
+   Do not add a claim, quotation, number, or named example to the outline until its exact source has been opened and verified.
 
 4. **Improve Hooks**
    
@@ -265,23 +241,23 @@ When a user requests writing assistance:
    
    Handle references based on user preference:
    
-   **Inline Citations**:
+   **Inline Citations** (after verification):
    ```markdown
-   Studies show 40% productivity improvement (McKinsey, 2024).
+   [Verified factual claim] (Author or Organization, Year).
    ```
    
    **Numbered References**:
    ```markdown
-   Studies show 40% productivity improvement [1].
+   [Verified factual claim] [1].
    
-   [1] McKinsey Global Institute. (2024)...
+   [1] Exact Author or Organization. (Year). Exact title. Stable URL or identifier.
    ```
    
    **Footnote Style**:
    ```markdown
-   Studies show 40% productivity improvement^1
+   [Verified factual claim]^1
    
-   ^1: McKinsey Global Institute. (2024)...
+   ^1: Exact Author or Organization. (Year). Exact title. Stable URL or identifier.
    ```
    
    Maintain a running citations list:
@@ -349,7 +325,9 @@ When a user requests writing assistance:
 
 ## Examples
 
-### Example 1: Teresa Torres's Workflow
+**Evidence warning:** Every name, quotation, company, statistic, percentage, duration, and citation shown in the examples below is illustrative placeholder content, not verified research. Never copy an example claim into a real draft. Replace it only with evidence opened and verified for the user's actual project, or remove it.
+
+### Example 1: Collaborative Outline Workflow
 
 **User**: "I'm writing an article about continuous discovery. Help me create an outline."
 
@@ -364,7 +342,7 @@ When a user requests writing assistance:
 8. Final review of complete draft
 9. Polish and prep for publishing
 
-**Result**: Well-researched, properly cited article written in Teresa's voice with strong structure and flow.
+**Result**: A well-structured outline with explicit evidence gaps and no claim presented as sourced before verification.
 
 ### Example 2: Research-Heavy Article
 
@@ -372,27 +350,18 @@ When a user requests writing assistance:
 
 **Output**:
 ```markdown
-## Research Compiled
+## Evidence Packet
 
-### Recent Data
-- Gartner: 80% of PMs will use AI tools by 2025 [1]
-- Survey: 45% report faster feature shipping [2]
-- Case study: Airbnb's AI-assisted prioritization [3]
+### Verified claims
+- [Claim stated no more strongly than the inspected source supports]
+  - Source identity and date: [exact record]
+  - Direct supporting passage or table: [locator]
+  - Independence/incentive: [assessment]
 
-### Expert Quotes
-- "AI amplifies PM judgment, not replaces it" - Marty Cagan
-- [Additional quotes with citations]
+### Conflicts and missing evidence
+- [Contradiction, inaccessible source, or claim removed]
 
-### Real Examples
-1. **Company A**: Used AI for user research synthesis
-   - Result: 60% time savings
-   - Source: [citation]
-
-2. **Company B**: AI-powered roadmap analysis
-   - Result: Better stakeholder alignment
-   - Source: [citation]
-
-All added to your outline with proper citations.
+Only verified or explicitly qualified claims are added to the outline.
 ```
 
 ### Example 3: Hook Improvement
@@ -402,14 +371,14 @@ All added to your outline with proper citations.
 
 **Improved Options**:
 
-**Option 1 (Data-driven)**:
-> "Last month, I asked AI to analyze 500 customer interviews. It took 30 minutes instead of 3 weeks. Product management will never be the same."
+**Option 1 (Clear thesis)**:
+> "AI is changing which parts of product work require judgment—and which parts can be accelerated."
 
 **Option 2 (Question)**:
 > "What if you could talk to every customer, read every review, and analyze every support ticket—all before your morning coffee?"
 
-**Option 3 (Story)**:
-> "Sarah spent two weeks building the wrong feature. Not because she didn't understand her users, but because she couldn't process the hundreds of interviews fast enough to spot the pattern."
+**Option 3 (User-supplied story)**:
+> Use a real experience supplied and approved by the writer; never fabricate a person, duration, outcome, or first-person experience for the hook.
 
 ### Example 4: Section Feedback
 
@@ -420,7 +389,7 @@ All added to your outline with proper citations.
 # Feedback: Common Mistakes Section
 
 ## What Works Well ✓
-- Strong examples (the Slack notification story)
+- Strong examples grounded in the writer's supplied draft
 - Clear structure (3 mistakes, clean layout)
 - Practical advice for each mistake
 
@@ -433,11 +402,10 @@ Current:
 > "Many teams prioritize badly by focusing on features instead of outcomes."
 
 Suggested:
-> "I've watched teams ship 14 features in a quarter yet move none of their key metrics. They prioritized activity over progress."
+> "The team tracked shipped features, but the draft has not yet shown whether those releases improved the intended outcome."
 
-### Add Data
-The third mistake would benefit from evidence:
-> "[Add citation]: Studies show teams without regular user contact are 3x more likely to build unused features [needs source]"
+### Add Evidence
+The third mistake needs a precise source or narrower wording. Record the exact claim to verify, inspect the source, and remove the claim if no suitable evidence is found.
 
 ### Flow Improvement
 Consider reordering: Mistake 3 → Mistake 2 → Mistake 1
@@ -479,33 +447,6 @@ Ready for the next section!
 5. Add supporting evidence
 6. Craft compelling conclusion
 
-## Pro Tips
-
-1. **Work in VS Code**: Better than web Claude for long-form writing
-2. **One section at a time**: Get feedback incrementally
-3. **Save research separately**: Keep a research.md file
-4. **Version your drafts**: article-v1.md, article-v2.md, etc.
-5. **Read aloud**: Use feedback to identify clunky sentences
-6. **Set deadlines**: "I want to finish the draft today"
-7. **Take breaks**: Write, get feedback, pause, revise
-
-## File Organization
-
-Recommended structure for writing projects:
-
-```
-~/writing/article-name/
-├── outline.md          # Your outline
-├── research.md         # All research and citations
-├── draft-v1.md         # First draft
-├── draft-v2.md         # Revised draft
-├── final.md            # Publication-ready
-├── feedback.md         # Collected feedback
-└── sources/            # Reference materials
-    ├── study1.pdf
-    └── article2.md
-```
-
 ## Best Practices
 
 ### For Research
@@ -516,7 +457,7 @@ Recommended structure for writing projects:
 
 ### For Feedback
 - Be specific about what you want: "Is this too technical?"
-- Share your concerns: "I'u worried this section drags"
+- Share your concerns: "I'm worried this section drags"
 - Ask questions: "Does this flow logically?"
 - Request alternatives: "What's another way to explain this?"
 

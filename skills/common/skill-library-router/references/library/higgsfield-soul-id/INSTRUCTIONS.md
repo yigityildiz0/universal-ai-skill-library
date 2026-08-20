@@ -11,10 +11,10 @@ Train a face-faithful identity model. Reusable across all Soul-powered generatio
 
 Before any other command:
 
-1. If `higgsfield` is not on `$PATH`, install it:
-   ```bash
-   Download the Higgsfield CLI installer from its official repository, inspect it, verify the revision, and run it only with user approval
-   ```
+1. If `higgsfield` is not on `$PATH`, open the current official CLI release or
+   installation page. Download the installer to a temporary file, inspect it
+   and verify any published checksum or signature, then ask for approval before
+   running it. Never pipe a remote installer directly into a shell.
 2. If `higgsfield account status` fails with `Session expired` / `Not authenticated`, ask the user to run `higgsfield auth login` (interactive) and wait for confirmation.
 3. Soul training requires a paid plan (Basic+). If `higgsfield account status` shows free plan, tell the user before submitting.
 

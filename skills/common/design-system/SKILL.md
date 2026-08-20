@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Design, implement, migrate, and validate scalable token and component systems with primitive, semantic, and component layers; themes; states; accessibility; and framework integration. Use for design tokens, component specifications, light/dark themes, brand-to-product synchronization, or consistency audits across an interface library.
+description: "Design, implement, migrate, and validate scalable token and component systems with primitive, semantic, and component layers; themes; states; accessibility; and framework integration. Use for design tokens, component specifications, light/dark themes, brand-to-product synchronization, or consistency audits across an interface library. Turkish triggers: design system kur, token ve bileşenler, varyant ve tema, tasarım sistemi denetimi."
 ---
 
 # Design System

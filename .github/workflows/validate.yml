@@ -19,4 +19,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate catalog and packages
-        run: python tools/validate_repo.py --expected 531
+        run: python tools/validate_repo.py --expected 588

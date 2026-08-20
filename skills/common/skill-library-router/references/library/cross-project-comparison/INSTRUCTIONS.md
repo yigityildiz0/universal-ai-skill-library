@@ -124,7 +124,7 @@ Low Val    P2 (If easy)  P3 (Backlog)     Skip
 
 ### Step 5: Security and Reverse-Engineering Assessment (MANDATORY)
 
-Before sequencing any adoption items, run every candidate through the host repository's MCP registry and security policy. This gate prevents the common failure mode where a plausible-looking pattern would introduce a new third-party data processor, new outbound calls, or credential sprawl. The assessment has three parts:
+Before sequencing any adoption items, run every candidate through the [MCP Registry Policy](../../../../AGENTS.md) decision tree. This gate prevents the common failure mode where a plausible-looking pattern would introduce a new third-party data processor, new outbound calls, or credential sprawl. The assessment has three parts:
 
 **5.1 Threat model comparison** - for both projects, document: new runtime dependencies, outbound-call destinations, credentials/API keys required, whether source code / prompts / query text leaves the local machine, whether a new commercial relationship with a third party is required.
 

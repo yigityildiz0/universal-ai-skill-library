@@ -1,6 +1,6 @@
 ---
 name: deep-reading-analyst
-description: "Comprehensive framework for deep analysis of articles, papers, and long-form content using 10+ thinking models (SCQA, 5W2H, critical thinking, inversion, mental models, first principles, systems thinking, six thinking hats). Use when users want to: (1) deeply understand complex articles/content, (2) analyze arguments and identify logical flaws, (3) extract actionable insights from reading materials, (4) create study notes or learning summaries, (5) compare multiple sources, (6) transform knowledge into practical applications, or (7) apply specific thinking frameworks. Triggered by phrases like 'analyze this article,' 'help me understand,' 'deep dive into,' 'extract insights from,' 'use [framework name],' or when users provide URLs/long-form content for analysis."
+description: "Deeply analyze user-supplied articles, papers, reports, transcripts, URLs, or other long-form content using structural reading, critical thinking, inversion, first principles, mental models, systems thinking, and cross-source comparison. Automatically use when the user uploads or links substantial material and says 'bunu analiz et/anlat', 'makaleyi derin oku', 'argümanları ve hataları bul', 'özet ve içgörü çıkar', or requests a named thinking framework, study notes, or practical applications. Stay grounded in the supplied content and label added context. For open-web research that must discover sources, use deep-research; for biomedical paper validity, co-use research-medical-evidence."
 ---
 
 # Deep Reading Analyst
@@ -473,29 +473,4 @@ Every analysis must:
 - `references/comparison_matrix.md` - Cross-article analysis
 
 ## Advanced Usage
-
-### Custom Framework Combinations
-
-User can request specific combinations:
-- "Use SCQA + Inversion" - Structure with risk analysis
-- "Apply Mental Models + Systems Thinking" - Multi-lens system analysis
-- "5W2H + Critical Thinking" - Completeness + quality check
-
-### Iterative Deepening
-
-Start with Level 1, then ask:
-- "Want to go deeper on any part?"
-- "Which framework would be most valuable here?"
-- "Should we do an inversion analysis of this solution?"
-
-### Domain-Specific Optimizations
-
-**Business/Strategy**: SCQA + Mental Models (economics) + Inversion
-**Technical/Research**: 5W2H + First Principles + Critical Thinking
-**Personal Development**: Six Hats + Inversion + Systems
-**Decision-Making**: Mental Models + Inversion + SCQA
-**Creative**: Six Hats + First Principles + Mental Models
-
----
-
-**Remember**: The goal is insight, not framework completion. Use frameworks as tools to reveal understanding, not as checklists to complete. Quality of thinking > quantity of frameworks applied.
+Read [references/advanced-usage.md](references/advanced-usage.md) for custom framework combinations, iterative deepening, and domain-specific optimization.

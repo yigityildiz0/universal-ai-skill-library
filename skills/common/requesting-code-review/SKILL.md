@@ -1,11 +1,11 @@
 ---
 name: requesting-code-review
-description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+description: "Use when completing tasks, implementing major features, or before merging to verify work meets requirements. Turkish triggers: kod incelemesi iste, değişikliği ve testleri özetle, reviewer için kapsam hazırla."
 ---
 
 # Requesting Code Review
 
-Dispatch a code reviewer subagent to catch issues before they cascade. The reviewer gets precisely crafted context for evaluation — never your session's history. This keeps the reviewer focused on the work product, not your thought process, and preserves your own context for continued work.
+Run a focused code review before issues cascade. If the current host supports subagents and user or project rules permit delegation, use one; otherwise perform the same review in the current session. Give the reviewer a concise brief and the work product rather than the session's full history.
 
 **Core principle:** Review early, review often.
 
@@ -29,9 +29,9 @@ BASE_SHA=$(git rev-parse HEAD~1)  # or origin/main
 HEAD_SHA=$(git rev-parse HEAD)
 ```
 
-**2. Dispatch code reviewer subagent:**
+**2. Run the code review:**
 
-Use Task tool with `general-purpose` type, fill template at `code-reviewer.md`
+Read the bundled `code-reviewer.md` template. Use the current host's supported subagent mechanism when available and permitted; otherwise apply the template directly in the current session. Do not assume a tool named `Task` exists.
 
 **Placeholders:**
 - `{DESCRIPTION}` - Brief summary of what you built
@@ -55,7 +55,7 @@ You: Let me request code review before proceeding.
 BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
 HEAD_SHA=$(git rev-parse HEAD)
 
-[Dispatch code reviewer subagent]
+[Run focused code review]
   DESCRIPTION: Added verifyIndex() and repairIndex() with 4 issue types
   PLAN_OR_REQUIREMENTS: Task 2 from docs/superpowers/plans/deployment-plan.md
   BASE_SHA: a7981ec

@@ -1,6 +1,6 @@
 ---
 name: ux-copy
-description: Write or review interface copy for labels, buttons, onboarding, forms, empty states, errors, confirmations, permissions, and help text. Use for UX copy, microcopy, button text, error message, empty state, onboarding copy, or interface wording.
+description: "Write or review interface copy for labels, buttons, onboarding, forms, empty states, errors, confirmations, permissions, and help text. Use for UX copy, microcopy, button text, error message, empty state, onboarding copy, or interface wording. Turkish triggers: arayüz metni yaz, buton ve hata mesajı, onboarding ve mikro metin, UX dilini iyileştir."
 ---
 
 # UX Copy

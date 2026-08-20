@@ -1,6 +1,6 @@
 ---
 name: sprint-planning
-description: Plan a realistic sprint or short delivery cycle with goal, scope, capacity, dependencies, acceptance criteria, risks, and review signals. Use for sprint planning, iteration planning, backlog selection, delivery planning, or team capacity planning.
+description: "Plan a realistic sprint or short delivery cycle with goal, scope, capacity, dependencies, acceptance criteria, risks, and review signals. Use for sprint planning, iteration planning, backlog selection, delivery planning, or team capacity planning. Turkish triggers: sprint planı, kapasite ve iş seçimi, bağımlılık ve risk, gerçekçi taahhüt."
 ---
 
 # Sprint Planning

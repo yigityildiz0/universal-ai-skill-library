@@ -1,6 +1,6 @@
 ---
 name: operational-risk-assessment
-description: Identify, score, prioritize, and monitor operational risks with owners, controls, scenarios, and residual uncertainty. Use for risk assessment, risk register, operational risk, mitigation plan, or contingency planning.
+description: "Identify, score, prioritize, and monitor operational risks with owners, controls, scenarios, and residual uncertainty. Use for risk assessment, risk register, operational risk, mitigation plan, or contingency planning. Turkish triggers: operasyonel risk analizi, olasılık-etki, kontrol ve artık risk, risk kaydı."
 ---
 
 # Operational Risk Assessment

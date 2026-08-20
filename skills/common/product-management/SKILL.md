@@ -1,6 +1,6 @@
 ---
 name: product-management
-description: Route product strategy and delivery work to focused workflows for product framing, discovery, competition, metrics, sprint planning, stakeholder communication, and telemetry. Use when a task concerns user problems, scope, prioritization, launch, outcomes, or product decisions.
+description: "Route product strategy and delivery work to focused workflows for product framing, discovery, competition, metrics, sprint planning, stakeholder communication, and telemetry. Use when a task concerns user problems, scope, prioritization, launch, outcomes, or product decisions. Turkish triggers: ürün yönetimi işi, keşif/strateji/roadmap/teslimat, doğru ürün becerisine yönlendir."
 ---
 
 # Product Management

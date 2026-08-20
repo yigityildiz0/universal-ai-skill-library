@@ -1,6 +1,6 @@
 ---
 name: video-delivery-qa
-description: Inspect, validate, and prepare video deliverables for export or handoff using available local tools such as ffprobe, frame sampling, waveform/audio inspection, captions, and visual review. Use for video QA, validate an export, delivery check, subtitle sync, audio check, frame inspection, or ComfyUI/video workflow output review.
+description: "Inspect, validate, and prepare video deliverables for export or handoff using available local tools such as ffprobe, frame sampling, waveform/audio inspection, captions, and visual review. Use for video QA, validate an export, delivery check, subtitle sync, audio check, frame inspection, or ComfyUI/video workflow output review. Turkish triggers: videoyu teslim öncesi kontrol et, çözünürlük/ses/kare ve oynatma, kalite raporu."
 ---
 
 # Video Delivery QA

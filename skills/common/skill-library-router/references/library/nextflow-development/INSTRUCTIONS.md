@@ -72,7 +72,7 @@ All critical checks must pass. If any fail, provide fix instructions:
 
 | Problem | Fix |
 |---------|-----|
-| Not installed | `Follow the official Nextflow installation guide, verify the download, and place it in a user-owned bin directory` |
+| Not installed | Follow the current official Nextflow installation guide; download and inspect the installer before executing it, and never pipe a remote response directly into a shell. |
 | Version < 23.04 | `nextflow self-update` |
 
 ### Java issues

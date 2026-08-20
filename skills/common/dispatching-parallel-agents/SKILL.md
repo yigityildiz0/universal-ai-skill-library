@@ -1,6 +1,6 @@
 ---
 name: dispatching-parallel-agents
-description: Partition and coordinate two or more independent workstreams without duplicating work, leaking expected conclusions, or creating shared-file conflicts. Use for parallel research, multi-area diagnosis, independent reviews, comparisons, test investigation, or large tasks that benefit from bounded concurrent or batched execution.
+description: "Partition and coordinate two or more independent workstreams without duplicating work, leaking expected conclusions, or creating shared-file conflicts. Use for parallel research, multi-area diagnosis, independent reviews, comparisons, test investigation, or large tasks that benefit from bounded concurrent or batched execution. Turkish triggers: işi paralel ajanlara böl, bağımsız alt görevleri dağıt, sonuçları birleştir."
 ---
 
 # Dispatch Parallel Work

@@ -1,6 +1,6 @@
 ---
 name: product-metrics-review
-description: Review product metrics, KPI movement, metric definitions, segmentation, anomalies, and decision implications. Use for metrics review, KPI review, product performance, why a metric changed, north-star metric, funnel review, or product health check.
+description: "Review product metrics, KPI movement, metric definitions, segmentation, anomalies, and decision implications. Use for metrics review, KPI review, product performance, why a metric changed, north-star metric, funnel review, or product health check. Turkish triggers: ürün metriklerini incele, KPI değişimi ve nedenleri, ölçüm kalitesi ve aksiyon."
 ---
 
 # Product Metrics Review

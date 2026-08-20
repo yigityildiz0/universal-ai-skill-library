@@ -1,6 +1,6 @@
 ---
 name: context-budget
-description: Audit actual context consumption and routing overhead across instructions, skill metadata and bodies, tool schemas, agent definitions, conversation output, and project files. Use when context feels crowded, many capabilities were added, a long task needs a budget, or the user asks what is consuming context and where safe savings exist.
+description: "Audit actual context consumption and routing overhead across instructions, skill metadata and bodies, tool schemas, agent definitions, conversation output, and project files. Use when context feels crowded, many capabilities were added, a long task needs a budget, or the user asks what is consuming context and where safe savings exist. Turkish triggers: bağlam bütçesi, token tüketimi, hangi beceri ne kadar yer kaplıyor, context audit."
 ---
 
 # Context Budget

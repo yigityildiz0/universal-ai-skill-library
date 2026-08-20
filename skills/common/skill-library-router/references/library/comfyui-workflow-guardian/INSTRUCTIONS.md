@@ -31,7 +31,7 @@ Classify the request before touching files:
 
 ### 2. Read the right reference file
 
-- Ask the user for the active ComfyUI root and workflow path; never assume workstation-specific locations.
+- Read [references/local-profile.md](references/local-profile.md) only as a template, then verify the active machine, paths, models and protected files from current evidence.
 - Read [references/runtime-performance.md](references/runtime-performance.md) for crashes, access violations, performance regressions, or backend instability.
 - Read [references/identity-modules.md](references/identity-modules.md) for BFS, PuLID, LanPaint-style face transfer, or identity-preservation tasks.
 - Read [references/workflow-editing-checklist.md](references/workflow-editing-checklist.md) before editing workflow JSON.

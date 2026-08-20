@@ -1,6 +1,6 @@
 ---
 name: brand
-description: Create, update, apply, and audit brand strategy, voice, messaging, visual identity, asset rules, and governance. Use for brand guidelines, tone of voice, naming and messaging systems, visual consistency, asset organization, campaign compliance, or synchronizing approved brand tokens into product design.
+description: "Create, update, apply, and audit brand strategy, voice, messaging, visual identity, asset rules, and governance. Use for brand guidelines, tone of voice, naming and messaging systems, visual consistency, asset organization, campaign compliance, or synchronizing approved brand tokens into product design. Turkish triggers: marka kimliği, marka rehberi, isim ve mesaj sistemi, görsel tutarlılık."
 ---
 
 # Brand

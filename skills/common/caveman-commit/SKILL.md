@@ -1,11 +1,14 @@
 ---
 name: caveman-commit
-description: "Draft a terse Conventional Commit message while preserving intent, rationale, breaking-change details, and repository conventions. Use only when the user explicitly invokes $caveman-commit or specifically asks for a Caveman-style commit message. Do not trigger for generic commit or staging requests."
+description: "Manual Caveman-style Conventional Commit message generator that preserves intent, rationale, breaking-change details, and repository conventions. Use only when explicitly invoked as $caveman-commit, /caveman-commit, 'Caveman commit', or an equally unambiguous request for a Caveman-style commit message. Never activate for generic commit, staging, or commit-message requests. Turkish triggers: Caveman commit, mağara modu commit mesajı."
+license: MIT
 ---
 
 # Caveman Commit
 
 Draft the message only. Do not stage, commit, amend, push, or change files.
+
+Safety-adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman), MIT licensed. Preserve the included `LICENSE` when redistributing.
 
 ## Workflow
 

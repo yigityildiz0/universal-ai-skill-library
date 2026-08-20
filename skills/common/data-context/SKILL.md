@@ -1,6 +1,6 @@
 ---
 name: data-context
-description: Create or repair a durable data context containing schema, grain, metric definitions, lineage, ownership, freshness, and quality caveats. Use for data dictionary, metric definitions, semantic layer, analytics context, schema documentation, or data onboarding.
+description: "Create or repair a durable data context containing schema, grain, metric definitions, lineage, ownership, freshness, and quality caveats. Use for data dictionary, metric definitions, semantic layer, analytics context, schema documentation, or data onboarding. Turkish triggers: veri bağlamı oluştur, metrik sözlüğü, tablo ve alan anlamları, veri sahipliği."
 ---
 
 # Data Context

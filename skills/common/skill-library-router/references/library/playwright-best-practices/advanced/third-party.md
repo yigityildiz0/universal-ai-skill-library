@@ -33,7 +33,7 @@ test("Google OAuth login", async ({ page }) => {
         valid: true,
         user: {
           id: "123",
-          email: "test@gmail.com",
+          email: "test@example.com",
           name: "Test User",
         },
       },

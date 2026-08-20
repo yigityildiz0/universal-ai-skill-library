@@ -1,6 +1,6 @@
 ---
 name: design
-description: Route broad or mixed visual-design requests into a coherent workflow spanning brand, design systems, UI/UX, interface styling, banners, presentations, logos, icons, and campaign assets. Use when a request crosses multiple design disciplines or the correct specialist skill is unclear; prefer the specialist skill directly for narrow tasks.
+description: "Route broad or mixed visual-design requests into a coherent workflow spanning brand, design systems, UI/UX, interface styling, banners, presentations, logos, icons, and campaign assets. Use when a request crosses multiple design disciplines or the correct specialist skill is unclear; prefer the specialist skill directly for narrow tasks. Turkish triggers: tasarım işi, arayüz veya görsel yön seç, doğru tasarım becerisine yönlendir."
 ---
 
 # Design Router

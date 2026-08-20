@@ -1,12 +1,15 @@
 ---
 name: caveman-help
-description: "One-shot reference card for this plugin's Caveman levels and companion skills. Use only when the user explicitly invokes $caveman-help or asks how to use the Caveman skill family. Do not activate a mode or change files."
+description: "Manual one-shot reference card for Caveman levels and companion skills. Use only when explicitly invoked as $caveman-help, /caveman-help, 'Caveman help', or an unambiguous question about Caveman commands or levels. Never activate for generic help requests; do not activate a mode or change files. Turkish triggers: Caveman yardım, mağara modu seviyeleri ve komutları."
+license: MIT
 ---
 
 # Caveman Help
 
 Return a compact reference card. Do not activate a mode, create state, or
 promise environment-variable, hook, status-line, or config-file behavior.
+
+Safety-adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman), MIT licensed. Preserve the included `LICENSE` when redistributing.
 
 ## Modes
 
@@ -18,7 +21,7 @@ promise environment-variable, hook, status-line, or config-file behavior.
 | `$caveman wenyan-lite` | Light classical-Chinese register. |
 | `$caveman wenyan-full` | Compact classical-Chinese register. |
 | `$caveman wenyan-ultra` | Maximum safe classical compression. |
-| `normal mode` or `stop caveman` | Return to normal prose. |
+| `$caveman off`, `/caveman off`, `normal mode`, `stop caveman`, or “mağara modunu kapat” | Return to normal prose. |
 
 ## Companion skills
 

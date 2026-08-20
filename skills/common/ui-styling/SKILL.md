@@ -1,6 +1,6 @@
 ---
 name: ui-styling
-description: Implement and refine accessible, responsive interfaces using an existing component system or utility CSS, with strong state coverage, semantic tokens, dark mode, and framework-aware styling. Use for component styling, Tailwind or shadcn-style workflows, responsive layouts, theme implementation, visual polish, or UI consistency reviews.
+description: "Implement and refine accessible, responsive interfaces using an existing component system or utility CSS, with strong state coverage, semantic tokens, dark mode, and framework-aware styling. Use for component styling, Tailwind or shadcn-style workflows, responsive layouts, theme implementation, visual polish, or UI consistency reviews. Turkish triggers: arayüz stilini uygula, CSS ve görsel hiyerarşi, responsive ve erişilebilir görünüm."
 ---
 
 # UI Styling

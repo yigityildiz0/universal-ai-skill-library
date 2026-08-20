@@ -538,7 +538,7 @@ async function getUser(id: string): Promise<any> {
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "clean": "rm -rf -- ./dist"
+    "clean": "rm -rf dist"
   },
   "engines": {
     "node": ">=18"

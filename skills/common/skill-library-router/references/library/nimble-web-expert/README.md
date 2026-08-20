@@ -23,7 +23,7 @@ Get live web data instantly — fetch any URL, scrape structured data, search th
 
 ## Setup
 
-Install the Nimble CLI from its official documentation, then complete its authenticated setup flow.
+See [Installation in the root README](../../README.md#installation) for CLI install and API key setup.
 
 ### Optional: Nimble Docs MCP (recommended)
 

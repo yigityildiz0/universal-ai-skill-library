@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Semantic trigger fixtures; these are design tests, not runtime activation logs.",
+  "cases": [
+    {
+      "id": "positive-turkish-open",
+      "type": "positive",
+      "prompt": "Mağara modunu aç.",
+      "expected": "activate_caveman_full"
+    },
+    {
+      "id": "positive-ultra",
+      "type": "positive",
+      "prompt": "Caveman ultra moduna geç.",
+      "expected": "activate_caveman_ultra"
+    },
+    {
+      "id": "positive-command",
+      "type": "positive",
+      "prompt": "/caveman wenyan-lite",
+      "expected": "activate_caveman_wenyan_lite"
+    },
+    {
+      "id": "boundary-off",
+      "type": "boundary",
+      "prompt": "/caveman off",
+      "expected": "deactivate_caveman"
+    },
+    {
+      "id": "boundary-turkish-off",
+      "type": "boundary",
+      "prompt": "Mağara modunu kapat.",
+      "expected": "deactivate_caveman"
+    },
+    {
+      "id": "boundary-normal-mode",
+      "type": "boundary",
+      "prompt": "Normal mode.",
+      "expected": "deactivate_caveman_if_active"
+    },
+    {
+      "id": "negative-turkish-short",
+      "type": "negative",
+      "prompt": "Kısa ve net yaz.",
+      "expected": "do_not_activate_or_read_caveman"
+    },
+    {
+      "id": "negative-simple",
+      "type": "negative",
+      "prompt": "Basit anlat.",
+      "expected": "do_not_activate_or_read_caveman"
+    },
+    {
+      "id": "negative-token-efficiency",
+      "type": "negative",
+      "prompt": "Be concise and use fewer tokens.",
+      "expected": "do_not_activate_or_read_caveman"
+    },
+    {
+      "id": "negative-normal-commit",
+      "type": "negative",
+      "prompt": "Bu diff için kısa bir Conventional Commit mesajı yaz.",
+      "expected": "do_not_route_to_caveman_commit"
+    },
+    {
+      "id": "negative-normal-review",
+      "type": "negative",
+      "prompt": "Bu diff için normal bir code review yap.",
+      "expected": "do_not_route_to_caveman_review"
+    },
+    {
+      "id": "negative-archive",
+      "type": "negative",
+      "prompt": "Bu klasörü ZIP olarak sıkıştır.",
+      "expected": "do_not_route_to_caveman_compress"
+    },
+    {
+      "id": "negative-help",
+      "type": "negative",
+      "prompt": "Bu uygulamayı kullanmama yardım et.",
+      "expected": "do_not_route_to_caveman_help"
+    },
+    {
+      "id": "negative-name-mention",
+      "type": "negative",
+      "prompt": "Caveman nedir ve hangi seviyeleri var?",
+      "expected": "do_not_activate_caveman"
+    },
+    {
+      "id": "negative-inspection",
+      "type": "negative",
+      "prompt": "Caveman skill'ini incele ve güvenli mi söyle.",
+      "expected": "do_not_activate_caveman"
+    },
+    {
+      "id": "negative-negated-open",
+      "type": "negative",
+      "prompt": "Caveman modunu açma.",
+      "expected": "do_not_activate_caveman"
+    }
+  ]
+}

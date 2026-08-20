@@ -1,11 +1,30 @@
 ---
 name: deep-research
-description: Plan and execute evidence-backed, multi-source research using current primary sources, parallel or batched workstreams when available, explicit uncertainty, and claim-level citations. Use for deep research, due diligence, literature or market scans, comparisons, fact-checking, and decisions that need more than a quick lookup.
+description: 'Automatically plan and execute deep, evidence-backed, multi-source research when the user says "derin/çok detaylı araştır", "bütün siteleri/kaynakları tara", "yüzeysel olma", "güzel analiz et", asks for due diligence, a broad literature/market scan, a consequential comparison, fact-check, or a decision that cannot be supported by a quick lookup. If a research request says "gerekli/alakalı becerileri kullan", "bütün gerekli skilleri kullan", or similar, do not stop at this umbrella: select the smallest complete set of research-depth, owning-domain, evidence-verification, and independent-challenge skills while excluding unrelated or duplicate skills. Route one ordinary low-stakes lookup to quick-research and supplied long-form analysis to deep-reading-analyst.'
 ---
 
 # Deep Research
 
 Produce a current, traceable answer that is useful for a decision. Use the tools and model already available in the active host. Do not switch providers or require a named model unless the user explicitly asks.
+
+## Compose the research team
+
+Deep research owns the research plan; it is not automatically the only skill
+needed. When the user asks for the necessary, related, compatible, or all
+relevant skills, read
+[domain-routing.md](references/domain-routing.md) and select the smallest
+complete combination:
+
+1. one research-depth owner;
+2. the specialist that owns each distinct decision domain;
+3. the appropriate evidence-integrity layer;
+4. an independent challenger only when stakes, uncertainty, or the user's
+   request justify it.
+
+“Use all relevant skills” never means load every installed skill. Do not add
+another umbrella or specialist that contributes no distinct work, and do not
+let a broad research skill displace a narrower medical, financial, clinical,
+technical, product, pricing, legal, or route specialist.
 
 ## 1. Frame the decision
 
@@ -83,6 +102,8 @@ Before delivery:
 - confirm recommendations reflect the user's constraints rather than generic popularity;
 - remove unsupported attractive claims;
 - state what could not be verified.
+
+Use `$evidence-integrity-guard` for a separate claim/source/citation audit when it is available, especially for consequential, disputed, commercial, scientific, medical, legal, financial, or time-sensitive conclusions. Do not claim the guard ran when it was unavailable; apply the same checks directly.
 
 ## Guardrails
 

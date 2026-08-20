@@ -1,6 +1,6 @@
 ---
 name: test-driven-development
-description: Use when implementing any feature or bugfix, before writing implementation code
+description: "Use when implementing any feature or bugfix, before writing implementation code. Turkish triggers: test güdümlü geliştirme, önce başarısız test sonra düzeltme, regresyon testi."
 ---
 
 # Test-Driven Development (TDD)

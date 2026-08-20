@@ -1,6 +1,6 @@
 ---
 name: context-manager
-description: Keep long tasks accurate by tracking goals, constraints, decisions, evidence, artifacts, unresolved questions, and context budget through progressive disclosure and verified handoffs. Use when a task spans many files, tools, agents, or compactions; never treat a summary as stronger evidence than its sources.
+description: "Keep long tasks accurate by tracking goals, constraints, decisions, evidence, artifacts, unresolved questions, and context budget through progressive disclosure and verified handoffs. Use when a task spans many files, tools, agents, or compactions; never treat a summary as stronger evidence than its sources. Turkish triggers: uzun görevin bağlamını koru, durum özeti ve devir, context kaybını önle."
 license: MIT
 ---
 

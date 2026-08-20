@@ -22,7 +22,7 @@ Find, generate, update, and run structured-data agents on the Nimble platform. D
 
 ## Setup
 
-Install the Nimble CLI from its official documentation, then complete its authenticated setup flow.
+See [Installation in the root README](../../README.md#installation) for CLI install and API key setup.
 
 ### Connect the Nimble MCP server
 

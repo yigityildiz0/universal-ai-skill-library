@@ -1,6 +1,6 @@
 ---
 name: data-dashboard
-description: Plan, build, review, or improve a decision-focused dashboard with metric definitions, owners, filters, freshness, alerts, and validation. Use for dashboard, KPI dashboard, analytics dashboard, reporting board, or operational metrics view.
+description: "Plan, build, review, or improve a decision-focused dashboard with metric definitions, owners, filters, freshness, alerts, and validation. Use for dashboard, KPI dashboard, analytics dashboard, reporting board, or operational metrics view. Turkish triggers: dashboard yap, KPI panosu, filtre ve tazelik, karar odaklı raporlama."
 ---
 
 # Data Dashboard

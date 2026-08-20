@@ -1,6 +1,6 @@
 ---
 name: data
-description: Route structured-data work to focused, defensible analysis, SQL, visualization, dashboard, and data-context workflows. Use when a task involves tables, files, metrics, schemas, dashboards, data quality, or evidence-based decisions.
+description: "Route structured-data work to focused, defensible analysis, SQL, visualization, dashboard, and data-context workflows. Use when a task involves tables, files, metrics, schemas, dashboards, data quality, or evidence-based decisions. Turkish triggers: veri işi, tablo veya dataset incele, veri becerisine yönlendir, yapılandırılmış veri."
 ---
 
 # Data

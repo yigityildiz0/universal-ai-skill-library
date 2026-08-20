@@ -1,6 +1,6 @@
 ---
 name: product-tracking-audit
-description: Audit what telemetry a codebase actually emits, including event calls, identity handling, properties, and dead instrumentation. Use for analytics inventory, tracking audit, event census, what is currently tracked, or before changing product telemetry.
+description: "Audit what telemetry a codebase actually emits, including event calls, identity handling, properties, and dead instrumentation. Use for analytics inventory, tracking audit, event census, what is currently tracked, or before changing product telemetry. Turkish triggers: ürün takibini denetle, event ve property sorunları, veri boşlukları ve kalite."
 ---
 
 # Product Tracking: Audit Current Reality

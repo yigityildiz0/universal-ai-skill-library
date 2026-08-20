@@ -1,6 +1,7 @@
 ---
 name: caveman-compress
-description: "Safely compress prose in Markdown or plain-text memory and instruction files through a provider-neutral candidate, invariant validation, unified-diff preview, explicit user approval, atomic replacement, and timestamped backup. Use only when the user explicitly invokes $caveman-compress or asks for Caveman memory-file compression. Never overwrite during the default preview."
+description: "Manual Caveman-style prose compressor for Markdown or plain-text memory and instruction files, with invariant validation, unified-diff preview, explicit approval, atomic replacement, and timestamped backup. Use only when explicitly invoked as $caveman-compress, /caveman-compress, 'Caveman compress', or an unambiguous Caveman memory-file compression request. Never activate for ordinary summarization, ZIP/archive compression, or generic file cleanup; never overwrite during preview. Turkish triggers: Caveman compress, mağara modu metin sıkıştırma."
+license: MIT
 ---
 
 # Caveman Compress
@@ -8,6 +9,8 @@ description: "Safely compress prose in Markdown or plain-text memory and instruc
 Compress prose without silently changing meaning. The bundled script performs
 no network or model call. Use the active agent to draft the candidate, then use
 the script for deterministic checks.
+
+Safety-adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman), MIT licensed. Preserve the included `LICENSE` when redistributing.
 
 Read [compression-safety.md](references/compression-safety.md) before creating
 a candidate.

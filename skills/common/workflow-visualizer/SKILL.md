@@ -1,6 +1,6 @@
 ---
 name: workflow-visualizer
-description: Create an accessible, self-contained workflow diagram as HTML, Mermaid, or SVG from a process description. Use to map systems, data flows, decisions, ownership, handoffs, or timelines; validate structure and safely escape untrusted text.
+description: "Create an accessible, self-contained workflow diagram as HTML, Mermaid, or SVG from a process description. Use to map systems, data flows, decisions, ownership, handoffs, or timelines; validate structure and safely escape untrusted text. Turkish triggers: iş akışını görselleştir, Mermaid diyagramı, süreç veya sistem haritası."
 ---
 
 # Workflow Visualizer

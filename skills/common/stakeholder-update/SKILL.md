@@ -1,6 +1,6 @@
 ---
 name: stakeholder-update
-description: Write a concise, evidence-based stakeholder update for product, engineering, operations, research, or program work. Use for weekly update, status report, executive summary, project update, risk update, or leadership communication.
+description: "Write a concise, evidence-based stakeholder update for product, engineering, operations, research, or program work. Use for weekly update, status report, executive summary, project update, risk update, or leadership communication. Turkish triggers: paydaş güncellemesi yaz, ilerleme/risk/karar ve sonraki adım, yönetici özeti."
 ---
 
 # Stakeholder Update

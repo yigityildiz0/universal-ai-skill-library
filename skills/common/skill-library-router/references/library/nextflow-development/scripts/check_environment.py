@@ -117,7 +117,7 @@ def check_nextflow() -> CheckResult:
             name="Nextflow",
             passed=False,
             message="Nextflow not found in PATH",
-            fix="Follow the official Nextflow installation guide, verify the download, and install it into an isolated user-owned directory"
+            fix="Follow the official Nextflow installation guide; download, inspect, and verify the installer before running it. Never pipe a remote response into a shell."
         )
 
     try:

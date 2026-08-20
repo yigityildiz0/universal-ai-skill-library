@@ -1,6 +1,7 @@
 ---
 name: caveman-review
-description: "Produce concise code-review findings with exact locations, evidence, impact, and a concrete fix while retaining necessary rationale for high-risk issues. Use only when the user explicitly invokes $caveman-review or asks for a Caveman-style review. Do not trigger for ordinary review requests."
+description: "Manual Caveman-style code-review mode that produces concise findings with exact locations, evidence, impact, and a concrete fix while retaining necessary rationale for high-risk issues. Use only when explicitly invoked as $caveman-review, /caveman-review, 'Caveman review', or an equally unambiguous Caveman-style review request. Never activate for ordinary code review, PR review, or diff-review requests. Turkish triggers: Caveman review, mağara modu kod incelemesi."
+license: MIT
 ---
 
 # Caveman Review
@@ -8,6 +9,8 @@ description: "Produce concise code-review findings with exact locations, evidenc
 Review first; compress only the presentation. Do not change code, post
 comments, approve, or request changes unless the user separately authorizes
 that action.
+
+Safety-adapted from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman), MIT licensed. Preserve the included `LICENSE` when redistributing.
 
 ## Workflow
 

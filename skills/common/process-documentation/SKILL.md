@@ -1,6 +1,6 @@
 ---
 name: process-documentation
-description: Document a repeatable process, SOP, run sequence, ownership model, or handoff with inputs, steps, decisions, exceptions, and verification. Use for SOP, process document, workflow documentation, operating procedure, or handoff guide.
+description: "Document a repeatable process, SOP, run sequence, ownership model, or handoff with inputs, steps, decisions, exceptions, and verification. Use for SOP, process document, workflow documentation, operating procedure, or handoff guide. Turkish triggers: süreci belgele, SOP ve iş akışı yaz, rol/girdi/çıktı ve istisnaları kaydet."
 ---
 
 # Process Documentation

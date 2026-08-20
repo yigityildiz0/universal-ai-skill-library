@@ -94,4 +94,4 @@ See [`INSTRUCTIONS.md`](./INSTRUCTIONS.md) for the full command reference and wo
 
 ## License
 
-[MIT](LICENSE)
+[MIT](../../LICENSE)

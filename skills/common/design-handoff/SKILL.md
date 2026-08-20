@@ -1,6 +1,6 @@
 ---
 name: design-handoff
-description: Create or review a design-to-engineering handoff with intent, responsive behavior, tokens, states, interaction rules, edge cases, assets, acceptance criteria, and open decisions. Use for design handoff, developer handoff, Figma handoff, implementation spec, or UI acceptance criteria.
+description: "Create or review a design-to-engineering handoff with intent, responsive behavior, tokens, states, interaction rules, edge cases, assets, acceptance criteria, and open decisions. Use for design handoff, developer handoff, Figma handoff, implementation spec, or UI acceptance criteria. Turkish triggers: tasarımı geliştiriciye devret, ölçü ve durumlar, asset ve acceptance criteria."
 ---
 
 # Design Handoff

@@ -1,6 +1,6 @@
 ---
 name: autonomous-loops-opencode
-description: Design bounded OpenCode CLI loops and multi-stage pipelines with explicit artifacts, stop conditions, budgets, permissions, validation gates, and recovery..
+description: Design bounded OpenCode CLI loops and multi-stage pipelines with explicit artifacts, stop conditions, time/cost budgets, permissions, validation gates, and recovery. Use for repeat-until-pass, batch pipeline, CI audit, or Turkish intents such as “OpenCode döngüsü”, “otonom ama sınırlı çalış”, “başarana kadar dene”, “çok aşamalı pipeline”. Do not use for unbounded autonomy, ambiguous goals, credentials, payments, publishing, or irreversible external actions.
 ---
 
 # Safe OpenCode Autonomous Loops
@@ -36,6 +36,7 @@ on_failure: preserve evidence, stop, and report
 ## Execution rules
 
 1. Verify the installed OpenCode CLI syntax with `opencode --help` and the current official documentation; flags can change.
+   If the executable is unavailable in the active environment, stop and report that fact instead of inventing commands.
 2. Use the project's current working tree and instructions. Never discard unrelated changes.
 3. Keep every prompt self-contained and pass state through explicit artifacts, not assumed conversation memory.
 4. Use noninteractive execution only when supported by the installed CLI. Quote paths and secrets safely; pass credentials through approved environment/config mechanisms, never prompt text.

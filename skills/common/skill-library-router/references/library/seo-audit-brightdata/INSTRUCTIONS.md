@@ -17,8 +17,12 @@ The inspiration for this skill noted that `web_fetch` and `curl` cannot detect J
 
 The user must have the Bright Data CLI installed and authenticated:
 
+Open the current official Bright Data CLI installation page. Download the
+installer to a temporary file, inspect it, and verify any published checksum or
+signature before asking for approval to run it. Never pipe a remote installer
+directly into a shell. After installation, authentication remains interactive:
+
 ```bash
-Download the Bright Data CLI installer from its official source, inspect it, verify the revision, and run it only with user approval
 bdata login
 ```
 

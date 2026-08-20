@@ -1,6 +1,6 @@
 ---
 name: research-synthesis
-description: Synthesize qualitative research, feedback, interviews, observations, support tickets, or study notes into traceable themes, evidence, uncertainty, and actionable opportunities. Use for research synthesis, analyze interviews, synthesize user feedback, affinity mapping, insight report, or research findings.
+description: "Synthesize qualitative research, feedback, interviews, observations, support tickets, or study notes into traceable themes, evidence, uncertainty, and actionable opportunities. Use for research synthesis, analyze interviews, synthesize user feedback, affinity mapping, insight report, or research findings. Turkish triggers: birçok kaynağı sentezle, bulguları birleştir, çelişki ve kanıt gücü, sonuç çıkar."
 ---
 
 # Research Synthesis

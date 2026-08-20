@@ -1,6 +1,6 @@
 ---
 name: product-tracking-implementation-guide
-description: Turn an approved product telemetry plan into a repository-specific implementation guide with file locations, sequencing, tests, rollout, and rollback. Use before implementing analytics instrumentation or when requesting a tracking implementation plan.
+description: "Turn an approved product telemetry plan into a repository-specific implementation guide with file locations, sequencing, tests, rollout, and rollback. Use before implementing analytics instrumentation or when requesting a tracking implementation plan. Turkish triggers: tracking uygulama rehberi, geliştirici handoff'u, örnek payload ve QA."
 ---
 
 # Product Tracking: Implementation Guide

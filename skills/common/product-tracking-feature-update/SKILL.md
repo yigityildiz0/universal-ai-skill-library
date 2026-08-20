@@ -1,6 +1,6 @@
 ---
 name: product-tracking-feature-update
-description: Update product telemetry when a new feature, flow, experiment, or lifecycle change is introduced. Use for instrument this feature, add analytics to a flow, update tracking plan, or telemetry delta review.
+description: "Update product telemetry when a new feature, flow, experiment, or lifecycle change is introduced. Use for instrument this feature, add analytics to a flow, update tracking plan, or telemetry delta review. Turkish triggers: özellik değişince tracking planını güncelle, event/property etkisi ve sürüm notu."
 ---
 
 # Product Tracking: Feature Update

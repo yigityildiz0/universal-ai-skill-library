@@ -1,6 +1,6 @@
 ---
 name: product-photography
-description: Plan, generate, edit, or review AI product photography for e-commerce, packaging, ads, catalogs, and product launches. Use for product photos, packshots, hero images, lifestyle scenes, product image sets, studio lighting, or marketplace-ready visuals while preserving product identity and required details.
+description: "Plan, generate, edit, or review AI product photography for e-commerce, packaging, ads, catalogs, and product launches. Use for product photos, packshots, hero images, lifestyle scenes, product image sets, studio lighting, or marketplace-ready visuals while preserving product identity and required details. Turkish triggers: ürün fotoğrafı planla veya üret, ışık ve kompozisyon, e-ticaret görseli, çekim listesi."
 ---
 
 # Product Photography

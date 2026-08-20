@@ -1,6 +1,6 @@
 ---
 name: ui-ux-pro-max
-description: Search and apply a local UI/UX design-intelligence library with 84 styles, 192 color palettes, 74 font pairings, 99 UX guidelines, 25 chart patterns, 1,923 Google Fonts, 105 icon records, and 22 technology stacks. Use to plan, implement, review, or improve web, mobile, and desktop interfaces, design systems, accessibility, responsive behavior, interaction states, typography, color, charts, and stack-specific UI code.
+description: "Search and apply a local UI/UX design-intelligence library with 84 styles, 192 color palettes, 74 font pairings, 99 UX guidelines, 25 chart patterns, 1,923 Google Fonts, 105 icon records, and 22 technology stacks. Use to plan, implement, review, or improve web, mobile, and desktop interfaces, design systems, accessibility, responsive behavior, interaction states, typography, color, charts, and stack-specific UI code. Turkish triggers: ileri UI/UX tasarımı, stil ve bileşen araştırması, profesyonel arayüz önerisi."
 ---
 
 # UI/UX Pro Max

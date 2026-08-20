@@ -1,6 +1,6 @@
 ---
 name: setup-writing-style
-description: Build a private, evidence-based writing-style profile from text the user explicitly provides, then calibrate it against drafts without copying distinctive passages or silently persisting personal data. Use when the user asks to capture their voice or make drafts sound like them; never scan unrelated messages, email, or files automatically.
+description: "Build or recalibrate a private, evidence-based writing-style profile from text the user explicitly places in scope. Use when the user asks to analyze/capture their voice across future writing, compare samples, or create a reusable style profile; extract observable traits without copying distinctive passages or silently persisting personal data. Do not activate merely to draft one email or WhatsApp message—use message-writer, which may apply an already approved profile. Never scan unrelated conversations, mail, cloud files, or repositories automatically. Turkish triggers: yazım tarzı oluştur, kişisel üslup rehberi, örneklerden ses tonu çıkar."
 license: MIT
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: change-management
-description: Plan an operational, product, infrastructure, or process change with scope, impact, owners, approvals, rollout, communication, rollback, and verification. Use for change request, change plan, release change, migration change, or operational change control.
+description: "Plan an operational, product, infrastructure, or process change with scope, impact, owners, approvals, rollout, communication, rollback, and verification. Use for change request, change plan, release change, migration change, or operational change control. Turkish triggers: değişiklik planı, geçiş ve geri alma, paydaş iletişimi, change request."
 ---
 
 # Change Management

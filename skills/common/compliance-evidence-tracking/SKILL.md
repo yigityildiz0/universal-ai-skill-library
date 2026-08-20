@@ -1,6 +1,6 @@
 ---
 name: compliance-evidence-tracking
-description: Organize compliance controls, owners, evidence, review cadence, exceptions, and gaps without claiming certification or legal compliance. Use for compliance tracking, audit evidence, control register, policy evidence, or readiness preparation.
+description: "Organize compliance controls, owners, evidence, review cadence, exceptions, and gaps without claiming certification or legal compliance. Use for compliance tracking, audit evidence, control register, policy evidence, or readiness preparation. Turkish triggers: uyum kanıtlarını takip et, kontrol listesi, denetim hazırlığı, eksik kanıt."
 ---
 
 # Compliance Evidence Tracking

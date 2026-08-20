@@ -1,6 +1,6 @@
 ---
 name: vendor-review
-description: Compare vendors, tools, agencies, platforms, or service providers using requirements, evidence, cost, integration, risk, support, and exit criteria. Use for vendor review, supplier comparison, tool evaluation, buy-versus-build, or procurement brief.
+description: "Compare vendors, tools, agencies, platforms, or service providers using requirements, evidence, cost, integration, risk, support, and exit criteria. Use for vendor review, supplier comparison, tool evaluation, buy-versus-build, or procurement brief. Turkish triggers: tedarikçi değerlendirmesi, teklif ve SLA karşılaştır, güvenlik/maliyet/risk, seçim önerisi."
 ---
 
 # Vendor Review

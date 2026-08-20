@@ -1,6 +1,6 @@
 ---
 name: competitive-brief
-description: Research and write a decision-focused competitive brief using current, source-backed evidence. Use for competitor analysis, competitive brief, market comparison, feature comparison, positioning comparison, or win/loss preparation.
+description: "Research and write a decision-focused competitive brief using current, source-backed evidence. Use for competitor analysis, competitive brief, market comparison, feature comparison, positioning comparison, or win/loss preparation. Turkish triggers: rakip analizi, rekabet özeti, özellik ve konumlandırma karşılaştırması."
 ---
 
 # Competitive Brief

@@ -535,3 +535,70 @@ This file records only the evidence present in the supplied packages. It does no
 | `yeet` | file-only | router-library | No |
 | `youtube-transcript-downloader` | unspecified | router-library | No |
 | `zoom-plugin` | unspecified | router-library | No |
+
+## Added in the 2026-08-20 validated rebuild
+
+| Skill | Local license signal | Supplied source tier | Embedded conflict |
+|---|---|---|---|
+| `activate-caveman-mode` | unspecified | canonical-2026 | No |
+| `ai-model-route-evaluator` | unspecified | canonical-2026 | No |
+| `consumer-resolution` | unspecified | canonical-2026 | No |
+| `crypto-research-readonly` | unspecified | canonical-2026 | No |
+| `curated-workflow-catalog` | declared: MIT | canonical-2026 | No |
+| `data-visualization-playbook` | unspecified | canonical-2026 | No |
+| `docx-workflow` | declared: MIT | canonical-2026 | No |
+| `equity-opportunity-funnel` | unspecified | canonical-2026 | No |
+| `evidence-integrity-guard` | unspecified | canonical-2026 | No |
+| `file-reading-workflow` | declared: MIT | canonical-2026 | No |
+| `finance-evidence-guard` | unspecified | canonical-2026 | No |
+| `financial-literacy-coach` | unspecified | canonical-2026 | No |
+| `fund-etf-analyst` | unspecified | canonical-2026 | No |
+| `github-cli-workflows` | unspecified | canonical-2026 | No |
+| `health-product-evidence-check` | unspecified | canonical-2026 | No |
+| `image-editing-workflow` | declared: MIT | canonical-2026 | No |
+| `investment-copilot` | unspecified | canonical-2026 | No |
+| `investment-journal-review` | unspecified | canonical-2026 | No |
+| `investment-red-team` | unspecified | canonical-2026 | No |
+| `investment-thesis-tracker` | unspecified | canonical-2026 | No |
+| `legal-research` | unspecified | canonical-2026 | No |
+| `market-pricing-analysis` | unspecified | canonical-2026 | No |
+| `market-regime-analysis` | unspecified | canonical-2026 | No |
+| `mental-health-crisis-support` | unspecified | canonical-2026 | No |
+| `message-writer` | unspecified | canonical-2026 | No |
+| `operations-workflow` | unspecified | canonical-2026 | No |
+| `pdf-workflow` | declared: MIT | canonical-2026 | No |
+| `personal-tech-copilot` | unspecified | canonical-2026 | No |
+| `physio-clinical-copilot` | declared: MIT | canonical-2026 | No |
+| `physio-clinical-english` | unspecified | canonical-2026 | No |
+| `physio-clinical-reasoning` | unspecified | canonical-2026 | No |
+| `physio-documentation` | unspecified | canonical-2026 | No |
+| `physio-evidence-hub` | unspecified | canonical-2026 | No |
+| `physio-evidence-search` | unspecified | canonical-2026 | No |
+| `physio-outcome-measures` | unspecified | canonical-2026 | No |
+| `physio-patient-education` | unspecified | canonical-2026 | No |
+| `physio-professional-development` | unspecified | canonical-2026 | No |
+| `physio-program-design` | unspecified | canonical-2026 | No |
+| `physio-study-appraisal` | unspecified | canonical-2026 | No |
+| `physio-study-coach` | unspecified | canonical-2026 | No |
+| `plan-smart-routes` | unspecified | canonical-2026 | No |
+| `portfolio-risk-and-sizing` | unspecified | canonical-2026 | No |
+| `pre-trade-investment-gate` | unspecified | canonical-2026 | No |
+| `probabilistic-market-forecast` | unspecified | canonical-2026 | No |
+| `public-equity-research` | unspecified | canonical-2026 | No |
+| `research-medical-evidence` | unspecified | canonical-2026 | No |
+| `skill-package-security-audit` | unspecified | canonical-2026 | No |
+| `slides-workflow` | unspecified | canonical-2026 | No |
+| `sql-analytics-workflow` | unspecified | canonical-2026 | No |
+| `technical-quant-analysis` | unspecified | canonical-2026 | No |
+| `turkey-markets-analysis` | unspecified | canonical-2026 | No |
+| `visual-reference-to-code` | unspecified | canonical-2026 | No |
+| `warrant-structured-product-analyst` | unspecified | canonical-2026 | No |
+| `web-design-guidelines-workflow` | file-only | canonical-2026 | No |
+| `xlsx-workflow` | declared: MIT | canonical-2026 | No |
+
+## Added in the 2026-08-20 validated rebuild
+
+| Skill | Local license signal | Supplied source tier | Embedded conflict |
+|---|---|---|---|
+| `using-superpowers` | unspecified | canonical-2026 | No |
+| `writing-skills` | unspecified | canonical-2026 | No |

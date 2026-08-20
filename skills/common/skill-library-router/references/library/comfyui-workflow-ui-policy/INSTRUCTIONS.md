@@ -15,7 +15,7 @@ Trigger phrases that activate this skill:
 - "rebuild workflow"
 - "yeni workflow"
 - "v4 / v5 / new version"
-- Any JSON write into `C:/path/to/ComfyUI/user/default/workflows/`
+- Any JSON write into the verified `<COMFYUI_ROOT>/user/default/workflows/` directory
 
 ## Core Policy
 
@@ -50,7 +50,7 @@ Trigger phrases that activate this skill:
 - PrimitiveInt (Width, Height) — user knobs
 - PrimitiveBoolean (PuLID on/off toggle)
 - PrimitiveBoolean (BFS toggle)
-- Subgraph instance node ("Klein 9B Engine")
+- Subgraph instance node (for example, "Model Engine")
 - PreviewImage, SaveImage, Image Comparer (rgthree)
 - MarkdownNote (Kontrol Paneli)
 - Fast Groups Bypasser (rgthree) — optional group toggle
@@ -102,7 +102,7 @@ NEVER collapse:
 
 ### 5. Naming Convention (TR)
 
-- Node titles in Turkish (`Modeli Yükle - Klein 9B`, `Referansı Latent'e Çevir`)
+- Localized node titles (for example, `Modeli Yükle`, `Referansı Latent'e Çevir`)
 - Group titles numbered + TR (`1. Kullanıcı Girdileri`)
 - MarkdownNote titles with emoji prefix (`🎛️ KONTROL PANELİ`)
 - LoRA filenames, model filenames, prompt content NEVER translated
@@ -126,8 +126,8 @@ y\x    -2700      -2200      -1750      -1300      -880       -450       -50
 
 ### 7. File Naming Convention
 
-- Master backup: `00 - ANA WORKFLOW.json`
-- Active workflow: `00 - ANA WORKFLOW v{N} - {feature_desc}.json`
+- Protected master: `<PROJECT>-MASTER.json` or an explicit user-supplied allowlist
+- Active workflow: `<PROJECT>-v{N}-{feature}.json`
 - Reference workflows: `0{4-9} - {description}.json`
 - Archive folder: `_archive/{timestamp}-{purpose}/`
 - Analysis folder: `_analysis/{timestamp}-{purpose}.md`
@@ -179,8 +179,8 @@ Run these checks AT THE END of every workflow JSON modification:
 Use `scripts/validate_ui.py` to automatically check policy compliance:
 
 ```bash
-python "C:/path/to/.codex/skills/comfyui-workflow-ui-policy/scripts/validate_ui.py" \
-    "C:/path/to/ComfyUI/user/default/workflows/your-workflow.json"
+python "<SKILL_ROOT>/scripts/validate_ui.py" \
+    "<COMFYUI_ROOT>/user/default/workflows/your-workflow.json"
 ```
 
 ## Subgraph Programmatic Build Helper
@@ -202,7 +202,7 @@ See `scripts/build_subgraph.py` for the helper that converts a flat workflow to 
 ## Hard Rules
 
 - **NEVER** translate prompts, LoRA names, or model filenames.
-- **NEVER** modify the master `00 - ANA WORKFLOW.json` — only edit copies or named versions.
+- **NEVER** modify a verified protected master in place; edit a copy or named version and hash-check the protected source.
 - **ALWAYS** backup before destructive edits.
 - **ALWAYS** validate after edit (0 missing links, 0 dangling refs).
 - **ALWAYS** update MarkdownNote control panel with the new version's behavior.

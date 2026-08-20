@@ -1,6 +1,6 @@
-# Identity Mechanisms — Klein 9B Face Transfer (late 2025/early 2026 research)
+# Identity Mechanisms — Example Face-Transfer Workflow (late 2025/early 2026 research)
 
-## Ranked mechanisms (RTX 5070 12GB, Klein 9B fp8 4-step distilled, CFG=1)
+## Ranked mechanisms (illustrative 12 GB GPU/model setup; benchmark locally)
 
 | Rank | Mechanism | Time/img | Identity Strength | Notes |
 |---|---|---|---|---|
@@ -38,8 +38,8 @@
 
 ### File required
 - `pulid_flux2_klein_v2.safetensors` (Klein V2, recommended over V1)
-- Place in `C:/path/to/ComfyUI/models/pulid/`
-- InsightFace AntelopeV2 in `C:/path/to/ComfyUI/models/insightface/models/`
+- Place in `<COMFYUI_ROOT>/models/pulid/`
+- Place the required InsightFace model under `<COMFYUI_ROOT>/models/insightface/models/`
 
 ## BFS Head V1 LoRA — Usage Requirements
 
@@ -164,7 +164,7 @@ VAEDecode IMAGE → FaceDetailer (face_yolov8m, denoise=0.40, guide_size=512, bb
  → Final image
 ```
 
-## Time Budget (RTX 5070 12GB)
+## Illustrative time budget (hardware/model dependent)
 
 | Configuration | Time |
 |---|---|

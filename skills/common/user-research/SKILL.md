@@ -1,6 +1,6 @@
 ---
 name: user-research
-description: Plan, conduct-support, or analyze ethical user research such as interviews, usability studies, surveys, diary studies, or discovery research. Use for research plan, interview guide, usability test, participant questions, research recruitment, or user insights.
+description: "Plan, conduct-support, or analyze ethical user research such as interviews, usability studies, surveys, diary studies, or discovery research. Use for research plan, interview guide, usability test, participant questions, research recruitment, or user insights. Turkish triggers: kullanıcı araştırması, görüşme ve anket planı, içgörü sentezi, araştırma soruları."
 ---
 
 # User Research

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="680" viewBox="0 0 1600 680" role="img" aria-labelledby="title desc">
   <title id="title">Universal AI Skill Library</title>
-  <desc id="desc">A visual overview of 531 searchable Agent Skills for Claude Code, OpenAI Codex, and OpenCode, with platform counts, curated bundles, direct downloads, and risk and license notes.</desc>
+  <desc id="desc">A visual overview of 588 searchable Agent Skills for Claude Code, OpenAI Codex, and OpenCode, with platform counts, curated bundles, direct downloads, and risk and license notes.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
       <stop stop-color="#08111f"/>
@@ -65,7 +65,7 @@
     <g transform="translate(64 126)">
       <circle cx="114" cy="106" r="103" fill="#172642" stroke="url(#accent)" stroke-width="5"/>
       <circle cx="114" cy="106" r="84" fill="#101b31" stroke="#8fa5d2" stroke-opacity="0.28"/>
-      <text x="114" y="94" text-anchor="middle" fill="#ffffff" font-size="66" font-weight="800">531</text>
+      <text x="114" y="94" text-anchor="middle" fill="#ffffff" font-size="66" font-weight="800">588</text>
       <text x="114" y="132" text-anchor="middle" fill="#b8c6dc" font-size="21" font-weight="700" letter-spacing="2">SKILLS</text>
       <text x="114" y="160" text-anchor="middle" fill="#86a2ff" font-size="17">ONE INDEX</text>
 
@@ -77,19 +77,19 @@
         <rect width="248" height="82" rx="18" fill="#1a2233" stroke="#f28c66"/>
         <circle cx="25" cy="26" r="7" fill="#f28c66"/>
         <text x="43" y="33" fill="#fff4ef" font-size="23" font-weight="750">Claude Code</text>
-        <text x="24" y="62" fill="#f7b79f" font-size="18">524 catalog · 100 curated</text>
+        <text x="24" y="62" fill="#f7b79f" font-size="18">585 catalog · 100 curated</text>
       </g>
       <g transform="translate(292 97)">
         <rect width="248" height="82" rx="18" fill="#142a2b" stroke="#65c7ab"/>
         <circle cx="25" cy="26" r="7" fill="#65c7ab"/>
         <text x="43" y="33" fill="#edfff9" font-size="23" font-weight="750">OpenAI Codex</text>
-        <text x="24" y="62" fill="#98dfca" font-size="18">530 catalog · 106 curated</text>
+        <text x="24" y="62" fill="#98dfca" font-size="18">585 catalog · 106 curated</text>
       </g>
       <g transform="translate(292 194)">
         <rect width="248" height="82" rx="18" fill="#172342" stroke="#86a2ff"/>
         <circle cx="25" cy="26" r="7" fill="#86a2ff"/>
         <text x="43" y="33" fill="#f0f3ff" font-size="23" font-weight="750">OpenCode</text>
-        <text x="24" y="62" fill="#b7c5ff" font-size="18">525 catalog · 101 curated</text>
+        <text x="24" y="62" fill="#b7c5ff" font-size="18">588 catalog · 101 curated</text>
       </g>
     </g>
 
@@ -102,7 +102,7 @@
 
   <g transform="translate(78 574)" font-family="Inter, ui-sans-serif, Segoe UI, Arial, sans-serif">
     <rect width="1444" height="72" rx="20" fill="#0b1526" fill-opacity="0.9" stroke="#8da4d4" stroke-opacity="0.28"/>
-    <g transform="translate(28 17)"><circle cx="18" cy="19" r="18" fill="#223258"/><text x="18" y="25" text-anchor="middle" fill="#9eb2ff" font-size="18" font-weight="800">✓</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">524 shared on all three</text></g>
+    <g transform="translate(28 17)"><circle cx="18" cy="19" r="18" fill="#223258"/><text x="18" y="25" text-anchor="middle" fill="#9eb2ff" font-size="18" font-weight="800">✓</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">585 shared on all three</text></g>
     <g transform="translate(408 17)"><circle cx="18" cy="19" r="18" fill="#15372f"/><text x="18" y="25" text-anchor="middle" fill="#98dfca" font-size="18" font-weight="800">↓</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">Individual + bundle ZIPs</text></g>
     <g transform="translate(808 17)"><circle cx="18" cy="19" r="18" fill="#3a2b23"/><text x="18" y="25" text-anchor="middle" fill="#f7b79f" font-size="18" font-weight="800">!</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">Risk + license notes</text></g>
     <g transform="translate(1130 17)"><circle cx="18" cy="19" r="18" fill="#252b45"/><text x="18" y="25" text-anchor="middle" fill="#c3ceff" font-size="15" font-weight="800">#</text><text x="50" y="25" fill="#dbe5f5" font-size="20" font-weight="650">SHA-256 checksums</text></g>

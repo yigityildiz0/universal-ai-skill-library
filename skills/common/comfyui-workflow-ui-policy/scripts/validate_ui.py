@@ -2,8 +2,9 @@
 Checks workflow JSON against the UI policy rules.
 
 Usage:
-    python validate_ui.py <workflow.json>
+    python validate_ui.py <workflow.json> [--protected-master <path>]
 """
+import argparse
 import sys, io, json, os
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -71,7 +72,7 @@ COLOR_RULES = {
 }
 
 
-def validate(path):
+def validate(path, protected_master=None):
     d = json.load(open(path, encoding='utf-8'))
     issues = []
     warnings = []
@@ -248,9 +249,9 @@ def validate(path):
     if geo:
         warnings.extend(geo[:15])
 
-    # Master file protection
-    if 'ANA WORKFLOW.json' in os.path.basename(path) and 'v' not in os.path.basename(path).lower():
-        warnings.append("EDITING MASTER FILE — must NEVER be modified per policy. Edit a versioned copy instead.")
+    # Optional caller-supplied master-file protection
+    if protected_master and os.path.normcase(os.path.abspath(path)) == os.path.normcase(os.path.abspath(protected_master)):
+        warnings.append("EDITING PROTECTED MASTER — edit a copy or named version instead.")
 
     # Report
     print(f"\n{'='*60}")
@@ -286,7 +287,8 @@ def validate(path):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: validate_ui.py <workflow.json>")
-        sys.exit(2)
-    sys.exit(validate(sys.argv[1]))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("workflow")
+    parser.add_argument("--protected-master")
+    args = parser.parse_args()
+    sys.exit(validate(args.workflow, args.protected_master))

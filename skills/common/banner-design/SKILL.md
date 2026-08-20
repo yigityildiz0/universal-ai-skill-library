@@ -1,6 +1,6 @@
 ---
 name: banner-design
-description: Design platform-ready banners, covers, display ads, website heroes, and print headers with clear hierarchy, safe zones, responsive crops, accessible contrast, and multiple art directions. Use when creating or reviewing a static promotional banner or adapting one campaign across formats.
+description: "Design platform-ready banners, covers, display ads, website heroes, and print headers with clear hierarchy, safe zones, responsive crops, accessible contrast, and multiple art directions. Use when creating or reviewing a static promotional banner or adapting one campaign across formats. Turkish triggers: banner tasarla, kapak görseli, reklam görseli, farklı boyutlara uyarla."
 ---
 
 # Banner Design

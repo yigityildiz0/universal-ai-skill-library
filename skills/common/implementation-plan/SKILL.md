@@ -1,6 +1,6 @@
 ---
 name: implementation-plan
-description: Produce a decision-complete, repository-grounded implementation plan with scope, architecture, file-level changes, data/API impacts, tests, migration, rollout, rollback, risks, and acceptance criteria. Use before substantial changes or when the user asks for a plan; inspect the actual project and infer safe details instead of running a fixed interview.
+description: "Produce a decision-complete, repository-grounded implementation plan with scope, architecture, file-level changes, data/API impacts, tests, migration, rollout, rollback, risks, and acceptance criteria. Use before substantial changes or when the user asks for a plan; inspect the actual project and infer safe details instead of running a fixed interview. Turkish triggers: uygulama planı hazırla, dosya bazlı teknik plan, test ve geri alma adımları."
 license: MIT
 ---
 

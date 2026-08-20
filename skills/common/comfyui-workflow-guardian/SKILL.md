@@ -1,6 +1,6 @@
 ---
 name: comfyui-workflow-guardian
-description: Professional ComfyUI workflow auditing, refactoring, runtime stabilization, model-chain analysis, and performance tuning for Flux and other pipelines on Windows. Use when Codex needs to inspect or modify ComfyUI workflow JSON, validate node/link/group layout, audit model and LoRA ordering, troubleshoot launch or queue failures, tune speed and memory usage, or integrate and compare identity, refiner, and post-processing modules without destabilizing the user's primary workflow.
+description: "Automatically audit, repair, refactor, and stabilize an existing ComfyUI workflow or Windows runtime when the user shares workflow JSON, an error/screenshot, or reports startup/queue failure, `Failed to fetch`, missing nodes/models, broken links, overlap, identity drift, LoRA/model-order problems, VRAM/speed instability, or wants to integrate identity/refiner/post-processing modules without breaking the primary workflow. Validate before and after, preserve backups and working branches, and prefer one evidence-based change at a time. Use comfyui-workflow to design a new pipeline from scratch. Turkish triggers: ComfyUI workflow düzelt, JSON veya node hatası, VRAM/kimlik/bağlantı sorunu, güvenli onarım."
 ---
 
 # ComfyUI Workflow Guardian
@@ -31,7 +31,7 @@ Classify the request before touching files:
 
 ### 2. Read the right reference file
 
-- Ask the user for the active ComfyUI root and workflow path; never assume workstation-specific locations.
+- Read [references/runtime-profile.md](references/runtime-profile.md) first when machine-specific paths, hardware, models, launchers, or workflow locations matter.
 - Read [references/runtime-performance.md](references/runtime-performance.md) for crashes, access violations, performance regressions, or backend instability.
 - Read [references/identity-modules.md](references/identity-modules.md) for BFS, PuLID, LanPaint-style face transfer, or identity-preservation tasks.
 - Read [references/workflow-editing-checklist.md](references/workflow-editing-checklist.md) before editing workflow JSON.
@@ -42,7 +42,7 @@ Classify the request before touching files:
 Run the bundled checker on the target workflow:
 
 ```powershell
-python scripts/check_comfyui_workflow.py "C:\path\to\workflow.json" --comfy-root "C:\path\to\ComfyUI"
+python scripts/check_comfyui_workflow.py "<WORKFLOW_PATH>" --comfy-root "<COMFYUI_ROOT>"
 ```
 
 Use it before and after edits. Treat these as hard failures until explained:
@@ -86,7 +86,7 @@ After edits:
 Use these defaults when the user does not specify otherwise:
 
 - Keep the user's main workflow as the only edit target.
-- Keep the runtime conservative and stable on Windows.
+- Keep runtime changes conservative and stability-first unless the user prioritizes speed or another objective.
 - Treat second-pass identity transfer as optional and isolated.
 - Favor clean, non-overlapping layout and short notes over decorative complexity.
 - Favor explicit validation over guesswork.

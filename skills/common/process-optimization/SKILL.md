@@ -1,6 +1,6 @@
 ---
 name: process-optimization
-description: Analyze and improve an existing workflow using evidence about delays, rework, handoffs, failure modes, and constraints. Use for process optimization, operational improvement, bottleneck analysis, reduce rework, or streamline a workflow.
+description: "Analyze and improve an existing workflow using evidence about delays, rework, handoffs, failure modes, and constraints. Use for process optimization, operational improvement, bottleneck analysis, reduce rework, or streamline a workflow. Turkish triggers: süreci iyileştir, darboğaz ve israfı bul, ölçülebilir yeni iş akışı tasarla."
 ---
 
 # Process Optimization
