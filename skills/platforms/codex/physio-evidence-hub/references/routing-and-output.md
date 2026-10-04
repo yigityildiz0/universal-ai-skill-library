@@ -40,4 +40,3 @@ Pass only the fields the next skill needs:
 - `jurisdiction_and_role_if_relevant`
 
 Never pass identifying patient data.
-

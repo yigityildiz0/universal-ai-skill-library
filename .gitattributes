@@ -1,3 +1,8 @@
 * text=auto eol=lf
 *.zip binary
 *.svg text eol=lf
+# Preserve supplied license bytes and their original trailing-newline layout.
+skills/**/LICENSE* -text whitespace=-blank-at-eof,cr-at-eol
+# Older Codex UI assets/metadata retain their original bytes, including blank EOF lines.
+skills/platforms/codex/physio-evidence-hub/agents/openai.yaml whitespace=-blank-at-eof
+skills/platforms/codex/physio-*/assets/icon.svg whitespace=-blank-at-eof

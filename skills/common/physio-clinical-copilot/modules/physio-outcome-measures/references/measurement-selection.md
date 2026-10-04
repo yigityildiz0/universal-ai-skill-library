@@ -76,4 +76,3 @@ A normal single vital sign does not override concerning symptoms.
 ## Feasibility and language
 
 Report time, items, respondent/evaluator burden, equipment, space, training, cost/license, safety, fatigue, sensory/cognitive/literacy needs, digital access, and repeatability. A linguistic translation alone is not cross-cultural validity. Do not reproduce copyrighted forms or scoring items without permission.
-

@@ -71,4 +71,3 @@ The responsible clinician must verify:
 - scope, local terminology, mandatory fields, consent, and authentication;
 - that no generated phrase overstates examination, causation, diagnosis, or outcome;
 - that the final note reflects the patient's voice and actual shared decision.
-

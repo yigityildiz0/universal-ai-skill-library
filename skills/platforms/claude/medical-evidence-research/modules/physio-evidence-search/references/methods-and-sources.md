@@ -94,4 +94,3 @@ For every actionable intervention, extract:
 `problem → intervention → target outcome → evidence → patient match → dose provenance → progression/regression → stop rules → monitoring → harms → burden/resources`
 
 If a component is not reported, write **not reported**. Never fill the gap with a guessed number.
-

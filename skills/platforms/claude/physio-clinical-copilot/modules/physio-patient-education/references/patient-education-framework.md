@@ -78,4 +78,3 @@ Do not use family as an interpreter when a qualified interpreter is required by 
 ## Visual explanation
 
 Use a flow for action sequences, a two-column table for options, a timeline for recovery phases, or a simple body/function/activity map. Do not use visuals to imply diagnostic certainty or structural damage unsupported by evidence.
-

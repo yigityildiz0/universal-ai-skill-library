@@ -75,4 +75,3 @@ Keep instrument names, versions, and scoring direction. Use an official validate
 ## Visual teaching choices
 
 Use a small table for repeated mappings, a flow for a process, a timeline for evidence change, or a Mermaid diagram for relationships with three or more branches. The visual supplements—not replaces—the full explanation.
-
