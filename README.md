@@ -1,18 +1,18 @@
 <p align="center">
-  <a href="CATALOG.md"><picture><source media="(max-width: 640px)" srcset="assets/library-hero-mobile.svg"><img src="assets/library-hero.svg" alt="Universal AI Skill Library: 588 searchable Agent Skills mapped across Claude Code, OpenAI Codex, and OpenCode" width="100%"></picture></a>
+  <a href="CATALOG.md"><picture><source media="(max-width: 640px)" srcset="assets/library-hero-mobile.svg"><img src="assets/library-hero.svg" alt="Universal AI Skill Library: 589 searchable Agent Skills mapped across Claude Code, OpenAI Codex, and OpenCode" width="100%"></picture></a>
 </p>
 
 <p align="center">
   <a href="README.tr.md"><strong>Türkçe</strong></a> ·
   <a href="https://yigityildiz0.github.io/universal-ai-skill-library/">Interactive catalog</a> ·
-  <a href="CATALOG.md">Browse all 588</a> ·
+  <a href="CATALOG.md">Browse all 589</a> ·
   <a href="#download-for-your-agent">Downloads</a> ·
   <a href="INSTALL.md">Installation</a> ·
   <a href="#safety-provenance-and-licenses">Safety &amp; licenses</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-588-718cff?style=flat-square" alt="588 indexed skills">
+  <img src="https://img.shields.io/badge/skills-589-718cff?style=flat-square" alt="589 indexed skills">
   <img src="https://img.shields.io/badge/agents-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode-65c7ab?style=flat-square" alt="Claude Code, Codex, and OpenCode">
   <img src="https://img.shields.io/badge/languages-English%20%2B%20Türkçe-f28c66?style=flat-square" alt="English and Turkish">
   <a href="https://github.com/yigityildiz0/universal-ai-skill-library/releases/latest"><img src="https://img.shields.io/github/v/release/yigityildiz0/universal-ai-skill-library?style=flat-square&amp;label=release" alt="Latest release"></a>
@@ -29,11 +29,26 @@ This repository gives beginners clear download paths and gives advanced users tr
 
 | Unique skill names | Claude Code catalog | OpenAI Codex catalog | OpenCode catalog | Shared across all three |
 |---:|---:|---:|---:|---:|
-| **588** | **585** | **585** | **588** | **585** |
+| **589** | **586** | **586** | **589** | **586** |
 
 > These are catalog mappings, not a promise that every dependency or tool was executed successfully on every platform. Read the platform note and inspect a skill before granting permissions.
 
 > **Finance and investing:** the validated 17-skill subset also has a focused repository: [Universal AI Finance Skills](https://github.com/yigityildiz0/universal-ai-finance-skills). It uses calibrated scenarios and risk gates; it does not promise returns.
+
+## Clinical literature update — October 2026
+
+Use [`medical-evidence-research`](skills/common/medical-evidence-research/SKILL.md) for reproducible PubMed/PEDro and complementary-source searches, study appraisal, legal full text, evidence updates and publication support. Use [`physio-clinical-copilot`](skills/common/physio-clinical-copilot/SKILL.md) for patient-case reasoning, rehabilitation plans, measures, education and documentation. Ask naturally, for example: “Bel ağrısında egzersiz literatürünü tara; sorguları, etki/yanlılık değerlendirmesini ve erişim sınırlarını göster.”
+
+| Skill | GPT / Codex | Claude | Portable / OpenCode |
+|---|---|---|---|
+| `medical-evidence-research` | [ZIP](packages/codex/medical-evidence-research.zip) | [ZIP](packages/claude/medical-evidence-research.zip) | [ZIP](packages/common/medical-evidence-research.zip) |
+| `physio-clinical-copilot` | [ZIP](packages/codex/physio-clinical-copilot.zip) | [ZIP](packages/claude/physio-clinical-copilot.zip) | [ZIP](packages/common/physio-clinical-copilot.zip) |
+
+Prefer these two consolidated workflows over installing their older research/search/appraisal aliases alongside them. Existing alias names remain supported with current standalone method and safety fallbacks. A journal platform, citation metric, AI summary or database score is not a study-quality verdict.
+
+Claude.ai custom-skill upload uses one skill ZIP containing `<name>/SKILL.md`; upload the two skills separately. GPT/Codex local skills use the platform ZIPs. ChatGPT web/mobile plugin delivery uses a separate plugin archive and the host's supported import flow; a local skill ZIP is not proof that an account installed a plugin. Availability and tools vary by host/account. See [installation notes](INSTALL.md#clinical-literature-packages).
+
+The existing `releases/latest` bundles below remain earlier release snapshots. The current source and individual literature ZIPs include this update; no claim is made that older release bundles or cloud-account installations were refreshed.
 
 ## Start here
 
@@ -41,7 +56,7 @@ This repository gives beginners clear download paths and gives advanced users tr
 |---|---|---|
 | Find one skill for a specific task | [Search the interactive catalog](https://yigityildiz0.github.io/universal-ai-skill-library/) or [open the full table](CATALOG.md) | Filter by category, platform, risk, and license signal; download only what you need. |
 | Install a practical starter library | [Choose a curated platform bundle](#download-for-your-agent) | Installs 151–154 top-level skills plus `skill-library-router` for progressive discovery. |
-| Keep a complete offline archive | [Choose an expanded bundle](#curated-vs-expanded) | Includes every catalog entry mapped to that platform. |
+| Keep a complete offline archive | [Choose an expanded bundle](#curated-vs-expanded) | Contains the catalog snapshot from that release; use current individual ZIPs for updates. |
 | Inspect or automate against the data | Use [catalog.json](manifests/catalog.json) or [catalog.csv](manifests/catalog.csv) | Stable machine-readable fields for descriptions, platforms, risks, licenses, and downloads. |
 
 ## Download for your agent
@@ -60,7 +75,7 @@ The recommended bundles already contain the correct hidden directory tree. Downl
 
 <p align="center"><img src="assets/library-workflow.svg" alt="Four-step workflow: discover a skill, compare platform risk and license notes, download the right package, then install and verify it" width="100%"></p>
 
-1. **Discover:** search 588 names by task or category.
+1. **Discover:** search 589 names by task or category.
 2. **Compare:** check the platform note, requested tools, network/API use, destructive patterns, and license signal.
 3. **Download:** choose one skill ZIP, a curated platform bundle, or an expanded archive.
 4. **Install and verify:** extract to the correct root, confirm the `SKILL.md` layout, and compare the SHA-256 checksum.
@@ -118,7 +133,7 @@ See the [complete installation guide](INSTALL.md) for individual downloads, upda
 | Media and creative | 20 |
 | Research and reasoning | 18 |
 | Finance and investing | 17 |
-| Health and clinical | 15 |
+| Health and clinical | 16 |
 | Science and bioscience | 7 |
 | Safety, legal, and decisions | 2 |
 
@@ -135,7 +150,7 @@ Browse through the [interactive English/Turkish catalog](https://yigityildiz0.gi
 
 ### Expanded bundles — advanced/offline
 
-- Install every compatible catalog name directly: **585 / 585 / 588**.
+- The current catalog maps **586 / 586 / 589** names. Existing released expanded archives remain earlier snapshots.
 - Useful for offline archives, auditing, or custom packaging.
 - Can crowd a host's skill-discovery context and make selection noisier.
 
@@ -200,9 +215,9 @@ The source catalog's `hosts` field is treated as a mapping signal—not runtime 
 ## FAQ
 
 <details>
-<summary><strong>Do all 588 skills work identically on all three agents?</strong></summary>
+<summary><strong>Do all 589 skills work identically on all three agents?</strong></summary>
 
-No. There are 588 unique names; 585 map to Claude Code, 585 to Codex, and 588 to OpenCode. Format compatibility does not prove that every dependency, external service, or platform-specific behavior was executed successfully. Read the catalog note for the skill.
+No. There are 589 unique names; 586 map to Claude Code, 586 to Codex, and 589 to OpenCode. Format compatibility does not prove that every dependency, external service, or platform-specific behavior was executed successfully. Read the catalog note for the skill.
 </details>
 
 <details>

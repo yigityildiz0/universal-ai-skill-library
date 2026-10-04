@@ -4,6 +4,17 @@
 
 This guide covers individual skills, platform bundles, Windows/macOS/Linux paths, updates, uninstalling, checksum verification, and common mistakes.
 
+## Clinical literature packages
+
+1. Download the current [`medical-evidence-research`](CATALOG.md) and [`physio-clinical-copilot`](CATALOG.md) single-skill ZIPs for your host. Their names remain unchanged; GPT/Codex and Claude have separate discovery metadata and the same research/safety coverage.
+2. For Codex, extract each GPT/Codex skill folder under `~/.agents/skills/`. For Claude Code use `~/.claude/skills/`; OpenCode can use the portable common packages in its native skill root.
+3. For Claude.ai, upload each Claude single-skill ZIP separately using its supported custom-skill setting. The archive contains one `<name>/SKILL.md` root and all references/licenses. Do not upload a two-skill folder bundle as one Claude custom skill.
+4. ChatGPT web/mobile plugin distribution needs a separate plugin archive, not an assumption that a filesystem skill ZIP installs account-wide. Use the currently supported import/install flow if your account exposes it. The platform package itself does not create an account installation, network permission, paid connector or scheduled watch.
+5. Back up older same-named local folders before replacement. Prefer the consolidated pair instead of also installing the older `research-medical-evidence`, `physio-evidence-search`, `physio-study-appraisal` and broad hub for the same purpose. Legacy names remain downloadable and preserve standalone fallback behavior; when installed together their routing selects one primary workflow.
+6. Confirm the final folder/ZIP shape, source identity and SHA256; test a real query and check actual provenance/access. Source/package validation is separate from Claude, GPT or connector runtime verification. No cloud-account installation is certified by this repository update.
+
+The October 2026 update adds PEDro-native search syntax, source/provider and pagination logs, design-specific appraisal, between-group effects, independent human final eligibility for formal reviews, and recoverable literature-watch checkpoints. A watch requires a separately authorized alert/automation; the skill alone does not run later.
+
 ## Choose what to download
 
 | Goal | Download |

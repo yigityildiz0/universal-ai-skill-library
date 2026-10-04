@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fizyoterapi Klinik Yardımcısı"
+  short_description: "Klinik akıl yürütme, güvenli rehabilitasyon ve ölçüm"
+  default_prompt: "Use $physio-clinical-copilot to help with my clinical or literature question in Turkish."
+policy:
+  allow_implicit_invocation: true

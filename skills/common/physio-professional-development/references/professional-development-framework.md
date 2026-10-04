@@ -84,6 +84,8 @@ Check provider, faculty competence, conflicts, evidence date, learning outcomes,
 - old-versus-new evidence comparison;
 - concise output: what changed, confidence, practice impact, and next action.
 
+For an executable watch/update workflow, use `medical-evidence-research` and its `references/literature-watch.md` when available. Otherwise preserve the same minimum rules here: native queries, actual provider/source provenance, last attempt versus last complete checkpoint, overlap for delayed indexing, found/retrieved/reviewed counts, and a DOI/PMID/version/notice ledger. Do not advance the complete checkpoint after partial retrieval or discard a correction because its DOI was already seen. Compare old/new effects, certainty, harms and applicability before suggesting a practice change. A skill does not schedule future runs; configure a separate alert/automation only when the user requests it. An authorized ongoing monitor should notify only at the agreed meaningful-change threshold unless periodic digests were requested.
+
 ## Research, thesis, and protocol gate
 
 When the task goes beyond finding/appraising evidence and asks to design or conduct research:

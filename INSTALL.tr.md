@@ -4,6 +4,17 @@
 
 Bu rehber; tekil skill, platform paketi, Windows/macOS/Linux yolları, güncelleme, kaldırma, checksum doğrulaması ve yaygın hataları kapsar.
 
+## Klinik literatür paketleri
+
+1. Güncel [`medical-evidence-research`](CATALOG.tr.md) ve [`physio-clinical-copilot`](CATALOG.tr.md) tek-skill ZIP’lerini hostuna göre indir. İsimler aynı; GPT/Codex ve Claude keşif metadatası ayrı, araştırma/güvenlik kapsamı ortaktır.
+2. Codex için GPT/Codex klasörünü `~/.agents/skills/`, Claude Code için `~/.claude/skills/` altına aç. OpenCode kendi skill kökünde taşınabilir common paketleri kullanabilir.
+3. Claude.ai’da iki Claude ZIP’ini ayrı ayrı desteklenen özel skill ayarından yükle. Her ZIP tek `<ad>/SKILL.md` kökü, bütün referansları ve lisansları içerir. İki-skill klasör paketini tek Claude özel skill’i olarak yükleme.
+4. ChatGPT web/mobil dağıtımında ayrı plugin arşivi gerekir; bilgisayardaki skill ZIP’inin hesabın tamamına kurulduğunu varsayma. Hesabında sunuluyorsa güncel desteklenen içe aktarma/kurulum yolunu kullan. Paket; hesap kurulumu, ağ yetkisi, ücretli bağlayıcı veya zamanlanmış takip oluşturmaz.
+5. Aynı adlı eski yerel klasörü değiştirmeden önce yedekle. Aynı işi yapan eski `research-medical-evidence`, `physio-evidence-search`, `physio-study-appraisal` ve geniş hub’ı birlikte kurmak yerine birleşik çifti tercih et. Eski adlar bağımsız fallback’leriyle indirilebilir; birlikte bulunurlarsa yönlendirme tek ana iş akışı seçer.
+6. Klasör/ZIP yapısı, kaynak kimliği ve SHA256’yı doğrula; gerçek sorguda kaynak sağlayıcısını ve erişimi kontrol et. Kaynak/paket doğrulaması GPT, Claude veya bağlayıcı runtime doğrulamasından ayrıdır. Bu repo güncellemesi bulut hesabına kurulum kanıtı değildir.
+
+Ekim 2026 güncellemesi PEDro’ya özgü sorgu, kaynak/sağlayıcı ve sayfalama kaydı, tasarıma uygun değerlendirme, gruplar arası etki, resmi derlemelerde bağımsız insan nihai uygunluk taraması ve toparlanabilir literatür-takip checkpoint’leri ekler. Takip ayrıca yetkilendirilmiş uyarı/otomasyon ister; skill tek başına sonra çalışmaz.
+
 ## Neyi indireceğini seç
 
 | Hedef | İndirme |

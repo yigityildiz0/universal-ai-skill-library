@@ -1,6 +1,6 @@
 ---
 name: physio-clinical-copilot
-description: Automatically support physiotherapy and rehabilitation requests involving a patient case, symptoms, injury, surgery, clinical examination, differential hypotheses, red flags, ICF, goals, prognosis, outcome measures, rehabilitation exercise/session/home programs, progression, patient education, SOAP/clinical documentation, clinical English, or professional development. Trigger on contextual Turkish such as "vakayı analiz et", "bu hastaya ne yapılır", "FTR vakası", "fizyoterapi değerlendirmesi", or "rehabilitasyon programı". Integrate safety, evidence, reasoning, measurement, planning, communication, and reassessment. Do not trigger on general fitness, bodybuilding, or ordinary exercise without a patient, impairment, rehabilitation, or physiotherapy context; use physio-study-coach for course/exam material. Do not diagnose remotely, replace examination, issue clearance, or give patient-specific high-risk treatment when context or authority is missing.
+description: "Physiotherapy/FTR clinical copilot for patient cases: triage and red flags, clinical reasoning and ICF, differential hypotheses, goals and prognosis, rehabilitation exercise and home programs (dose, progression, stop rules), outcome measures and special tests (reliability, MCID), patient education, SOAP/progress/discharge documentation and professional development. Turkish triggers: vakayı analiz et, fizyoterapi/FTR vakası, rehabilitasyon veya egzersiz programı yaz, hangi test/ölçek, hastaya anlat, SOAP notu, epikriz, değerlendirme formu. More triggers: klinik akıl yürütme, kırmızı bayrak, ev programı, hedef ve prognoz."
 license: MIT
 ---
 
@@ -13,7 +13,7 @@ Always read [references/safety-core.md](references/safety-core.md). Read [refere
 ## Route to the needed modules
 
 - Case formulation, hypotheses, ICF, prognosis, goals, and reassessment: [clinical reasoning](references/clinical-reasoning.md)
-- Current effectiveness, dose, guideline, prognosis, or harms evidence: [evidence search](references/evidence-search.md); also use `$research-medical-evidence` and `$evidence-integrity-guard` when available
+- Current effectiveness, dose, guideline, prognosis, or harms evidence: [evidence search](references/evidence-search.md); use `medical-evidence-research` skill for an evidence search and `research-analyst` skill (`evidence-integrity-guard` module) for a separate audit when justified
 - One paper, trial, review, guideline, DOI/PMID, statistics, or bias: [study appraisal](references/study-appraisal.md)
 - PROM, ClinROM, performance/special test, reliability, validity, MDC/SDC, MIC/MCID, or diagnostic accuracy: [outcome measures](references/outcome-measures.md)
 - Exercise/session/phase/home program, load, assistive technology, progression, regression, and stop rules: [program design](references/program-design.md)
@@ -50,3 +50,29 @@ Load only the modules needed for the request, but never skip safety. Several mod
 ## Output
 
 Lead with safety status and the practical conclusion. For a case, usually provide: known/unknown facts, prioritized hypotheses, ICF problem list, evidence certainty, goals, assessment/outcome measures, plan options, dose provenance, precautions, progression/regression/stop rules, reassessment, and escalation or safety-net. Keep student explanations educational and concise unless depth is requested.
+
+## Specialist workflows
+
+The references above hold each module's framework. When a task needs the full step-by-step specialist workflow and output contract, open the matching module in the module map below. Literature search and paper appraisal belong to the `medical-evidence-research` skill; exam study and English article reading belong to the `academic-study-coach` skill.
+
+## Module map
+
+Open only the module(s) the request needs and read the module file completely before acting. Several modules may combine in one task.
+
+| Module | Use when | File |
+|---|---|---|
+| `physio-clinical-reasoning` | Structure safety-first, evidence-based physiotherapy reasoning for a patient case. | [MODULE.md](modules/physio-clinical-reasoning/MODULE.md) |
+| `physio-program-design` | Convert a safe physiotherapy case formulation and evidence summary into a reproducible rehabilitation program. | [MODULE.md](modules/physio-program-design/MODULE.md) |
+| `physio-outcome-measures` | Select and compare physiotherapy PROMs, ClinROMs, performance tests, and diagnostic special tests using population-specific evidence. | [MODULE.md](modules/physio-outcome-measures/MODULE.md) |
+| `physio-patient-education` | Create safe, accessible, evidence-aligned physiotherapy patient education and shared-decision materials. | [MODULE.md](modules/physio-patient-education/MODULE.md) |
+| `physio-documentation` | Draft accurate, traceable physiotherapy documentation from supplied facts. | [MODULE.md](modules/physio-documentation/MODULE.md) |
+| `physio-professional-development` | Build evidence-based physiotherapy professional development, research, and practice-improvement plans. | [MODULE.md](modules/physio-professional-development/MODULE.md) |
+
+Supporting files (open only when the module points to them):
+
+- `physio-clinical-reasoning`: [clinical-reasoning-framework.md](modules/physio-clinical-reasoning/references/clinical-reasoning-framework.md), [handoff-contract.md](modules/physio-clinical-reasoning/references/handoff-contract.md), [safety-core.md](modules/physio-clinical-reasoning/references/safety-core.md), [specialty-safeguards.md](modules/physio-clinical-reasoning/references/specialty-safeguards.md)
+- `physio-program-design`: [handoff-contract.md](modules/physio-program-design/references/handoff-contract.md), [program-design-framework.md](modules/physio-program-design/references/program-design-framework.md), [safety-core.md](modules/physio-program-design/references/safety-core.md), [specialty-safeguards.md](modules/physio-program-design/references/specialty-safeguards.md)
+- `physio-outcome-measures`: [handoff-contract.md](modules/physio-outcome-measures/references/handoff-contract.md), [measurement-selection.md](modules/physio-outcome-measures/references/measurement-selection.md), [safety-core.md](modules/physio-outcome-measures/references/safety-core.md), [specialty-safeguards.md](modules/physio-outcome-measures/references/specialty-safeguards.md)
+- `physio-patient-education`: [handoff-contract.md](modules/physio-patient-education/references/handoff-contract.md), [patient-education-framework.md](modules/physio-patient-education/references/patient-education-framework.md), [safety-core.md](modules/physio-patient-education/references/safety-core.md), [specialty-safeguards.md](modules/physio-patient-education/references/specialty-safeguards.md)
+- `physio-documentation`: [documentation-framework.md](modules/physio-documentation/references/documentation-framework.md), [handoff-contract.md](modules/physio-documentation/references/handoff-contract.md), [safety-core.md](modules/physio-documentation/references/safety-core.md), [specialty-safeguards.md](modules/physio-documentation/references/specialty-safeguards.md)
+- `physio-professional-development`: [handoff-contract.md](modules/physio-professional-development/references/handoff-contract.md), [professional-development-framework.md](modules/physio-professional-development/references/professional-development-framework.md), [safety-core.md](modules/physio-professional-development/references/safety-core.md), [specialty-safeguards.md](modules/physio-professional-development/references/specialty-safeguards.md)

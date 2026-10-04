@@ -1,0 +1,10 @@
+interface:
+  display_name: "Physio Evidence Hub"
+  short_description: "Routes every physio request through safe expert workflows"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  brand_color: "#0F766E"
+  default_prompt: "Use $physio-evidence-hub to answer my physiotherapy question with current evidence, clinical applicability, and safety."
+policy:
+  allow_implicit_invocation: true
+

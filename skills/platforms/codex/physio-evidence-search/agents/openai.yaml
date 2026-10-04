@@ -1,0 +1,9 @@
+interface:
+  display_name: "Physio Evidence Search"
+  short_description: "Finds and translates current rehabilitation evidence"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  brand_color: "#0F766E"
+  default_prompt: "Use $physio-evidence-search to formulate my question, search current evidence, and translate it to practice."
+policy:
+  allow_implicit_invocation: true

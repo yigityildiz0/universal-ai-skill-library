@@ -48,6 +48,8 @@ The [PEDro scale](https://pedro.org.au/wp-content/uploads/PEDro_scale.pdf) suppo
 ## Statistical audit
 
 - Match effect measure to question and data; interpret the 95% interval's direction and width.
+- Compare groups with the prespecified between-group effect/CI or appropriate group-by-time contrast. A significant pre/post change in one group and a non-significant change in the other do not establish treatment superiority.
+- Separate within-person change thresholds from between-group clinical importance; do not apply MIC/MCID without checking population, scale, time and intended use.
 - Report NNT/NNH only with a defensible baseline risk and time horizon.
 - Preserve MD/SMD scale direction; do not treat SMD as a natural clinical unit.
 - Inspect multiplicity across outcomes, time points, and subgroups; require an interaction test for subgroup differences.

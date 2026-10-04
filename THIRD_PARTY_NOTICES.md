@@ -602,3 +602,7 @@ This file records only the evidence present in the supplied packages. It does no
 |---|---|---|---|
 | `using-superpowers` | unspecified | canonical-2026 | No |
 | `writing-skills` | unspecified | canonical-2026 | No |
+
+## October 2026 clinical-literature update
+
+`medical-evidence-research` preserves the supplied module licenses, including the content-access module license and the scientific-literature-review MIT license. The top-level research workflow has no blanket redistribution license declared; module licenses do not license all other skill text. `physio-clinical-copilot` preserves its original MIT `LICENSE` and Skill contributors copyright byte-for-byte. The supplied master revision declares a Yiğit copyright; that text is also preserved separately as `LICENSE.master-revision` rather than replacing the existing notice. Existing provenance and license entries above remain unchanged. The literature aliases retain their supplied rights status; no new author identity, source revision or license grant is inferred.

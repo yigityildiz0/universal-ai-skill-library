@@ -9687,6 +9687,33 @@
     "archive_download": ""
   },
   {
+    "slug": "medical-evidence-research",
+    "category": "Health and clinical",
+    "category_key": "health-clinical",
+    "category_tr": "Sağlık ve klinik",
+    "description_en": "Searches/appraises biomedical, clinical and rehab evidence in PubMed, PEDro and Cochrane. Use for effectiveness, dose, harms, diagnosis, prognosis, statistics/MCID, GRADE, reviews/meta-analysis, legal full texts, journals and evidence updates. Literatür tara, makaleyi değerlendir, etkili mi, bilimsel gelişmeler.",
+    "description_tr": "PubMed/PEDro ve tamamlayıcı kaynaklarda klinik/fizyoterapi literatürü tarar; makale, etki, yanlılık ve GRADE değerlendirmesi, yasal tam metin, güncelleme takibi ve yayın hazırlığı yapar.",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "compatibility_en": "Shared research core with separate GPT/Codex and Claude metadata. Source and package checks do not certify every host or connector runtime.",
+    "compatibility_tr": "Ortak araştırma gövdesi, ayrı GPT/Codex ve Claude metadatası. Kaynak/paket kontrolü her host veya bağlayıcının çalıştığını kanıtlamaz.",
+    "license_status": "unspecified; bundled module licenses preserved",
+    "host_signals": [],
+    "risk_signals": [
+      "network or external service"
+    ],
+    "source_path": "skills/common/medical-evidence-research/SKILL.md",
+    "downloads": {
+      "claude": "packages/claude/medical-evidence-research.zip",
+      "codex": "packages/codex/medical-evidence-research.zip",
+      "opencode": "packages/common/medical-evidence-research.zip"
+    },
+    "archive_download": ""
+  },
+  {
     "slug": "meeting-prep",
     "category": "Business and productivity",
     "category_key": "business-productivity",
@@ -11269,15 +11296,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Automatically support physiotherapy and rehabilitation requests involving a patient case, symptoms, injury, surgery, clinical examination, differential hypotheses, red flags, ICF, goals, prognosis, outcome measures, rehabilitation exercise/session/home programs, progression, patient education, SOAP/clinical documentation, clinical English, or professional development. Trigger on contextual Turkish such as \"vakayı analiz et\", \"bu hastaya ne yapılır\", \"FTR vakası\", \"fizyoterapi değerlendirmesi\", or \"rehabilitasyon programı\". Integrate safety, evidence, reasoning, measurement, planning, communication, and reassessment. Do not trigger on general fitness, bodybuilding, or ordinary exercise without a patient, impairment, rehabilitation, or physiotherapy context; use physio-study-coach for course/exam material. Do not diagnose remotely, replace examination, issue clearance, or give patient-specific high-risk treatment when context or authority is missing.",
-    "description_tr": "physio-clinical-copilot için tekrar kullanılabilir Agent Skill iş akışı.",
+    "description_en": "Physiotherapy/FTR clinical copilot for patient cases: triage and red flags, clinical reasoning and ICF, differential hypotheses, goals and prognosis, rehabilitation exercise and home programs (dose, progression, stop rules), outcome measures and special tests (reliability, MCID), patient education, SOAP/progress/discharge documentation and professional development. Turkish triggers: vakayı analiz et, fizyoterapi/FTR vakası, rehabilitasyon veya egzersiz programı yaz, hangi test/ölçek, hastaya anlat, SOAP notu, epikriz, değerlendirme formu. More triggers: klinik akıl yürütme, kırmızı bayrak, ev programı, hedef ve prognoz.",
+    "description_tr": "FTR/fizyoterapi vakalarında güvenlik, klinik akıl yürütme, rehabilitasyon planı, ölçek/test, hasta eğitimi, klinik kayıt ve mesleki gelişimi birleştirir.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Shared research core with separate GPT/Codex and Claude metadata. Source and package checks do not certify every host or connector runtime.",
+    "compatibility_tr": "Ortak araştırma gövdesi, ayrı GPT/Codex ve Claude metadatası. Kaynak/paket kontrolü her host veya bağlayıcının çalıştığını kanıtlamaz.",
     "license_status": "declared: MIT",
     "host_signals": [],
     "risk_signals": [
@@ -11287,7 +11314,7 @@
     ],
     "source_path": "skills/common/physio-clinical-copilot/SKILL.md",
     "downloads": {
-      "claude": "packages/common/physio-clinical-copilot.zip",
+      "claude": "packages/claude/physio-clinical-copilot.zip",
       "codex": "packages/codex/physio-clinical-copilot.zip",
       "opencode": "packages/common/physio-clinical-copilot.zip"
     },
@@ -11382,15 +11409,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Route any physiotherapy or rehabilitation request through the correct evidence and safety workflow. Use implicitly for Turkish or English prompts about fizyoterapi/FTR, physical therapy, rehabilitation, pain and function, therapeutic exercise, manual or device-based therapy, gait, balance, mobility, neurological/cardiorespiratory/MSK/pelvic/oncology rehabilitation, patient cases, tests, outcome measures, dose, prognosis, articles, guidelines, documentation, patient education, clinical terminology, or professional development. Turkish triggers: kanıta dayalı FTR, rehabilitasyon sorusu, fizyoterapi becerisi seç. Do not use for unrelated general fitness or medical questions when rehabilitation is not central.",
-    "description_tr": "physio-evidence-hub için tekrar kullanılabilir Agent Skill iş akışı.",
+    "description_en": "Route physiotherapy/FTR evidence, cases, programs and documentation through safety checks. Prefer medical-evidence-research and physio-clinical-copilot when available; keep specialist fallbacks.",
+    "description_tr": "FTR kanıt, vaka, program ve kayıt görevlerini güvenlikle yönlendirir; birleşik skill’leri önceler, eski uzman fallback’lerini korur.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Self-contained methods and safety fallback; prefer the current consolidated workflows when available. Host and connector execution remain environment-dependent.",
+    "compatibility_tr": "Bağımsız yöntem ve güvenlik fallback’i korunur; mevcutsa güncel birleşik iş akışları önceliklidir. Host/bağlayıcı çalışması ortama bağlıdır.",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -11410,15 +11437,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Search, synthesize, and clinically translate current physiotherapy and rehabilitation evidence. Use for effectiveness, comparative interventions, harms, dose/frequency, guidelines, prognosis, PICO/PICOTS/PIRD/PECO, PubMed, PEDro, Cochrane, systematic reviews, GRADE, newest literature, or older-versus-newer contradictions. Use for kanıta dayalı FTR, güncel literatür, doz, etkililik, karşılaştırma. Do not use as the primary workflow for one supplied paper; use physio-study-appraisal.",
-    "description_tr": "physio-evidence-search için tekrar kullanılabilir Agent Skill iş akışı.",
+    "description_en": "Search physiotherapy evidence with PubMed/PEDro, PICO and GRADE. Use for etkililik, doz and güncel literatür; prefer medical-evidence-research when available.",
+    "description_tr": "PubMed/PEDro, PICO ve GRADE ile fizyoterapi kanıtı tarar; mevcutsa birleşik araştırma skill’ini kullanır, yoksa güncel yerel yöntemlerle çalışır.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Self-contained methods and safety fallback; prefer the current consolidated workflows when available. Host and connector execution remain environment-dependent.",
+    "compatibility_tr": "Bağımsız yöntem ve güvenlik fallback’i korunur; mevcutsa güncel birleşik iş akışları önceliklidir. Host/bağlayıcı çalışması ortama bağlıdır.",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -11495,15 +11522,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Build evidence-based physiotherapy professional development, research, and practice-improvement plans. Use for competency self-audit, CPD portfolio, learning goals, literature watch, journal club, reflection, mentorship, teaching, ethics, scope, interprofessional work, clinical audit, quality improvement, service evaluation, research/thesis protocol, preregistration, data governance, leadership, or career development. Trigger on mesleki gelişim, CPD, öğrenme planı, journal club, klinik audit, araştırma protokolü, tez. Do not invent credentials, credits, ethics approval, registration, or results, and never replace local regulatory, employer, sponsor, ethics, statistical, or supervision requirements.",
-    "description_tr": "physio-professional-development için tekrar kullanılabilir Agent Skill iş akışı.",
+    "description_en": "Plan physiotherapy CPD, journal clubs, research and practice improvement. Use for mesleki gelişim, portfolios, mentoring, ethics, clinical audit and literature watch.",
+    "description_tr": "Fizyoterapide CPD, journal club, mentorluk, etik, portfolyo, araştırma, kalite iyileştirme ve güvenilir literatür takibi planlar.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Self-contained methods and safety fallback; prefer the current consolidated workflows when available. Host and connector execution remain environment-dependent.",
+    "compatibility_tr": "Bağımsız yöntem ve güvenlik fallback’i korunur; mevcutsa güncel birleşik iş akışları önceliklidir. Host/bağlayıcı çalışması ortama bağlıdır.",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -11551,15 +11578,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Critically appraise a named or supplied physiotherapy, rehabilitation, or clinical study with design-appropriate methods. Use for a PDF, DOI/PMID, RCT, cohort, diagnostic/prognostic/measurement study, systematic review, meta-analysis, or guideline; and for sample, randomization, blinding, bias, statistics, effect size, clinical significance, MCID, harms, limitations, and applicability. Turkish triggers: çalışma değerlendirmesi, makale kritik analizi, kanıt kalitesi, PEDro, RoB 2, ROBINS-I, AMSTAR, QUADAS, AGREE. Do not confuse reporting checklists with risk-of-bias tools.",
-    "description_tr": "physio-study-appraisal için tekrar kullanılabilir Agent Skill iş akışı.",
+    "description_en": "Appraise rehabilitation PDFs, DOI/PMID, bias, effects and clinical relevance. Use for makale değerlendirme; prefer medical-evidence-research when available.",
+    "description_tr": "FTR makalelerinde tasarıma uygun yanlılık, gruplar arası etki ve klinik anlamı inceler; birleşik skill’e yönlenir veya bağımsız çalışır.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Self-contained methods and safety fallback; prefer the current consolidated workflows when available. Host and connector execution remain environment-dependent.",
+    "compatibility_tr": "Bağımsız yöntem ve güvenlik fallback’i korunur; mevcutsa güncel birleşik iş akışları önceliklidir. Host/bağlayıcı çalışması ortama bağlıdır.",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -13070,15 +13097,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Automatically search, retrieve, critically appraise, and synthesize biomedical, clinical, rehabilitation, and physiotherapy evidence when the user asks \"bilimsel araştır\", \"çalışmalar ne diyor\", \"kanıtı var mı\", \"etkili mi\", \"literatürü tara\", mentions FTR/medical evidence, or needs responsible publication support. Use for PubMed/MEDLINE, PEDro, Cochrane, Embase, CINAHL, Scopus, Web of Science, TR Dizin, DergiPark, YÖK Thesis Center; PICO/PECO/PCC, MeSH/Boolean queries, rapid/systematic reviews, evidence grading, DOI/PMID/citation verification, journal selection, reporting guidelines, manuscripts, preprints, or submission workflows. For an individual physiotherapy case, co-use physio-clinical-copilot; for ordinary nonmedical research, use quick/deep research.",
-    "description_tr": "Tıbbi sorular için güncel kılavuz, sistematik derleme ve birincil çalışma kanıtlarını güvenlik sınırlarıyla araştırır.",
+    "description_en": "Biomedical evidence search, appraisal and publication support. PubMed/PEDro, PICO/GRADE, literatür tarama and journal preparation; prefer medical-evidence-research when available.",
+    "description_tr": "Biyomedikal kanıt, literatür, makale değerlendirme ve yayın hazırlığı; mevcutsa medical-evidence-research’e yönlenir, yoksa bağımsız çalışır.",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Self-contained methods and safety fallback; prefer the current consolidated workflows when available. Host and connector execution remain environment-dependent.",
+    "compatibility_tr": "Bağımsız yöntem ve güvenlik fallback’i korunur; mevcutsa güncel birleşik iş akışları önceliklidir. Host/bağlayıcı çalışması ortama bağlıdır.",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [

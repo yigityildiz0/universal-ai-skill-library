@@ -1,18 +1,18 @@
 <p align="center">
-  <a href="CATALOG.tr.md"><picture><source media="(max-width: 640px)" srcset="assets/library-hero-mobile.svg"><img src="assets/library-hero.svg" alt="Universal AI Skill Library: Claude Code, OpenAI Codex ve OpenCode için eşlenmiş 588 aranabilir Agent Skill" width="100%"></picture></a>
+  <a href="CATALOG.tr.md"><picture><source media="(max-width: 640px)" srcset="assets/library-hero-mobile.svg"><img src="assets/library-hero.svg" alt="Universal AI Skill Library: Claude Code, OpenAI Codex ve OpenCode için eşlenmiş 589 aranabilir Agent Skill" width="100%"></picture></a>
 </p>
 
 <p align="center">
   <a href="README.md"><strong>English</strong></a> ·
   <a href="https://yigityildiz0.github.io/universal-ai-skill-library/">Etkileşimli katalog</a> ·
-  <a href="CATALOG.tr.md">588 skill’in tamamı</a> ·
+  <a href="CATALOG.tr.md">589 skill’in tamamı</a> ·
   <a href="#agentına-uygun-paketi-indir">İndirmeler</a> ·
   <a href="INSTALL.tr.md">Kurulum</a> ·
   <a href="#güvenlik-kaynak-ve-lisanslar">Güvenlik ve lisanslar</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/skill-588-718cff?style=flat-square" alt="588 indekslenmiş skill">
+  <img src="https://img.shields.io/badge/skill-589-718cff?style=flat-square" alt="589 indekslenmiş skill">
   <img src="https://img.shields.io/badge/agent-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode-65c7ab?style=flat-square" alt="Claude Code, Codex ve OpenCode">
   <img src="https://img.shields.io/badge/dil-English%20%2B%20Türkçe-f28c66?style=flat-square" alt="İngilizce ve Türkçe">
   <a href="https://github.com/yigityildiz0/universal-ai-skill-library/releases/latest"><img src="https://img.shields.io/github/v/release/yigityildiz0/universal-ai-skill-library?style=flat-square&amp;label=sürüm" alt="Son sürüm"></a>
@@ -29,11 +29,26 @@ Bu repo, yeni başlayanlara net indirme yolları; ileri düzey kullanıcılara i
 
 | Benzersiz skill adı | Claude Code kataloğu | OpenAI Codex kataloğu | OpenCode kataloğu | Üçünde ortak |
 |---:|---:|---:|---:|---:|
-| **588** | **585** | **585** | **588** | **585** |
+| **589** | **586** | **586** | **589** | **586** |
 
 > Bu sayılar katalog eşlemesidir; her bağımlılığın veya aracın her platformda başarıyla çalıştırıldığı garantisi değildir. Yetki vermeden önce platform notunu ve skill içeriğini incele.
 
 > **Finans ve yatırım:** doğrulanmış 17 becerilik alt kümenin odaklı deposu da vardır: [Universal AI Finance Skills](https://github.com/yigityildiz0/universal-ai-finance-skills). Kalibre edilmiş senaryolar ve risk kapıları kullanır; getiri garantisi vermez.
+
+## Klinik literatür güncellemesi — Ekim 2026
+
+[`medical-evidence-research`](skills/common/medical-evidence-research/SKILL.md), PubMed/PEDro ve tamamlayıcı kaynaklarda tekrar üretilebilir tarama, makale değerlendirme, yasal tam metin, kanıt güncellemesi ve yayın hazırlığı yapar. [`physio-clinical-copilot`](skills/common/physio-clinical-copilot/SKILL.md), hasta vakası, rehabilitasyon planı, ölçek, eğitim ve klinik kaydı birleştirir. Doğal biçimde iste: “Bel ağrısında egzersiz literatürünü tara; sorguları, etki/yanlılık değerlendirmesini ve erişim sınırlarını göster.”
+
+| Skill | GPT / Codex | Claude | Taşınabilir / OpenCode |
+|---|---|---|---|
+| `medical-evidence-research` | [ZIP](packages/codex/medical-evidence-research.zip) | [ZIP](packages/claude/medical-evidence-research.zip) | [ZIP](packages/common/medical-evidence-research.zip) |
+| `physio-clinical-copilot` | [ZIP](packages/codex/physio-clinical-copilot.zip) | [ZIP](packages/claude/physio-clinical-copilot.zip) | [ZIP](packages/common/physio-clinical-copilot.zip) |
+
+Eski araştırma/tarama/değerlendirme eşdeğerlerini aynı anda kurmak yerine bu iki birleşik iş akışını kullan. Eski adlar, güncel bağımsız yöntem ve güvenlik fallback’leriyle korunur. Yayın platformu, atıf metriği, AI özeti veya veritabanı puanı tek başına çalışma kalitesi değildir.
+
+Claude.ai özel skill yüklemesinde `<ad>/SKILL.md` içeren tek-skill ZIP kullan; iki skill’i ayrı yükle. Yerel GPT/Codex skill’leri platform ZIP’lerini kullanır. ChatGPT web/mobil için ayrı plugin arşivi ve hostun desteklediği içe aktarma yolu gerekir; yerel ZIP, bulut hesabına kurulum kanıtı değildir. Özellik ve araç erişimi host/hesaba göre değişir. [Kurulum notlarına](INSTALL.tr.md#klinik-literatür-paketleri) bak.
+
+Aşağıdaki `releases/latest` paketleri önceki sürümün snapshot’larıdır. Güncel kaynak ve tek-skill literatür ZIP’leri bu güncellemeyi içerir; eski release paketlerinin veya bulut hesaplarının yenilendiği iddia edilmez.
 
 ## Buradan başla
 
@@ -41,7 +56,7 @@ Bu repo, yeni başlayanlara net indirme yolları; ileri düzey kullanıcılara i
 |---|---|---|
 | Belirli bir iş için tek skill bulmak | [Etkileşimli katalogda ara](https://yigityildiz0.github.io/universal-ai-skill-library/) veya [tam tabloyu aç](CATALOG.tr.md) | Kategori, platform, risk ve lisans sinyaline göre filtrele; yalnız ihtiyacını indir. |
 | Pratik bir başlangıç kütüphanesi kurmak | [Platformuna uygun seçilmiş paketi indir](#agentına-uygun-paketi-indir) | 151–154 üst seviye skill ve aşamalı keşif için `skill-library-router` içerir. |
-| Tam çevrimdışı arşiv tutmak | [Genişletilmiş paket seç](#seçilmiş-paket-mi-genişletilmiş-paket-mi) | O platforma eşlenen bütün katalog adlarını içerir. |
+| Tam çevrimdışı arşiv tutmak | [Genişletilmiş paket seç](#seçilmiş-paket-mi-genişletilmiş-paket-mi) | O release’in katalog snapshot’ını içerir; güncellemeler için güncel tek-skill ZIP’lerini kullan. |
 | Veriyi script veya araçlarla kullanmak | [catalog.json](manifests/catalog.json) veya [catalog.csv](manifests/catalog.csv) | Açıklama, platform, risk, lisans ve indirme alanlarını makine-okur biçimde sunar. |
 
 ## Agentına uygun paketi indir
@@ -60,7 +75,7 @@ Bu repo, yeni başlayanlara net indirme yolları; ileri düzey kullanıcılara i
 
 <p align="center"><img src="assets/library-workflow.tr.svg" alt="Dört adım: skill keşfet, platform risk ve lisans notlarını karşılaştır, doğru paketi indir, ardından kur ve doğrula" width="100%"></p>
 
-1. **Keşfet:** 588 ad içinde göreve veya kategoriye göre ara.
+1. **Keşfet:** 589 ad içinde göreve veya kategoriye göre ara.
 2. **Karşılaştır:** platform notunu, istenen araçları, ağ/API kullanımını, yıkıcı kalıpları ve lisans sinyalini kontrol et.
 3. **İndir:** tek skill ZIP’i, seçilmiş platform paketi veya genişletilmiş arşiv seç.
 4. **Kur ve doğrula:** doğru kök klasöre aç, `SKILL.md` yapısını ve SHA-256 özetini doğrula.
@@ -118,7 +133,7 @@ Tekil indirme, güncelleme, kaldırma, checksum ve hata çözümü için [ayrın
 | Medya ve yaratıcı işler | 20 |
 | Araştırma ve akıl yürütme | 18 |
 | Finans ve yatırım | 17 |
-| Sağlık ve klinik | 15 |
+| Sağlık ve klinik | 16 |
 | Bilim ve biyobilim | 7 |
 | Güvenlik, hukuk ve kararlar | 2 |
 
@@ -133,9 +148,9 @@ Etkileşimli katalog](https://yigityildiz0.github.io/universal-ai-skill-library/
 ## Sık sorulan sorular
 
 <details>
-<summary><strong>588 skill’in tamamı üç agentta aynı mı çalışır?</strong></summary>
+<summary><strong>589 skill’in tamamı üç agentta aynı mı çalışır?</strong></summary>
 
-Hayır. 588 benzersiz ad vardır; 585’ü Claude Code’a, 585’u Codex’e, 588’i OpenCode’a eşlenir. Biçim uyumluluğu; her bağımlılık, dış servis veya platforma özel davranışın başarıyla çalıştırıldığını kanıtlamaz. Skill’in katalog notunu oku.
+Hayır. 589 benzersiz ad vardır; 586’ü Claude Code’a, 586’u Codex’e, 589’i OpenCode’a eşlenir. Biçim uyumluluğu; her bağımlılık, dış servis veya platforma özel davranışın başarıyla çalıştırıldığını kanıtlamaz. Skill’in katalog notunu oku.
 </details>
 
 <details>

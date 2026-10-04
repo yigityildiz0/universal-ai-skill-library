@@ -66,6 +66,10 @@ Build concept blocks with controlled vocabulary and free text:
 
 Avoid unnecessary outcome terms when they reduce recall. Document every filter. Expand a failed query stepwise and record what changed.
 
+For PEDro, use English Abstract & Title terms with optional advanced fields. Do not type Boolean words or MeSH tags into text fields: words in one field use implicit AND, and the Match all/Match any control combines fields. Mixed AND/OR is unavailable; execute separate synonym queries and merge. Quoted phrases cannot contain wildcards. Verify [PEDro search help](https://pedro.org.au/english/learn/search-help/) and test sentinel records before treating a query as complete.
+
+Record database and actual retrieval provider separately; a PubMed-linked OpenAlex search is not a direct PubMed search. Distinguish total matches, retrieved records and reviewed records; follow the pages and clipped-text continuations required by the declared scope. State caps and inaccessible sources explicitly.
+
 ## Certainty and effect rules
 
 - Assess certainty for each critical outcome: risk of bias, inconsistency, indirectness, imprecision, and missing/publication bias; use upgrading domains only when justified.

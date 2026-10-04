@@ -1,0 +1,14 @@
+interface:
+  display_name: Medical Evidence & Publishing
+  short_description: Search, appraise, and publish medical evidence
+  default_prompt: Use $research-medical-evidence to search, appraise, and synthesize
+    medical literature or plan a responsible publication workflow.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
