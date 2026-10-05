@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Semantic trigger acceptance cases; these are design tests, not runtime activation logs.",
+  "cases": [
+    {
+      "id": "positive-device-troubleshooting",
+      "type": "positive",
+      "prompt": "iPad'im Windows bilgisayara bağlanıyor ama dosya aktarımı görünmüyor; nasıl çözeriz?",
+      "expected": "activate",
+      "reason": "This is cross-device troubleshooting."
+    },
+    {
+      "id": "positive-smart-home",
+      "type": "positive",
+      "prompt": "HomePod ev otomasyonunu bazen çalıştırmıyor; ayarları birlikte kontrol edelim.",
+      "expected": "activate",
+      "reason": "This is a personal smart-home setup problem."
+    },
+    {
+      "id": "positive-android-app-recommendation",
+      "type": "positive",
+      "prompt": "Android'de kâğıdı tarayıp gerçekten ücretsiz PDF olarak paylaşabileceğim en iyi uygulama hangisi?",
+      "expected": "activate_with_current_app_research",
+      "reason": "This is a current Android utility recommendation whose free completion and export path must be verified."
+    },
+    {
+      "id": "positive-mouse-button-remap",
+      "type": "positive",
+      "prompt": "Bu mouse'ta baş parmağa gelen DPI tuşuna başka bir görev atayabiliyor muyuz?",
+      "expected": "activate_and_verify_exact_model_remapping_support",
+      "reason": "This is peripheral configuration and exact-model compatibility."
+    },
+    {
+      "id": "negative-code-debugging",
+      "type": "negative",
+      "prompt": "React uygulamamda bu TypeScript hatasını düzelt.",
+      "expected": "do_not_activate",
+      "reason": "Software-development debugging belongs to engineering skills."
+    },
+    {
+      "id": "boundary-purchase",
+      "type": "boundary",
+      "prompt": "Bu monitör Mac ve Windows kurulumuma uyumlu mu, Türkiye fiyatıyla almaya değer mi?",
+      "expected": "activate_with_market_pricing_analysis",
+      "reason": "Compatibility is owned here; current price/value needs pricing research."
+    },
+    {
+      "id": "boundary-free-download-versus-export",
+      "type": "boundary",
+      "prompt": "Uygulama ücretsiz indiriliyor; PDF'yi kaydedip paylaşmak da ücretsiz mi?",
+      "expected": "activate_and_verify_the_complete_free_workflow",
+      "reason": "Store price alone does not prove that the requested completion/export path is free."
+    }
+  ]
+}

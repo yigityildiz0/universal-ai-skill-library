@@ -606,3 +606,43 @@ This file records only the evidence present in the supplied packages. It does no
 ## October 2026 clinical-literature update
 
 `medical-evidence-research` preserves the supplied module licenses, including the content-access module license and the scientific-literature-review MIT license. The top-level research workflow has no blanket redistribution license declared; module licenses do not license all other skill text. `physio-clinical-copilot` preserves its original MIT `LICENSE` and Skill contributors copyright byte-for-byte. The supplied master revision declares a Yiğit copyright; that text is also preserved separately as `LICENSE.master-revision` rather than replacing the existing notice. Existing provenance and license entries above remain unchanged. The literature aliases retain their supplied rights status; no new author identity, source revision or license grant is inferred.
+
+## Current collection: provenance and license scope
+
+The source tree and per-module LICENSE/NOTICE files are included. Existing license grants govern their own files; this collection does not relicense copied material. Missing explicit grants are marked as not specified, not assumed to be MIT.
+
+- `academic-study-coach`: `modules/academic-writing/LICENSE`
+- `ai-agent-builder`: `modules/chatgpt-apps/LICENSE.txt`, `modules/mcp-builder/LICENSE.txt`
+- `ai-image-video-studio`: no explicit license file supplied by the canonical source; consult module provenance
+- `ai-research-skills`: `LICENSE`
+- `banner-design`: `LICENSE`
+- `brand`: `LICENSE`
+- `campaign-plan`: `LICENSE`
+- `caveman`: `LICENSE`, `modules/caveman-commit/yigit/LICENSE`, `modules/caveman-compress/yigit/LICENSE`, `modules/caveman-help/yigit/LICENSE`, `modules/caveman-review/yigit/LICENSE`
+- `coding-workflow`: `modules/playwright-interactive/LICENSE.txt`, `modules/playwright-interactive/NOTICE.txt`
+- `context7-mcp`: no explicit license file supplied by the canonical source; consult module provenance
+- `data-analyst`: no explicit license file supplied by the canonical source; consult module provenance
+- `design`: `LICENSE`
+- `design-system`: `LICENSE`
+- `find-docs`: no explicit license file supplied by the canonical source; consult module provenance
+- `gemini-deep-research`: `LICENSE`
+- `graphify`: no explicit license file supplied by the canonical source; consult module provenance
+- `medical-evidence-research`: `modules/content-access/LICENSE`, `modules/scientific-literature-review/LICENSE.txt`
+- `mental-health-crisis-support`: no explicit license file supplied by the canonical source; consult module provenance
+- `modern-web-guidance`: `LICENSE`
+- `office-docs-qa`: no explicit license file supplied by the canonical source; consult module provenance
+- `parallel-web`: `LICENSE`
+- `personal-tech-copilot`: no explicit license file supplied by the canonical source; consult module provenance
+- `physio-clinical-copilot`: `LICENSE`
+- `plan-smart-routes`: no explicit license file supplied by the canonical source; consult module provenance
+- `primary-source-research`: `LICENSE`
+- `purchase-advisor`: no explicit license file supplied by the canonical source; consult module provenance
+- `research-analyst`: `modules/fact-check-workflow/LICENSE`, `modules/source-verification/LICENSE`, `modules/web-archiving/LICENSE`, `modules/weizhena-research/codex-variant/LICENSE`, `modules/weizhena-research/LICENSE`, `modules/weizhena-research-add-fields/codex-variant/LICENSE`, `modules/weizhena-research-add-fields/LICENSE`, `modules/weizhena-research-add-items/codex-variant/LICENSE`, `modules/weizhena-research-add-items/LICENSE`, `modules/weizhena-research-deep/codex-variant/LICENSE`, `modules/weizhena-research-deep/LICENSE`, `modules/weizhena-research-report/codex-variant/LICENSE`, `modules/weizhena-research-report/LICENSE`
+- `site-seo-audit`: `LICENSE`
+- `slides`: `LICENSE`
+- `ui-styling`: `LICENSE.txt`, `yigit/LICENSE.txt`
+- `ui-ux-pro-max`: `LICENSE`
+- `web-animation`: `LICENSE`, `modules/LICENSE-iart-ai`
+- `web-ui-design`: `modules/frontend-design/LICENSE.txt`, `modules/web-design-guidelines-workflow/LICENSE.txt`
+- `yigit-investment-copilot`: no explicit license file supplied by the canonical source; consult module provenance
+- `yigit-writer`: `modules/ai-writing-detox/LICENSE`

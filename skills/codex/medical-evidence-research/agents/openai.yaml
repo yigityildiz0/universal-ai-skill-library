@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tıbbi Kanıt ve Literatür"
+  short_description: "PubMed/PEDro taraması ve klinik kanıt değerlendirmesi"
+  default_prompt: "Use $medical-evidence-research to help with my clinical or literature question in Turkish."
+policy:
+  allow_implicit_invocation: true

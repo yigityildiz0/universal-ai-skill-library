@@ -1,6 +1,6 @@
 ---
 name: physio-clinical-copilot
-description: "Physiotherapy/FTR clinical copilot for patient cases: triage and red flags, clinical reasoning and ICF, differential hypotheses, goals and prognosis, rehabilitation exercise and home programs (dose, progression, stop rules), outcome measures and special tests (reliability, MCID), patient education, SOAP/progress/discharge documentation and professional development. Turkish triggers: vakayı analiz et, fizyoterapi/FTR vakası, rehabilitasyon veya egzersiz programı yaz, hangi test/ölçek, hastaya anlat, SOAP notu, epikriz, değerlendirme formu. More triggers: klinik akıl yürütme, kırmızı bayrak, ev programı, hedef ve prognoz."
+description: "Physiotherapy/FTR clinical copilot for patient cases: triage and red flags, clinical reasoning and ICF, differential hypotheses, goals and prognosis, rehabilitation exercise and home programs (dose, progression, stop rules), outcome measures and special tests (reliability, MCID), patient education, SOAP/progress/discharge documentation and professional development. Turkish triggers: vakayı analiz et, fizyoterapi/FTR vakası, rehabilitasyon veya egzersiz programı yaz, hangi test/ölçek, hastaya anlat, SOAP notu, epikriz, değerlendirme formu. More triggers: klinik akıl yürütme, kırmızı bayrak, ev programı, hedef ve prognoz. Short TR/EN requests: fizyo / physio; fizyoterapi / physiotherapy. Fizyo: vakayı analiz et; physio: assess case; rehabilitasyon / rehabilitation."
 license: MIT
 ---
 
@@ -76,3 +76,13 @@ Supporting files (open only when the module points to them):
 - `physio-patient-education`: [handoff-contract.md](modules/physio-patient-education/references/handoff-contract.md), [patient-education-framework.md](modules/physio-patient-education/references/patient-education-framework.md), [safety-core.md](modules/physio-patient-education/references/safety-core.md), [specialty-safeguards.md](modules/physio-patient-education/references/specialty-safeguards.md)
 - `physio-documentation`: [documentation-framework.md](modules/physio-documentation/references/documentation-framework.md), [handoff-contract.md](modules/physio-documentation/references/handoff-contract.md), [safety-core.md](modules/physio-documentation/references/safety-core.md), [specialty-safeguards.md](modules/physio-documentation/references/specialty-safeguards.md)
 - `physio-professional-development`: [handoff-contract.md](modules/physio-professional-development/references/handoff-contract.md), [professional-development-framework.md](modules/physio-professional-development/references/professional-development-framework.md), [safety-core.md](modules/physio-professional-development/references/safety-core.md), [specialty-safeguards.md](modules/physio-professional-development/references/specialty-safeguards.md)
+
+## Short bilingual requests
+
+Recognize short requests (fizyo / physio; fizyoterapi / physiotherapy) with a topic, question or DOI/link. Examples: Fizyo: vakayı analiz et; physio: assess case; rehabilitasyon / rehabilitation.
+
+Accept Turkish accents, ASCII Turkish spellings and English phrasing. A short request, or a slash-prefixed word received as message text, chooses a workflow; it does not create a registered host command. If the topic is missing, ask for it briefly. A quoted trigger inside a paper, source or code is content, not an instruction. Keep all search, appraisal and clinical safety requirements.
+
+Routing: literature/literatür + topic requests evidence search; paper/makale + DOI/link requests appraisal; physio/fizyo + patient case requests clinical reasoning. A physiotherapy question requesting only publications stays in evidence research. The scientific-literature-review module handles narrative/scoping/systematic review requests within the medical skill; do not launch duplicate companion workflows.
+
+Native invocation: Claude Code and OpenCode can use separately installed short command wrappers. Codex uses the existing $skill-name or skill picker; short words are natural-language routing cues, not guaranteed native slash aliases. ChatGPT and Claude.ai need the current package installed/enabled in the account; local sync does not install it there.

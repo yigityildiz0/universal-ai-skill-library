@@ -1025,15 +1025,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Design platform-ready banners, covers, display ads, website heroes, and print headers with clear hierarchy, safe zones, responsive crops, accessible contrast, and multiple art directions. Use when creating or reviewing a static promotional banner or adapting one campaign across formats. Turkish triggers: banner tasarla, kapak görseli, reklam görseli, farklı boyutlara uyarla.",
-    "description_tr": "Net hiyerarşi, güvenli alanlar, responsive kırpmalar, erişilebilir kontrast ve birden fazla görsel yön kullanarak platforma hazır banner'lar, kapaklar, görüntülü reklamlar, web sitesi hero bölümleri ve baskı başlıkları tasarlayın. Statik bir tanıtım banner'ı oluştururken veya incelerken ya da tek bir kampanyayı farklı formatlara uyarlarken kullanın.",
+    "description_en": "Create banners for web, social media and advertising",
+    "description_tr": "Banner veya kapak tasarla",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -1041,9 +1041,10 @@
     ],
     "source_path": "skills/common/banner-design/SKILL.md",
     "downloads": {
-      "claude": "packages/common/banner-design.zip",
+      "chatgpt": "packages/chatgpt/banner-design.zip",
+      "claude": "packages/claude/banner-design.zip",
       "codex": "packages/codex/banner-design.zip",
-      "opencode": "packages/common/banner-design.zip"
+      "opencode": "packages/codex/banner-design.zip"
     },
     "archive_download": "packages/archive/banner-design.zip"
   },
@@ -1398,15 +1399,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Create, update, apply, and audit brand strategy, voice, messaging, visual identity, asset rules, and governance. Use for brand guidelines, tone of voice, naming and messaging systems, visual consistency, asset organization, campaign compliance, or synchronizing approved brand tokens into product design. Turkish triggers: marka kimliği, marka rehberi, isim ve mesaj sistemi, görsel tutarlılık.",
-    "description_tr": "Marka stratejisini, marka sesini, mesajlaşmayı, görsel kimliği, varlık kurallarını ve yönetişimi oluşturun, güncelleyin, uygulayın ve denetleyin. Marka yönergeleri, ses tonu, adlandırma ve mesajlaşma sistemleri, görsel tutarlılık, varlık organizasyonu, kampanya uyumluluğu veya onaylı marka token'larını ürün tasarımıyla senkronize etmek için kullanın.",
+    "description_en": "Keep voice, identity and messaging consistent",
+    "description_tr": "Marka kimliği ve iletişim dili oluştur",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [
       "slash command"
@@ -1417,9 +1418,10 @@
     ],
     "source_path": "skills/common/brand/SKILL.md",
     "downloads": {
-      "claude": "packages/common/brand.zip",
+      "chatgpt": "packages/chatgpt/brand.zip",
+      "claude": "packages/claude/brand.zip",
       "codex": "packages/codex/brand.zip",
-      "opencode": "packages/common/brand.zip"
+      "opencode": "packages/codex/brand.zip"
     },
     "archive_download": "packages/archive/brand.zip"
   },
@@ -1927,15 +1929,15 @@
     "category": "Specialized integrations",
     "category_key": "specialized-integrations",
     "category_tr": "Özel entegrasyonlar",
-    "description_en": "Manual response-style mode that removes filler while preserving the user's language, exact technical details, order, safety warnings, code, commands, paths, numbers, identifiers, and error text. Use only after an explicit activation such as $caveman, /caveman, 'Caveman ultra/full/lite', 'Caveman modunu aç/aktif et', or 'mağara modunu aç/aktif et/geç'. Never activate for 'kısa yaz', 'kısa cevap ver', 'basit anlat', 'öz konuş', less tokens, token efficiency, or an ordinary request to be concise.",
-    "description_tr": "Kullanıcının dilini, kesin teknik ayrıntıları, sırayı, güvenlik uyarılarını, kodu, komutları, yolları, sayıları, tanımlayıcıları ve hata metnini korurken gereksiz ifadeleri çıkaran kısa yanıt stili modu. Yalnızca kullanıcı açıkça $caveman çağrısı yaptığında, caveman mode veya talk like caveman dediğinde ya da bir Caveman seviyesi istediğinde kullanın. Sıradan bir kısa yanıt isteğiyle tetiklemeyin.",
+    "description_en": "Use an explicitly requested terse communication style",
+    "description_tr": "Caveman modunu aç; normal kısa cevapla karıştırma",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "declared: MIT",
     "host_signals": [
       "slash command"
@@ -1945,9 +1947,10 @@
     ],
     "source_path": "skills/common/caveman/SKILL.md",
     "downloads": {
+      "chatgpt": "packages/chatgpt/caveman.zip",
       "claude": "packages/claude/caveman.zip",
       "codex": "packages/codex/caveman.zip",
-      "opencode": "packages/opencode/caveman.zip"
+      "opencode": "packages/codex/caveman.zip"
     },
     "archive_download": ""
   },
@@ -4512,15 +4515,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Route broad or mixed visual-design requests into a coherent workflow spanning brand, design systems, UI/UX, interface styling, banners, presentations, logos, icons, and campaign assets. Use when a request crosses multiple design disciplines or the correct specialist skill is unclear; prefer the specialist skill directly for narrow tasks. Turkish triggers: tasarım işi, arayüz veya görsel yön seç, doğru tasarım becerisine yönlendir.",
-    "description_tr": "Geniş veya karma görsel tasarım isteklerini; marka, tasarım sistemleri, UI/UX, arayüz stillendirme, banner'lar, sunumlar, logolar, ikonlar ve kampanya varlıklarını kapsayan tutarlı bir iş akışına yönlendirin. Bir istek birden fazla tasarım disiplinini kapsadığında veya doğru uzman skill net olmadığında kullanın; dar kapsamlı görevlerde doğrudan ilgili uzman skill'i tercih edin.",
+    "description_en": "Choose and execute an appropriate visual design workflow",
+    "description_tr": "Logo, ikon veya görsel tasarla",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -4528,9 +4531,10 @@
     ],
     "source_path": "skills/common/design/SKILL.md",
     "downloads": {
-      "claude": "packages/common/design.zip",
+      "chatgpt": "packages/chatgpt/design.zip",
+      "claude": "packages/claude/design.zip",
       "codex": "packages/codex/design.zip",
-      "opencode": "packages/common/design.zip"
+      "opencode": "packages/codex/design.zip"
     },
     "archive_download": "packages/archive/design.zip"
   },
@@ -4649,15 +4653,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Design, implement, migrate, and validate scalable token and component systems with primitive, semantic, and component layers; themes; states; accessibility; and framework integration. Use for design tokens, component specifications, light/dark themes, brand-to-product synchronization, or consistency audits across an interface library. Turkish triggers: design system kur, token ve bileşenler, varyant ve tema, tasarım sistemi denetimi.",
-    "description_tr": "İlkel, semantik ve bileşen katmanları; temalar; durumlar; erişilebilirlik ve framework entegrasyonuyla ölçeklenebilir token ve bileşen sistemleri tasarlayın, uygulayın, taşıyın ve doğrulayın. Design token'ları, bileşen belirtimleri, açık/koyu temalar, markadan ürüne senkronizasyon veya bir arayüz kütüphanesi genelindeki tutarlılık denetimleri için kullanın.",
+    "description_en": "Build design tokens and coherent component specifications",
+    "description_tr": "Tasarım tokenları ve bileşen sistemi oluştur",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -4666,9 +4670,10 @@
     ],
     "source_path": "skills/common/design-system/SKILL.md",
     "downloads": {
-      "claude": "packages/common/design-system.zip",
+      "chatgpt": "packages/chatgpt/design-system.zip",
+      "claude": "packages/claude/design-system.zip",
       "codex": "packages/codex/design-system.zip",
-      "opencode": "packages/common/design-system.zip"
+      "opencode": "packages/codex/design-system.zip"
     },
     "archive_download": "packages/archive/design-system.zip"
   },
@@ -6298,15 +6303,15 @@
     "category": "Documents and data",
     "category_key": "documents-data",
     "category_tr": "Belge ve veri",
-    "description_en": "Retrieves up-to-date documentation, API references, and code examples for any developer technology. Use this skill whenever the user asks about a specific.",
-    "description_tr": "Herhangi bir geliştirici teknolojisi için güncel belgeleri, API referanslarını ve kod örneklerini getirir. Kullanıcı React, Next.js, Prisma, Express, Tailwind, Django veya Spring Boot gibi iyi bilinenler dâhil belirli bir kütüphane, framework, SDK, CLI aracı veya bulut hizmeti hakkında soru sorduğunda bu skilli daima kullanın. Eğitim verileriniz son API değişikliklerini veya sürüm güncellemelerini yansıtmayabilir. API sözdizimi soruları, yapılandırma seçenekleri, sürüm geçişi sorunları, bir kütüphane adı içeren \"nasıl yaparım\" soruları, kütüphaneye özgü davranış içeren hata ayıklama, kurulum talimatları ve CLI aracı kullanımı için her zaman kullanın. Yanıtı bildiğinizi düşünseniz bile API ayrıntıları, imzalar veya yapılandırma seçenekleri için eğitim verilerine güvenmeyin; bunlar sık değişir. Her zaman güncel belgelerden doğrulayın. Kütüphane belgeleri ve API ayrıntıları için web araması yerine bunu tercih edin.",
+    "description_en": "Find official SDK, CLI, framework and cloud documentation",
+    "description_tr": "Resmi SDK/API/CLI belgesini bul",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Shared source for all three hosts",
-    "compatibility_tr": "Üç host için ortak kaynak",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [
       "slash command"
@@ -6317,9 +6322,10 @@
     ],
     "source_path": "skills/common/find-docs/SKILL.md",
     "downloads": {
-      "claude": "packages/common/find-docs.zip",
-      "codex": "packages/common/find-docs.zip",
-      "opencode": "packages/common/find-docs.zip"
+      "chatgpt": "packages/chatgpt/find-docs.zip",
+      "claude": "packages/claude/find-docs.zip",
+      "codex": "packages/codex/find-docs.zip",
+      "opencode": "packages/codex/find-docs.zip"
     },
     "archive_download": ""
   },
@@ -7489,23 +7495,24 @@
     "category": "Specialized integrations",
     "category_key": "specialized-integrations",
     "category_tr": "Özel entegrasyonlar",
-    "description_en": "Build and query a reproducible knowledge graph from code, documents, transcripts, or mixed local sources. Use when relationships, dependency paths.",
-    "description_tr": "Kod, belge, transcript veya karma yerel kaynaklardan tekrar üretilebilir bir knowledge graph oluşturur ve sorgular. İlişkileri, dependency path'lerini, sahipliği, kavramları veya dosyalar arası navigasyonu doğrusal biçimde anlamak zor olduğunda kullanın; structural extraction'ı tercih edin ve asla otomatik paket kurmayın veya harici model seçmeyin.",
+    "description_en": "Map relationships across code, documents and research",
+    "description_tr": "Belgeler veya kod arasında bilgi grafiği çıkar",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Shared source for all three hosts",
-    "compatibility_tr": "Üç host için ortak kaynak",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [],
     "source_path": "skills/common/graphify/SKILL.md",
     "downloads": {
-      "claude": "packages/common/graphify.zip",
-      "codex": "packages/common/graphify.zip",
-      "opencode": "packages/common/graphify.zip"
+      "chatgpt": "packages/chatgpt/graphify.zip",
+      "claude": "packages/claude/graphify.zip",
+      "codex": "packages/codex/graphify.zip",
+      "opencode": "packages/codex/graphify.zip"
     },
     "archive_download": ""
   },
@@ -9691,15 +9698,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Searches/appraises biomedical, clinical and rehab evidence in PubMed, PEDro and Cochrane. Use for effectiveness, dose, harms, diagnosis, prognosis, statistics/MCID, GRADE, reviews/meta-analysis, legal full texts, journals and evidence updates. Literatür tara, makaleyi değerlendir, etkili mi, bilimsel gelişmeler.",
-    "description_tr": "PubMed/PEDro ve tamamlayıcı kaynaklarda klinik/fizyoterapi literatürü tarar; makale, etki, yanlılık ve GRADE değerlendirmesi, yasal tam metin, güncelleme takibi ve yayın hazırlığı yapar.",
+    "description_en": "Search PubMed/PEDro, appraise papers and track evidence",
+    "description_tr": "Literatür tara; makaleyi değerlendir; güncel kanıtı bul",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Shared research core with separate GPT/Codex and Claude metadata. Source and package checks do not certify every host or connector runtime.",
-    "compatibility_tr": "Ortak araştırma gövdesi, ayrı GPT/Codex ve Claude metadatası. Kaynak/paket kontrolü her host veya bağlayıcının çalıştığını kanıtlamaz.",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified; bundled module licenses preserved",
     "host_signals": [],
     "risk_signals": [
@@ -9707,9 +9714,10 @@
     ],
     "source_path": "skills/common/medical-evidence-research/SKILL.md",
     "downloads": {
+      "chatgpt": "packages/chatgpt/medical-evidence-research.zip",
       "claude": "packages/claude/medical-evidence-research.zip",
       "codex": "packages/codex/medical-evidence-research.zip",
-      "opencode": "packages/common/medical-evidence-research.zip"
+      "opencode": "packages/codex/medical-evidence-research.zip"
     },
     "archive_download": ""
   },
@@ -9752,23 +9760,24 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Respond immediately and supportively when the user or another person may be at risk of suicide or serious self-harm, expresses wanting to die/not live, has a plan or means, or asks how to help someone in crisis. Turkish triggers: kendimi öldürmek, yaşamak istemiyorum, canıma kıymak, intihar düşüncesi/planı, kendine zarar, arkadaşım intihar edecek. Check imminent danger, connect to local emergency/crisis help and trusted people, reduce access to means, and stay concise. Do not diagnose or replace care.",
-    "description_tr": "Kriz veya kendine zarar riski içeren mesajlarda güvenli, sakin ve yerel acil destek odaklı yanıt verir; tanı koymaz.",
+    "description_en": "Respond to self-harm or suicide risk with immediate safety priorities",
+    "description_tr": "Krizde güvenliği ve uygun insan desteğini öncele",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [],
     "source_path": "skills/common/mental-health-crisis-support/SKILL.md",
     "downloads": {
-      "claude": "packages/common/mental-health-crisis-support.zip",
+      "chatgpt": "packages/chatgpt/mental-health-crisis-support.zip",
+      "claude": "packages/claude/mental-health-crisis-support.zip",
       "codex": "packages/codex/mental-health-crisis-support.zip",
-      "opencode": "packages/common/mental-health-crisis-support.zip"
+      "opencode": "packages/codex/mental-health-crisis-support.zip"
     },
     "archive_download": ""
   },
@@ -11267,15 +11276,15 @@
     "category": "Specialized integrations",
     "category_key": "specialized-integrations",
     "category_tr": "Özel entegrasyonlar",
-    "description_en": "Automatically diagnose and solve personal technology, app, device setup, compatibility, configuration, purchase, and troubleshooting questions across Windows, macOS, Android, iPhone/iPad/watch ecosystems, smart-home accessories, displays, peripherals, storage, networking, remote access, scanning/PDF utilities, backups, and cross-device workflows. Use for setup/error screenshots and prompts such as \"how do I\", \"why is this not working\", \"compatible?\", or Turkish equivalents such as \"nasıl yaparım\", \"neden çalışmıyor\", \"bağlanmıyor\", \"uyumlu mu\", and \"hangi ayar\". Verify current versions and official instructions; add current pricing evidence for purchase/value questions.",
-    "description_tr": "Windows ve kişisel teknoloji sorunlarını canlı sistem kanıtı, güvenli değişiklik ve yeniden doğrulama ile çözer.",
+    "description_en": "Solve everyday Windows, phone, app and setup problems",
+    "description_tr": "Bilgisayar, telefon veya uygulama sorununu çöz",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [],
     "risk_signals": [
@@ -11285,9 +11294,10 @@
     ],
     "source_path": "skills/common/personal-tech-copilot/SKILL.md",
     "downloads": {
-      "claude": "packages/common/personal-tech-copilot.zip",
+      "chatgpt": "packages/chatgpt/personal-tech-copilot.zip",
+      "claude": "packages/claude/personal-tech-copilot.zip",
       "codex": "packages/codex/personal-tech-copilot.zip",
-      "opencode": "packages/common/personal-tech-copilot.zip"
+      "opencode": "packages/codex/personal-tech-copilot.zip"
     },
     "archive_download": ""
   },
@@ -11296,15 +11306,15 @@
     "category": "Health and clinical",
     "category_key": "health-clinical",
     "category_tr": "Sağlık ve klinik",
-    "description_en": "Physiotherapy/FTR clinical copilot for patient cases: triage and red flags, clinical reasoning and ICF, differential hypotheses, goals and prognosis, rehabilitation exercise and home programs (dose, progression, stop rules), outcome measures and special tests (reliability, MCID), patient education, SOAP/progress/discharge documentation and professional development. Turkish triggers: vakayı analiz et, fizyoterapi/FTR vakası, rehabilitasyon veya egzersiz programı yaz, hangi test/ölçek, hastaya anlat, SOAP notu, epikriz, değerlendirme formu. More triggers: klinik akıl yürütme, kırmızı bayrak, ev programı, hedef ve prognoz.",
-    "description_tr": "FTR/fizyoterapi vakalarında güvenlik, klinik akıl yürütme, rehabilitasyon planı, ölçek/test, hasta eğitimi, klinik kayıt ve mesleki gelişimi birleştirir.",
+    "description_en": "Reason through cases, measures, rehabilitation and patient education",
+    "description_tr": "Fizyo vakasını analiz et; rehabilitasyon planla",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Shared research core with separate GPT/Codex and Claude metadata. Source and package checks do not certify every host or connector runtime.",
-    "compatibility_tr": "Ortak araştırma gövdesi, ayrı GPT/Codex ve Claude metadatası. Kaynak/paket kontrolü her host veya bağlayıcının çalıştığını kanıtlamaz.",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "declared: MIT",
     "host_signals": [],
     "risk_signals": [
@@ -11314,9 +11324,10 @@
     ],
     "source_path": "skills/common/physio-clinical-copilot/SKILL.md",
     "downloads": {
+      "chatgpt": "packages/chatgpt/physio-clinical-copilot.zip",
       "claude": "packages/claude/physio-clinical-copilot.zip",
       "codex": "packages/codex/physio-clinical-copilot.zip",
-      "opencode": "packages/common/physio-clinical-copilot.zip"
+      "opencode": "packages/codex/physio-clinical-copilot.zip"
     },
     "archive_download": ""
   },
@@ -11662,15 +11673,15 @@
     "category": "Specialized integrations",
     "category_key": "specialized-integrations",
     "category_tr": "Özel entegrasyonlar",
-    "description_en": "Plan and compare reliable time-aware trips with public transport plus walking by default, live traffic and service checks, weather, opening hours, fares, multi-stop scheduling, ETA uncertainty, and supported Google Maps, Yandex Maps, Moovit, HERE, Bing, Apple Maps, Waze, Citymapper, and OpenStreetMap links. Use whenever the user asks how to get somewhere, “buradan şuraya nasıl giderim”, “kaç dakikada/saatte varırım”, shares a place or map link, requests alternative routes, departure or arrival planning, an urgent commute, a relaxed/scenic trip, or a multi-stop day.",
-    "description_tr": "Toplu taşıma öncelikli rotaları güncel sefer, trafik, aktarma, yürüme ve zaman tamponlarıyla karşılaştırır.",
+    "description_en": "Compare walking and transit options using current route evidence",
+    "description_tr": "Nasıl giderim; yürüyüş ve toplu taşıma rotası bul",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [
       "Codex"
@@ -11681,9 +11692,10 @@
     ],
     "source_path": "skills/common/plan-smart-routes/SKILL.md",
     "downloads": {
-      "claude": "packages/common/plan-smart-routes.zip",
+      "chatgpt": "packages/chatgpt/plan-smart-routes.zip",
+      "claude": "packages/claude/plan-smart-routes.zip",
       "codex": "packages/codex/plan-smart-routes.zip",
-      "opencode": "packages/common/plan-smart-routes.zip"
+      "opencode": "packages/codex/plan-smart-routes.zip"
     },
     "archive_download": ""
   },
@@ -14121,15 +14133,15 @@
     "category": "Documents and data",
     "category_key": "documents-data",
     "category_tr": "Belge ve veri",
-    "description_en": "Plan, write, build, and validate strategic presentations and HTML slide decks with clear narrative, responsive layouts, design tokens, data visualization, speaker-ready copy, and accessible exports. Use for pitch decks, research presentations, product narratives, training decks, or slide-system reviews.",
-    "description_tr": "Net anlatı, responsive layout, design token'ları, veri görselleştirme, konuşmacıya hazır metin ve erişilebilir export'larla stratejik sunumlar ve HTML slide deck'ler planlar, yazar, oluşturur ve doğrular. Pitch deck'ler, araştırma sunumları, ürün anlatıları, eğitim sunumları veya slide system incelemeleri için kullanın.",
+    "description_en": "Design structured HTML presentations and pitch decks",
+    "description_tr": "Sunum veya HTML slayt hazırla",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Shared source for all three hosts",
-    "compatibility_tr": "Üç host için ortak kaynak",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "unspecified",
     "host_signals": [
       "slash command"
@@ -14139,9 +14151,10 @@
     ],
     "source_path": "skills/common/slides/SKILL.md",
     "downloads": {
-      "claude": "packages/common/slides.zip",
-      "codex": "packages/common/slides.zip",
-      "opencode": "packages/common/slides.zip"
+      "chatgpt": "packages/chatgpt/slides.zip",
+      "claude": "packages/claude/slides.zip",
+      "codex": "packages/codex/slides.zip",
+      "opencode": "packages/codex/slides.zip"
     },
     "archive_download": ""
   },
@@ -15403,15 +15416,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Implement and refine accessible, responsive interfaces using an existing component system or utility CSS, with strong state coverage, semantic tokens, dark mode, and framework-aware styling. Use for component styling, Tailwind or shadcn-style workflows, responsive layouts, theme implementation, visual polish, or UI consistency reviews. Turkish triggers: arayüz stilini uygula, CSS ve görsel hiyerarşi, responsive ve erişilebilir görünüm.",
-    "description_tr": "Mevcut bir bileşen sistemi veya utility CSS kullanarak; kapsamlı durum desteği, semantik token'lar, dark mode ve framework'e duyarlı stillendirmeyle erişilebilir ve responsive arayüzler uygulayın ve iyileştirin. Bileşen stillendirme, Tailwind veya shadcn tarzı workflow'lar, responsive yerleşimler, tema uygulama, görsel incelik ya da UI tutarlılığı incelemeleri için kullanın.",
+    "description_en": "Style accessible responsive interfaces with Tailwind and shadcn",
+    "description_tr": "Tailwind/shadcn ile arayüzü düzenle",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "file-only",
     "host_signals": [
       "slash command"
@@ -15423,9 +15436,10 @@
     ],
     "source_path": "skills/common/ui-styling/SKILL.md",
     "downloads": {
-      "claude": "packages/common/ui-styling.zip",
+      "chatgpt": "packages/chatgpt/ui-styling.zip",
+      "claude": "packages/claude/ui-styling.zip",
       "codex": "packages/codex/ui-styling.zip",
-      "opencode": "packages/common/ui-styling.zip"
+      "opencode": "packages/codex/ui-styling.zip"
     },
     "archive_download": "packages/archive/ui-styling.zip"
   },
@@ -15463,15 +15477,15 @@
     "category": "Design, UI, and UX",
     "category_key": "design-ui-ux",
     "category_tr": "Tasarım, UI ve UX",
-    "description_en": "Search and apply a local UI/UX design-intelligence library with 84 styles, 192 color palettes, 74 font pairings, 99 UX guidelines, 25 chart patterns, 1,923 Google Fonts, 105 icon records, and 22 technology stacks. Use to plan, implement, review, or improve web, mobile, and desktop interfaces, design systems, accessibility, responsive behavior, interaction states, typography, color, charts, and stack-specific UI code. Turkish triggers: ileri UI/UX tasarımı, stil ve bileşen araştırması, profesyonel arayüz önerisi.",
-    "description_tr": "84 stil, 192 renk paleti, 74 font eşleşmesi, 99 UX yönergesi, 25 grafik kalıbı, 1.923 Google Fonts kaydı, 105 ikon kaydı ve 22 teknoloji yığını içeren yerel UI/UX tasarım zekâsı kütüphanesinde arama yapın ve sonuçları uygulayın. Web, mobil ve masaüstü arayüzlerini, tasarım sistemlerini, erişilebilirliği, duyarlı davranışı, etkileşim durumlarını, tipografiyi, rengi, grafikleri ve teknoloji yığınına özgü UI kodunu planlamak, uygulamak, incelemek veya iyileştirmek için kullanın.",
+    "description_en": "Choose visual styles, palettes, fonts and UX patterns",
+    "description_tr": "UI/UX stilini, renkleri ve yazı tiplerini seç",
     "platforms": [
       "claude",
       "codex",
       "opencode"
     ],
-    "compatibility_en": "Validated common source with host-ready release bundles; external tools and services remain runtime-dependent",
-    "compatibility_tr": "Doğrulanmış ortak kaynak ve hosta hazır sürüm paketleri; dış araç ve servisler çalışma ortamına bağlıdır",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
     "license_status": "file-only",
     "host_signals": [],
     "risk_signals": [
@@ -15480,9 +15494,10 @@
     ],
     "source_path": "skills/common/ui-ux-pro-max/SKILL.md",
     "downloads": {
-      "claude": "packages/common/ui-ux-pro-max.zip",
+      "chatgpt": "packages/chatgpt/ui-ux-pro-max.zip",
+      "claude": "packages/claude/ui-ux-pro-max.zip",
       "codex": "packages/codex/ui-ux-pro-max.zip",
-      "opencode": "packages/common/ui-ux-pro-max.zip"
+      "opencode": "packages/codex/ui-ux-pro-max.zip"
     },
     "archive_download": ""
   },
@@ -16700,5 +16715,525 @@
       "opencode": "packages/common/zoom-plugin.zip"
     },
     "archive_download": ""
+  },
+  {
+    "slug": "academic-study-coach",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Learn a topic, summarize a paper, prepare for an exam",
+    "description_tr": "Bir konuyu öğret; makaleyi açıkla; sınava hazırla",
+    "source_path": "skills/common/academic-study-coach/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/academic-study-coach.zip",
+      "claude": "packages/claude/academic-study-coach.zip",
+      "codex": "packages/codex/academic-study-coach.zip",
+      "opencode": "packages/codex/academic-study-coach.zip"
+    }
+  },
+  {
+    "slug": "ai-agent-builder",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Create, audit and maintain skills, plugins and MCP integrations",
+    "description_tr": "Skill geliştir; eklentiyi incele; MCP tasarla",
+    "source_path": "skills/common/ai-agent-builder/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/ai-agent-builder.zip",
+      "claude": "packages/claude/ai-agent-builder.zip",
+      "codex": "packages/codex/ai-agent-builder.zip",
+      "opencode": "packages/codex/ai-agent-builder.zip"
+    }
+  },
+  {
+    "slug": "ai-image-video-studio",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Plan and troubleshoot ComfyUI and AI media workflows",
+    "description_tr": "Görsel/video iş akışı kur; ComfyUI hatasını çöz",
+    "source_path": "skills/common/ai-image-video-studio/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/ai-image-video-studio.zip",
+      "claude": "packages/claude/ai-image-video-studio.zip",
+      "codex": "packages/codex/ai-image-video-studio.zip",
+      "opencode": "packages/codex/ai-image-video-studio.zip"
+    }
+  },
+  {
+    "slug": "ai-research-skills",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Develop research ideas, experiments and scientific writing",
+    "description_tr": "AI araştırma fikri üret; deney veya makale planla",
+    "source_path": "skills/common/ai-research-skills/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/ai-research-skills.zip",
+      "claude": "packages/claude/ai-research-skills.zip",
+      "codex": "packages/codex/ai-research-skills.zip",
+      "opencode": "packages/codex/ai-research-skills.zip"
+    }
+  },
+  {
+    "slug": "campaign-plan",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Plan audience, channels, content, budget and measurement",
+    "description_tr": "Hedef kitle, içerik, bütçe ve ölçüm planla",
+    "source_path": "skills/common/campaign-plan/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/campaign-plan.zip",
+      "claude": "packages/claude/campaign-plan.zip",
+      "codex": "packages/codex/campaign-plan.zip",
+      "opencode": "packages/codex/campaign-plan.zip"
+    }
+  },
+  {
+    "slug": "coding-workflow",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Debug, review, implement and verify software changes",
+    "description_tr": "Hata çöz; kod incele; değişikliği doğrula",
+    "source_path": "skills/common/coding-workflow/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/coding-workflow.zip",
+      "claude": "packages/claude/coding-workflow.zip",
+      "codex": "packages/codex/coding-workflow.zip",
+      "opencode": "packages/codex/coding-workflow.zip"
+    }
+  },
+  {
+    "slug": "context7-mcp",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Look up current library and API documentation with Context7",
+    "description_tr": "Context7 ile güncel kütüphane belgesini bul",
+    "source_path": "skills/common/context7-mcp/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/context7-mcp.zip",
+      "claude": "packages/claude/context7-mcp.zip",
+      "codex": "packages/codex/context7-mcp.zip",
+      "opencode": "packages/codex/context7-mcp.zip"
+    }
+  },
+  {
+    "slug": "data-analyst",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Analyze tables, statistics, data quality and metrics",
+    "description_tr": "Tabloyu analiz et; istatistikleri açıkla",
+    "source_path": "skills/common/data-analyst/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/data-analyst.zip",
+      "claude": "packages/claude/data-analyst.zip",
+      "codex": "packages/codex/data-analyst.zip",
+      "opencode": "packages/codex/data-analyst.zip"
+    }
+  },
+  {
+    "slug": "gemini-deep-research",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Run sourced research with available Gemini integration",
+    "description_tr": "Gemini ile kaynaklı derin araştır",
+    "source_path": "skills/common/gemini-deep-research/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/gemini-deep-research.zip",
+      "claude": "packages/claude/gemini-deep-research.zip",
+      "codex": "packages/codex/gemini-deep-research.zip",
+      "opencode": "packages/codex/gemini-deep-research.zip"
+    }
+  },
+  {
+    "slug": "modern-web-guidance",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Check HTML/CSS/Web API support and progressive enhancement",
+    "description_tr": "Modern CSS/API uyumluluğunu değerlendir",
+    "source_path": "skills/common/modern-web-guidance/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/modern-web-guidance.zip",
+      "claude": "packages/claude/modern-web-guidance.zip",
+      "codex": "packages/codex/modern-web-guidance.zip",
+      "opencode": "packages/codex/modern-web-guidance.zip"
+    }
+  },
+  {
+    "slug": "office-docs-qa",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Read and check PDF, Word, spreadsheets and presentations",
+    "description_tr": "PDF, Word, Excel veya sunumu kontrol et",
+    "source_path": "skills/common/office-docs-qa/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/office-docs-qa.zip",
+      "claude": "packages/claude/office-docs-qa.zip",
+      "codex": "packages/codex/office-docs-qa.zip",
+      "opencode": "packages/codex/office-docs-qa.zip"
+    }
+  },
+  {
+    "slug": "parallel-web",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Research multiple sources with available Parallel integration",
+    "description_tr": "Çoklu web kaynağını paralel araştır",
+    "source_path": "skills/common/parallel-web/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/parallel-web.zip",
+      "claude": "packages/claude/parallel-web.zip",
+      "codex": "packages/codex/parallel-web.zip",
+      "opencode": "packages/codex/parallel-web.zip"
+    }
+  },
+  {
+    "slug": "primary-source-research",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Verify a question from official and first-party sources",
+    "description_tr": "Birincil kaynaklardan doğrula; kaynaklı not hazırla",
+    "source_path": "skills/common/primary-source-research/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/primary-source-research.zip",
+      "claude": "packages/claude/primary-source-research.zip",
+      "codex": "packages/codex/primary-source-research.zip",
+      "opencode": "packages/codex/primary-source-research.zip"
+    }
+  },
+  {
+    "slug": "purchase-advisor",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Compare suitability, price, alternatives and evidence",
+    "description_tr": "Almaya değer mi; ürünleri karşılaştır",
+    "source_path": "skills/common/purchase-advisor/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/purchase-advisor.zip",
+      "claude": "packages/claude/purchase-advisor.zip",
+      "codex": "packages/codex/purchase-advisor.zip",
+      "opencode": "packages/codex/purchase-advisor.zip"
+    }
+  },
+  {
+    "slug": "research-analyst",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Research, verify claims and compare supporting and opposing evidence",
+    "description_tr": "Araştır; iddiayı doğrula; karşıt kanıtları incele",
+    "source_path": "skills/common/research-analyst/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/research-analyst.zip",
+      "claude": "packages/claude/research-analyst.zip",
+      "codex": "packages/codex/research-analyst.zip",
+      "opencode": "packages/codex/research-analyst.zip"
+    }
+  },
+  {
+    "slug": "site-seo-audit",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Audit metadata, schema, crawlability, links and performance",
+    "description_tr": "SEO denetle; teknik sorunları önceliklendir",
+    "source_path": "skills/common/site-seo-audit/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/site-seo-audit.zip",
+      "claude": "packages/claude/site-seo-audit.zip",
+      "codex": "packages/codex/site-seo-audit.zip",
+      "opencode": "packages/codex/site-seo-audit.zip"
+    }
+  },
+  {
+    "slug": "web-animation",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Implement meaningful scroll, transition and micro-interaction motion",
+    "description_tr": "Web animasyonu veya sayfa geçişi oluştur",
+    "source_path": "skills/common/web-animation/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/web-animation.zip",
+      "claude": "packages/claude/web-animation.zip",
+      "codex": "packages/codex/web-animation.zip",
+      "opencode": "packages/codex/web-animation.zip"
+    }
+  },
+  {
+    "slug": "web-ui-design",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Design, improve and review usable web/app interfaces",
+    "description_tr": "Arayüz tasarla veya kullanılabilirliği iyileştir",
+    "source_path": "skills/common/web-ui-design/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/web-ui-design.zip",
+      "claude": "packages/claude/web-ui-design.zip",
+      "codex": "packages/codex/web-ui-design.zip",
+      "opencode": "packages/codex/web-ui-design.zip"
+    }
+  },
+  {
+    "slug": "yigit-investment-copilot",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Research BIST, TEFAS, US equities and portfolio risk; never place orders",
+    "description_tr": "Borsa/fon araştır; portföy riskini değerlendir; emir göndermez",
+    "source_path": "skills/common/yigit-investment-copilot/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/yigit-investment-copilot.zip",
+      "claude": "packages/claude/yigit-investment-copilot.zip",
+      "codex": "packages/codex/yigit-investment-copilot.zip",
+      "opencode": "packages/codex/yigit-investment-copilot.zip"
+    }
+  },
+  {
+    "slug": "yigit-writer",
+    "category": "Maintained collections",
+    "category_key": "maintained-collections",
+    "category_tr": "Güncel koleksiyonlar",
+    "platforms": [
+      "claude",
+      "codex",
+      "opencode"
+    ],
+    "host_signals": [],
+    "risk_signals": [],
+    "archive_download": "",
+    "description_en": "Write and revise messages, emails and articles in natural language",
+    "description_tr": "Mesaj, e-posta veya yazı hazırla/düzelt",
+    "source_path": "skills/common/yigit-writer/SKILL.md",
+    "compatibility_en": "Current provider-specific packages; external tools remain environment-dependent",
+    "compatibility_tr": "Güncel platform paketleri; araç erişimi çalışma ortamına bağlı",
+    "license_status": "unspecified",
+    "downloads": {
+      "chatgpt": "packages/chatgpt/yigit-writer.zip",
+      "claude": "packages/claude/yigit-writer.zip",
+      "codex": "packages/codex/yigit-writer.zip",
+      "opencode": "packages/codex/yigit-writer.zip"
+    }
   }
 ]
