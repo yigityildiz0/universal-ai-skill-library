@@ -1,6 +1,6 @@
 # Module: constitutional-ai
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: Anthropic's method for training harmless AI through self-improvement. Two-phase approach - supervised learning with self-critique/revision, then RLAIF (RL from AI Feedback). Use for safety alignment, reducing harmful outputs without human labels. Powers Claude's safety system.
 
 # Constitutional AI - Harmlessness from AI Feedback
@@ -254,11 +254,11 @@ final_preference = majority_vote(prefs_1, prefs_2, prefs_3)
 
 ## Advanced topics
 
-**Constitution design**: See [references/constitution-design.md](references/constitution-design.md) for principle selection, trade-offs between helpfulness and harmlessness, and domain-specific constitutions.
+**Constitution design**: [Primary source / available reference](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback). The linked primary research introduces constitutional principles and AI feedback. It is not the missing domain-specific constitution-design guide; verify applicability before adapting principles.
 
-**RLAIF vs RLHF**: See [references/rlaif-comparison.md](references/rlaif-comparison.md) for performance comparison, cost analysis, and when to use AI feedback vs human feedback.
+**RLAIF vs RLHF**: [Primary source / available reference](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback). The primary research describes the AI-feedback approach and its reported experiments. It does not supply a general cost analysis or a complete decision guide for every RLHF/RLAIF setting.
 
-**Chain-of-thought reasoning**: See [references/cot-critique.md](references/cot-critique.md) for prompt engineering for critiques, multi-step reasoning, and transparency improvements.
+**Chain-of-thought reasoning**: [Primary source / available reference](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback). The primary research describes the critique-and-revision method. It is not a separate comprehensive prompt-engineering or transparency guide.
 
 ## Hardware requirements
 
@@ -283,3 +283,7 @@ final_preference = majority_vote(prefs_1, prefs_2, prefs_3)
 
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

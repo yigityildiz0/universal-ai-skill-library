@@ -1,6 +1,6 @@
 # Module: ray-train
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: Distributed training orchestration across clusters. Scales PyTorch/TensorFlow/HuggingFace from laptop to 1000s of nodes. Built-in hyperparameter tuning with Ray Tune, fault tolerance, elastic scaling. Use when training massive models across multiple machines or running distributed hyperparameter sweeps.
 
 # Ray Train - Distributed Training Orchestration
@@ -372,9 +372,9 @@ dataloader = DataLoader(dataset, num_workers=8)
 
 **Multi-node setup**: See [references/multi-node.md](references/multi-node.md) for Ray cluster deployment on AWS, GCP, Kubernetes, and SLURM.
 
-**Hyperparameter tuning**: See [references/hyperparameter-tuning.md](references/hyperparameter-tuning.md) for Ray Tune integration, search algorithms (Optuna, HyperOpt), and population-based training.
+**Hyperparameter tuning**: [Primary source / available reference](https://docs.ray.io/en/latest/train/user-guides/hyperparameter-optimization.html). The current official guide describes Ray Train and Tune integration. Consult the separate Tune documentation for individual search algorithms and population-based training.
 
-**Custom training loops**: See [references/custom-loops.md](references/custom-loops.md) for advanced Ray Train usage, custom backends, and integration with other frameworks.
+**Custom training loops**: [Primary source / available reference](https://docs.ray.io/en/latest/train/train.html). The current official overview describes Ray Train concepts and supported integrations. Check the dedicated version-specific guides for custom loops or backends.
 
 ## Hardware requirements
 
@@ -399,3 +399,7 @@ dataloader = DataLoader(dataset, num_workers=8)
 - Used by: OpenAI, Uber, Spotify, Shopify, Instacart
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

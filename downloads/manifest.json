@@ -57,7 +57,7 @@
       "Claude": 14
     },
     "ai-research-skills": {
-      "common": 430,
+      "common": 431,
       "GPT": 96,
       "Claude": 96
     },
@@ -477,7 +477,7 @@
     "packages/common/academic-study-coach.zip": "9c7cba085716ab442adb81c21d2e2dc088c2647a7f50a76194b4bd62c2ef3d53",
     "packages/common/ai-agent-builder.zip": "2c6cc5f45aed9374969ed54f05e48be87b6e1cb43e18824e14a1f8346e3d7625",
     "packages/common/ai-image-video-studio.zip": "28c0f97aa03af6b3f930002860261c3ed452ba58bc88cf67fe30baf25eac9444",
-    "packages/common/ai-research-skills.zip": "785d4013ead9c807c50f10a83331f9b6082f93cadbac3979b3bc97d2a75616b1",
+    "packages/common/ai-research-skills.zip": "fcc4e1d6014e92175b2a654b21c88a8aaaee1b486e4018c265eb6bff29e41331",
     "packages/common/banner-design.zip": "6fbc2116c6aa6ff61cb677292a051739b7d773d7cbc152e22904e71554ece6a5",
     "packages/common/brand.zip": "5654daca2f48e7d6eb590d331905a6ba8ecfe3db13a82246ef6b768426524ba5",
     "packages/common/campaign-plan.zip": "e0f89c16ecf3c56fef3ba6637a2fc3dde39266253b277edc1a4bedfb1eeb0668",

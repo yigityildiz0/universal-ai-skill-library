@@ -1,6 +1,6 @@
 # Module: mamba
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: State-space model with O(n) complexity vs Transformers' O(n²). 5× faster inference, million-token sequences, no KV cache. Selective SSM with hardware-aware design. Mamba-1 (d_state=16) and Mamba-2 (d_state=128, multi-head). Models 130M-2.8B on HuggingFace.
 
 # Mamba - Selective State Space Models
@@ -221,11 +221,11 @@ model = MambaLMHeadModel.from_pretrained("state-spaces/mamba-2.8b")
 
 ## Advanced topics
 
-**Selective SSM**: See [references/selective-ssm.md](references/selective-ssm.md) for mathematical formulation, state-space equations, and how selectivity enables O(n) complexity.
+**Selective SSM**: [Primary source / available reference](references/architecture-details.md#selective-state-space-mechanism). The available local section explains the selective state update. Consult the primary paper for formal derivations beyond the included explanation.
 
-**Mamba-2 architecture**: See [references/mamba2-details.md](references/mamba2-details.md) for multi-head structure, tensor parallelism, and distributed training setup.
+**Mamba-2 architecture**: [Primary source / available reference](https://arxiv.org/abs/2405.21060). The linked Mamba-2 primary paper describes the architecture and state-space duality. Verify exact section coverage before drawing conclusions about deployment or distributed-training setup.
 
-**Performance optimization**: See [references/performance.md](references/performance.md) for hardware-aware design, CUDA kernels, and memory efficiency techniques.
+**Performance optimization**: [Primary source / available reference](references/architecture-details.md#hardware-aware-implementation). The available local section introduces hardware-aware implementation. It is not an exhaustive CUDA-kernel or deployment-tuning manual.
 
 ## Hardware requirements
 
@@ -253,3 +253,7 @@ model = MambaLMHeadModel.from_pretrained("state-spaces/mamba-2.8b")
 - Docs: Repository README and wiki
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

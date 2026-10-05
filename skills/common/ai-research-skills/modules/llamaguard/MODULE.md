@@ -1,6 +1,6 @@
 # Module: llamaguard
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: Meta's 7-8B specialized moderation model for LLM input/output filtering. 6 safety categories - violence/hate, sexual content, weapons, substances, self-harm, criminal planning. 94-95% accuracy. Deploy with vLLM, HuggingFace, Sagemaker. Integrates with NeMo Guardrails.
 
 # LlamaGuard - AI Content Moderation
@@ -297,11 +297,11 @@ model = AutoModelForCausalLM.from_pretrained(
 
 ## Advanced topics
 
-**Custom categories**: See [references/custom-categories.md](references/custom-categories.md) for fine-tuning LlamaGuard with domain-specific safety categories.
+**Custom categories**: [Primary source / available reference](https://huggingface.co/meta-llama/Llama-Guard-3-8B). The official model card documents the safety taxonomy, prompts and usage. A complete domain-specific fine-tuning guide is not bundled at this route.
 
-**Performance benchmarks**: See [references/benchmarks.md](references/benchmarks.md) for accuracy comparison with other moderation APIs and latency optimization.
+**Performance benchmarks**: [Primary source / available reference](https://huggingface.co/meta-llama/Llama-Guard-3-8B). The official model card reports its evaluation and limitations. Do not infer unreported moderation-API comparisons or deployment latency benchmarks.
 
-**Deployment guide**: See [references/deployment.md](references/deployment.md) for Sagemaker, Kubernetes, and scaling strategies.
+**Deployment guide**: [Primary source / available reference](https://huggingface.co/meta-llama/Llama-Guard-3-8B). The official model card supplies model usage and access/license requirements. It is not a SageMaker, Kubernetes or scaling tutorial.
 
 ## Hardware requirements
 
@@ -323,10 +323,14 @@ model = AutoModelForCausalLM.from_pretrained(
 - HuggingFace:
   - V1: https://huggingface.co/meta-llama/LlamaGuard-7b
   - V2: https://huggingface.co/meta-llama/Meta-Llama-Guard-2-8B
-  - V3: https://huggingface.co/meta-llama/Meta-Llama-Guard-3-8B
+  - V3: https://huggingface.co/meta-llama/Llama-Guard-3-8B
 - Paper: https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/
 - Integration: vLLM, Sagemaker, NeMo Guardrails
 - Accuracy: 94.5% (prompts), 95.3% (responses)
 
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

@@ -1,6 +1,6 @@
 # Module: verl
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: Provides guidance for training LLMs with reinforcement learning using verl (Volcano Engine RL). Use when implementing RLHF, GRPO, PPO, or other RL algorithms for LLM post-training at scale with flexible infrastructure backends.
 
 # verl: Volcano Engine Reinforcement Learning for LLMs
@@ -349,7 +349,7 @@ pip install vllm>=0.8.5,<=0.12.0
 
 ### Multi-Turn Tool Calling
 
-See [references/multi-turn.md](references/multi-turn.md) for agentic workflows with tool use.
+The available [local API reference](references/api-reference.md) contains multi-turn configuration fields; it is not the absent end-to-end tool-use workflow guide. Consult the [official VERL documentation](https://verl.readthedocs.io/en/latest/) for the selected version and verify the relevant rollout/tool-use sections before implementation.
 
 ### Vision-Language Models
 
@@ -384,3 +384,7 @@ actor_rollout_ref:
 - **Recipes**: https://github.com/verl-project/verl-recipe (DAPO, GSPO, etc.)
 - **Community**: Slack at verl-project
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

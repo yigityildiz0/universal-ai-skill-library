@@ -1,6 +1,6 @@
 # Module: flash-attention
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: Optimizes transformer attention with Flash Attention for 2-4x speedup and 10-20x memory reduction. Use when training/running transformers with long sequences (>512 tokens), encountering GPU memory issues with attention, or need faster inference. Supports PyTorch native SDPA, flash-attn library, H100 FP8, and sliding window attention.
 
 # Flash Attention - Fast Memory-Efficient Attention
@@ -337,9 +337,9 @@ Flash Attention uses float16/bfloat16 for speed. Float32 not supported.
 
 **Performance benchmarks**: See [references/benchmarks.md](references/benchmarks.md) for detailed speed and memory comparisons across GPUs and sequence lengths.
 
-**Algorithm details**: See [references/algorithm.md](references/algorithm.md) for tiling strategy, recomputation, and IO complexity analysis.
+**Algorithm details**: [Primary source / available reference](https://arxiv.org/abs/2205.14135). The original paper explains the IO-aware algorithm, tiling and recomputation; implementation details must be checked against the selected version.
 
-**Advanced features**: See [references/advanced-features.md](references/advanced-features.md) for rotary embeddings, ALiBi, paged KV cache, and custom attention masks.
+**Advanced features**: [Primary source / available reference](https://github.com/Dao-AILab/flash-attention). The maintainer repository documents supported features and API constraints. Check the actual feature/version coverage; it does not replace the absent advanced-features guide.
 
 ## Hardware requirements
 
@@ -360,3 +360,7 @@ Flash Attention uses float16/bfloat16 for speed. Float32 not supported.
 
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

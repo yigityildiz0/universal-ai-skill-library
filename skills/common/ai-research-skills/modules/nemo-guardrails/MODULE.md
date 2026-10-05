@@ -1,6 +1,6 @@
 # Module: nemo-guardrails
 
-> Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
+> Upstream orchestra-research/AI-research-SKILLs skill; reference routes corrected by Yigit, 2026-10-05. Paths are relative to this module folder.
 > Original trigger scope: NVIDIA's runtime safety framework for LLM applications. Features jailbreak detection, input/output validation, fact-checking, hallucination detection, PII filtering, toxicity detection. Uses Colang 2.0 DSL for programmable rails. Production-ready, runs on T4 GPU.
 
 # NeMo Guardrails - Programmable Safety for LLMs
@@ -260,11 +260,11 @@ async def strict_fact_check(context):
 
 ## Advanced topics
 
-**Colang 2.0 DSL**: See [references/colang-guide.md](references/colang-guide.md) for flow syntax, actions, variables, and advanced patterns.
+**Colang 2.0 DSL**: [Primary source / available reference](https://docs.nvidia.com/nemo/guardrails/configure-guardrails/colang/colang-2/getting-started). The official Colang 2 getting-started guide introduces the language and basic flows. Check the version and dedicated language reference for advanced patterns.
 
-**Integration guide**: See [references/integrations.md](references/integrations.md) for LlamaGuard, Presidio, ActiveFence, and custom models.
+**Integration guide**: [Primary source / available reference](https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview). The official overview introduces Guardrails and its components. Verify each proposed integration in its own current documentation before assuming support.
 
-**Performance optimization**: See [references/performance.md](references/performance.md) for latency reduction, caching, and batching strategies.
+**Performance optimization**: [Primary source / available reference](https://docs.nvidia.com/nemo/guardrails/latest/configure-guardrails/configure-rails). The linked official page explains rail configuration. It is not a latency, caching or batching performance guide; obtain measurements and current maintainer guidance for those topics.
 
 ## Hardware requirements
 
@@ -290,3 +290,7 @@ async def strict_fact_check(context):
 
 
 
+
+## Reference availability
+
+The upstream snapshot referenced additional files that it did not supply. Those broken routes now point to available local material or primary publisher/maintainer sources. An online route is not a bundled offline guide: check the relevant version/section, record access limitations and do not invent missing detail. Existing technical procedures and resources remain included.

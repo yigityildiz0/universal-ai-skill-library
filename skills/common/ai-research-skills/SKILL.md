@@ -6,7 +6,7 @@ license: MIT
 
 # AI Research Skills Library
 
-Upstream [orchestra-research/AI-research-SKILLs](https://github.com/orchestra-research/AI-research-SKILLs) (MIT, 773a529 2026-06-15) — full library. Upstream technical resources are retained; controlling instructions in autoresearch and research-manager have documented authorization/privacy adaptations; paths inside a module are relative to that module's folder.
+Upstream [orchestra-research/AI-research-SKILLs](https://github.com/orchestra-research/AI-research-SKILLs) (MIT, 773a529 2026-06-15) — full library. Upstream technical resources are retained; controlling instructions in autoresearch and research-manager have documented authorization/privacy adaptations; 19 absent-reference routes and the existing Llama Guard 3 model-card identifier are corrected in yigit/reference-repairs.json; paths inside a module are relative to that module's folder.
 
 ## Execution protocol
 
