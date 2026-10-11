@@ -90,11 +90,12 @@ You MUST complete each phase before proceeding to the next.
    ```bash
    # Layer 1: Workflow
    echo "=== Secrets available in workflow: ==="
-   echo "IDENTITY: ${IDENTITY:+SET}${IDENTITY:-UNSET}"
+    if [ -n "${IDENTITY+x}" ]; then echo "IDENTITY: PRESENT"; else echo "IDENTITY: ABSENT"; fi
 
    # Layer 2: Build script
    echo "=== Env vars in build script: ==="
-   env | grep IDENTITY || echo "IDENTITY not in environment"
+    # Check exported presence in a child process; never print the value.
+    sh -c 'if [ "${IDENTITY+x}" = x ]; then echo "IDENTITY: EXPORTED"; else echo "IDENTITY: NOT EXPORTED"; fi'
 
    # Layer 3: Signing script
    echo "=== Keychain state: ==="
@@ -105,7 +106,7 @@ You MUST complete each phase before proceeding to the next.
    codesign --sign "$IDENTITY" --verbose=4 "$APP"
    ```
 
-   **This reveals:** Which layer fails (secrets → workflow ✓, workflow → build ✗)
+    **This reveals:** Where presence/export propagation fails, without exposing the value. These are Bash/macOS examples; adapt to the host. Redact keychain identity/account details before logging; run signing only as part of the authorized reproduction. Never dump the environment or secret-bearing payloads. A presence check does not prove a secret is valid.
 
 5. **Trace Data Flow**
 
@@ -175,8 +176,8 @@ You MUST complete each phase before proceeding to the next.
    - Simplest possible reproduction
    - Automated test if possible
    - One-off test script if no framework
-   - MUST have before fixing
-   - Use the installed `test-driven-development` skill for writing proper failing tests
+   - Capture evidence before fixing; add a regression test when behavior/risk warrants it
+   - Read [test-driven-development](../test-driven-development/MODULE.md) for test-first work; do not invent a separate installed skill
 
 2. **Implement Single Fix**
    - Address the root cause identified
@@ -193,10 +194,10 @@ You MUST complete each phase before proceeding to the next.
    - STOP
    - Count: How many fixes have you tried?
    - If < 3: Return to Phase 1, re-analyze with new information
-   - **If ≥ 3: STOP and question the architecture (step 5 below)**
-   - DON'T attempt Fix #4 without architectural discussion
+   - **If ≥ 3: pause speculative edits and reassess evidence, reproduction, assumptions, and architecture (step 5)**
+   - Continue with a justified hypothesis; ask only for a material architecture/scope decision
 
-5. **If 3+ Fixes Failed: Question Architecture**
+5. **If 3+ Fixes Failed: Reassess the Approach**
 
    **Pattern indicating architectural problem:**
    - Each fix reveals new shared state/coupling/problem in different place
@@ -208,9 +209,9 @@ You MUST complete each phase before proceeding to the next.
    - Are we "sticking with it through sheer inertia"?
    - Should we refactor architecture vs. continue fixing symptoms?
 
-   **Discuss with your human partner before attempting more fixes**
+   **Discuss material architecture changes with the user; continue bounded investigation independently.**
 
-   This is NOT a failed hypothesis - this is a wrong architecture.
+   Repeated failures are a signal to reassess, not proof of a wrong architecture. They may reflect a bad reproduction, incomplete logs, incorrect assumptions, or multiple defects.
 
 ## Red Flags - STOP and Follow Process
 
@@ -229,7 +230,7 @@ If you catch yourself thinking:
 
 **ALL of these mean: STOP. Return to Phase 1.**
 
-**If 3+ fixes failed:** Question the architecture (see Phase 4.5)
+**If 3+ fixes failed:** Reassess evidence and assumptions, including architecture where indicated (Phase 4.5).
 
 ## your human partner's Signals You're Doing It Wrong
 
@@ -253,7 +254,7 @@ If you catch yourself thinking:
 | "Multiple fixes at once saves time" | Can't isolate what worked. Causes new bugs. |
 | "Reference too long, I'll adapt the pattern" | Partial understanding guarantees bugs. Read it completely. |
 | "I see the problem, let me fix it" | Seeing symptoms ≠ understanding root cause. |
-| "One more fix attempt" (after 2+ failures) | 3+ failures = architectural problem. Question pattern, don't fix again. |
+| "One more fix attempt" (after repeated failures) | Reassess evidence and assumptions before another edit; architecture is one hypothesis, not a proven cause. |
 
 ## Quick Reference
 
@@ -273,7 +274,7 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 3. Implement appropriate handling (retry, timeout, error message)
 4. Add monitoring/logging for future investigation
 
-**But:** 95% of "no root cause" cases are incomplete investigation.
+An unresolved cause may reflect incomplete evidence. State what is known, unknown, and what observation could distinguish the remaining hypotheses.
 
 ## Supporting Techniques
 
@@ -289,8 +290,4 @@ These techniques are part of systematic debugging and available in this director
 
 ## Real-World Impact
 
-From debugging sessions:
-- Systematic approach: 15-30 minutes to fix
-- Random fixes approach: 2-3 hours of thrashing
-- First-time fix rate: 95% vs 40%
-- New bugs introduced: Near zero vs common
+Measure outcomes in the actual project: time to reproduce, time to root-cause evidence, successful verification, and regressions. Do not present unsourced percentages or timing claims as measured results.

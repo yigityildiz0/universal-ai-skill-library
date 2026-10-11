@@ -304,7 +304,9 @@ When you have something meaningful to share, create a research presentation — 
 - Current understanding (the findings narrative)
 - What's planned next
 
-For Claude Code: generate HTML and `open` it. If HTML fails to open or render, convert to PDF as fallback (use `weasyprint`, `playwright pdf`, or `wkhtmltopdf`). For OpenClaw: generate PDF directly.
+When an artifact is requested, use the host preview tool; otherwise use macOS
+`open`, Linux `xdg-open`, or PowerShell `Start-Process` with a quoted path.
+Generate PDF only for the agreed delivery format.
 
 See [references/progress-reporting.md](references/progress-reporting.md) for template scaffolding and the optimization plot approach. Use the template as a starting point — be creative with what you show.
 
@@ -320,7 +322,11 @@ Commit at natural research milestones:
 | Outer loop direction change | `research(reflect): {direction} — {reason}` |
 | Paper draft complete | `research(paper): {title}` |
 
-**Hard rule**: Protocol commits MUST precede result commits. Never combine them. The git history is your lightweight pre-registration — it proves what you planned before you saw results. Don't commit after every experiment — commit when there's meaningful progress.
+**Hard rule**: Protocol commits MUST precede result commits. Never combine them.
+Local Git is editable: it records intent, not independent preregistration proof.
+For confirmatory claims use an independently timestamped registry or immutable
+archive before inspecting outcomes (publication requires authorization).
+Otherwise call this a locally versioned protocol. Commit on meaningful progress.
 
 ## Concluding: Paper Writing
 
@@ -339,7 +345,7 @@ Proceed autonomously through the writing process. If the ml-paper-writing skill 
 
 Principles to enforce continuously — not tied to any specific phase:
 
-- **Lock before you run**: Commit your experiment protocol to git before executing. This proves your plan existed before you saw results. Never combine protocol + results in one commit.
+- **Lock before you run**: Commit the protocol before execution; local Git cannot independently prove chronology. Never combine protocol + results in one commit.
 - **Confirmatory vs exploratory**: Results matching your locked protocol are confirmatory. Everything else is exploratory — interesting but requiring more skepticism.
 - **Negative results are progress**: A refuted hypothesis tells you something. Log what it rules out and what it suggests. Don't treat it as failure.
 - **Sanity check before analysis**: Verify training converged, baselines reproduce, and data is correct before trusting your primary metric.

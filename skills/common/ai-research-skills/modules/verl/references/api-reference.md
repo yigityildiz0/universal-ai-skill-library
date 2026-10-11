@@ -177,24 +177,9 @@ custom_reward_function:
 
 ```python
 # reward.py
-def compute_score(responses: list[str], ground_truths: list[str], **kwargs) -> list[float]:
-    """
-    Compute rewards for a batch of responses.
-
-    Args:
-        responses: Generated completions
-        ground_truths: Expected answers from data
-        **kwargs: Additional metadata
-
-    Returns:
-        List of reward scores (floats)
-    """
-    rewards = []
-    for response, gt in zip(responses, ground_truths):
-        # Your reward logic
-        score = 1.0 if correct(response, gt) else 0.0
-        rewards.append(score)
-    return rewards
+def compute_score(data_source, solution_str, ground_truth, extra_info=None):
+    """Per-example callback. Replace this toy exact match with a task verifier."""
+    return float(solution_str.strip() == str(ground_truth).strip())
 ```
 
 ## Backend-Specific Configuration

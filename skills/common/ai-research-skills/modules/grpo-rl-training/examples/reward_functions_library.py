@@ -120,7 +120,7 @@ def soft_xml_format_reward(completions, **kwargs) -> List[float]:
     """
     pattern = r'<reasoning>.*?</reasoning>\s*<answer>.*?</answer>'
     responses = [comp[0]['content'] for comp in completions]
-    matches = [re.search(pattern, r, re.DOTALL) for r in responses]
+    matches = [re.fullmatch(pattern, r.strip(), re.DOTALL) for r in responses]
     return [0.5 if match else 0.0 for match in matches]
 
 def json_format_reward(completions, **kwargs) -> List[float]:
@@ -146,7 +146,7 @@ def json_format_reward(completions, **kwargs) -> List[float]:
 
 def incremental_format_reward(completions, tags=['reasoning', 'answer'], **kwargs) -> List[float]:
     """
-    Partial credit for each required tag.
+    Partial credit for correctly ordered, nonduplicated tag pairs.
     Use for: Training models to gradually learn format
 
     Weight: sum(0.125 * num_tags * 2) = up to 0.5 for 2 tags
@@ -156,11 +156,17 @@ def incremental_format_reward(completions, tags=['reasoning', 'answer'], **kwarg
 
     for r in responses:
         score = 0.0
+        cursor = 0
         for tag in tags:
-            if f'<{tag}>' in r:
-                score += 0.125
-            if f'</{tag}>' in r:
-                score += 0.125
+            opening, closing = f'<{tag}>', f'</{tag}>'
+            start = r.find(opening, cursor)
+            end = r.find(closing, start + len(opening)) if start >= 0 else -1
+            if start < 0 or end < 0 or r.count(opening) != 1 or r.count(closing) != 1:
+                break
+            if r[cursor:start].strip():
+                break
+            score += 0.25
+            cursor = end + len(closing)
 
         # Penalize extra content after final closing tag
         if f'</{tags[-1]}>' in r:

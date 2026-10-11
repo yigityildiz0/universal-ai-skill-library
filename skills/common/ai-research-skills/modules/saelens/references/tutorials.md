@@ -14,7 +14,7 @@ import torch
 
 # 1. Load model and SAE
 model = HookedTransformer.from_pretrained("gpt2-small", device="cuda")
-sae, cfg_dict, sparsity = SAE.from_pretrained(
+sae, cfg_dict, sparsity = SAE.from_pretrained_with_cfg_and_sparsity(
     release="gpt2-small-res-jb",
     sae_id="blocks.8.hook_resid_pre",
     device="cuda"
@@ -149,21 +149,21 @@ features = sae.encode(activations)
 # Target token
 target_token = model.to_single_token(" Paris")
 
-# Compute feature contributions to target logit
-# contribution = feature_activation * decoder_weight * unembedding
+# Logit-lens projections only: downstream layers and final LN are omitted.
+# Causal effects require ablation/patching (see Tutorial 4).
 W_dec = sae.W_dec  # [d_sae, d_model]
 W_U = model.W_U    # [d_model, d_vocab]
 
 # Feature direction projected to vocabulary
 feature_to_logit = W_dec @ W_U  # [d_sae, d_vocab]
 
-# Contribution of each feature to "Paris" at final position
+# Projection of each feature onto "Paris" at final position
 feature_acts = features[0, -1]  # [d_sae]
-contributions = feature_acts * feature_to_logit[:, target_token]
+projections = feature_acts * feature_to_logit[:, target_token]
 
-# Top contributing features
-top_features = contributions.topk(10)
-print("Top features contributing to 'Paris':")
+# Top projected features
+top_features = projections.topk(10)
+print("Top feature projections onto 'Paris':")
 for idx, val in zip(top_features.indices, top_features.values):
     print(f"  Feature {idx.item()}: {val.item():.3f}")
 
@@ -176,11 +176,8 @@ def steer_with_feature(feature_idx, strength=5.0):
         activation[:, -1, :] += strength * feature_direction
         return activation
 
-    output = model.generate(
-        tokens,
-        max_new_tokens=10,
-        fwd_hooks=[("blocks.8.hook_resid_pre", hook)]
-    )
+    with model.hooks(fwd_hooks=[("blocks.8.hook_resid_pre", hook)]):
+        output = model.generate(tokens, max_new_tokens=10)
     return model.to_string(output[0])
 
 # Try steering with top feature

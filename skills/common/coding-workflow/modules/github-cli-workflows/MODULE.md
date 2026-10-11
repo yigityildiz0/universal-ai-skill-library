@@ -1,7 +1,7 @@
 # Module: github-cli-workflows
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/github-cli-workflows/`).
-> Original trigger scope: Interact with GitHub through an already available `gh` CLI using focused issue, pull-request, CI-run, and API workflows. Use when the user explicitly wants GitHub CLI commands or a CLI-focused workflow; do not install tooling or replace the maintained GitHub plugin automatically. Turkish triggers: GitHub repo/issue/PR/release işlemi, gh ile kontrol et, GitHub'da yayınla.
+> Original trigger scope: Interact with GitHub through an already available `gh` CLI using focused issue, pull-request, CI-run, and API workflows. Use when the user explicitly wants GitHub CLI commands or a CLI-focused workflow; do not install tooling or replace the maintained GitHub plugin automatically. Turkish triggers: gh ile kontrol et, GitHub CLI komutunu yaz, gh ile PR/issue/release işlemi yap.
 
 # GitHub Skill
 

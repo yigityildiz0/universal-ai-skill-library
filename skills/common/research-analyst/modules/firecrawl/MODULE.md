@@ -1,6 +1,6 @@
 # Module: firecrawl
 
-> Yiğit's earlier skill restored from archive, unchanged. Paths relative to this module folder.
+> the user's earlier skill restored from archive, unchanged. Paths relative to this module folder.
 > Original trigger scope: Use an already configured Firecrawl client or API for authorized web search, scraping, mapping, crawling, and structured extraction with bounded scope, current official syntax, provenance, and privacy controls. Use when Firecrawl is explicitly available or requested; do not install it, create credentials, or crawl a site automatically.
 
 # Firecrawl

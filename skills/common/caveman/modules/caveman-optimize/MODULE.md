@@ -1,7 +1,10 @@
-# Module: caveman-optimize
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-optimize/`.
-> Original trigger scope: Turn a Caveman optimization observation into an operator-chosen candidate with a paired baseline evaluation. Use when asked to inspect or evaluate a Caveman optimization report. Needs explicit approval.
+---
+name: caveman-optimize
+description: >
+  Turn a Caveman optimization observation into an operator-chosen candidate
+  with a paired baseline evaluation. Use when asked to inspect or evaluate a
+  Caveman optimization report. Needs explicit approval.
+---
 
 # Evaluate an optimization observation
 

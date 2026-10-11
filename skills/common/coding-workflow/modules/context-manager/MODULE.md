@@ -30,7 +30,7 @@ Keep this as a navigation layer, not a second copy of all source material.
 3. Separate user requirements, verified facts, inferences, and proposals.
 4. Record decisions when they constrain later work. Remove superseded assumptions and preserve why they changed.
 5. Store large raw outputs in artifacts and retain a short pointer plus hash/timestamp.
-6. Delegate bulky independent investigation with a bounded contract; integrate its evidence rather than its confidence.
+6. Delegate bulky independent investigation only when explicitly authorized and useful, with a bounded contract; otherwise batch independent reads or work inline. Integrate evidence rather than confidence.
 7. Before compaction/handoff, write the ledger and verify critical paths, commands, counts, and unresolved risks against source.
 8. After compaction, reopen the ledger and current files; do not assume the working tree or external state is unchanged.
 

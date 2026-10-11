@@ -18,7 +18,7 @@ Eight empirically grounded frameworks from cognitive science, applied to compute
 **Do NOT use this skill when**:
 - You need structured project-level brainstorming workflows (use `brainstorming-research-ideas`)
 - You have a well-defined problem and need execution help (use domain-specific skills)
-- You need a literature survey (use `scientific-skills:literature-review`)
+- You need a literature survey (use `medical-evidence-research` for biomedical/FTR evidence; `research-analyst` for general research).
 
 **Relationship to Brainstorm skill**: The brainstorm skill provides operational workflows (diverge → converge → refine) and practical filters. This skill provides the deeper cognitive engines that power creative leaps. Use them together: creative-thinking to generate raw insight, brainstorm to structure and evaluate it.
 
@@ -284,7 +284,7 @@ Albert Rothenberg's studies of eminent creators found that **holding two contrad
 | Security AND Usability | Zero-knowledge proofs: prove knowledge without revealing it | Enabled private computation |
 | Expressiveness AND Tractability | Probabilistic programming: express complex models, automate inference | New programming paradigm |
 | Memorization AND Generalization | Grokking: models memorize first, then generalize with more training | New understanding of learning dynamics |
-| Compression AND Quality | Neural codecs that compress beyond information-theoretic limits via learned priors | Redefined compression research |
+| Compression AND Quality | Learned codecs improve rate–distortion trade-offs for a specified source distribution or perceptual loss; priors do not violate information-theoretic bounds under the same assumptions | Make the source, distortion measure and fidelity/perception trade-off explicit |
 
 **Dialectical Thinking Workflow**:
 

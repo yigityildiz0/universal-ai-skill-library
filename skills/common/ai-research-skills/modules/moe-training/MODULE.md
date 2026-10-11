@@ -202,7 +202,7 @@ total_loss = language_model_loss + 0.01 * load_balancing_loss(...)
 **Router Z-Loss (Stability):**
 ```python
 def router_z_loss(logits):
-    """Encourage router to have lower entropy (more decisive)."""
+    """Stabilize router logits via squared log-partition, not entropy minimization."""
     z_loss = torch.logsumexp(logits, dim=-1).pow(2).mean()
     return z_loss
 
@@ -320,7 +320,8 @@ class MixtralMoEBlock(nn.Module):
         self.num_experts = config.num_local_experts  # 8
         self.top_k = config.num_experts_per_tok       # 2
 
-        # 8 expert FFNs
+        # Toy two-linear SiLU experts, NOT Mixtral's gated SwiGLU FFN.
+        # A faithful expert computes down_proj(silu(gate_proj(x)) * up_proj(x)).
         self.experts = nn.ModuleList([
             nn.Sequential(
                 nn.Linear(self.hidden_dim, self.ffn_dim, bias=False),
@@ -440,7 +441,7 @@ moe_lr_decay_iters = 500000  # 1.5-2× longer
 ```python
 # Start with standard values
 moe_loss_coeff = 0.01    # Auxiliary loss (load balancing)
-router_z_loss_coeff = 0.001  # Router entropy (stability)
+router_z_loss_coeff = 0.001  # Router log-partition stability (not entropy)
 
 # If load imbalance persists, increase aux loss
 if max_expert_usage / min_expert_usage > 2.0:

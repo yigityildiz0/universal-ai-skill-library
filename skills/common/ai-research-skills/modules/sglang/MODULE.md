@@ -193,14 +193,13 @@ def generate_code(s, description):
     s += f"Generate Python code for: {description}\n"
     s += "```python\n"
 
-    # EBNF grammar for Python
-    python_grammar = """
-    ?start: function_def
-    function_def: "def" NAME "(" [parameters] "):" suite
-    parameters: parameter ("," parameter)*
-    parameter: NAME
-    suite: simple_stmt | NEWLINE INDENT stmt+ DEDENT
-    """
+    # Complete XGrammar EBNF for a deliberately tiny Python subset.
+    # Not a full Python grammar or a semantic correctness check.
+    python_grammar = r'''
+    root ::= "def " name "():\n    return " integer "\n"
+    name ::= [a-zA-Z_] [a-zA-Z0-9_]*
+    integer ::= [0-9]+
+    '''
 
     s += sgl.gen("code", max_tokens=200, grammar=python_grammar)
     s += "\n```"
@@ -320,11 +319,13 @@ history.append({"role": "Assistant", "content": state["response"]})
 
 # Turn 2 (reuses Turn 1 KV cache)
 state = multi_turn_chat.run(history=history, new_message="What's 2+2?")
-# Only computes new message (much faster!)
+history.append({"role": "User", "content": "What's 2+2?"})
+history.append({"role": "Assistant", "content": state["response"]})
+# Cache reuse depends on matching prefixes and available cache capacity.
 
 # Turn 3 (reuses Turn 1 + Turn 2 KV cache)
 state = multi_turn_chat.run(history=history, new_message="Tell me a joke")
-# Progressively faster as history grows
+# Longer history still increases decoding work; reuse is not a speed guarantee.
 ```
 
 ## Advanced features

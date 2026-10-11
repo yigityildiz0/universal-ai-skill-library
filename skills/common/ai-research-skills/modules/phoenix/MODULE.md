@@ -306,8 +306,8 @@ def my_model(input_data):
 def accuracy_evaluator(input_data, output, expected):
     """Custom evaluator."""
     return {
-        "score": 1.0 if expected["answer"].lower() in output["answer"].lower() else 0.0,
-        "label": "correct" if expected["answer"].lower() in output["answer"].lower() else "incorrect"
+        "score": float(expected["answer"].strip().casefold() == output["answer"].strip().casefold()),
+        "label": "correct" if expected["answer"].strip().casefold() == output["answer"].strip().casefold() else "incorrect"
     }
 
 # Run experiment
@@ -387,7 +387,7 @@ docker run -p 6006:6006 arizephoenix/phoenix:latest
 export PHOENIX_SQL_DATABASE_URL="postgresql://user:pass@host:5432/phoenix"
 
 # Start server
-phoenix serve --host 0.0.0.0 --port 6006
+phoenix serve --host 127.0.0.1 --port 6006
 ```
 
 ### Environment variables

@@ -7,6 +7,18 @@
 
 Ethical and legal approaches for accessing restricted web content for journalism and research.
 
+## Retrieval contract and failed-link recovery
+
+Use available host tools first; Python examples below are optional reference clients, not mandatory installations or proof of current API availability. Verify provider syntax, authentication and quotas at use time. Never create accounts, purchase access, reveal keys or upload private documents automatically.
+
+For a broken link, 403/404, login page, empty PDF or inaccessible full text:
+1. Resolve the DOI/PMID/title against the publisher or authoritative index; confirm authors, year and version, including corrections/retractions.
+2. Try PMC/Europe PMC, a publisher OA location, an institutional repository or an authorized OA resolver. Verify the document, not just its URL; accepted manuscripts/preprints may differ from the version of record.
+3. Use licensed institution/library access only when authorized. Otherwise offer an author-copy/ILL request draft or ask for a lawfully held copy; do not send it automatically.
+4. If only the abstract is accessible, label the appraisal **abstract-only** and identify missing methods/results. Never reconstruct or claim to have read unavailable full text. Do not silently substitute another paper.
+
+An archive snapshot is provenance evidence, not redistribution permission or a subscription workaround. Do not strip paywall/authentication controls, evade CAPTCHAs, or submit private/signed URLs to archives. Browser reader mode is for readability of content already authorized and accessible.
+
 <!-- untrusted-content-contract:v1 -->
 ## Untrusted content boundary
 
@@ -78,9 +90,10 @@ def find_open_access(doi: str, email: str) -> dict:
     Returns:
         Dict with best open access URL if available
     """
-    url = f"https://api.unpaywall.org/v2/{doi}?email={email}"
+    from urllib.parse import quote
+    url = f"https://api.unpaywall.org/v2/{quote(doi, safe='/')}"
 
-    response = requests.get(url, timeout=30)
+    response = requests.get(url, params={'email': email}, timeout=30)
 
     if response.status_code != 200:
         return {'error': f'Status {response.status_code}'}
@@ -88,7 +101,7 @@ def find_open_access(doi: str, email: str) -> dict:
     data = response.json()
 
     if data.get('is_oa'):
-        best_location = data.get('best_oa_location', {})
+        best_location = data.get('best_oa_location') or {}
         return {
             'is_open_access': True,
             'oa_url': best_location.get('url_for_pdf') or best_location.get('url'),
@@ -285,7 +298,7 @@ def search_openalex(query: str, api_key: str, limit: int = 25,
 
 - **DOAJ** (`doaj.org/api/v3`), Directory of Open Access Journals; useful when you need to verify a publisher is fully OA before trusting a "journal lookup" claim.
 - **EuropePMC** (`europepmc.org/RestfulWebService`), Mirror of PubMed Central plus preprints, OA full-text search, and ORCID-aware author lookup.
-- **PubMed Central** (`eutils.ncbi.nlm.nih.gov`), NIH OA biomedical archive; required for NIH-funded papers under the 2026 OSTP Nelson Memo.
+- **PubMed Central** (`pmc.ncbi.nlm.nih.gov`), NIH biomedical full-text archive. Deposit/access obligations depend on the funder, acceptance date and applicable policy; verify [NIH Public Access](https://sharing.nih.gov/public-access-policy) rather than treating every NIH record as immediate OA or openly licensed.
 
 ### Deliberately excluded (legally risky, likely ToS / copyright violation)
 
@@ -298,61 +311,22 @@ legitimate open-access paths above; if a paper truly isn't available,
 check author-sharing permissions and the library's ILL eligibility,
 availability, charges and terms; neither route guarantees access.
 
-## Browser reader mode for soft paywalls
+## Browser reader mode for authorized content
 
 ### Activating reader mode
 
-This bookmarklet only works for **soft / metered paywalls** where the
-publisher loads the article HTML and visually overlays a subscription
-prompt, the content is already in the DOM, just hidden. It does
-**not** defeat hard paywalls (NYT, WSJ, FT, The Atlantic, Bloomberg,
-Stratechery, etc.) where article HTML is server-side gated; on those
-sites the bookmarklet simply removes overlays and reveals nothing
-useful. Systematic use to read otherwise-paywalled content may
-violate the publisher's ToS, use it only as a reader-mode shim for
-content you legitimately have access to.
-
-```javascript
-// Bookmarklet to strip soft-paywall overlays so reader mode works
-// Works on some soft paywalls that load content before blocking
-
-javascript:(function(){
-    // Try to extract article content
-    var article = document.querySelector('article') ||
-                  document.querySelector('[role="main"]') ||
-                  document.querySelector('.article-body') ||
-                  document.querySelector('.post-content');
-
-    if (article) {
-        // Remove paywall overlays
-        document.querySelectorAll('[class*="paywall"], [class*="subscribe"], [id*="paywall"]')
-            .forEach(el => el.remove());
-
-        // Remove fixed position overlays
-        document.querySelectorAll('*').forEach(el => {
-            var style = getComputedStyle(el);
-            if (style.position === 'fixed' && style.zIndex > 100) {
-                el.remove();
-            }
-        });
-
-        // Re-enable scrolling
-        document.body.style.overflow = 'auto';
-        document.documentElement.style.overflow = 'auto';
-
-        console.log('Overlay removed. Content may now be visible.');
-    }
-})();
-```
+Use the browser's native reader/accessibility view after access is authorized.
+If the page requests a subscription or institutional login, follow the legal
+retrieval hierarchy above. Hidden DOM text does not establish access rights.
 
 ### Reader mode by browser
 
-| Browser | How to Activate | Effectiveness |
+| Browser | How to Activate | Scope |
 |---------|-----------------|---------------|
-| **Safari** | Click Reader icon in URL bar | High for soft paywalls |
-| **Firefox** | Click Reader View icon (or F9) | High |
-| **Edge** | Click Immersive Reader icon | Highest |
-| **Chrome** | Side panel → Reading mode (stable since Chrome 114, May 2023) | Medium |
+| **Safari** | Reader in the page/address menu | Readability; availability varies |
+| **Firefox** | Reader View icon | Readability; availability varies |
+| **Edge** | Immersive Reader | Readability; availability varies |
+| **Chrome** | Reading mode | Readability; availability varies |
 
 ## Library database access
 
@@ -455,14 +429,10 @@ merging with Nord), consult an independent reviewer at point-of-use:
 - **PrivacyGuides** (`privacyguides.org/en/vpn/`), community-maintained,
   privacy-prioritized recommendations with explicit criteria.
 - **Privacy Tools** historical comparisons.
-- **Tor Browser** (`torproject.org`), maximum-anonymity option,
-  free, no provider trust required; slow but the right tool for
-  source protection or genuinely sensitive research.
+- **Tor Browser** (`torproject.org`), a possible privacy tool with a distinct threat model; it does not guarantee anonymity or remove the need to trust endpoints and handle source material safely.
 
-For routine geo-restriction testing (not source protection),
-mainstream commercial VPNs in the $3-10/month tier are
-interchangeable on speed; pick on jurisdiction (your threat model)
-and recent independent audits, not marketing copy.
+For authorized geo-restriction testing, compare current independent measurements,
+jurisdiction and audit scope; price alone establishes neither speed nor privacy.
 
 ### Checking geo-restriction status
 
@@ -498,25 +468,18 @@ def check_geo_access(url: str, regions: list = None) -> dict:
 
 ## Archive-based access
 
-### Using Archive.today for paywalled articles
+### Public archive snapshots for provenance
 
 ```python
 import requests
-from urllib.parse import quote, unquote
+from urllib.parse import quote, unquote, urlparse
 
 def get_archived_article(url: str) -> str:
     """Try to get article from Archive.today.
 
-    Archive.today often captures full article content because it
-    renders JavaScript and captures the result. Legal status varies
-    by jurisdiction; treat systematic use to bypass paywalls as ToS-
-    violating and use only for ad-hoc research access.
-
-    Operational notes (2026): the FBI subpoenaed archive.today's
-    registrar in October 2025; Wikipedia stopped accepting it as a
-    citation source in February 2026. Still useful for capturing
-    JS-rendered content, but treat as secondary to Wayback Machine
-    for legal/citation use.
+    Authorized public archival research only, not a subscription workaround.
+    Do not send private/signed URLs or create archive captures implicitly.
+    When access is unclear, use authorized library/OA routes instead.
     """
     from urllib.parse import urljoin
 
@@ -538,7 +501,11 @@ def get_archived_article(url: str) -> str:
             if location:
                 resolved = urljoin(response.url, location)
                 # Only return if we landed on an archive page, not CAPTCHA
-                if 'archive.' in resolved and '/newest/' not in resolved:
+                target = urlparse(resolved)
+                if (target.scheme == 'https'
+                        and target.hostname in {'archive.ph', 'archive.is', 'archive.today'}
+                        and target.path not in ('', '/')
+                        and not any(part in target.path.lower() for part in ('/newest/', 'captcha', 'challenge'))):
                     return resolved
         return None
     except Exception:
@@ -666,17 +633,17 @@ Best regards,
 ## News article access strategies
 
 1. **Library PressReader** - 7,000+ publications worldwide
-2. **Reader Mode** - Works on ~50% of soft paywalls
-3. **Archive.org** - For older articles
-4. **Archive.today** - For recent articles (grey area)
-5. **Google search** - Sometimes cached versions appear
+2. **Reader Mode** - Readability for content already accessible and authorized
+3. **Public archives** - Lawful provenance snapshots, with original URL and capture date
+4. **Publisher/author copies** - Authorized openly accessible versions
+5. **Web search** - Discover lawful copies; a snippet is not a full article
 
 ## Tips:
 - Some publishers offer institutional access via .edu email, check the publisher's institutional-access page rather than assuming the program still exists; most major outlets have wound these programs down.
 - Press releases often contain the same factual content as the paywalled article and can be quoted directly.
 - Local library cards often include digital news access via PressReader, OverDrive, or the library's own login portal.
-- Some publications have free tiers (5-10 articles/month) reset by clearing cookies; mind the publisher's ToS before relying on this.
-- Archive.today snapshots of news articles work for ad-hoc research access but should not be the citation in your final piece, link the original article and keep the archive as a backup, with the FBI/Wikipedia caveat noted in the archive section above.
+- Use a publisher's free tier within its stated limits; do not reset meters or bypass subscription controls.
+- Cite the original article and, when relevant, the lawful snapshot and capture date. Disclose if the current original could not be read.
 ```
 
 ### Academic papers
@@ -689,7 +656,7 @@ Best regards,
 3. **Google Scholar** - Click "All versions", look for [PDF]
 4. **Author's website** - Check their academic page
 5. **Institutional repository** - Search university library
-6. **Preprint servers** - arXiv, SSRN, bioRxiv, medRxiv (note: 2026 OSTP Nelson Memo requires immediate OA for federally-funded US research)
+6. **Preprint servers** - arXiv, SSRN, bioRxiv, medRxiv; label version and peer-review status, and verify funder-specific public-access policies separately
 7. **ResearchGate/Academia.edu** - Author-uploaded copies, BUT availability is uneven: both have faced publisher takedown campaigns (Elsevier/ACS lawsuits) and many entries now resolve to "request full text" rather than a PDF
 8. **CORE.ac.uk** - 290M+ open access papers
 9. **PubMed Central** - For biomedical papers
@@ -733,7 +700,7 @@ Best regards,
    - Heart of the work disfavored
 
 4. **Effect on market**
-   - Not replacing purchase disfavored
+    - Substituting for purchase or licensing weighs against fair use
    - No market impact favored
 
 ## Journalism privilege:
@@ -748,7 +715,7 @@ However, wholesale copying of entire articles still problematic.
 
 ### DO:
 - Use library resources first (supports the ecosystem)
-- Try open access tools before circumvention
+- Try lawful open-access tools and authorized institutional access
 - Contact authors directly (they want citations)
 - Cite properly regardless of how you accessed content
 - Budget for subscriptions to frequently-used sources
@@ -756,7 +723,7 @@ However, wholesale copying of entire articles still problematic.
 ### DON'T:
 - Share login credentials
 - Systematically download entire databases
-- Use bypassed content for commercial purposes
+- Circumvent subscription, authentication or anti-bot access controls
 - Redistribute paywalled content
-- Rely solely on bypass methods
+- Claim full-text access from snippets, metadata or an unreadable file
 ```

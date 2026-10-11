@@ -18,28 +18,46 @@ This skill should be triggered when:
 
 ## Quick Reference
 
-### Common Patterns
+### Practical workflow
 
-*Quick reference patterns will be added as you use the skill.*
+1. Select a supported checkpoint and a small representative dataset. Confirm
+   PyTorch/CUDA/Unsloth/TRL compatibility in the live official docs.
+2. Load with `FastLanguageModel.from_pretrained(..., load_in_4bit=True)` for
+   QLoRA, then attach adapters with `FastLanguageModel.get_peft_model(...)`.
+3. Inspect the dataset's chat template, EOS and assistant-only loss masking.
+   Run a short training/evaluation smoke test before scaling sequence length.
+4. Use the installed TRL API (`SFTConfig`, `processing_class`) and select
+   BF16 only when supported; otherwise supported GPU FP16. Save tokenizer and
+   adapter together and compare held-out outputs before/after training.
+
+Portable profiles: CPU is for dataset/tokenizer checks (use Transformers/TRL for
+tiny CPU training); a small compatible GPU starts with a 0.5–3B QLoRA model,
+batch 1 and short context. Linux multi-GPU needs an explicitly supported backend.
+Remote notebooks require a chosen budget and data scope. Native Windows support
+depends on the exact release and dependency matrix.
 
 ## Reference Files
 
 This skill includes comprehensive documentation in `references/`:
 
-- **llms-txt.md** - Llms-Txt documentation
+- [index.md](references/index.md) — available reference inventory.
+- [llms-txt.md](references/llms-txt.md) — documentation entry points.
+- [llms.md](references/llms.md) — local documentation snapshot.
+- [llms-full.md](references/llms-full.md) — large snapshot; search targeted headings.
 
-Use `view` to read specific reference files when detailed information is needed.
+Use the host's read/search tools for targeted sections. Snapshots may contain
+historical APIs; verify against https://docs.unsloth.ai/ before execution.
 
 ## Working with This Skill
 
 ### For Beginners
-Start with the getting_started or tutorials reference files for foundational concepts.
+Start with `references/index.md` and the current official getting-started guide.
 
 ### For Specific Features
-Use the appropriate category reference file (api, guides, etc.) for detailed information.
+Search the actual reference files above for the model family or feature.
 
 ### For Code Examples
-The quick reference section above contains common patterns extracted from the official docs.
+Use linked official notebooks matching your model and installed version.
 
 ## Resources
 
@@ -50,11 +68,7 @@ Organized documentation extracted from official sources. These files contain:
 - Links to original documentation
 - Table of contents for quick navigation
 
-### scripts/
-Add helper scripts here for common automation tasks.
-
-### assets/
-Add templates, boilerplate, or example projects here.
+This module does not ship executable helper scripts or asset templates.
 
 ## Notes
 

@@ -46,7 +46,7 @@ class LitModel(L.LightningModule):
 train_loader = DataLoader(train_dataset, batch_size=32)
 
 # Step 3: Train with Trainer (handles everything else!)
-trainer = L.Trainer(max_epochs=10, accelerator='gpu', devices=2)
+trainer = L.Trainer(max_epochs=10, accelerator='auto', devices=1)
 model = LitModel()
 trainer.fit(model, train_loader)
 ```
@@ -143,7 +143,8 @@ trainer.test(model, test_loader)
 **Automatic features**:
 - Validation runs every epoch by default
 - Metrics logged to TensorBoard
-- Best model checkpointing based on val_loss
+- Default checkpointing saves training state; selecting the best `val_loss`
+  requires `ModelCheckpoint(monitor='val_loss', mode='min')` and validation logging.
 
 ### Workflow 3: Distributed training (DDP)
 
@@ -279,7 +280,7 @@ def training_step(self, batch, batch_idx):
 Reduce batch size or use gradient accumulation:
 ```python
 trainer = L.Trainer(
-    accumulate_grad_batches=4,  # Effective batch = batch_size × 4
+    accumulate_grad_batches=4,  # Effective batch = micro_batch × 4 × devices
     precision='bf16'  # Or 'fp16', reduces memory 50%
 )
 ```

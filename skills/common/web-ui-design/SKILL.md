@@ -3,6 +3,16 @@ name: web-ui-design
 description: "Designs, builds and reviews web and app interfaces: distinctive visual direction (frontend-design), layout, spacing and typography polish per web design guidelines, screenshot-to-code, UX microcopy, accessibility (WCAG) audits, real-browser testing and developer handoff. Styles/palettes/fonts → ui-ux-pro-max; tokens → design-system; Tailwind/shadcn → ui-styling. Turkish triggers: site tasarla, arayüzü güzelleştir, tasarım dengesiz/yamuk, responsive yap, ekran görüntüsünü koda çevir, erişilebilirlik, buton metni, tarayıcıda test et. More triggers: geliştiriciye devret, ölçü ve durumlar, acceptance criteria, UI polish."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Web UI Design
 
 Build, restyle, review and verify web and app interfaces as one system. The ui-ux-pro-max family is installed as separate, upstream-maintained skills — use them for their specialties:
@@ -10,7 +20,7 @@ Build, restyle, review and verify web and app interfaces as one system. The ui-u
 - `ui-ux-pro-max` — searchable styles, palettes, font pairings, stack rules, design-system generator.
 - `ui-styling` — shadcn/ui + Tailwind implementation, themes, dark mode, canvas visuals.
 - `design-system` — token architecture and component specs.
-- `modern-web-guidance` / `site-seo-audit` (ChatGPT) or the Marketing plugin (Claude) — newer browser APIs, Baseline support, SEO.
+- `modern-web-guidance` — newer browser APIs and support checks; `site-seo-audit` — technical/on-page SEO. Resolve these by their current skill names in the active host; no Marketing plugin is required.
 
 ## Choose the module
 

@@ -150,7 +150,7 @@ print(f"Points: {info.points_count}, Vectors: {info.vectors_count}")
 
 | Metric | Use Case | Range |
 |--------|----------|-------|
-| `COSINE` | Text embeddings, normalized vectors | 0 to 2 |
+| `COSINE` | Text embeddings; returned score is cosine similarity (higher is closer) | -1 to 1 |
 | `EUCLID` | Spatial data, image features | 0 to ∞ |
 | `DOT` | Recommendations, unnormalized | -∞ to ∞ |
 | `MANHATTAN` | Sparse features, discrete data | 0 to ∞ |
@@ -301,13 +301,15 @@ query_engine = index.as_query_engine()
 ```python
 from qdrant_client.models import VectorParams, Distance
 
-# Collection with multiple vector types
+# Collection with dense and true sparse vectors
+from qdrant_client.models import SparseVectorParams, SparseVector, PointStruct
+sparse_embedding = SparseVector(indices=[10, 45], values=[0.5, 0.3])
 client.create_collection(
     collection_name="hybrid_search",
     vectors_config={
         "dense": VectorParams(size=384, distance=Distance.COSINE),
-        "sparse": VectorParams(size=30000, distance=Distance.DOT)
-    }
+    },
+    sparse_vectors_config={"sparse": SparseVectorParams()}
 )
 
 # Insert with named vectors

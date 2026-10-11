@@ -5,7 +5,9 @@
 
 # Task Coordinator
 
-Specialized expertise in breaking down complex development tasks into manageable subtasks, coordinating parallel execution, managing dependencies, and ensuring comprehensive completion of multi-step implementations.
+Break complex work into verifiable tasks with dependencies and ownership. Scale phases to actual risk; example testing, documentation, monitoring, and release phases are not mandatory scope additions. Delegate only with explicit user/applicable-instruction authorization; otherwise coordinate inline.
+
+**Testing phases:** define behavior and a failing regression before meaningful implementation when using TDD; run focused checks during implementation; run integration/E2E checks after the relevant pieces exist. “Integration & Testing” does not mean postponing all tests until the end. Skip inapplicable performance/E2E work with a reason.
 
 ## When to Use This Skill
 
@@ -363,7 +365,7 @@ Before breaking down work, understand the full scope:
 
 ## Multi-Agent Coordination Patterns
 
-When a task is too large or complex for a single agent context window, distribute work across multiple agents. The primary benefit of multi-agent systems is **context isolation**, not role specialization.
+When delegation is explicitly authorized and useful, distribute independent bounded work across available agents. Otherwise execute sequentially or batch independent tool calls. Context isolation is one potential benefit, not proof that multi-agent work is cheaper or necessary.
 
 ### Architectural Patterns
 
@@ -404,7 +406,9 @@ Layered agents at different abstraction levels: strategy > planning > execution.
 
 ### Token Economics of Multi-Agent Systems
 
-| Configuration | Token Multiplier | When Justified |
+The following multipliers are **illustrative planning assumptions, not measured benchmarks or guarantees**. Actual input/output tokens, caching, tool output, model, and retries can change both total cost and latency; measure the current workload before budgeting.
+
+| Configuration | Illustrative Token Multiplier | When Justified |
 |---------------|-----------------|----------------|
 | Single-agent chat | 1x baseline | Simple tasks, short sessions |
 | Single-agent + tools | 3-5x | Tasks requiring file reads, searches |
@@ -449,16 +453,16 @@ When passing work between agents, use this structured handoff format:
 
 ## Integration with Other Skills
 
-When coordinating tasks, invoke related skills at appropriate phases:
+Read these bundled modules at relevant phases; discover optional specialist skills before invoking them:
 
 | Phase | Related Skills |
 |-------|---------------|
-| Planning | `plan-before-code`, `context-analysis` |
-| Implementation | `code-quality`, language-specific skills |
-| Testing | `unit-tests`, `test-cases`, `performance-testing` |
-| Security | `security-review`, `dependency-security-audit` |
-| Documentation | `technical-documentation`, `api-documentation` |
-| Deployment | `cicd-architect`, `kubernetes-expert` |
+| Planning | [implementation-plan](../implementation-plan/MODULE.md), [context-engineering](../context-engineering/MODULE.md) |
+| Implementation | [executing-plans](../executing-plans/MODULE.md), [code-review-and-quality](../code-review-and-quality/MODULE.md) |
+| Testing | [test-driven-development](../test-driven-development/MODULE.md), [verification-before-completion](../verification-before-completion/MODULE.md) |
+| Security | [security-review](../security-review/MODULE.md), only relevant domains |
+| Documentation | [context-manager](../context-manager/MODULE.md), repository documentation conventions |
+| Deployment | Verified repository release instructions and available authorized platform tools |
 
 ## Quality Checklist
 
@@ -471,12 +475,12 @@ When coordinating tasks, invoke related skills at appropriate phases:
 - [ ] Integration points identified
 - [ ] Testing strategy defined
 
-## Related Skills
+## Related Modules
 
-- `plan-before-code` - Initial planning methodology
-- `context-manager` - Managing information across tasks
-- `workflow-orchestrator` - End-to-end workflow management
-- `code-quality` - Quality standards for implementations
+- [implementation-plan](../implementation-plan/MODULE.md) — initial planning
+- [context-manager](../context-manager/MODULE.md) — task context
+- [executing-plans](../executing-plans/MODULE.md) — end-to-end execution
+- [code-review-and-quality](../code-review-and-quality/MODULE.md) — quality checks
 
 ---
 

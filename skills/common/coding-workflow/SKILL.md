@@ -3,6 +3,16 @@ name: coding-workflow
 description: "Software engineering workflow scaled to risk: systematic debugging, implementation plans and architecture, code review and security review, test-driven development, verification before claiming done, git commits, pull requests and GitHub CLI, parallel or sub-agent work, long-task context handoffs and interactive browser debugging. Turkish triggers: hata ayıkla, bug çöz, kodu incele, güvenlik açığı, plan çıkar, mimari, test yaz, commit at, PR aç, kodla, düzelt. More triggers: yazılım fikrini birlikte düşünelim, tasarımı netleştir, bileşenleri ayır, teknik trade-off, kalite sorunlarını bul, merge öncesi kontrol, uzun görevin bağlamını koru, durum özeti ve devir, geliştirme dalını bitir, gh ile kontrol et."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Coding Workflow
 
 Engineering discipline scaled to risk. A small reversible change: do it, verify it, report it. A large or risky change: plan first, then implement in small verified steps.
@@ -28,9 +38,10 @@ Engineering discipline scaled to risk. A small reversible change: do it, verify 
 
 - Follow the repository's conventions and the user's global instructions (AGENTS.md, CLAUDE.md).
 - No mandatory interviews, worktrees, commits or approval gates for small reversible work. Ask only questions whose answers change the design.
-- Ask before destructive, irreversible or externally visible actions (force push, publish, delete, deploy).
-- Never claim tests pass or a bug is fixed without running the check and showing the evidence.
+- Require explicit authority for destructive, irreversible or externally visible actions (force push, publish, delete, deploy); do not re-ask when the exact action is already authorized.
+- Never claim tests pass or a bug is fixed without applicable post-change evidence. Reuse valid evidence until relevant state changes; do not rerun per message.
 - Base fixes on logs, files and official documentation (Context7 or the vendor docs for library APIs), not guesses.
+- Read bundled `modules/<name>/MODULE.md` paths; module names are not separately installed skills or registered slash commands. Discover actual host tools; delegate only when explicitly authorized. Loading a module does not authorize installs, account access, configuration changes, or sandbox weakening.
 
 ## Module map
 
@@ -44,23 +55,23 @@ Open only the module(s) the request needs and read the module file completely be
 | `ambiguity-detector` | Detect ambiguous, incomplete, or contradictory requirements and specifications with structured clarification templates. | [MODULE.md](modules/ambiguity-detector/MODULE.md) |
 | `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code | [MODULE.md](modules/writing-plans/MODULE.md) |
 | `executing-plans` | Use when you have a written implementation plan to execute in a separate session with review checkpoints | [MODULE.md](modules/executing-plans/MODULE.md) |
-| `brainstorming` | Use when creating or developing anything, before writing code or implementation plans - refines rough ideas into fully-formed designs through structured Socratic questio… | [MODULE.md](modules/brainstorming/MODULE.md) |
-| `test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code. | [MODULE.md](modules/test-driven-development/MODULE.md) |
-| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before maki… | [MODULE.md](modules/verification-before-completion/MODULE.md) |
-| `code-review-and-quality` | Conducts multi-axis code review. | [MODULE.md](modules/code-review-and-quality/MODULE.md) |
+| `brainstorming` | Explicit ideation or collaborative design requests; no prerequisite interview for clear implementation work. | [MODULE.md](modules/brainstorming/MODULE.md) |
+| `test-driven-development` | Requested/repository-required test-first work or meaningful behavior regression risk; preserve existing code. | [MODULE.md](modules/test-driven-development/MODULE.md) |
+| `verification-before-completion` | Support completion claims with valid post-change evidence sized to the change. | [MODULE.md](modules/verification-before-completion/MODULE.md) |
+| `code-review-and-quality` | Requested/risk-appropriate review; material in-scope defects, optional unrelated cleanup. | [MODULE.md](modules/code-review-and-quality/MODULE.md) |
 | `security-review` | Identify security vulnerabilities across 10 domains including OWASP Top 10, race conditions, supply chain risks, and compliance gaps. | [MODULE.md](modules/security-review/MODULE.md) |
 | `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and… | [MODULE.md](modules/receiving-code-review/MODULE.md) |
-| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [MODULE.md](modules/requesting-code-review/MODULE.md) |
-| `git-commit` | Execute git commit with conventional commit message analysis, intelligent staging, and message generation. | [MODULE.md](modules/git-commit/MODULE.md) |
-| `github-cli-workflows` | Interact with GitHub through an already available `gh` CLI using focused issue, pull-request, CI-run, and API workflows. | [MODULE.md](modules/github-cli-workflows/MODULE.md) |
-| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured op… | [MODULE.md](modules/finishing-a-development-branch/MODULE.md) |
-| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native too… | [MODULE.md](modules/using-git-worktrees/MODULE.md) |
+| `requesting-code-review` | Focused review using the real base and complete task diff, including uncommitted work. | [MODULE.md](modules/requesting-code-review/MODULE.md) |
+| `git-commit` | Requested commits/messages following repository convention and explicit-path staging. | [MODULE.md](modules/git-commit/MODULE.md) |
+| `github-cli-workflows` | Explicit `gh`/CLI workflow requests with an already available CLI. | [MODULE.md](modules/github-cli-workflows/MODULE.md) |
+| `finishing-a-development-branch` | Requested/relevant integration; capture original workspace identity and ownership before any switch or cleanup. | [MODULE.md](modules/finishing-a-development-branch/MODULE.md) |
+| `using-git-worktrees` | Requested or genuinely useful isolation; exact-path checks, no automatic installs or commits. | [MODULE.md](modules/using-git-worktrees/MODULE.md) |
 | `dispatching-parallel-agents` | Partition and coordinate two or more independent workstreams without duplicating work, leaking expected conclusions, or creating shared-file conflicts. | [MODULE.md](modules/dispatching-parallel-agents/MODULE.md) |
 | `subagent-driven-development` | Execute an implementation plan through bounded implementer and independent reviewer agents with disjoint write ownership, explicit handoffs, evidence gates, and integrat… | [MODULE.md](modules/subagent-driven-development/MODULE.md) |
 | `task-coordinator` | Coordinate complex multi-step tasks by breaking them down into manageable subtasks with dependency tracking. | [MODULE.md](modules/task-coordinator/MODULE.md) |
 | `context-manager` | Keep long tasks accurate by tracking goals, constraints, decisions, evidence, artifacts, unresolved questions, and context budget through progressive disclosure and veri… | [MODULE.md](modules/context-manager/MODULE.md) |
 | `context-engineering` | Optimizes agent context setup. | [MODULE.md](modules/context-engineering/MODULE.md) |
-| `playwright-interactive` | Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging. | [MODULE.md](modules/playwright-interactive/MODULE.md) |
+| `playwright-interactive` | Host-native browser/Electron debugging with explicit target IDs; optional Codex runtime recipes only on a compatible host. | [MODULE.md](modules/playwright-interactive/MODULE.md) |
 
 Supporting files (open only when the module points to them):
 

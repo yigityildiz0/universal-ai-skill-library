@@ -86,7 +86,7 @@ trainer = SFTTrainer(
     model=model,
     args=training_args,
     train_dataset=dataset,
-    tokenizer=tokenizer
+    processing_class=tokenizer
 )
 trainer.train()
 trainer.save_model()
@@ -422,14 +422,16 @@ config = PPOConfig(
 
 ## Hardware requirements
 
-- **GPU**: NVIDIA (CUDA required)
+- **Device**: CPU supports tiny smoke tests; CUDA is the practical large-model path.
 - **VRAM**: Depends on model and method
-  - SFT 7B: 16GB (with LoRA)
-  - DPO 7B: 24GB (stores reference model)
-  - PPO 7B: 40GB (policy + reward model)
-  - GRPO 7B: 24GB (more memory efficient)
+  - Two resident 7B BF16 weight copies alone need ~28GB decimal (~26.1GiB),
+    before activations, gradients, optimizer states or generation KV cache.
+  - A generic 24GB DPO/GRPO or 40GB PPO fit cannot be promised. LoRA/QLoRA,
+    reference sharing/precomputed log-probs, offload and sharding change the budget.
 - **Multi-GPU**: Supported via `accelerate`
-- **Mixed precision**: BF16 recommended (A100/H100)
+- **Mixed precision**: enable BF16 only on supported hardware; FP16 only on a
+  suitable GPU. CPU smoke tests use FP32. Check `torch.cuda.is_bf16_supported()`
+  and pin compatible TRL/Transformers versions before adapting legacy examples.
 
 **Memory optimization**:
 - Use LoRA/QLoRA for all methods

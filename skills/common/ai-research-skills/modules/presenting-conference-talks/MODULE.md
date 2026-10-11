@@ -1,5 +1,9 @@
 # Module: presenting-conference-talks
 
+For FTR/clinical teaching, thesis or academic seminar content, use
+`academic-study-coach` as the owning workflow and this module for conference
+delivery/templates. Clinical evidence appraisal belongs to `medical-evidence-research`.
+
 > Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
 > Original trigger scope: Generates conference presentation slides (Beamer LaTeX PDF and editable PPTX) from a compiled paper with speaker notes and talk script. Use when preparing oral talks, spotlight presentations, or invited talks for ML and systems conferences.
 

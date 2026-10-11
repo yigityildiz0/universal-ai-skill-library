@@ -18,6 +18,14 @@ This skill should be triggered when:
 
 ## Quick Reference
 
+### Start on one GPU
+
+For a 12 GB GPU, start from a small-model QLoRA example in the installed Axolotl
+version, micro-batch size 1 and a short sequence length; measure peak memory.
+Use [dataset formats](references/dataset-formats.md) for input preparation and
+the getting-started section of [other.md](references/other.md) for the CLI flow.
+FSDP and context parallelism below are optional multi-GPU paths, not prerequisites.
+
 ### Common Patterns
 
 **Pattern 1:** To validate that acceptable data transfer speeds exist for your training job, running NCCL Tests can help pinpoint bottlenecks, for example:
@@ -40,14 +48,14 @@ fsdp_config:
 
 **Pattern 3:** The context_parallel_size should be a divisor of the total number of GPUs. For example:
 
-```
-context_parallel_size
+```yaml
+context_parallel_size: 4
 ```
 
 **Pattern 4:** For example: - With 8 GPUs and no sequence parallelism: 8 different batches processed per step - With 8 GPUs and context_parallel_size=4: Only 2 different batches processed per step (each split across 4 GPUs) - If your per-GPU micro_batch_size is 2, the global batch size decreases from 16 to 4
 
-```
-context_parallel_size=4
+```yaml
+context_parallel_size: 4
 ```
 
 **Pattern 5:** Setting save_compressed: true in your configuration enables saving models in a compressed format, which: - Reduces disk space usage by approximately 40% - Maintains compatibility with vLLM for accelerated inference - Maintains compatibility with llmcompressor for further optimization (example: quantization)
@@ -109,15 +117,15 @@ This skill includes comprehensive documentation in `references/`:
 - **dataset-formats.md** - Dataset-Formats documentation
 - **other.md** - Other documentation
 
-Use `view` to read specific reference files when detailed information is needed.
+Use the active host's file-reading tool to read the linked references.
 
 ## Working with This Skill
 
 ### For Beginners
-Start with the getting_started or tutorials reference files for foundational concepts.
+Start with [other.md](references/other.md), which contains the getting-started documentation, then [dataset-formats.md](references/dataset-formats.md).
 
 ### For Specific Features
-Use the appropriate category reference file (api, guides, etc.) for detailed information.
+Use [api.md](references/api.md) for API details and [other.md](references/other.md) for configuration and guides.
 
 ### For Code Examples
 The quick reference section above contains common patterns extracted from the official docs.

@@ -13,7 +13,11 @@ Complete guide to choosing and using FAISS index types.
 
 ## Flat indices (exact search)
 
-### IndexFlatL2 - L2 (Euclidean) distance
+### IndexFlatL2 - squared L2 distance
+
+Returned values are squared Euclidean distances (lower is nearer). Take the
+square root only if reporting/thresholds need Euclidean units. Inner-product
+scores instead rank larger values first; normalized vectors give cosine scores.
 
 ```python
 import faiss

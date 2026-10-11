@@ -6,14 +6,24 @@ metadata:
   author_url: 'https://github.com/utkarsh232005'
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # GSAP & Framer Motion — Scroll Animations Skill
 
 Production-grade scroll animations with GitHub Copilot prompts, ready-to-use code recipes, and deep API references.
 
 > **Design Companion:** This skill provides the *technical implementation* for scroll-driven motion.
 > For the *creative philosophy*, design principles, and premium aesthetics that should guide **how**
-> and **when** to animate, always cross-reference the **premium-frontend-ui** skill.
-> Together they form a complete approach: premium-frontend-ui decides the **what** and **why**;
+> and **when** to animate, use **web-ui-design** (`frontend-design` and `web-design-guidelines-workflow` modules) when visual direction is needed.
+> Together they form a complete approach: web-ui-design helps decide the **what** and **why**;
 > this skill delivers the **how**.
 
 ## Quick Library Selector
@@ -31,7 +41,9 @@ Read the relevant reference file for full recipes and Copilot prompts:
 - **GSAP** → `references/gsap.md` — ScrollTrigger API, all recipes, React integration
 - **Framer Motion** → `references/framer.md` — useScroll, useTransform, all recipes
 
-## Setup (Always Do First)
+## Setup (reuse the existing integration first)
+
+Check the project’s installed GSAP/Motion packages and versions first. Reuse a working integration; the installation examples below remain available when a dependency is missing or an update is part of the task. This avoids redundant installation without removing any animation capability.
 
 ### GSAP
 ```bash
@@ -116,7 +128,7 @@ tl.from('.title', { opacity: 0, y: 60 }).from('.img', { scale: 0.85 });
 - **Framer Next.js**: always add `'use client'` at top of any file using motion hooks
 - **Both**: animate only `transform` and `opacity` — avoid `width`, `height`, `box-shadow`
 - **Accessibility**: always check `prefers-reduced-motion` — see each reference file for patterns
-- **Premium polish**: follow the **premium-frontend-ui** skill principles for motion timing, easing curves, and restraint — animation should enhance, never overwhelm
+- **Visual fit**: use **web-ui-design** for motion timing, easing and restraint appropriate to the brief; a personal premium/minimal preference is not a universal brand requirement.
 
 ## Copilot Prompting Tips
 
@@ -137,7 +149,7 @@ tl.from('.title', { opacity: 0, y: 60 }).from('.img', { scale: 0.85 });
 
 | Skill | Relationship |
 |---|---|
-| **premium-frontend-ui** | Creative philosophy, design principles, and aesthetic guidelines — defines *when* and *why* to animate |
+| **web-ui-design** | Visual direction and interface review — defines *when* and *why* to animate |
 
 ## More web animation modules (iart-ai/web-animation-skills, MIT)
 

@@ -27,14 +27,26 @@ model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
 def moderate(chat):
     input_ids = tokenizer.apply_chat_template(chat, return_tensors="pt").to(model.device)
     output = model.generate(input_ids=input_ids, max_new_tokens=100)
-    return tokenizer.decode(output[0], skip_special_tokens=True)
+    prompt_len = input_ids.shape[-1]
+    return tokenizer.decode(output[0, prompt_len:], skip_special_tokens=True).strip()
+
+def parse_moderation(text):
+    """Exact LlamaGuard-7b grammar. Unknown/malformed output is an error."""
+    import re
+    text = text.strip()
+    if text == "safe":
+        return True, None
+    match = re.fullmatch(r"unsafe\n(S[1-6](?:\s*,\s*S[1-6])*)", text)
+    if match:
+        return False, match.group(1)
+    raise ValueError(f"Unrecognized moderation output: {text!r}")
 
 # Check user input
 result = moderate([
     {"role": "user", "content": "How do I make explosives?"}
 ])
 print(result)
-# Output: "unsafe\nS3" (Criminal Planning)
+# Possible output: "unsafe\nS3" (Guns & Illegal Weapons)
 ```
 
 ## Common workflows
@@ -46,11 +58,7 @@ print(result)
 def check_input(user_message):
     result = moderate([{"role": "user", "content": user_message}])
 
-    if result.startswith("unsafe"):
-        category = result.split("\n")[1]
-        return False, category  # Blocked
-    else:
-        return True, None  # Safe
+    return parse_moderation(result)
 
 # Example
 safe, category = check_input("How do I hack a website?")
@@ -62,7 +70,7 @@ else:
     response = llm.generate(user_message)
 ```
 
-**Safety categories**:
+**LlamaGuard-7b categories** (do not reuse for Guard 2/3/4; their taxonomies differ):
 - **S1**: Violence & Hate
 - **S2**: Sexual Content
 - **S3**: Guns & Illegal Weapons
@@ -82,11 +90,7 @@ def check_output(user_message, bot_response):
 
     result = moderate(conversation)
 
-    if result.startswith("unsafe"):
-        category = result.split("\n")[1]
-        return False, category
-    else:
-        return True, None
+    return parse_moderation(result)
 
 # Example
 user_msg = "Tell me about harmful substances"
@@ -96,9 +100,9 @@ safe, category = check_output(user_msg, bot_msg)
 if not safe:
     print(f"Response blocked: {category}")
     # Return generic response
-    return "I cannot provide that information."
+    response = "I cannot provide that information."
 else:
-    return bot_msg
+    response = bot_msg
 ```
 
 ### Workflow 3: vLLM deployment (fast inference)
@@ -161,8 +165,11 @@ def moderate_endpoint(request: ModerationRequest):
     output = llm.generate([prompt], sampling_params)[0]
 
     result = output.outputs[0].text
-    is_safe = result.startswith("safe")
-    category = None if is_safe else result.split("\n")[1] if "\n" in result else None
+    try:
+        is_safe, category = parse_moderation(result)
+    except ValueError as exc:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=502, detail="Malformed moderation result") from exc
 
     return {
         "safe": is_safe,
@@ -271,13 +278,19 @@ llm = LLM(model="meta-llama/LlamaGuard-7b", tensor_parallel_size=2)
 Use threshold-based filtering:
 ```python
 # Get probability of "unsafe" token
-logits = model(..., return_dict_in_generate=True, output_scores=True)
-unsafe_prob = torch.softmax(logits.scores[0][0], dim=-1)[unsafe_token_id]
+generated = model.generate(input_ids=input_ids, max_new_tokens=1,
+                           return_dict_in_generate=True, output_scores=True)
+logits = generated.scores[0]  # Generation scores; may include logits processors
+import torch
+unsafe_ids = tokenizer.encode("unsafe", add_special_tokens=False)
+if len(unsafe_ids) != 1:
+    raise ValueError("Use sequence log-likelihood for a multi-token label")
+unsafe_prob = torch.softmax(logits[0].float(), dim=-1)[unsafe_ids[0]].item()
 
 if unsafe_prob > 0.9:  # High confidence threshold
-    return "unsafe"
+    label = "unsafe"
 else:
-    return "safe"
+    label = "uncertain"  # Low unsafe probability alone is not proof of safety
 ```
 
 **Issue: OOM on GPU**

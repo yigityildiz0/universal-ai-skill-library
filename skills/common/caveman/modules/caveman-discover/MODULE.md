@@ -1,7 +1,10 @@
-# Module: caveman-discover
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-discover/`.
-> Original trigger scope: Find and label every LLM workflow in the repository so Caveman Cloud groups spend by workflow instead of one bucket. Use for "discover workflows" or breaking LLM spend down by workflow.
+---
+name: caveman-discover
+description: >
+  Find and label every LLM workflow in the repository so Caveman Cloud groups
+  spend by workflow instead of one bucket. Use for "discover workflows" or
+  breaking LLM spend down by workflow.
+---
 
 You are labeling this repository's LLM workflows for Caveman Cloud. A
 *workflow* is a job the code performs — "answer a support ticket", "build the

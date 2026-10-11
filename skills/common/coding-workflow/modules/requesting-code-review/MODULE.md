@@ -11,10 +11,10 @@ Run a focused code review before issues cascade. If the current host supports su
 
 ## When to Request Review
 
-**Mandatory:**
-- After each task in subagent-driven development
-- After completing major feature
-- Before merge to main
+**Use a focused review when risk or repository policy warrants it:**
+- After integrating substantial delegated changes
+- After completing a major feature
+- Before a merge where repository policy requires review
 
 **Optional but valuable:**
 - When stuck (fresh perspective)
@@ -23,15 +23,21 @@ Run a focused code review before issues cascade. If the current host supports su
 
 ## How to Request
 
-**1. Get git SHAs:**
+**1. Determine the real review scope:**
+
+Use the recorded task-start commit, actual PR base, or verified merge-base for the feature. Never assume `HEAD~1` covers the work. Include staged, unstaged, and untracked task files when work is uncommitted; preserve unrelated user edits. In a non-Git workspace use explicit files and the known baseline.
 ```bash
-BASE_SHA=$(git rev-parse HEAD~1)  # or origin/main
+BASE_SHA=$(git merge-base <verified-target-ref> HEAD)
 HEAD_SHA=$(git rev-parse HEAD)
+git diff "$BASE_SHA" HEAD -- <review-paths>
+git diff --cached -- <review-paths>
+git diff -- <review-paths>
+git ls-files --others --exclude-standard -- <review-paths>
 ```
 
 **2. Run the code review:**
 
-Read the bundled `code-reviewer.md` template. Use the current host's supported subagent mechanism when available and permitted; otherwise apply the template directly in the current session. Do not assume a tool named `Task` exists.
+Read the bundled [code-reviewer.md](code-reviewer.md) template, relative to this module. Use a supported subagent only when explicitly authorized; otherwise apply it directly. Do not assume `Task` exists. Include the uncommitted file scope and baseline, not just commit SHAs.
 
 **Placeholders:**
 - `{DESCRIPTION}` - Brief summary of what you built
@@ -41,7 +47,7 @@ Read the bundled `code-reviewer.md` template. Use the current host's supported s
 
 **3. Act on feedback:**
 - Fix Critical issues immediately
-- Fix Important issues before proceeding
+- Fix important in-scope issues before dependent integration; continue independent work
 - Note Minor issues for later
 - Push back if reviewer is wrong (with reasoning)
 
@@ -52,7 +58,7 @@ Read the bundled `code-reviewer.md` template. Use the current host's supported s
 
 You: Let me request code review before proceeding.
 
-BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
+BASE_SHA=<recorded-task-start-or-verified-merge-base>
 HEAD_SHA=$(git rev-parse HEAD)
 
 [Run focused code review]
@@ -75,9 +81,9 @@ You: [Fix progress indicators]
 ## Integration with Workflows
 
 **Subagent-Driven Development:**
-- Review after EACH task
+- Review at dependency/risk-appropriate checkpoints
 - Catch issues before they compound
-- Fix before moving to next task
+- Resolve material issues before dependent integration
 
 **Executing Plans:**
 - Review after each task or at natural checkpoints
@@ -90,9 +96,9 @@ You: [Fix progress indicators]
 ## Red Flags
 
 **Never:**
-- Skip review because "it's simple"
+- Skip a required or risk-justified review
 - Ignore Critical issues
-- Proceed with unfixed Important issues
+- Merge with unresolved important in-scope issues
 - Argue with valid technical feedback
 
 **If reviewer wrong:**
@@ -100,4 +106,4 @@ You: [Fix progress indicators]
 - Show code/tests that prove it works
 - Request clarification
 
-See template at: requesting-code-review/code-reviewer.md
+See [code-reviewer.md](code-reviewer.md), relative to this module directory.

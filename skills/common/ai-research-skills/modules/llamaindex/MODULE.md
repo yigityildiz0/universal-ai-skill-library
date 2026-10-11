@@ -143,7 +143,7 @@ nodes = retriever.retrieve("machine learning")
 # With filtering
 retriever = index.as_retriever(
     similarity_top_k=3,
-    filters={"metadata.category": "tutorial"}
+    filters=MetadataFilters(filters=[MetadataFilter(key="category", value="tutorial")])
 )
 
 # Custom retriever
@@ -232,7 +232,7 @@ response3 = chat_engine.chat("What about web frameworks?")
 ### Metadata filtering
 
 ```python
-from llama_index.core.vector_stores import MetadataFilters, ExactMatchFilter
+from llama_index.core.vector_stores import MetadataFilters, MetadataFilter, ExactMatchFilter
 
 # Filter by metadata
 filters = MetadataFilters(
@@ -262,11 +262,12 @@ class Summary(BaseModel):
     conclusion: str
 
 # Get structured response
-output_parser = PydanticOutputParser(output_cls=Summary)
-query_engine = index.as_query_engine(output_parser=output_parser)
+query_engine = index.as_query_engine(output_cls=Summary, response_mode="tree_summarize")
 
 response = query_engine.query("Summarize the document")
-summary = response  # Pydantic model
+summary = response.response  # PydanticResponse wraps the model
+if not isinstance(summary, Summary):
+    raise TypeError("Expected structured Summary response from this LLM integration")
 print(summary.title, summary.main_points)
 ```
 
@@ -420,6 +421,7 @@ query_engine = index.as_query_engine(text_qa_template=qa_prompt)
 ```python
 from llama_index.core import SimpleDirectoryReader
 from llama_index.multi_modal_llms.openai import OpenAIMultiModal
+from llama_index.core.indices import MultiModalVectorStoreIndex
 
 # Load images and documents
 documents = SimpleDirectoryReader(
@@ -428,11 +430,11 @@ documents = SimpleDirectoryReader(
 ).load_data()
 
 # Multi-modal index
-index = VectorStoreIndex.from_documents(documents)
+index = MultiModalVectorStoreIndex.from_documents(documents)
 
 # Query with multi-modal LLM
 multi_modal_llm = OpenAIMultiModal(model="gpt-4o")
-query_engine = index.as_query_engine(llm=multi_modal_llm)
+query_engine = index.as_query_engine(multi_modal_llm=multi_modal_llm)
 
 response = query_engine.query("What is in the diagram on page 3?")
 ```

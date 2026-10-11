@@ -69,7 +69,7 @@ from sae_lens import SAE
 
 # 1. Load model and pre-trained SAE
 model = HookedTransformer.from_pretrained("gpt2-small", device="cuda")
-sae, cfg_dict, sparsity = SAE.from_pretrained(
+sae, cfg_dict, sparsity = SAE.from_pretrained_with_cfg_and_sparsity(
     release="gpt2-small-res-jb",
     sae_id="blocks.8.hook_resid_pre",
     device="cuda"
@@ -196,7 +196,7 @@ from sae_lens import SAE
 import torch
 
 model = HookedTransformer.from_pretrained("gpt2-small", device="cuda")
-sae, _, _ = SAE.from_pretrained(
+sae = SAE.from_pretrained(
     release="gpt2-small-res-jb",
     sae_id="blocks.8.hook_resid_pre",
     device="cuda"
@@ -235,35 +235,36 @@ def steer_with_feature(model, sae, prompt, feature_idx, strength=5.0):
         return activation
 
     # Generate with steering
-    output = model.generate(
-        tokens,
-        max_new_tokens=50,
-        fwd_hooks=[("blocks.8.hook_resid_pre", steering_hook)]
-    )
+    with model.hooks(fwd_hooks=[("blocks.8.hook_resid_pre", steering_hook)]):
+        output = model.generate(tokens, max_new_tokens=50)
     return model.to_string(output[0])
 ```
 
-### Feature Attribution
+### Feature Logit-Lens Projection
+
+An intermediate-layer `W_dec @ W_U` projection is a vocabulary-space heuristic,
+not a causal contribution: later layers and final LayerNorm are omitted. Measure
+causal effects with feature ablation/patching and output-logit or loss differences.
+For final-residual direct attribution, apply the cached final LayerNorm scaling.
 
 ```python
-# Which features most affect a specific output?
+# Which feature directions project most strongly onto a token?
 tokens = model.to_tokens("The capital of France is")
 _, cache = model.run_with_cache(tokens)
 
 # Get features at final position
 features = sae.encode(cache["resid_pre", 8])[0, -1]  # [d_sae]
 
-# Get logit attribution per feature
-# Feature contribution = feature_activation × decoder_weight × unembedding
+# Get a logit-lens projection per feature (not causal attribution).
 W_dec = sae.W_dec  # [d_sae, d_model]
 W_U = model.W_U    # [d_model, vocab]
 
-# Contribution to "Paris" logit
+# Projection onto "Paris" unembedding
 paris_token = model.to_single_token(" Paris")
-feature_contributions = features * (W_dec @ W_U[:, paris_token])
+feature_projections = features * (W_dec @ W_U[:, paris_token])
 
-top_features = feature_contributions.topk(10)
-print("Top features for 'Paris' prediction:")
+top_features = feature_projections.topk(10)
+print("Top feature projections onto 'Paris':")
 for idx, val in zip(top_features.indices, top_features.values):
     print(f"  Feature {idx.item()}: {val.item():.3f}")
 ```

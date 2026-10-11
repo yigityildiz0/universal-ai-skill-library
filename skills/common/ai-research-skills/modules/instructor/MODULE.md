@@ -42,7 +42,7 @@ from anthropic import Anthropic
 class User(BaseModel):
     name: str
     age: int
-    email: str
+    email: str | None = None  # Not stated in this source; do not invent it
 
 # Create instructor client
 client = instructor.from_anthropic(Anthropic())
@@ -121,7 +121,7 @@ class Address(BaseModel):
 
 class Person(BaseModel):
     name: str
-    age: int
+    age: int | None = None  # Source does not state an age
     address: Address  # Nested model
 
 person = client.messages.create(
@@ -180,7 +180,7 @@ print(review.sentiment)  # Sentiment.POSITIVE
 
 ### 2. Validation
 
-Pydantic validates LLM outputs automatically. If validation fails, Instructor retries.
+Pydantic validates LLM outputs automatically. If validation fails, Instructor retries within its budget. Schema validity is not factual verification: missing source facts must remain null or produce an explicit extraction failure, never be fabricated to satisfy validation.
 
 #### Built-in Validators
 
@@ -208,10 +208,12 @@ class Event(BaseModel):
 
     @field_validator('date')
     def validate_date(cls, v):
-        """Ensure date is in YYYY-MM-DD format."""
+        """Validate exact ISO format and calendar validity."""
         import re
-        if not re.match(r'\d{4}-\d{2}-\d{2}', v):
+        from datetime import date
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', v):
             raise ValueError('Date must be YYYY-MM-DD format')
+        date.fromisoformat(v)
         return v
 
     @field_validator('attendees')
@@ -297,7 +299,7 @@ for partial_story in client.messages.create_partial(
     response_model=Story
 ):
     print(f"Title: {partial_story.title}")
-    print(f"Content so far: {partial_story.content[:100]}...")
+    print(f"Content so far: {(partial_story.content or '')[:100]}...")
     # Update UI in real-time
 ```
 

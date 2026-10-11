@@ -173,7 +173,7 @@ with model.trace(corrupted_prompt) as tracer:
     # Replace layer 8 output with clean activations
     model.transformer.h[8].output[0][:] = clean_hidden
 
-    patched_logits = model.output.save()
+    patched_logits = model.output.logits.save()
 
 # 3. Compare predictions
 paris_token = model.tokenizer.encode(" Paris")[0]
@@ -196,16 +196,35 @@ def patch_layer_position(layer, position, clean_cache, corrupted_prompt):
         # Patch only specific position
         current[:, position, :] = clean_cache[layer][:, position, :]
 
-        logits = model.output.save()
+        logits = model.output.logits.save()
 
     return logits
 
-# Sweep over all layers and positions
-results = torch.zeros(12, seq_len)
-for layer in range(12):
+# Cache a distinct clean activation per layer. Equal length alone does not prove
+# semantic alignment: inspect tokenization or supply an explicit position map.
+clean_ids = model.tokenizer(clean_prompt)["input_ids"]
+corrupted_ids = model.tokenizer(corrupted_prompt)["input_ids"]
+assert len(clean_ids) == len(corrupted_ids), "Provide source-to-target token alignment"
+seq_len = len(clean_ids)
+clean_cache = {}
+with model.trace(clean_prompt):
+    for layer in range(len(model.transformer.h)):
+        clean_cache[layer] = model.transformer.h[layer].output[0].clone().save()
+    clean_logits = model.output.logits.save()
+with model.trace(corrupted_prompt):
+    corrupted_logits = model.output.logits.save()
+
+def compute_metric(logits):
+    return (logits[0, -1, paris_token] - logits[0, -1, rome_token]).item()
+
+clean_score = compute_metric(clean_logits)
+corrupted_score = compute_metric(corrupted_logits)
+results = torch.zeros(len(model.transformer.h), seq_len)
+for layer in range(len(model.transformer.h)):
     for pos in range(seq_len):
-        logits = patch_layer_position(layer, pos, clean_hidden, corrupted)
-        results[layer, pos] = compute_metric(logits)
+        logits = patch_layer_position(layer, pos, clean_cache, corrupted_prompt)
+        results[layer, pos] = compute_metric(logits) - corrupted_score
+# Report both baselines and patched changes; probability alone is not causal effect.
 ```
 
 ## Workflow 3: Remote Execution with NDIF

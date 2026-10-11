@@ -24,7 +24,7 @@ Record, when visible:
 - `UNDISCLOSED_OR_UNKNOWN`: conflicts cannot be assessed;
 - `INDEPENDENT`: no material interest found, not a guarantee of accuracy.
 
-Interested sources can establish identity, declared features, or the party's position. Do not use them alone for superiority, effectiveness, safety, value, or broad causal claims.
+Interested sources can establish identity, declared features, or the party's position. Do not use them alone for superiority, effectiveness, safety, value, or broad causal claims. Funding or sponsorship is a risk-of-bias signal, not an automatic exclusion: inspect methods, outcome selection, data access, funder role and independent replication. Remove promotional recommendations from the evidence chain unless their factual content is independently supported. An undisclosed conflict is unknown, not proof of independence.
 
 ## Advertising and manipulation signals
 

@@ -3,9 +3,25 @@ name: academic-study-coach
 description: "Academic study coach, FTR-focused: turns slides, PDFs, notes and screenshots into exam-ready summaries, tables, flashcards, active-recall and case/OSCE questions and study plans; teaches English physiotherapy and medical texts and terminology; writes NotebookLM prompts; builds thesis and conference presentations; handles scholarly writing compliance (CRediT, preregistration, ORCID, LLM-use disclosure, preprints); routes research-idea generation to the AI research library. Turkish triggers: sınava hazırla, slaytı özetle, soru çıkar, flashcard, İngilizce makaleyi çevir/anlat, terim ne demek, NotebookLM'e ne yazayım, tez sunumu, akademik sunum, tez konusu fikri. More triggers: konferans konuşması, seminer sunumu, ders notu çıkar, sınav soruları."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Academic Study Coach
 
 Learning and academic work, physiotherapy/FTR first but usable for any course. Answer in the user's language; keep scientific terms exact.
+
+**Ownership:** study/exams, English/terminology, NotebookLM and scholarly writing belong here. Searching, appraising or synthesizing scientific literature (including a literature review) belongs to `medical-evidence-research`; real patient cases, programs, outcomes, education and SOAP belong to `physio-clinical-copilot`. Short natural requests such as “ders / study / sınav / exam” are intent cues, not registered slash commands. If “makale / paper” is ambiguous, use the context to distinguish translation, appraisal and writing.
+
+Use only the host's available tools and authorized personal context. De-identify teaching cases; do not upload course material, patient data or private notes to NotebookLM or another account without authorization. If a connector is absent, produce the prompt or study output locally.
+
+For literature-search/reading training, use [literature practice](references/literature-practice.md): worked example, learner attempt, feedback and active recall. Actual evidence searches and appraisal remain with `medical-evidence-research`; preserve the original guide’s distinction between a student exercise and a systematic review.
 
 ## Choose the module
 

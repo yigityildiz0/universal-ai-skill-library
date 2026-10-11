@@ -1,13 +1,23 @@
 ---
 name: context7-mcp
-description: This skill should be used when the user asks about libraries, frameworks, API references, or needs code examples. Activates for setup questions, code generation involving libraries, or mentions of specific frameworks like React, Vue, Next.js, Prisma, Supabase, etc.
+description: "Context7 MCP compatibility guide for explicit Context7 requests, library-ID resolution, query tuning, or hosts without find-docs. General library/framework/API documentation questions route to find-docs first; do not load both for the same lookup. TR: Context7 kullan, Context7 kütüphane kimliği, doküman sorgusunu iyileştir."
 ---
 
-When the user asks about libraries, frameworks, or needs code examples, use Context7 to fetch current documentation instead of relying on training data.
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
+Use this compatibility guide for an explicit Context7 request, resolver/query details, or a host without `find-docs`. For ordinary library/framework/API questions, `find-docs` is the primary router and already uses Context7; do not load this body as well or repeat a completed lookup. This routing does not weaken any host requirement to consult current Context7 documentation.
 
 ## When to Use This Skill
 
-Activate this skill when the user:
+Within that explicit/compatibility route, supported documentation tasks include when the user:
 
 - Asks setup or configuration questions ("How do I configure Next.js middleware?")
 - Requests code involving libraries ("Write a Prisma query for...")
@@ -19,6 +29,9 @@ Activate this skill when the user:
 ### Step 1: Resolve the Library ID
 
 Call `resolve-library-id` with:
+
+Resolve the real tool name from the active host catalog. Skip resolution only when
+the user supplies an exact Context7 ID; do not guess an ID from a package name.
 
 - `libraryName`: The library name extracted from the user's question
 - `query`: What to look up in the library's documentation (improves relevance ranking)
@@ -47,6 +60,8 @@ Incorporate the fetched documentation into your response:
 - Answer the user's question using current, accurate information
 - Include relevant code examples from the docs
 - Cite the library version when relevant
+
+Respect the active tool's per-question call limits; prioritize the most relevant concepts rather than issuing unbounded follow-ups.
 
 ## Guidelines
 

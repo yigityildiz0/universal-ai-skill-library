@@ -5,7 +5,7 @@
 
 # GSAP for the Web
 
-GSAP (GreenSock Animation Platform) is the workhorse for code-driven web motion: sequenced timelines, scroll-driven storytelling, text reveals, and layout transitions. As of GSAP 3.12+, every plugin (ScrollTrigger, SplitText, Flip, MotionPath, MorphSVG, Draggable, Observer) is 100% free, including for commercial use.
+GSAP (GreenSock Animation Platform) supports sequenced timelines, scroll-driven storytelling, text reveals and layout transitions. GSAP 3.13 made the formerly paid plugins available free, including commercial use; see the [official release note](https://gsap.com/blog/3-13/). Inspect the installed version and current license/API before using newer features.
 
 ## When to use
 
@@ -161,7 +161,7 @@ useEffect(() => {
 
 ## Deliver & verify (standalone HTML)
 
-> **Packaged helper** (`scripts/`): `scripts/seek-shot.sh anim.html 0 1.5 3` freezes the `?t=N` harness and screenshots each moment; `scripts/contact-sheet.sh sheet.png frame-*.png` tiles them for one-glance review. See `scripts/README.md`.
+> **Frame verification:** follow [the shared capture workflow](../../references/capture-workflow.md) with available browser tools. No shell capture or contact-sheet helper is bundled.
 
 For a self-contained animation (hero, reveal, loop, micro-scene) the deliverable is **one HTML file that opens directly in a browser** — no build step, no framework, no render pipeline. Match the deliverable to the weight of the work: a single file is the right tier for web motion; don't reach for a bundler when one file does the job.
 

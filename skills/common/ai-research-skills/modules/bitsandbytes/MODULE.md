@@ -7,7 +7,9 @@
 
 ## Quick start
 
-bitsandbytes reduces LLM memory by 50% (8-bit) or 75% (4-bit) with <1% accuracy loss.
+Versus FP16, packed 8/4-bit weights nominally save 50/75% storage. Total VRAM
+includes metadata, unquantized layers, activations, KV cache and workspace.
+Accuracy loss is task-dependent, not guaranteed below a fixed percentage.
 
 **Installation**:
 ```bash
@@ -30,6 +32,9 @@ model = AutoModelForCausalLM.from_pretrained(
 
 **4-bit quantization** (75% memory reduction):
 ```python
+import torch
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+
 config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_compute_dtype=torch.float16
@@ -78,8 +83,9 @@ INT4: 7B × 0.5 / 1e9 = 3.5 GB
 | 8 GB | 3B | 4-bit |
 | 12 GB | 7B | 4-bit |
 | 16 GB | 7B | 8-bit or 4-bit |
-| 24 GB | 13B | 8-bit or 70B 4-bit |
-| 40+ GB | 70B | 8-bit |
+| 24 GB | 13B | 8-bit or 4-bit with runtime headroom |
+| 48+ GB | 70B | 4-bit may fit; measure runtime overhead |
+| 80+ GB | 70B | 8-bit may fit; context/batch can need more |
 
 **Step 3: Configure quantization**
 
@@ -165,7 +171,7 @@ bnb_config = BitsAndBytesConfig(
 model = AutoModelForCausalLM.from_pretrained(
     "meta-llama/Llama-2-7b-hf",
     quantization_config=bnb_config,
-    device_map="auto"
+    device_map={"": 0}  # Single-GPU training, not inference automatic dispatch
 )
 ```
 
@@ -218,7 +224,7 @@ trainer = Trainer(
 
 trainer.train()
 
-# Save LoRA adapters (only ~20MB)
+# Save LoRA adapters (size depends on rank and target modules)
 model.save_pretrained("./qlora-adapters")
 ```
 
@@ -387,9 +393,9 @@ model = AutoModelForCausalLM.from_pretrained(
 
 - **GPU**: NVIDIA with compute capability 7.0+ (Turing, Ampere, Hopper)
 - **VRAM**: Depends on model and quantization
-  - 4-bit Llama 2 7B: 4GB
-  - 4-bit Llama 2 13B: 8GB
-  - 4-bit Llama 2 70B: 24GB
+  - Packed weights alone: approximately 3.5/6.5/35 GB for 7B/13B/70B.
+  - Add quantization metadata, cache and workspace; training adds activations,
+    gradients and optimizer states. A 70B 4-bit model cannot fit wholly in 24 GB.
 - **CUDA**: 11.1+ (12.0+ recommended)
 - **PyTorch**: 2.0+
 

@@ -1,13 +1,13 @@
 # Module: using-git-worktrees
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/using-git-worktrees/`).
-> Original trigger scope: Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback
+> Trigger scope: Use when requested or when feature work genuinely needs isolation; executing a plan alone does not require a worktree. Reuse suitable existing isolation.
 
 # Using Git Worktrees
 
 ## Overview
 
-Ensure work happens in an isolated workspace. Prefer your platform's native worktree tools. Fall back to manual git worktrees only when no native tool is available.
+Use isolation when it provides a concrete benefit. Prefer suitable available native worktree tools, otherwise Git. No automatic commits or dependency installation. Bash examples must be adapted to PowerShell on Windows; check each command's exit status before proceeding.
 
 **Core principle:** Detect existing isolation first. Then use native tools. Then fall back to git. Never fight the harness.
 
@@ -87,10 +87,12 @@ Follow this priority order. Explicit user preference always beats observed files
 **MUST verify directory is ignored before creating worktree:**
 
 ```bash
-git check-ignore -q .worktrees 2>/dev/null || git check-ignore -q worktrees 2>/dev/null
+# SELECTED_RELATIVE_PATH is the exact proposed worktree path within this repo.
+git check-ignore -q -- "$SELECTED_RELATIVE_PATH"
+# Check this command's exit status. Ignoring another directory is not sufficient.
 ```
 
-**If NOT ignored:** Add to .gitignore, commit the change, then proceed.
+**If NOT ignored:** Use an authorized repository ignore rule or local `.git/info/exclude` rule for the selected path, then recheck that exact path. Do not automatically commit ignore changes. If modifying exclusions is not authorized, use an appropriate external location or clarify only that choice.
 
 **Why critical:** Prevents accidentally committing worktree contents to repository.
 
@@ -103,32 +105,18 @@ project=$(basename "$(git rev-parse --show-toplevel)")
 
 # Determine path based on chosen location
 # For project-local: path="$LOCATION/$BRANCH_NAME"
-# For global: path="~/.config/superpowers/worktrees/$project/$BRANCH_NAME"
+# For global: path="$HOME/.config/superpowers/worktrees/$project/$BRANCH_NAME"
 
-git worktree add "$path" -b "$BRANCH_NAME"
-cd "$path"
+git worktree add -b "$BRANCH_NAME" -- "$path" || exit 1
+cd "$path" || exit 1
+# Record exact path, branch, start commit, and task ownership for later cleanup.
 ```
 
-**Sandbox fallback:** If `git worktree add` fails with a permission error (sandbox denial), tell the user the sandbox blocked worktree creation and you're working in the current directory instead. Then run setup and baseline tests in place.
+**Permission failure:** Do not weaken sandbox settings. Investigate the actual error; work in place only if current-workspace ownership, cleanliness, and requested isolation permit it. Otherwise pause dependent edits and report the blocker.
 
 ## Step 3: Project Setup
 
-Auto-detect and run appropriate setup:
-
-```bash
-# Node.js
-if [ -f package.json ]; then npm install; fi
-
-# Rust
-if [ -f Cargo.toml ]; then cargo build; fi
-
-# Python
-if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-if [ -f pyproject.toml ]; then poetry install; fi
-
-# Go
-if [ -f go.mod ]; then go mod download; fi
-```
+Inspect repository instructions, manifests, lockfiles, and already available tools. Reuse existing environments. Run only required authorized setup; a manifest is not permission to install packages, download dependencies, execute lifecycle scripts, or modify lockfiles. If a dependency is missing, report it and continue independent checks rather than auto-installing.
 
 ## Step 4: Verify Clean Baseline
 
@@ -136,10 +124,10 @@ Run tests to ensure workspace starts clean:
 
 ```bash
 # Use project-appropriate command
-npm test / cargo test / pytest / go test ./...
+# Select the actual repository check (e.g. npm test, cargo test, pytest, or go test ./...).
 ```
 
-**If tests fail:** Report failures, ask whether to proceed or investigate.
+**If tests fail:** Investigate and record baseline failures; continue independent work if safe. Ask only when the failure prevents meaningful verification or requires a material decision.
 
 **If tests pass:** Report ready.
 
@@ -162,12 +150,12 @@ Ready to implement <feature-name>
 | `.worktrees/` exists | Use it (verify ignored) |
 | `worktrees/` exists | Use it (verify ignored) |
 | Both exist | Use `.worktrees/` |
-| Neither exists | Check instruction file, then default `.worktrees/` |
-| Global path exists | Use it (backward compat) |
-| Directory not ignored | Add to .gitignore + commit |
+| Neither local path exists | Use instructed path, else existing global path, else `.worktrees/` |
+| Global path exists | Use only when no explicit preference or existing local path takes priority |
+| Selected path not ignored | Add an authorized ignore/exclude rule, recheck exact path; no automatic commit |
 | Permission error on create | Sandbox fallback, work in place |
-| Tests fail during baseline | Report failures + ask |
-| No package.json/Cargo.toml | Skip dependency install |
+| Tests fail during baseline | Investigate, record, continue independent work |
+| Missing dependencies | No automatic install; report precise limitation |
 
 ## Common Mistakes
 
@@ -189,12 +177,12 @@ Ready to implement <feature-name>
 ### Assuming directory location
 
 - **Problem:** Creates inconsistency, violates project conventions
-- **Fix:** Follow priority: existing > global legacy > instruction file > default
+- **Fix:** Follow priority: explicit user/project instruction > existing local > existing global > default
 
 ### Proceeding with failing tests
 
 - **Problem:** Can't distinguish new bugs from pre-existing issues
-- **Fix:** Report failures, get explicit permission to proceed
+- **Fix:** Record baseline failures and investigate; clarify only material blockers
 
 ## Red Flags
 
@@ -204,12 +192,12 @@ Ready to implement <feature-name>
 - Skip Step 1a by jumping straight to Step 1b's git commands
 - Create worktree without verifying it's ignored (project-local)
 - Skip baseline test verification
-- Proceed with failing tests without asking
+- Conceal baseline failures or claim checks passed when they failed
 
 **Always:**
 - Run Step 0 detection first
 - Prefer native tools over git fallback
-- Follow directory priority: existing > global legacy > instruction file > default
+- Follow priority: explicit user/project instruction > existing local > existing global > default
 - Verify directory is ignored for project-local
-- Auto-detect and run project setup
+- Inspect setup requirements; run only authorized necessary setup
 - Verify clean test baseline

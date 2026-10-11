@@ -282,15 +282,15 @@ def contains_answer(example, pred, trace=None):
 
 ```python
 def f1_score(example, pred, trace=None):
-    """F1 score between prediction and gold."""
-    pred_tokens = set(pred.answer.lower().split())
-    gold_tokens = set(example.answer.lower().split())
-
-    if not pred_tokens:
-        return 0.0
-
-    precision = len(pred_tokens & gold_tokens) / len(pred_tokens)
-    recall = len(pred_tokens & gold_tokens) / len(gold_tokens)
+    """Token-multiset F1; both empty = 1, only one empty = 0."""
+    from collections import Counter
+    pred_tokens = pred.answer.lower().split()
+    gold_tokens = example.answer.lower().split()
+    if not pred_tokens or not gold_tokens:
+        return float(pred_tokens == gold_tokens)
+    overlap = sum((Counter(pred_tokens) & Counter(gold_tokens)).values())
+    precision = overlap / len(pred_tokens)
+    recall = overlap / len(gold_tokens)
 
     if precision + recall == 0:
         return 0.0

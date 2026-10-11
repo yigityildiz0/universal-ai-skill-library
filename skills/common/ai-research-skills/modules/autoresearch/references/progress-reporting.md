@@ -138,12 +138,17 @@ Use [templates/progress-presentation.html](../templates/progress-presentation.ht
 
 Replace placeholder content with your actual research data. Add, remove, or rearrange sections as the research demands. The template is a scaffold, not a constraint.
 
-### Claude Code
+### Host preview
 
-Generate the HTML, then show it to the human:
+For requested HTML, prefer the host preview tool. OS alternatives:
 
 ```bash
-open to_human/progress-001.html
+open to_human/progress-001.html  # macOS only
+# Linux: xdg-open to_human/progress-001.html
+```
+
+```powershell
+Start-Process "to_human/progress-001.html"
 ```
 
 ### OpenClaw

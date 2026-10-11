@@ -162,7 +162,7 @@ docker run -v $(pwd)/generations.json:/app/generations.json:ro \
 **Solution**: Use the MultiPL-E specific Docker image:
 ```bash
 docker pull ghcr.io/bigcode-project/evaluation-harness-multiple
-docker run -it evaluation-harness-multiple ...
+docker run -it ghcr.io/bigcode-project/evaluation-harness-multiple ...
 ```
 
 ## Result Discrepancies

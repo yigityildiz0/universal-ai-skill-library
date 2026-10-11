@@ -23,7 +23,7 @@ Stay sequential when one result determines the next step, the task is small, or 
 
 Choose the first available mode:
 
-1. Independent subagents or workers.
+1. Independent subagents or workers, only with explicit user/applicable-instruction authorization.
 2. Concurrent tool calls for independent reads, searches, or checks.
 3. Batched tool calls containing multiple independent queries or inputs.
 4. Sequential execution that preserves separate workstream contracts and evidence.
@@ -60,7 +60,7 @@ Do not reveal the expected answer to an independent verifier.
 2. Inspect evidence, diffs, and artifacts instead of trusting summaries alone.
 3. Compare overlapping claims and investigate disagreements.
 4. Merge in dependency order through one owner.
-5. Run combined verification after integration.
+5. Verify the integrated result: combined tests for interacting code changes; evidence/link/consistency checks for research or documentation.
 6. Report the integrated result, remaining uncertainty, and exclusions.
 
 ## Failure handling
@@ -77,4 +77,4 @@ Do not reveal the expected answer to an independent verifier.
 - No two writers touched the same state concurrently.
 - All claims and changes have an owner and evidence.
 - Cross-workstream contradictions were resolved or surfaced.
-- Combined tests ran after merge, not only inside isolated workstreams.
+- When code changed across workstreams, relevant combined tests covered the integrated state; otherwise appropriate artifact/evidence checks completed.

@@ -1,6 +1,6 @@
 # Module: firecrawl-search
 
-> Yiğit's earlier skill restored from archive, unchanged. Paths relative to this module folder.
+> the user's earlier skill restored from archive, unchanged. Paths relative to this module folder.
 > Original trigger scope: Search the web through an already configured Firecrawl capability, then open and verify primary sources with dates and provenance. Use when Firecrawl search is available and the user needs current source discovery; do not install a client, create credentials, or treat snippets as evidence.
 
 # Firecrawl Search

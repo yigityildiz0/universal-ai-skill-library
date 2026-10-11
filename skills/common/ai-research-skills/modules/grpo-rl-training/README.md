@@ -69,7 +69,7 @@ When this skill is loaded in your agent's context:
 
 ## ⚠️ Critical Reminders
 
-- **Loss goes UP during training** - This is normal (it's KL divergence)
+- **Loss is not just KL** - Interpret the policy objective, optional KL penalty, rewards and held-out quality together; increasing loss is not a success criterion.
 - **Use 3-5 reward functions** - Single rewards often fail
 - **Test rewards before training** - Debug each function independently
 - **Monitor reward_std** - Should stay > 0.1 (avoid mode collapse)

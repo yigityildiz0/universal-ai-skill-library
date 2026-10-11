@@ -55,6 +55,8 @@ Single forward pass evaluates entire tree (4 candidates) in parallel!
 ```python
 # Training loop for Medusa-1
 for batch in dataloader:
+    optimizer.zero_grad()
+    loss = 0
     # Frozen base model
     with torch.no_grad():
         hidden_states = base_model(**batch, output_hidden_states=True).hidden_states[-1]
@@ -64,7 +66,8 @@ for batch in dataloader:
         logits = head(hidden_states)
         # Target: tokens shifted by (i+1) positions
         targets = batch['input_ids'][:, i+1:]
-        loss += F.cross_entropy(logits[:, :-i-1], targets)
+        loss += F.cross_entropy(logits[:, :-i-1].reshape(-1, logits.size(-1)),
+                                targets.reshape(-1))
 
     loss.backward()
     optimizer.step()

@@ -139,7 +139,9 @@ lora_config = LoraConfig(
 )
 
 model = get_peft_model(model, lora_config)
-# 70B model now fits on single 24GB GPU!
+# 70B at 4 bits needs at least 35 GB (32.6 GiB) for raw weights alone,
+# plus quantization metadata, adapters, activations and optimizer state.
+# This does not fit a 24 GB GPU without offload/sharding; use a smaller model locally.
 ```
 
 ## LoRA parameter selection
@@ -169,7 +171,7 @@ LoraConfig(r=16, lora_alpha=64)  # Aggressive (higher learning rate effect)
 # Llama / Mistral / Qwen
 target_modules = ["q_proj", "v_proj", "k_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
 
-# GPT-2 / GPT-Neo
+# GPT-2 (GPT-Neo has different module names; inspect named_modules())
 target_modules = ["c_attn", "c_proj", "c_fc"]
 
 # Falcon

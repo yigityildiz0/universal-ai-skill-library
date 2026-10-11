@@ -126,16 +126,16 @@ pipe = DiffusionPipeline.from_pretrained(
 
 **Solutions**:
 ```python
-# Solution 1: Disable safety checker
-pipe.safety_checker = None
+# Inspect safety-checker flags and finite latents/decoder outputs first.
+# A flagged output differs from numerical overflow; diagnose before casting.
 
 # Solution 2: Check VAE scaling
 # The issue might be with VAE encoding/decoding
 latents = latents / pipe.vae.config.scaling_factor  # Before decode
 
-# Solution 3: Ensure proper dtype
-pipe = pipe.to(dtype=torch.float16)
-pipe.vae = pipe.vae.to(dtype=torch.float32)  # VAE often needs fp32
+# Solution 3: Use supported VAE upcasting (e.g. SDXL force_upcast).
+# Blindly casting the VAE alone can cause latent/decoder dtype mismatch.
+# FP16 can cause rather than fix overflow; use a checkpoint-compatible VAE.
 
 # Solution 4: Check guidance scale
 # Too high can cause issues

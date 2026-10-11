@@ -1,7 +1,7 @@
 # Module: brainstorming
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/brainstorming/`).
-> Original trigger scope: Use when creating or developing anything, before writing code or implementation plans - refines rough ideas into fully-formed designs through structured Socratic questioning, alternative exploration, and incremental validation. Turkish triggers: fikir üret, birlikte düşünelim, seçenekleri geliştir, tasarımı netleştir.
+> Trigger scope: Use only when the user explicitly wants ideation, alternative exploration, or collaborative design refinement. Do not activate as a prerequisite for a clear implementation or bugfix request. Turkish triggers: fikir üret, birlikte düşünelim, seçenekleri geliştir, tasarımı birlikte netleştirelim.
 
 # Brainstorming Ideas Into Designs
 
@@ -9,7 +9,7 @@
 
 Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 
-**Core principle:** Ask questions to understand, explore alternatives, present design incrementally for validation.
+**Core principle:** Use existing context first, explore useful alternatives, and ask only material unanswered questions. No mandatory interview, approval loop, document, commit, or worktree.
 
 **Announce at start:** "I'm using the brainstorming skill to refine your idea into a design."
 
@@ -17,30 +17,30 @@ Transform rough ideas into fully-formed designs through structured questioning a
 
 | Phase | Key Activities | Tool Usage | Output |
 |-------|---------------|------------|--------|
-| **1. Understanding** | Ask questions (one at a time) | Structured user input for choices, when available | Purpose, constraints, criteria |
+| **1. Understanding** | Read context; clarify material gaps only | A focused question when needed | Purpose, constraints, criteria |
 | **2. Exploration** | Propose 2-3 approaches | Structured user input for approach selection, when available | Architecture options with trade-offs |
-| **3. Design Presentation** | Present in 200-300 word sections | Open-ended questions | Complete design with validation |
-| **4. Design Documentation** | Write design document | writing-clearly-and-concisely skill | Design doc in docs/plans/ |
-| **5. Worktree Setup** | Set up isolated workspace | using-git-worktrees skill | Ready development environment |
-| **6. Planning Handoff** | Create implementation plan | writing-plans skill | Detailed task breakdown |
+| **3. Design Presentation** | Concise recommendation and trade-offs | Feedback only where needed | Actionable design |
+| **4. Design Documentation** | Save only if requested or warranted | Plain Markdown | Optional design record |
+| **5. Worktree Setup** | Isolate only when needed | [using-git-worktrees](../using-git-worktrees/MODULE.md) | Optional isolated workspace |
+| **6. Planning Handoff** | Scale plan to task | [writing-plans](../writing-plans/MODULE.md) | Executable next steps |
 
 ## The Process
 
-Copy this checklist to track progress:
+Use the relevant items only; this is not a mandatory interview or artifact sequence:
 
 ```
 Brainstorming Progress:
 - [ ] Phase 1: Understanding (purpose, constraints, criteria gathered)
 - [ ] Phase 2: Exploration (2-3 approaches proposed and evaluated)
-- [ ] Phase 3: Design Presentation (design validated in sections)
-- [ ] Phase 4: Design Documentation (design written to docs/plans/)
-- [ ] Phase 5: Worktree Setup (if implementing)
+- [ ] Phase 3: Design Presentation (recommendation and material decisions resolved)
+- [ ] Phase 4: Design Documentation (only if requested or warranted)
+- [ ] Phase 5: Worktree Setup (only if isolation is needed)
 - [ ] Phase 6: Planning Handoff (if implementing)
 ```
 
 ### Phase 1: Understanding
 - Check current project state in working directory
-- Ask ONE question at a time to refine the idea
+- Read available context first; ask a focused question only for a material unresolved detail
 - Use the current host's structured user-input mechanism when multiple-choice options would help; otherwise present the choices directly
 - Gather: Purpose, constraints, success criteria
 
@@ -48,16 +48,16 @@ Brainstorming Progress:
 ```
 Question: "Where should the authentication data be stored?"
 Options:
-  - "Session storage" (clears on tab close, more secure)
-  - "Local storage" (persists across sessions, more convenient)
-  - "Cookies" (works with SSR, compatible with older approach)
+  - "Server session with Secure, HttpOnly, SameSite cookies" (limits script access; requires CSRF-aware design)
+  - "Session storage" (tab lifetime, but script-readable and exposed to XSS)
+  - "Local storage" (persistent and script-readable; avoid persisting sensitive credentials without a justified threat model)
 ```
 
 ### Phase 2: Exploration
 - Propose 2-3 different approaches
 - For each: Core architecture, trade-offs, complexity assessment
 - Use the current host's structured user-input mechanism to present approaches when available, or present the same choices directly
-- Ask your human partner which approach resonates
+- Recommend an approach; ask only if a material preference or constraint remains unresolved
 
 **Example structured question:**
 ```
@@ -69,32 +69,23 @@ Options:
 ```
 
 ### Phase 3: Design Presentation
-- Present in 200-300 word sections
+- Present a concise design sized to the problem
 - Cover: Architecture, components, data flow, error handling, testing
-- Ask after each section: "Does this look right so far?" (open-ended)
-- Use open-ended questions here to allow freeform feedback
+- Invite feedback when it changes the outcome; no approval after every section
+- Continue already-authorized implementation once material decisions are resolved
 
 ### Phase 4: Design Documentation
-After design is validated, write it to a permanent document:
+When a durable design record is requested or proportionate to the work:
 - **File location:** `docs/plans/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
 - **RECOMMENDED SUB-SKILL:** Use an installed writing or style skill, if available, to improve documentation quality
 - **Content:** Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
-- Commit the design document to git before proceeding
+- Commit only if explicitly requested or required by the repository's authorized workflow
 
 ### Phase 5: Worktree Setup (for implementation)
-When design is approved and implementation will follow:
-- Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
-- **REQUIRED SUB-SKILL:** Use the installed `using-git-worktrees` skill
-- Follow that skill's process for directory selection, safety verification, and setup
-- Return here when worktree ready
+When isolation is needed for implementation, read [using-git-worktrees](../using-git-worktrees/MODULE.md). Reuse an appropriate existing workspace. Worktree creation is optional and not a design approval gate.
 
 ### Phase 6: Planning Handoff
-Ask: "Ready to create the implementation plan?"
-
-When your human partner confirms (any affirmative response):
-- Announce: "I'm using the writing-plans skill to create the implementation plan."
-- **REQUIRED SUB-SKILL:** Use the installed `writing-plans` skill
-- Create detailed plan in the worktree
+If implementation was already requested, continue with an appropriately sized plan using [implementation-plan](../implementation-plan/MODULE.md) or [writing-plans](../writing-plans/MODULE.md), then execute. For ideation-only requests, deliver the design and recommendation; do not assume permission to implement.
 
 ## Question Patterns
 
@@ -159,7 +150,7 @@ digraph revisit_phases {
 | **One question at a time** | Phase 1: Single question per message; use structured input for choices when available |
 | **Structured choices** | Present 2-4 options with trade-offs through the host's supported interaction mechanism |
 | **YAGNI ruthlessly** | Remove unnecessary features from all designs |
-| **Explore alternatives** | Always propose 2-3 approaches before settling |
-| **Incremental validation** | Present design in sections, validate each |
+| **Explore alternatives** | Compare 2-3 genuinely useful approaches when choices matter |
+| **Incremental validation** | Resolve material uncertainty without repetitive approvals |
 | **Flexible progression** | Go backward when needed - flexibility > rigidity |
 | **Announce usage** | State skill usage at start of session |

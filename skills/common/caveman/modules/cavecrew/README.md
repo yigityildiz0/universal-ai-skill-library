@@ -60,8 +60,8 @@ plugin update or reinstall.
 
 ## See also
 
-- [`SKILL.md`](./MODULE.md): full decision matrix and output contracts
+- [`SKILL.md`](./SKILL.md): full decision matrix and output contracts
 - [`agents/cavecrew-investigator.md`](../../agents/cavecrew-investigator.md)
 - [`agents/cavecrew-builder.md`](../../agents/cavecrew-builder.md)
 - [`agents/cavecrew-reviewer.md`](../../agents/cavecrew-reviewer.md)
-- [Caveman README](https://github.com/JuliusBrussee/caveman#readme): repo overview
+- [Caveman README](../../README.md): repo overview

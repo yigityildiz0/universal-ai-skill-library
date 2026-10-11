@@ -63,6 +63,8 @@ ssh -i ~/.ssh/lambda_key ubuntu@<INSTANCE-IP>
 
 ### Available GPUs
 
+Pricing below is a historical illustrative snapshot (original observation date unavailable; audited 2026-10-08), not a current quote. Confirm availability, regional prices, billing units and storage at https://lambda.ai/service/gpu-cloud before budgeting; API `instance-types` prices take precedence. This also applies to pricing examples in the reference files.
+
 | GPU | VRAM | Price/GPU/hr | Best For |
 |-----|------|--------------|----------|
 | B200 SXM6 | 180 GB | $4.99 | Largest models, fastest training |
@@ -429,8 +431,11 @@ High-performance Slurm clusters with:
 
 ```bash
 # On Slurm cluster
-srun --nodes=4 --ntasks-per-node=8 --gpus-per-node=8 \
+# One torchrun launcher per node, each launching eight GPU workers.
+export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
+srun --nodes=4 --ntasks-per-node=1 --gpus-per-node=8 \
   torchrun --nnodes=4 --nproc_per_node=8 \
+  --rdzv_id="$SLURM_JOB_ID" \
   --rdzv_backend=c10d --rdzv_endpoint=$MASTER_ADDR:29500 \
   train.py
 ```

@@ -335,7 +335,7 @@ plt.rcParams.update({
     "lines.linewidth": 1.8, "lines.markersize": 5,
 })
 
-# --- "Ocean Dusk" palette (professional, distinctive, colorblind-safe) ---
+# --- "Ocean Dusk" palette (use redundant markers; check colorblind/grayscale output) ---
 COLORS = ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#E76F51",
           "#0072B2", "#56B4E9", "#8C8C8C"]
 OUR_COLOR = "#E76F51"       # coral — warm, stands out
@@ -345,7 +345,11 @@ FIG_SINGLE, FIG_FULL = (3.25, 2.5), (6.75, 2.8)
 
 ### Common Chart Patterns
 
-**Line plot (training curves)** — with markers and confidence bands:
+**Line plot (training curves)** — with markers and mean ± one standard deviation:
+
+`results` contains per-step mean and sample SD across independent runs. This band
+shows run variability, not a confidence interval. For a mean CI, use the run count
+and a justified t/bootstrap interval; label the method and number of runs.
 
 ```python
 fig, ax = plt.subplots(figsize=FIG_SINGLE)
@@ -385,7 +389,7 @@ ax.legend(ncol=min(n, 4))
 fig.savefig("figures/fig_ablation.pdf")
 ```
 
-**Heatmap** — with diverging colormap and clean borders:
+**Heatmap** — with a sequential colormap and clean borders:
 
 ```python
 import seaborn as sns

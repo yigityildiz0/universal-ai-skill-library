@@ -1,7 +1,7 @@
-# Module: migration
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/migration/`.
-> Original trigger scope: Implement reversible compatibility-safe transitions. Use for schema, data, API, protocol, configuration, or dependency migrations requiring rollback and preservation proof.
+---
+name: migration
+description: Implement reversible compatibility-safe transitions. Use for schema, data, API, protocol, configuration, or dependency migrations requiring rollback and preservation proof.
+---
 
 # Migration
 

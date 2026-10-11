@@ -1,4 +1,4 @@
-# Yiğit's safety-adapted caveman-help
+# the user's safety-adapted caveman-help
 
 > Original trigger scope: Manual one-shot reference card for Caveman levels and companion skills. Use only when explicitly invoked as $caveman-help, /caveman-help, 'Caveman help', or an unambiguous question about Caveman commands or levels. Never activate for generic help requests; do not activate a mode or change files. Turkish triggers: Caveman yardım, mağara modu seviyeleri ve komutları.
 

@@ -507,9 +507,16 @@ status: Status  # Validation automatic
 ### 4. Balance Strictness
 
 ```python
-# Too strict: May fail unnecessarily
+# Strict ISO shape plus real calendar-date validation
+from datetime import date as CalendarDate
+
 class StrictModel(BaseModel):
     date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    @field_validator('date')
+    @classmethod
+    def validate_calendar(cls, value):
+        CalendarDate.fromisoformat(value)
+        return value
     # Fails if LLM uses "2024-1-5" instead of "2024-01-05"
 
 # Better: Normalize in validator

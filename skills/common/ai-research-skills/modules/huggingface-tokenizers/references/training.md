@@ -119,7 +119,7 @@ from tokenizers.processors import TemplateProcessing
 # BERT-style
 tokenizer.post_processor = TemplateProcessing(
     single="[CLS] $A [SEP]",
-    pair="[CLS] $A [SEP] $B [SEP]",
+    pair="[CLS] $A [SEP] $B:1 [SEP]:1",
     special_tokens=[
         ("[CLS]", tokenizer.token_to_id("[CLS]")),
         ("[SEP]", tokenizer.token_to_id("[SEP]")),
@@ -277,19 +277,21 @@ def train_shard(shard_files):
     tokenizer.train(files=shard_files, trainer=trainer)
     return tokenizer.get_vocab()
 
-# Split files into shards
-num_shards = cpu_count()
-file_shards = [files[i::num_shards] for i in range(num_shards)]
-
-# Train shards in parallel
-with Pool(num_shards) as pool:
-    vocab_shards = pool.map(train_shard, file_shards)
-
-# Merge vocabularies (custom logic needed)
-# This is a simplified example - real implementation would merge intelligently
-final_vocab = {}
-for vocab in vocab_shards:
-    final_vocab.update(vocab)
+# Run as a script: Windows uses spawn.
+if __name__ == "__main__":
+    from multiprocessing import freeze_support
+    from pathlib import Path
+    freeze_support()
+    files = [str(path) for path in Path("corpus").glob("*.txt")]
+    if not files:
+        raise ValueError("Add training files under corpus/")
+    num_shards = min(cpu_count(), len(files))
+    file_shards = [files[i::num_shards] for i in range(num_shards)]
+    with Pool(num_shards) as pool:
+        vocab_shards = pool.map(train_shard, file_shards)
+    # Diagnostic vocabularies only: dictionary merging cannot combine BPE merge
+    # ranks or conflicting IDs. Train one tokenizer over the complete corpus
+    # for a usable artifact.
 ```
 
 ## Domain-specific tokenizers

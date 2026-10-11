@@ -1,6 +1,6 @@
-# Yiğit's customized brand workflow
+# the user's customized brand workflow
 
-> Yiğit's earlier customized copy of `brand`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
+> the user's earlier customized copy of `brand`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
 > Original trigger scope: Create, update, apply, and audit brand strategy, voice, messaging, visual identity, asset rules, and governance. Use for brand guidelines, tone of voice, naming and messaging systems, visual consistency, asset organization, campaign compliance, or synchronizing approved brand tokens into product design. Turkish triggers: marka kimliği, marka rehberi, isim ve mesaj sistemi, görsel tutarlılık.
 
 # Brand

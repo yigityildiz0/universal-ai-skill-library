@@ -347,9 +347,15 @@ These flags **must** be consistent between training and inference. Mismatches ca
 Quick validation:
 
 ```python
-# Verify config parity before long eval runs
-train_flags = {"use_film": False, "num_images": 2, "use_proprio": True, "lora_rank": 32}
-eval_flags  = {"use_film": False, "num_images": 2, "use_proprio": True, "lora_rank": 32}
+# Read actual resolved CLI configs exported from the two runs. These filenames
+# are user-owned exports, not artifacts automatically guaranteed by OpenVLA.
+import json
+from pathlib import Path
+train_flags = json.loads(Path("artifacts/train-resolved.json").read_text())
+eval_flags = json.loads(Path("artifacts/eval-resolved.json").read_text())
+required = {"use_film", "num_images_in_input", "use_proprio", "lora_rank",
+            "use_l1_regression", "use_diffusion"}
+assert required <= train_flags.keys() and required <= eval_flags.keys()
 for k in train_flags:
     assert train_flags[k] == eval_flags[k], f"Mismatch: {k}: {train_flags[k]} vs {eval_flags[k]}"
 print("All flags consistent")
@@ -374,9 +380,11 @@ python vla-scripts/merge_lora_weights_and_save.py \
 Fix: check `--unnorm_key` matches dataset statistics in checkpoint:
 
 ```python
-import torch
-ckpt = torch.load("checkpoint/model.pt", map_location="cpu")
-print("Available norm keys:", list(ckpt.get("norm_stats", {}).keys()))
+import json
+from pathlib import Path
+stats = json.loads(Path("checkpoint/dataset_statistics.json").read_text())
+print("Available norm keys:", list(stats))
+# Use the real checkpoint directory; verify unnorm_key exists in this artifact.
 ```
 
 **Issue: Eval success unexpectedly low**

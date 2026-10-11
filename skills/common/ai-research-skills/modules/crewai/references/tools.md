@@ -270,9 +270,12 @@ api_tool = APITool(api_key="your-key", base_url="https://api.example.com")
 
 ### Tool with Validation
 
+Copy [safe_calculator.py](safe_calculator.py) beside your application first.
+
 ```python
 from crewai.tools import BaseTool
 from pydantic import Field, field_validator
+from safe_calculator import calculate
 
 class CalculatorTool(BaseTool):
     name: str = "Calculator"
@@ -290,11 +293,7 @@ class CalculatorTool(BaseTool):
 
     def _run(self, expression: str) -> str:
         try:
-            # Simple eval with safety checks
-            for char in expression:
-                if char.isalpha():
-                    return "Error: Letters not allowed"
-            result = eval(expression)
+            result = calculate(expression, self.allowed_operators)
             return f"Result: {result}"
         except Exception as e:
             return f"Error: {str(e)}"

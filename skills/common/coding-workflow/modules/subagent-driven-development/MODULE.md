@@ -7,7 +7,7 @@
 
 ## Entry gate
 
-Use subagents when work can be isolated by dependency or an independent review is valuable. Keep a tightly coupled, small, or highly interactive change with the coordinator.
+Use subagents only when explicitly authorized by the user or applicable instructions and work can be isolated by dependency or independent review adds value. Keep a tightly coupled, small, or highly interactive change with the coordinator. Tool availability alone is not authorization.
 
 ## Task contract
 

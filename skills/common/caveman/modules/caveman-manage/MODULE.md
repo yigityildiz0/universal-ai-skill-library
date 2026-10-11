@@ -1,7 +1,10 @@
-# Module: caveman-manage
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-manage/`.
-> Original trigger scope: Inspect Caveman Cloud's experiment lifecycle and block unsafe execution. Use when asked to start, approve, cancel, promote or roll back a Caveman experiment.
+---
+name: caveman-manage
+description: >
+  Inspect Caveman Cloud's experiment lifecycle and block unsafe execution. Use
+  when asked to start, approve, cancel, promote or roll back a Caveman
+  experiment.
+---
 
 # Manage eval-gated experiments
 

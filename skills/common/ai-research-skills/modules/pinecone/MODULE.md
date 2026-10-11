@@ -33,7 +33,7 @@ The vector database for production AI applications.
 ### Installation
 
 ```bash
-pip install pinecone-client
+pip install pinecone
 ```
 
 ### Basic usage
@@ -216,15 +216,18 @@ index.upsert(vectors=[
     }
 ])
 
-# Hybrid query
+# Single-index hybrid retrieval requires a compatible dotproduct index.
+# Supply a full dense_query embedding matching the index dimension.
+alpha = 0.5  # 0=sparse, 1=dense; not an index.query keyword
+assert 0.0 <= alpha <= 1.0
+sparse_query = {"indices": [10, 45], "values": [0.5, 0.3]}
 results = index.query(
-    vector=[0.1, 0.2, ...],
+    vector=[alpha * value for value in dense_query],
     sparse_vector={
-        "indices": [10, 45],
-        "values": [0.5, 0.3]
+        "indices": sparse_query["indices"],
+        "values": [(1.0 - alpha) * value for value in sparse_query["values"]],
     },
     top_k=5,
-    alpha=0.5  # 0=sparse, 1=dense, 0.5=hybrid
 )
 ```
 
@@ -305,8 +308,10 @@ index.delete(filter={"category": "old"})
 # Delete all in namespace
 index.delete(delete_all=True, namespace="test")
 
-# Delete entire index
-index.delete(delete_all=True)
+# Delete all records in the default namespace only; the index still exists.
+index.delete(delete_all=True, namespace="")
+# Deleting the index itself is a separate control-plane operation:
+# pc.delete_index("my-index")
 ```
 
 ## Best practices

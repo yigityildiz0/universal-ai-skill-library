@@ -24,6 +24,11 @@ python -m pip install .
 
 # Install Flash Attention 2
 python -m pip install flash-attn --no-build-isolation
+
+# Training scripts/configs below belong to SimPO, not alignment-handbook.
+cd ..
+git clone https://github.com/princeton-nlp/SimPO.git
+cd SimPO
 ```
 
 **Training** (Mistral 7B):
@@ -192,8 +197,9 @@ gradient_checkpointing: true
 
 - **GPU**: NVIDIA A100/H100 recommended
 - **VRAM**:
-  - 7B model: 1× A100 40GB (DeepSpeed ZeRO-3)
-  - 8B model: 2× A100 40GB
+  - 7B/8B full training: budget weights, gradients, optimizer states and activations.
+    One 40GB GPU is not a general fit; single-rank ZeRO-3 cannot shard across GPUs.
+    Use measured multi-GPU capacity, CPU/NVMe offload, or LoRA/QLoRA instead.
   - 70B model: 8× A100 80GB
 - **Single-node**: DeepSpeed ZeRO-3 sufficient
 - **Mixed precision**: BF16 recommended

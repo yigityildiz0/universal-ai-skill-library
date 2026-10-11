@@ -19,7 +19,7 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 ```
 
-If you haven't run the verification command in this message, you cannot claim it passes.
+Use evidence that covers the current changed state. A successful post-change run remains valid across messages while relevant files, dependencies, configuration, and runtime state remain unchanged. Rerun only when a new change, failure, or unresolved concern invalidates that evidence; do not rerun on every message.
 
 ## The Gate Function
 
@@ -27,7 +27,7 @@ If you haven't run the verification command in this message, you cannot claim it
 BEFORE claiming any status or expressing satisfaction:
 
 1. IDENTIFY: What command proves this claim?
-2. RUN: Execute the FULL command (fresh, complete)
+2. RUN or REUSE: Run the appropriately scoped command, or reuse valid post-change evidence
 3. READ: Full output, check exit code, count failures
 4. VERIFY: Does output confirm the claim?
    - If NO: State actual status with evidence
@@ -41,7 +41,7 @@ Skip any step = lying, not verifying
 
 | Claim | Requires | Not Sufficient |
 |-------|----------|----------------|
-| Tests pass | Test command output: 0 failures | Previous run, "should pass" |
+| Tests pass | Applicable post-change test output: 0 failures | Pre-change/invalidated run, "should pass" |
 | Linter clean | Linter output: 0 errors | Partial check, extrapolation |
 | Build succeeds | Build command: exit 0 | Linter passing, logs look good |
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
@@ -70,7 +70,7 @@ Skip any step = lying, not verifying
 | "Linter passed" | Linter ≠ compiler |
 | "Agent said success" | Verify independently |
 | "I'm tired" | Exhaustion ≠ excuse |
-| "Partial check is enough" | Partial proves nothing |
+| "Partial check is enough" | A scoped check proves only its scope; don't generalize it to the whole system |
 | "Different words so rule doesn't apply" | Spirit over letter |
 
 ## Key Patterns
@@ -83,7 +83,9 @@ Skip any step = lying, not verifying
 
 **Regression tests (TDD Red-Green):**
 ```
-✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
+✅ Prefer a failing test before the fix, then a passing post-fix run.
+✅ If red evidence is missing, reproduce in a disposable copy or use an exact reversible isolated patch, then restore and verify.
+❌ Never reset/delete existing user work or alter a shared environment to demonstrate red.
 ❌ "I've written a regression test" (without red-green verification)
 ```
 
@@ -107,22 +109,20 @@ Skip any step = lying, not verifying
 
 ## Why This Matters
 
-From 24 failure memories:
-- your human partner said "I don't believe you" - trust broken
+Unsupported success claims can cause:
+- Loss of trust in reported results
 - Undefined functions shipped - would crash
 - Missing requirements shipped - incomplete features
 - Time wasted on false completion → redirect → rework
-- Violates: "Honesty is a core value. If you lie, you'll be replaced."
+- Confusion between completed work and unverified assumptions
 
 ## When To Apply
 
 **ALWAYS before:**
 - ANY variation of success/completion claims
-- ANY expression of satisfaction
-- ANY positive statement about work state
+- Claims that imply tested correctness
 - Committing, PR creation, task completion
-- Moving to next task
-- Delegating to agents
+- Handoffs that assert a verified result (reuse valid evidence rather than rerunning mechanically)
 
 **Rule applies to:**
 - Exact phrases

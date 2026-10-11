@@ -27,8 +27,8 @@ Simultaneously:
 ## Output
 Updated `{topic}/outline.yaml` file (in-place modification)
 
-## Host notes (added for Yiğit's setup)
+## Host notes (added for the user's setup)
 
 - If this host has no background web-search agent or subagents (for example ChatGPT/Claude web or mobile), run the same prompt template yourself for each item — sequentially, or with the host's parallel tools — and write the same outputs.
 - The validator is `validate_json.py` inside the `research` skill folder. If the path shown above does not exist on this host, locate that file next to the `research` skill and run it from there (requires `pip install pyyaml`).
-- Yiğit prefers few interruptions: put all confirmation questions of a step into one message, and when he says "devam" or "varsayılanla", use defaults (time range: last 12 months; batch_size 3; items_per_agent 2).
+- Group related clarification questions into one message. Use defaults only when the user explicitly approves them, and state the chosen date range and batch size.

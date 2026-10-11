@@ -140,7 +140,7 @@ similarities = util.cos_sim(embeddings, embeddings)
 
 ```python
 # Efficient batch processing
-sentences = ["sentence 1", "sentence 2", ...] * 1000
+sentences = ["sentence 1", "sentence 2", "sentence 3"] * 1000
 
 embeddings = model.encode(
     sentences,
@@ -205,7 +205,7 @@ embed_model = HuggingFaceEmbedding(
     model_name="sentence-transformers/all-mpnet-base-v2"
 )
 
-from llama_index.core import Settings
+from llama_index.core import Settings, VectorStoreIndex
 Settings.embed_model = embed_model
 
 # Use in index

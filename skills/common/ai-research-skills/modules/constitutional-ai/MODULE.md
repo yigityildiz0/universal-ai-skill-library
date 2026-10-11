@@ -32,7 +32,12 @@ Principles:
 ```python
 from transformers import pipeline
 
-generator = pipeline("text-generation", model="base-model")
+generator = pipeline("text-generation", model="Qwen/Qwen2.5-0.5B-Instruct")
+
+def generate_texts(texts, **kwargs):
+    """One continuation per input; unwrap the pipeline's nested batch output."""
+    batches = generator(texts, max_new_tokens=200, return_full_text=False, **kwargs)
+    return [batch[0]["generated_text"] for batch in batches]
 
 prompts = [
     "How do I hack a website?",
@@ -40,7 +45,7 @@ prompts = [
     "Help me cheat on my exam."
 ]
 
-initial_responses = generator(prompts, max_length=200)
+initial_responses = generate_texts(prompts)
 ```
 
 **Step 2: Self-critique with constitution**:
@@ -60,8 +65,8 @@ Constitution:
 Identify any ways this response violates the constitution:
 """
 
-critiques = generator(
-    [critique_prompt.format(q=q, r=r) for q, r in zip(prompts, initial_responses)]
+critiques = generate_texts(
+    [critique_prompt.format(question=q, response=r) for q, r in zip(prompts, initial_responses)]
 )
 ```
 
@@ -75,23 +80,25 @@ Critique: {critique}
 Please revise the response to better align with the constitution:
 """
 
-revised_responses = generator(
-    [revision_prompt.format(q=q, r=r, c=c)
+revised_responses = generate_texts(
+    [revision_prompt.format(question=q, response=r, critique=c)
      for q, r, c in zip(prompts, initial_responses, critiques)]
 )
 ```
 
 **Step 4: Fine-tune on revised responses**:
 ```python
-from trl import SFTTrainer
+from datasets import Dataset
+from trl import SFTConfig, SFTTrainer
 
 # Create dataset of (prompt, revised_response) pairs
-dataset = create_dataset(prompts, revised_responses)
+dataset = Dataset.from_dict({"prompt": prompts, "completion": revised_responses})
 
 trainer = SFTTrainer(
-    model=model,
+    model=generator.model,
+    processing_class=generator.tokenizer,
+    args=SFTConfig(output_dir="constitutional-sft", max_length=1024),
     train_dataset=dataset,
-    max_seq_length=1024
 )
 trainer.train()
 ```
@@ -101,8 +108,8 @@ trainer.train()
 **Step 1: Generate comparison pairs**:
 ```python
 # Sample multiple responses per prompt
-responses_a = generator(prompts, num_return_sequences=2, do_sample=True, temperature=0.8)
-responses_b = generator(prompts, num_return_sequences=2, do_sample=True, temperature=0.8)
+responses_a = generate_texts(prompts, do_sample=True, temperature=0.8)
+responses_b = generate_texts(prompts, do_sample=True, temperature=0.8)
 ```
 
 **Step 2: AI preference evaluation**:
@@ -119,9 +126,9 @@ Constitution:
 Which response better follows the constitution? Explain your reasoning, then choose A or B.
 """
 
-# Get AI preferences (no human labels needed!)
-preferences = generator(
-    [preference_prompt.format(q=q, ra=ra, rb=rb, constitution=CONSTITUTION)
+CONSTITUTION = "Prefer helpful, honest responses that avoid enabling harm."
+preferences = generate_texts(
+    [preference_prompt.format(question=q, response_a=ra, response_b=rb, constitution=CONSTITUTION)
      for q, ra, rb in zip(prompts, responses_a, responses_b)]
 )
 
@@ -151,22 +158,20 @@ reward_trainer.train()
 ```
 
 **Step 4: RL training with RLAIF**:
-```python
-from trl import PPOTrainer, PPOConfig
-
-ppo_config = PPOConfig(
-    reward_model_path="constitutional-reward-model",
-    learning_rate=1e-6,
-    kl_coef=0.05
-)
-
-ppo_trainer = PPOTrainer(
-    model=model,
-    config=ppo_config,
-    reward_model=reward_model
-)
-ppo_trainer.train()
+```text
+Illustrative PPO wiring (not a callable TRL API):
+load policy from the SFT checkpoint
+load a frozen reference policy and the trained scalar reward model
+initialize the value model and tokenized prompt dataset
+configure PPO, KL control, rollout/evaluation budgets for the installed TRL version
+train policy using reward scores, with held-out human-reviewed evaluations
 ```
+
+TRL PPO APIs have changed across releases; follow the installed release's PPO
+example rather than invented `reward_model_path` constructor arguments. Earlier
+steps' `parse_preferences` and `create_preference_dataset` are application hooks:
+validate A/B labels, reject ambiguous outputs, randomize order, and build the
+documented reward-dataset schema with a scalar sequence-classification model.
 
 ### Workflow 3: Chain-of-thought critique
 

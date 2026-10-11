@@ -1,6 +1,6 @@
 # Module: deep-research-compilation
 
-> Yiğit's earlier skill restored from archive, unchanged. Paths relative to this module folder.
+> the user's earlier skill restored from archive, unchanged. Paths relative to this module folder.
 > Original trigger scope: Compile multiple research reports (.docx/.md/.pdf/.pptx/.html/.txt/URLs) into one unified document (.docx, .pdf, or .md) with deduplicated inline [N] citations linking to a References section. The agent analyzes the user's template at runtime and writes a throwaway python-docx program tailored to that template's styles -- no persistent generator.
 
 # Deep Research Compilation

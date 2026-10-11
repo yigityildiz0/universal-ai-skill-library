@@ -151,11 +151,15 @@ uv run --extra cu128 --group libero --python 3.10 \
 
 ```python
 import json
-import glob
+from pathlib import Path
 
 # Find latest evaluation result from the official log directory
-log_files = sorted(glob.glob("cosmos_policy/experiments/robot/libero/logs/**/*.json", recursive=True))
-with open(log_files[-1]) as f:
+log_files = list(Path("cosmos_policy/experiments/robot/libero/logs").rglob("*.json"))
+if not log_files:
+    raise FileNotFoundError("No evaluation JSON found; check the run's log path.")
+# Prefer the exact run output path when known; mtime is a local fallback.
+latest = max(log_files, key=lambda p: p.stat().st_mtime_ns)
+with latest.open(encoding="utf-8") as f:
     results = json.load(f)
 
 print(results)
@@ -377,8 +381,11 @@ Fix: verify GPU device alignment:
 import os
 cuda_dev = os.environ.get("CUDA_VISIBLE_DEVICES", "not set")
 egl_dev = os.environ.get("MUJOCO_EGL_DEVICE_ID", "not set")
-assert cuda_dev == egl_dev, f"GPU mismatch: CUDA={cuda_dev}, EGL={egl_dev}"
-print(f"Rendering on GPU {cuda_dev}")
+print(f"CUDA visibility={cuda_dev}; EGL device index={egl_dev}")
+# CUDA logical ordinals are remapped by CUDA_VISIBLE_DEVICES. EGL indexing
+# depends on driver/container enumeration and may still use physical ordinals.
+# Verify UUID/PCI bus identity and a render smoke test; string equality is not
+# evidence that CUDA and EGL selected the same physical GPU.
 ```
 
 ---

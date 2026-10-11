@@ -185,17 +185,22 @@ import agent_evolve as ae
 class CodeReviewBenchmark(ae.BenchmarkAdapter):
     """Evaluate agents on code review quality."""
 
+    def __init__(self):
+        # Evaluator-private table; never serialize this into agent-visible Tasks.
+        self._expected = {}
+
     def get_tasks(self, split="train", limit=None):
         tasks = load_review_dataset(split)
-        if limit:
+        if limit is not None:
             tasks = tasks[:limit]
+        self._expected.update({f"{split}:{t['id']}": t["comments"] for t in tasks})
         return [
-            ae.Task(id=t["id"], input=t["diff"], metadata={"expected": t["comments"]})
+            ae.Task(id=f"{split}:{t['id']}", input=t["diff"])
             for t in tasks
         ]
 
     def evaluate(self, task, trajectory):
-        expected = task.metadata["expected"]
+        expected = self._expected[task.id]
         actual = trajectory.output
         precision, recall = compute_review_metrics(expected, actual)
         f1 = 2 * precision * recall / (precision + recall + 1e-9)
@@ -209,6 +214,12 @@ class CodeReviewBenchmark(ae.BenchmarkAdapter):
 evolver = ae.Evolver(agent="./my-agent", benchmark=CodeReviewBenchmark())
 results = evolver.run(cycles=5)
 ```
+
+`load_review_dataset` and `compute_review_metrics` are domain-specific hooks.
+Run scoring in an evaluator process/storage boundary inaccessible to the solving
+agent; a private Python attribute alone is not isolation. Do not mount answer
+files into its workspace. Keep holdout answers and item-level feedback out of
+evolution prompts; use train-split feedback for optimization.
 
 ## Workflow 3: Create a Custom Evolution Engine
 

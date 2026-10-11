@@ -8,6 +8,7 @@ NO hardcoded colors, fonts, or spacing allowed
 
 import argparse
 import json
+import os
 from html import escape
 from pathlib import Path
 from datetime import datetime
@@ -31,9 +32,10 @@ def _safe_url(url, default='#'):
 # Paths
 SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
-TOKENS_CSS = Path(__file__).resolve().parents[4] / "assets" / "design-tokens.css"
-TOKENS_JSON = Path(__file__).resolve().parents[4] / "assets" / "design-tokens.json"
-OUTPUT_DIR = Path(__file__).resolve().parents[4] / "assets" / "designs" / "slides"
+PROJECT_ROOT = Path(os.environ.get('DESIGN_SYSTEM_PROJECT_ROOT', Path.cwd())).resolve()
+TOKENS_CSS = PROJECT_ROOT / "assets" / "design-tokens.css"
+TOKENS_JSON = PROJECT_ROOT / "assets" / "design-tokens.json"
+OUTPUT_DIR = PROJECT_ROOT / "assets" / "designs" / "slides"
 
 # ============ BRAND-COMPLIANT SLIDE TEMPLATE ============
 # ALL values reference CSS variables from design-tokens.css
@@ -45,12 +47,8 @@ SLIDE_TEMPLATE = '''<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
 
-    <!-- Brand Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-    <!-- Design Tokens - SINGLE SOURCE OF TRUTH -->
-    <link rel="stylesheet" href="{tokens_css_path}">
+    <!-- Embedded project tokens; package custom font/image URLs separately. -->
+    <style data-design-tokens>{tokens_css}</style>
 
     <style>
         /* ============================================
@@ -634,7 +632,7 @@ SLIDE_GENERATORS = {
 }
 
 
-def generate_deck(slides_data, title="Pitch Deck"):
+def generate_deck(slides_data, title="Pitch Deck", tokens_path=None):
     """Generate complete deck from slide data list"""
     slides_html = ""
     for slide in slides_data:
@@ -645,12 +643,13 @@ def generate_deck(slides_data, title="Pitch Deck"):
         else:
             print(f"Warning: Unknown slide type '{slide_type}'")
 
-    # Calculate relative path to tokens CSS
-    tokens_rel_path = "../../../assets/design-tokens.css"
+    # Inline project tokens so moving the output does not break its stylesheet.
+    tokens_css = Path(tokens_path or TOKENS_CSS).read_text(encoding='utf-8')
+    tokens_css = tokens_css.replace('</style', '<\\/style')
 
     return SLIDE_TEMPLATE.format(
         title=escape(str(title)),
-        tokens_css_path=tokens_rel_path,
+        tokens_css=tokens_css,
         slides_content=slides_html
     )
 
@@ -660,6 +659,7 @@ def main():
     parser.add_argument("--json", "-j", help="JSON file with slide data")
     parser.add_argument("--output", "-o", help="Output HTML file path")
     parser.add_argument("--demo", action="store_true", help="Generate demo deck")
+    parser.add_argument("--tokens", help="Project token CSS to embed (default: assets/design-tokens.css)")
 
     args = parser.parse_args()
 
@@ -744,7 +744,7 @@ def main():
             }
         ]
 
-        html = generate_deck(demo_slides, "ClaudeKit Marketing - Pitch Deck")
+        html = generate_deck(demo_slides, "ClaudeKit Marketing - Pitch Deck", args.tokens)
 
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         output_path = OUTPUT_DIR / f"demo-pitch-{datetime.now().strftime('%y%m%d')}.html"
@@ -752,10 +752,10 @@ def main():
         print(f"Demo deck generated: {output_path}")
 
     elif args.json:
-        with open(args.json, 'r') as f:
+        with open(args.json, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        html = generate_deck(data.get('slides', []), data.get('title', 'Presentation'))
+        html = generate_deck(data.get('slides', []), data.get('title', 'Presentation'), args.tokens)
 
         output_path = Path(args.output) if args.output else OUTPUT_DIR / f"deck-{datetime.now().strftime('%y%m%d-%H%M')}.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)

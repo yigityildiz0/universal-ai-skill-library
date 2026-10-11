@@ -3,13 +3,23 @@ name: data-analyst
 description: "Structured data work: exploratory and statistical analysis, data quality, SQL queries, metric definitions and data dictionaries, dashboards and KPI views, chart selection and chart review. Turkish triggers: veriyi analiz et, tabloyu incele, istatistik, SQL yaz/düzelt, dashboard yap, grafik seç, KPI, veri temizle. More triggers: KPI panosu, karar odaklı raporlama, veri sözlüğü, metrik tanımı."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Data
 
 Start with the question and data grain, then select the narrowest workflow:
 
 - `data-analysis` for exploration, statistics, trend/metric diagnosis, and quality-aware findings;
-- `sql-analytics` for analytical SQL and query review;
-- `data-visualization` for charts and quantitative figures;
+- `sql-analytics-workflow` for analytical SQL and query review;
+- `data-visualization-playbook` for charts and quantitative figures;
 - `data-dashboard` for decision-oriented KPI surfaces;
 - `data-context` for schema, metric, lineage, and semantic documentation.
 

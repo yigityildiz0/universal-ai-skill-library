@@ -18,6 +18,13 @@ accelerate config
 ```
 
 **Evaluate on HumanEval**:
+
+Generated code is untrusted. Execute only in a disposable VM/sandbox without
+credentials, host-directory mounts or outbound network, with resource/time
+limits. `--allow_code_execution` is opt-in, not a sandbox. Generate separately
+if isolation is unavailable. On Windows use Linux/WSL2 or a Linux VM. 7B FP16
+weights exceed 12 GB: on a 12 GB GPU use a smaller model or validated quantization
+and batch 1.
 ```bash
 accelerate launch main.py \
   --model bigcode/starcoder2-7b \
@@ -165,7 +172,7 @@ docker pull ghcr.io/bigcode-project/evaluation-harness-multiple
 
 # Run evaluation inside container
 docker run -v $(pwd)/generations_multi.json:/app/generations.json:ro \
-  -it evaluation-harness-multiple python3 main.py \
+  -it ghcr.io/bigcode-project/evaluation-harness-multiple python3 main.py \
   --model bigcode/starcoder2-7b \
   --tasks multiple-py,multiple-js,multiple-java,multiple-cpp \
   --load_generations_path /app/generations.json \

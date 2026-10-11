@@ -1,7 +1,17 @@
 ---
 name: personal-tech-copilot
-description: "Personal technology help: diagnoses and fixes Windows, macOS, Android and iPhone problems, apps, device setup, compatibility, networking, displays, peripherals, storage, backups and cross-device workflows; read-only PC health checks for slow computers (disk, RAM, CPU, startup); tech purchase compatibility. Turkish triggers: nasıl yaparım, neden çalışmıyor, hata veriyor, bilgisayar yavaş, kurulum, ayar, uyumlu mu, telefon veya PC sorunu. More triggers: disk dolu, RAM, başlangıç programları, Wi-Fi, yazıcı, yedekleme."
+description: "Personal technology help: diagnoses and fixes Windows, macOS, Android and iPhone problems, apps, device setup, compatibility, networking, displays, peripherals, storage, backups and cross-device workflows; read-only PC health checks for slow computers (disk, RAM, CPU, startup); tech purchase compatibility; read-only Harness/DSH GUI health checks. Turkish triggers: nasıl yaparım, neden çalışmıyor, hata veriyor, bilgisayar yavaş, kurulum, ayar, uyumlu mu, telefon veya PC sorunu. More triggers: disk dolu, RAM, başlangıç programları, Wi-Fi, yazıcı, yedekleme, Harness sağlık kontrolü, DSH araç eksik."
 ---
+
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
 
 # Personal Tech Copilot
 
@@ -49,6 +59,10 @@ Read [references/troubleshooting-and-setup.md](references/troubleshooting-and-se
 
 Start with the likely cause or best setup choice. Then give numbered actions in the exact order to try, with expected result/checkpoint and a rollback note for consequential changes. End with the smallest diagnostic detail needed if the issue remains.
 
+## Harness health check
+
+For a Harness/DSH GUI or tool-availability health check, open only [harness-health-check](modules/harness-health-check/MODULE.md) first. It uses read-only Inspect and Playwright evidence; it does not authorize repairs, credential reads or account writes.
+
 ## PC health check
 
 For a slow or unstable computer, or a request to check disk, RAM, CPU, startup load or errors, run the read-only `computer-health-check` module first; ask before any cleanup, install, update or configuration change.
@@ -59,4 +73,5 @@ Open only the module(s) the request needs and read the module file completely be
 
 | Module | Use when | File |
 |---|---|---|
+| `harness-health-check` | Bounded read-only Harness/DSH GUI, connection and tool-capability triage; no credential reads or repairs. | [MODULE.md](modules/harness-health-check/MODULE.md) |
 | `computer-health-check` | Perform a bounded, read-only health check of a Windows, macOS, or Linux computer, covering storage, memory pressure, CPU activity, startup load, battery where available,… | [MODULE.md](modules/computer-health-check/MODULE.md) |

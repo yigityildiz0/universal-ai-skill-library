@@ -1,7 +1,7 @@
 # Module: code-review-and-quality
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/code-review-and-quality/`).
-> Original trigger scope: Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a human. Use when you need to assess code quality across multiple dimensions before it enters the main branch. Turkish triggers: kodu incele, PR/diff review, kalite sorunlarını bul, merge öncesi kontrol.
+> Trigger scope: Requested code/PR review or risk-appropriate quality checks before integration, whether code was written by a human or agent. Turkish triggers: kodu incele, PR/diff review, kalite sorunlarını bul, merge öncesi kontrol.
 
 Review scope follows the user request. Do not turn every small edit into a mandatory multi-axis review or require an unrelated review before continuing authorized work.
 
@@ -16,11 +16,11 @@ Multi-dimensional code review with quality gates. Apply the review depth require
 
 ## When to Use
 
-- Before merging any PR or change
+- Before integration when repository policy or change risk warrants review
 - After completing a feature implementation
 - When another agent or model produced code you need to evaluate
 - When refactoring existing code
-- After any bug fix (review both the fix and the regression test)
+- After a meaningful bug fix (review the fix and suitable regression evidence)
 
 ## The Five-Axis Review
 
@@ -106,7 +106,7 @@ Small, focused changes are easier to review, faster to merge, and safer to deplo
 
 **When large changes are acceptable:** Complete file deletions and automated refactoring where the reviewer only needs to verify intent, not every line.
 
-**Separate refactoring from feature work.** A change that refactors existing code and adds new behavior is two changes — submit them separately. Small cleanups (variable renaming) can be included at reviewer discretion.
+Keep refactoring and behavior changes distinguishable. Separate unrelated cleanup; a minimal enabling refactor may stay with its feature when it improves reviewability. Do not force extra commits/PRs or expand cleanup scope without need or authorization.
 
 ## Change Descriptions
 
@@ -215,7 +215,7 @@ After any refactoring or implementation change, check for orphaned code:
 2. List it explicitly
 3. **Ask before deleting:** "Should I remove these now-unused elements: [list]?"
 
-Don't leave dead code lying around — it confuses future readers and agents. But don't silently delete things you're not sure about. When in doubt, ask.
+For in-scope removal, verify evidence: no local callers does not prove a public API, plugin hook, reflected entry point, or external integration is unused. Preserve uncertain/unrelated code, investigate, and clarify only a material removal decision.
 
 ```
 DEAD CODE IDENTIFIED:
@@ -243,7 +243,7 @@ When resolving review disputes, apply this hierarchy:
 3. **Software design** must be evaluated on engineering principles, not personal preference
 4. **Codebase consistency** is acceptable if it doesn't degrade overall health
 
-**Don't accept "I'll clean it up later."** Experience shows deferred cleanup rarely happens. Require cleanup before submission unless it's a genuine emergency. If surrounding issues can't be addressed in this change, require filing a bug with self-assignment.
+Require correction of material defects introduced or exposed by this change. Keep unrelated cleanup optional and separately scoped; do not expand the task, file issues, or assign work automatically. Record genuinely important follow-ups with evidence.
 
 ## Honesty in Review
 
@@ -305,8 +305,8 @@ Part of code review is dependency review:
 - [ ] Pagination on list endpoints
 
 ### Verification
-- [ ] Tests pass
-- [ ] Build succeeds
+- [ ] Applicable tests/checks pass, or exact limitations are disclosed
+- [ ] Build succeeds when relevant to changed files
 - [ ] Manual verification done (if applicable)
 
 ### Verdict
@@ -315,8 +315,8 @@ Part of code review is dependency review:
 ```
 ## See Also
 
-- For detailed security review guidance, see `references/security-checklist.md`
-- For performance review checks, see `references/performance-checklist.md`
+- For detailed security review guidance, see [security-review](../security-review/MODULE.md).
+- For performance review checks, use the Performance axis and checklist in this module: inspect query counts, bounded work, pagination, resource lifetime, and measured hot paths. Benchmark only when the affected behavior warrants it; label estimates as estimates.
 
 ## Common Rationalizations
 
@@ -324,7 +324,7 @@ Part of code review is dependency review:
 |---|---|
 | "It works, that's good enough" | Working code that's unreadable, insecure, or architecturally wrong creates debt that compounds. |
 | "I wrote it, so I know it's correct" | Authors are blind to their own assumptions. Every change benefits from another set of eyes. |
-| "We'll clean it up later" | Later never comes. The review is the quality gate — use it. Require cleanup before merge, not after. |
+| "We'll clean it up later" | Fix material in-scope defects before merge; unrelated cleanup is not a merge gate. |
 | "AI-generated code is probably fine" | AI code needs more scrutiny, not less. It's confident and plausible, even when wrong. |
 | "The tests pass, so it's good" | Tests are necessary but not sufficient. They don't catch architecture problems, security issues, or readability concerns. |
 
@@ -337,7 +337,7 @@ Part of code review is dependency review:
 - Large PRs that are "too big to review properly" (split them)
 - No regression tests with bug fix PRs
 - Review comments without severity labels — makes it unclear what's required vs optional
-- Accepting "I'll fix it later" — it never happens
+- Deferring an in-scope critical defect without a justified resolution
 
 ## Verification
 

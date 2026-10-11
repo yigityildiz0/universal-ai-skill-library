@@ -1,6 +1,6 @@
-# Yiğit's customized design-system workflow
+# the user's customized design-system workflow
 
-> Yiğit's earlier customized copy of `design-system`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
+> the user's earlier customized copy of `design-system`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
 > Original trigger scope: Tasarım tokenları, tema ve bileşen sistemleri oluştur, taşı veya doğrula.
 
 # Design System
@@ -44,7 +44,7 @@ Use templates/design-tokens-starter.json as a starting structure, not unquestion
 
 ~~~text
 node "<skill-dir>/scripts/generate-tokens.cjs" --help
-node "<skill-dir>/scripts/validate-tokens.cjs" <tokens-file>
+node "<skill-dir>/scripts/validate-tokens.cjs" --dir "<source-directory>"
 python "<skill-dir>/scripts/html-token-validator.py" <html-file>
 ~~~
 

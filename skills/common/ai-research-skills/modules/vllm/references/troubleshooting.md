@@ -13,11 +13,13 @@
 
 ### Symptom: `torch.cuda.OutOfMemoryError` during model loading
 
-**Cause**: Model + KV cache exceeds available VRAM
+**Cause**: Inspect the failed allocation: weights, profiling activations and KV
+cache are distinct budgets. Lower utilization does not shrink model weights.
 
 **Solutions (try in order)**:
 
-1. **Reduce GPU memory utilization**:
+1. **For weight OOM, use a smaller/prequantized model or supported sharding**.
+Only reduce utilization for runtime headroom after weights already fit:
 ```bash
 vllm serve MODEL --gpu-memory-utilization 0.7  # Try 0.7, 0.75, 0.8
 ```
@@ -29,7 +31,7 @@ vllm serve MODEL --max-model-len 4096  # Instead of 8192
 
 3. **Enable quantization**:
 ```bash
-vllm serve MODEL --quantization awq  # 4x memory reduction
+vllm serve TheBloke/Llama-2-7B-AWQ --quantization awq  # Already quantized weights
 ```
 
 4. **Use tensor parallelism** (multiple GPUs):
@@ -66,10 +68,10 @@ vllm serve MODEL --max-num-seqs 64
 **Solution**:
 ```bash
 # Ensure quantization flag matches model
-vllm serve TheBloke/Llama-2-70B-AWQ --quantization awq  # Must specify
+vllm serve TheBloke/Llama-2-70B-AWQ --quantization awq  # Match checkpoint metadata
 
 # Try different dtype
-vllm serve MODEL --quantization awq --dtype float16
+vllm serve TheBloke/Llama-2-7B-AWQ --quantization awq --dtype float16
 ```
 
 ## Performance issues

@@ -49,7 +49,11 @@ from nemo_curator.datasets import DocumentDataset
 import pandas as pd
 
 # Load data
-df = pd.DataFrame({"text": ["Good document", "Bad doc", "Excellent text"]})
+df = pd.DataFrame({"text": [
+    "This useful document has enough words to pass",  # pass: 9 words
+    "Too short",                                    # fail: 2 words
+    "This useful document has enough words to pass",  # pass, then duplicate
+]})
 dataset = DocumentDataset(df)
 
 # Quality filtering
@@ -167,11 +171,14 @@ high_quality = dataset.filter(lambda doc: quality_clf(doc["text"]) > 0.5)
 
 ### GPU vs CPU performance
 
-| Operation | CPU (16 cores) | GPU (A100) | Speedup |
+Illustrative timings only; not a reproducible benchmark or a performance promise.
+The hardware counts match the longer example later in this guide.
+
+| Operation | CPU | GPU | Speedup |
 |-----------|----------------|------------|---------|
-| Fuzzy dedup (8TB) | 120 hours | 7.5 hours | 16× |
-| Exact dedup (1TB) | 8 hours | 0.5 hours | 16× |
-| Quality filtering | 2 hours | 0.2 hours | 10× |
+| Fuzzy dedup (8TB) | 256 cores: 120 hours | 8× A100: 7.5 hours | 16× |
+| Exact dedup (1TB) | 64 cores: 8 hours | 4× A100: 0.5 hours | 16× |
+| Quality filtering | 32 cores: 2 hours | 2× A100: 0.2 hours | 10× |
 
 ### Multi-GPU scaling
 
@@ -316,7 +323,7 @@ client.close()
 cluster.close()
 ```
 
-## Performance benchmarks
+## Illustrative performance scenarios (unverified)
 
 ### Fuzzy deduplication (8TB RedPajama v2)
 
@@ -336,7 +343,7 @@ cluster.close()
 - **GPU (2× A100)**: 0.2 hours
 - **Speedup**: 10×
 
-## Cost comparison
+## Hypothetical cost arithmetic (not a current price quote or hardware-matched benchmark)
 
 **CPU-based curation** (AWS c5.18xlarge × 10):
 - Cost: $3.60/hour × 10 = $36/hour

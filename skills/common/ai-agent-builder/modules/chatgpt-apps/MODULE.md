@@ -15,7 +15,7 @@ Use this skill to produce:
 - A tool plan (names, schemas, annotations, outputs)
 - An upstream starting-point recommendation (official example, ext-apps example, or local fallback scaffold)
 - An MCP server scaffold (resource registration, tool handlers, metadata)
-- A widget scaffold (MCP Apps bridge first, `window.openai` compatibility/extensions second)
+- A widget scaffold only for UI archetypes (MCP Apps bridge first, `window.openai` compatibility/extensions second)
 - A reusable Node + `@modelcontextprotocol/ext-apps` starter scaffold for low-dependency fallbacks
 - A validation report against the minimum working repo contract
 - Local dev and connector setup steps
@@ -173,7 +173,7 @@ Use `scripts/scaffold_node_ext_apps.mjs` only when the user wants a quick, green
 
 Generate a server that:
 
-- Registers a widget resource/template with the MCP Apps UI MIME type (`text/html;profile=mcp-app`) or the SDK constant (`RESOURCE_MIME_TYPE`) when using `@modelcontextprotocol/ext-apps/server`
+- For UI archetypes, registers a widget resource/template with the MCP Apps UI MIME type (`text/html;profile=mcp-app`) or the SDK constant (`RESOURCE_MIME_TYPE`) when using `@modelcontextprotocol/ext-apps/server`; tool-only apps omit widget resources and UI metadata
 - Registers tools with clear names, schemas, titles, and descriptions
 - Returns `structuredContent` (model + widget), `content` (model narration), and `_meta` (widget-only data) intentionally
 - Keeps handlers idempotent or documents non-idempotent behavior explicitly
@@ -182,6 +182,8 @@ Generate a server that:
 Keep `structuredContent` concise. Move large or sensitive widget-only payloads to `_meta`.
 
 ### 4. Scaffold the Widget UI
+
+Skip this step for `tool-only`; do not add a widget merely to satisfy a checklist.
 
 Use the MCP Apps bridge first for portability, then add ChatGPT-specific `window.openai` APIs when they materially improve UX.
 
@@ -201,6 +203,9 @@ Use `window.openai` for compatibility and extensions (file upload, modal, displa
 - Use `references/window-openai-patterns.md` for the wrapper-to-canonical mapping and for React helper extraction patterns.
 
 ### 5. Add Resource Metadata and Security
+
+Widget resource checks apply only when a UI exists. Authentication, authorization,
+input validation, and accurate tool annotations still apply to tool-only apps.
 
 Set resource metadata deliberately on the widget resource/template:
 

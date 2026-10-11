@@ -76,6 +76,15 @@ Follow these stable ordering rules unless source documentation for a specific mo
 After edits:
 
 - run the workflow checker again
+- Use `python scripts/check_comfyui_workflow.py "<WORKFLOW_PATH>" --structure-only --json`
+  for offline UI/API structure checks, or supply `--comfy-root "<COMFYUI_ROOT>"`
+  for known local model references. Exit 0 means only the requested static scope
+  passed; 1 means structural/missing-file failure; 2 means unreadable input or
+  incomplete coverage. Unknown loaders, ambiguous basename matches, extra model
+  search paths, and dynamic model inputs require follow-up rather than a pass.
+  Node/group overlaps are layout warnings; nested groups can be intentional.
+  Bundled JSON structure checks never prove installed nodes, model compatibility,
+  runtime startup, or successful inference.
 - confirm the target files exist on disk
 - confirm the launcher and runtime still start
 - confirm the active workflow still loads cleanly

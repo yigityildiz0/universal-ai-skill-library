@@ -18,7 +18,8 @@ Maximize llama.cpp inference speed and efficiency.
 ### BLAS acceleration
 ```bash
 # OpenBLAS (faster matrix ops)
-make LLAMA_OPENBLAS=1
+cmake -B build -DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS
+cmake --build build --config Release -j
 
 # BLAS gives 2-3× speedup
 ```
@@ -49,12 +50,14 @@ nvidia-smi dmon
 
 ## Batch Processing
 
+`--batch-size` counts prompt-processing tokens, not independent prompts. `--ubatch-size` is the physical token micro-batch. Use the server's parallel slots/continuous batching for concurrent requests; tune context and KV cache memory separately.
+
 ```bash
 # Increase batch size for throughput
 ./llama-cli -m model.gguf -b 512  # Default: 512
 
 # Physical batch (GPU)
---ubatch 128  # Process 128 tokens at once
+--ubatch-size 128  # Process 128 tokens at once
 ```
 
 ## Context Management

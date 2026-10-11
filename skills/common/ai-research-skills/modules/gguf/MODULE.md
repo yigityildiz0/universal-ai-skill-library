@@ -33,19 +33,21 @@ The GGUF (GPT-Generated Unified Format) is the standard file format for llama.cp
 
 ### Installation
 
+Shell blocks use Bash (Linux/macOS/WSL), not Python. Run Python snippets in a
+`.py` file/interpreter separately. In Windows PowerShell use quoted `.exe` paths
+and single-line commands or backtick continuation, not Bash `export`/heredocs/`\`.
+Native multi-config binaries commonly live in `build/bin/Release/`.
+
 ```bash
 # Clone llama.cpp
 git clone https://github.com/ggml-org/llama.cpp
 cd llama.cpp
 
-# Build (CPU)
-make
-
-# Build with CUDA (NVIDIA)
-make GGML_CUDA=1
-
-# Build with Metal (Apple Silicon)
-make GGML_METAL=1
+# Choose one configuration: CPU, NVIDIA CUDA or Apple Metal.
+cmake -B build
+# NVIDIA alternative: cmake -B build -DGGML_CUDA=ON
+# Apple alternative: cmake -B build -DGGML_METAL=ON
+cmake --build build --config Release
 
 # Install Python bindings (optional)
 pip install llama-cpp-python
@@ -256,7 +258,7 @@ for chunk in llm(
 ```bash
 # Start server
 ./llama-server -m model-q4_k_m.gguf \
-    --host 0.0.0.0 \
+    --host 127.0.0.1 \
     --port 8080 \
     -ngl 35 \
     -c 4096
@@ -265,11 +267,14 @@ for chunk in llm(
 python -m llama_cpp.server \
     --model model-q4_k_m.gguf \
     --n_gpu_layers 35 \
-    --host 0.0.0.0 \
+    --host 127.0.0.1 \
     --port 8080
 ```
 
 ### Use with OpenAI client
+
+Loopback is the default scope. `0.0.0.0` requires an explicit deployment choice
+plus authentication, TLS/reverse proxy and firewall rules.
 
 ```python
 from openai import OpenAI

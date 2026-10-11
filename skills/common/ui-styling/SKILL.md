@@ -7,6 +7,16 @@ metadata:
   version: "1.0.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # UI Styling Skill
 
 Comprehensive skill for creating beautiful, accessible user interfaces combining shadcn/ui components, Tailwind CSS utility styling, and canvas-based visual design systems.
@@ -39,6 +49,9 @@ Use when:
 - CLI-based installation and management
 
 ### Styling Layer: Tailwind CSS
+
+Inspect the installed major version first. Tailwind v4 uses CSS-first `@theme` (see `references/tailwind-customization.md`); legacy JavaScript configuration requires an explicit `@config` import. The bundled `tailwind_config_gen.py` emits v3-style JS/TS configuration, not a v4 migration or complete v4 theme. Use it only for v3 or deliberate legacy compatibility. Check current Tailwind/shadcn documentation through Context7 before changing setup.
+
 - Utility-first CSS framework
 - Build-time processing with zero runtime overhead
 - Mobile-first responsive design
@@ -334,6 +347,6 @@ export function LoginForm() {
 - Headless UI: https://headlessui.com
 - v0 (AI UI Generator): https://v0.dev
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The instructions above are the current upstream skill, unchanged. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

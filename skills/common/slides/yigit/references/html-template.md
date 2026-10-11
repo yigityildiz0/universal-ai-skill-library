@@ -2,6 +2,8 @@
 
 Complete HTML structure with navigation, tokens, and Chart.js integration.
 
+The CDN makes charts network-dependent. For requested offline output, embed an already-available pinned Chart.js bundle or use accessible static charts. Package external images/fonts; do not label a CDN-based deck self-contained. Adapt tokens to the brand and verify rendered contrast (4.5:1 normal text; 3:1 large text and relevant UI boundaries).
+
 ## Base Structure
 
 ```html
@@ -65,6 +67,13 @@ Complete HTML structure with navigation, tokens, and Chart.js integration.
         }
 
         .slide.active { opacity: 1; visibility: visible; }
+        .slide[hidden] { display: none; }
+        .nav-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+        .nav-btn:disabled { opacity: 0.5; cursor: default; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+            .animate-fade-up, .animate-scale, .animate-stagger > * { opacity: 1 !important; transform: none !important; }
+        }
 
         /* Slide inner wrapper — constrains content within safe area */
         .slide-content {
@@ -162,9 +171,9 @@ Complete HTML structure with navigation, tokens, and Chart.js integration.
 
     <!-- Navigation -->
     <div class="nav-controls">
-        <button class="nav-btn" onclick="prevSlide()">←</button>
-        <span class="slide-counter"><span id="current">1</span> / <span id="total">9</span></span>
-        <button class="nav-btn" onclick="nextSlide()">→</button>
+        <button id="previousSlide" type="button" class="nav-btn" aria-label="Previous slide" onclick="prevSlide()">←</button>
+        <span class="slide-counter" role="status" aria-live="polite" aria-atomic="true"><span id="current">1</span> / <span id="total">1</span></span>
+        <button id="nextSlide" type="button" class="nav-btn" aria-label="Next slide" onclick="nextSlide()">→</button>
     </div>
 
     <script>
@@ -177,23 +186,27 @@ Complete HTML structure with navigation, tokens, and Chart.js integration.
             if (n > total) n = total;
             current = n;
             document.querySelectorAll('.slide').forEach((s, i) => {
-                s.classList.toggle('active', i === n - 1);
+                const active = i === n - 1;
+                s.classList.toggle('active', active);
+                s.hidden = !active;
+                s.inert = !active;
             });
             document.getElementById('current').textContent = n;
             document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+            document.getElementById('previousSlide').disabled = n === 1;
+            document.getElementById('nextSlide').disabled = n === total;
         }
 
         function nextSlide() { showSlide(current + 1); }
         function prevSlide() { showSlide(current - 1); }
 
         document.addEventListener('keydown', (e) => {
+            if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target.closest('input, textarea, select, button, a, [contenteditable]')) return;
             if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
             if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
         });
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-controls')) nextSlide();
-        });
+        showSlide(current);
 
         showSlide(1);
     </script>
@@ -205,10 +218,11 @@ Complete HTML structure with navigation, tokens, and Chart.js integration.
 
 ```html
 <div class="chart-container" style="width: min(80%, 600px); height: clamp(200px, 40vh, 350px);">
-    <canvas id="revenueChart"></canvas>
+    <canvas id="revenueChart" role="img" aria-label="Illustrative MRR in thousands of dollars: Sep 5, Oct 12, Nov 28, Dec 45"></canvas>
 </div>
 
 <script>
+// Retain a visible data table/summary even if Chart.js cannot load.
 new Chart(document.getElementById('revenueChart'), {
     type: 'line', // or 'bar', 'doughnut', 'radar'
     data: {
@@ -224,6 +238,7 @@ new Chart(document.getElementById('revenueChart'), {
         }]
     },
     options: {
+        animation: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? false : undefined,
         responsive: true,
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },

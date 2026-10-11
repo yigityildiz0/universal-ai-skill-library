@@ -1,11 +1,13 @@
 # Module: security-review
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/security-review/`).
-> Original trigger scope: Identify security vulnerabilities across 10 domains including OWASP Top 10, race conditions, supply chain risks, and compliance gaps. Use for security audits, penetration test preparation, vulnerability assessment, or as Phase 3 of comprehensive code review.
+> Trigger scope: Assess relevant attack surfaces or perform a requested full security audit across ten domains, including injection, authorization, concurrency, and supply-chain risk. Tool availability and review scope determine checks; no mandatory scanner installation or external upload.
 
 # Code Review - Security Review
 
-Identify security vulnerabilities and risks across 10 security domains. This skill is **Phase 3** of the 6-phase code review methodology.
+Identify security vulnerabilities across 10 candidate domains. This module can stand alone or complement [code-review-and-quality](../code-review-and-quality/MODULE.md); it does not require a separately installed six-phase skill suite.
+
+Scope by affected attack surfaces and risk. Use available, configured scanners only; inspect repository scripts and tool help first. Do not install tools, upload source/dependency inventories, or run paid/authenticated scans merely because they are listed. Select suitable alternatives rather than running every scanner. Report skipped/unavailable coverage accurately and continue manual review. Dependency audits are not source-code static analysis.
 
 ## When to Use This Skill
 
@@ -70,19 +72,19 @@ mvn dependency-check:check
 # Python
 bandit -r src/
 
-# JavaScript
-npm audit
-eslint --plugin security src/
+# JavaScript: use an existing configured ESLint/security script
+# Example only, after confirming the plugin is already configured:
+eslint src/
 
-# Java
-spotbugs with find-sec-bugs
+# Java: run the repository's existing SpotBugs/FindSecBugs build target
+# (configuration-specific, not a literal command)
 ```
 
 ### Step 3: 10-Domain Security Scan
 
-Reference: `references/security-checklist.md`
+Reference: the ten domain checklists below and [code-review-and-quality](../code-review-and-quality/MODULE.md).
 
-Work through each domain systematically, applying its diagnostic question:
+Work through relevant domains, applying diagnostic questions. For a full audit document all ten as checked or justified not-applicable; a targeted review need not manufacture findings in unaffected domains:
 
 #### Domain 1: Input/Output Safety
 **Diagnostic**: "Does any user-controlled input reach a sensitive sink without sanitization?"
@@ -173,7 +175,7 @@ Sub-categories:
 
 For each finding, document both **exploitability** (how easy to exploit) and **impact** (what damage results).
 
-```markdown
+````markdown
 ## Security Finding
 
 **Vulnerability**: [Type]
@@ -204,7 +206,7 @@ For each finding, document both **exploitability** (how easy to exploit) and **i
 
 ### References
 - [Relevant OWASP link or advisory]
-```
+````
 
 ## Common Vulnerabilities by Language
 
@@ -234,15 +236,15 @@ For each finding, document both **exploitability** (how easy to exploit) and **i
 
 ### Go
 - SQL injection (fmt.Sprintf in queries)
-- Command injection (exec.Command with user input)
+- `exec.Command` does not invoke a shell by default: separate argv is not automatically shell injection. Inspect executable selection, option/argument injection, the target program's semantics, and explicit `sh -c`/`cmd /c` use; allowlist commands and constrain arguments as needed.
 - Race conditions (goroutine shared state without mutex)
 - Insecure TLS configuration
 
 ## Quality Checklist
 
-- [ ] Dependency vulnerability scan completed
-- [ ] Static security analysis run
-- [ ] All 10 security domains checked with diagnostic questions
+- [ ] Relevant available dependency scan completed, or limitation documented
+- [ ] Relevant configured static analysis run, or manual-review coverage documented
+- [ ] In-scope domains checked; full audits account for all ten
 - [ ] Race conditions analyzed (all 4 sub-categories)
 - [ ] OWASP Top 10 mapped
 - [ ] Exploitability and impact documented for each finding
@@ -262,21 +264,20 @@ For each finding, document both **exploitability** (how easy to exploit) and **i
 
 ## Verification
 
-- [ ] All 10 security domains have been checked with their diagnostic questions and findings are documented
-- [ ] Dependency vulnerability scan completed and output saved (e.g., `pip-audit`, `npm audit`)
-- [ ] Static analysis tool run (bandit, eslint-plugin-security, or equivalent) with zero unreviewed findings
+- [ ] In-scope domains checked; full audits mark other domains not applicable with reasons
+- [ ] Available appropriate dependency scan evidence recorded; missing tooling is disclosed, not automatically installed
+- [ ] Configured static-analysis findings reviewed, or the exact coverage limitation recorded
 - [ ] Every finding includes severity (P0-P3), exploitability assessment, and remediation code
 - [ ] OWASP Top 10 items are explicitly mapped to findings or marked "not applicable" with justification
 - [ ] Race condition sub-categories (9a shared state, 9b TOCTOU, 9c database, 9d distributed) each addressed
 
-## Related Skills
+## Related Modules
 
-- `context-analysis` - Context understanding (Phase 1)
-- `code-quality` - Code quality + SOLID review (Phase 2)
-- `dependency-security-audit` - Detailed CVE scanning
-- `performance-review` - Performance analysis (Phase 4)
-- `testing-review` - Test assessment (Phase 5)
-- `final-report` - Consolidated report (Phase 6)
+- [context-engineering](../context-engineering/MODULE.md) — relevant project context
+- [code-review-and-quality](../code-review-and-quality/MODULE.md) — quality, performance, tests, and report
+- [verification-before-completion](../verification-before-completion/MODULE.md) — support claims with actual evidence
+
+Discover optional specialist tooling by capability; do not invoke uninstalled phase/skill aliases.
 
 ---
 

@@ -164,7 +164,7 @@ Initialize SSR-rendered state to `false` (motion) and re-sync in `useEffect` to 
 
 ## Deliver & verify (standalone HTML)
 
-> **Packaged helper** (`scripts/`): `scripts/seek-shot.sh anim.html 0 1.5 3` freezes the `?t=N` harness and screenshots each moment; `scripts/contact-sheet.sh sheet.png frame-*.png` tiles them for one-glance review. See `scripts/README.md`.
+> **Frame verification:** follow [the shared capture workflow](../../references/capture-workflow.md) with available browser tools. No shell capture or contact-sheet helper is bundled.
 
 For a self-contained demo the deliverable is **one HTML file that opens directly in a browser** — markup, CSS, and any JS (GSAP/`matchMedia` from CDN) inline, no build step. For *this* skill the verification is the point: you must screenshot **both** the normal and the reduced-motion path and confirm the tiering is correct.
 

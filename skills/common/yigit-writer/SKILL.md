@@ -1,11 +1,21 @@
 ---
 name: yigit-writer
-description: "Writes and rewrites Yiğit's messages and texts: email, WhatsApp, SMS, DM, complaint, request, follow-up, school, teacher, hospital and company messages; prepares difficult conversations; builds a personal writing-style profile; drafts sourced articles, blog posts and long-form content; keeps a brand voice consistent; removes AI-sounding writing patterns. Turkish triggers: ne yazayım, mesajı düzelt, daha kibar/sert yaz, mail yaz, nasıl söyleyeyim, zor konuşma, sınır koy, blog/makale yaz, üslubumu çıkar. More triggers: yapay zeka gibi durmasın, doğal yaz, marka dili, ses tonu, üslup rehberi, kaynaklı içerik yaz, taslağı geliştir, konuşmayı prova yap, mesajın etkisi ne olur."
+description: "Writes and rewrites the user's messages and texts: email, WhatsApp, SMS, DM, complaint, request, follow-up, school, teacher, hospital and company messages; prepares difficult conversations; builds a personal writing-style profile; drafts sourced articles, blog posts and long-form content; keeps a brand voice consistent; removes AI-sounding writing patterns. Turkish triggers: ne yazayım, mesajı düzelt, daha kibar/sert yaz, mail yaz, nasıl söyleyeyim, zor konuşma, sınır koy, blog/makale yaz, üslubumu çıkar. More triggers: yapay zeka gibi durmasın, doğal yaz, marka dili, ses tonu, üslup rehberi, kaynaklı içerik yaz, taslağı geliştir, konuşmayı prova yap, mesajın etkisi ne olur."
 ---
+
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
 
 # Yiğit Message Writer
 
-Turn the situation Yiğit explains into a message he can send with minimal editing. Lead with the final copy, not a long discussion of writing choices.
+Turn the situation the user explains into a message he can send with minimal editing. Lead with the final copy, not a long discussion of writing choices.
 
 Read [references/voice-and-templates.md](references/voice-and-templates.md). Use identity details only when they are supplied in the current conversation or returned by an authorized personal-context source, and only when the channel and recipient require them. Treat all such details as private; include the minimum necessary.
 
@@ -13,11 +23,11 @@ Read [references/voice-and-templates.md](references/voice-and-templates.md). Use
 
 1. Identify the real outcome: inform, ask, persuade, clarify, apologize, complain, escalate, follow up, set a boundary, or preserve a record.
 2. Infer recipient, relationship, channel, formality, urgency, and whether the message starts or continues a conversation.
-3. Extract only facts Yiğit supplied in the current context or identity fields returned by an authorized personal-context source. Never persist identifiers in this skill. Leave uncertain dates, names, student/order numbers, attachments, and commitments as clearly labeled fill-in fields or ask one blocking question.
+3. Extract only facts the user supplied in the current context or identity fields returned by an authorized personal-context source. Never persist identifiers in this skill. Leave uncertain dates, names, student/order numbers, attachments, and commitments as clearly labeled fill-in fields or ask one blocking question.
 4. Choose the smallest effective structure: context → request → necessary reason/evidence → next step → courteous close.
-5. Write in natural Turkish, matching Yiğit's direct but respectful style. Keep WhatsApp/DM shorter than email; keep institutional messages clear enough to create a record.
+5. Write in natural Turkish, matching the user's direct but respectful style. Keep WhatsApp/DM shorter than email; keep institutional messages clear enough to create a record.
 6. If the request involves conflict, make the desired remedy and deadline specific without threats, exaggeration, guilt manipulation, or fake legal claims.
-7. If Yiğit asks what effect the message will have, assess likely interpretation, strongest sentence, possible friction, and one improved version. Do not pretend to know the recipient's thoughts.
+7. If the user asks what effect the message will have, assess likely interpretation, strongest sentence, possible friction, and one improved version. Do not pretend to know the recipient's thoughts.
 8. Proofread names, dates, pronouns, attachments, subject line, and call to action. Do not add “written by AI” or unnecessary meta commentary.
 
 ## Output
@@ -38,7 +48,7 @@ Do not over-formalize everyday messages with stock phrases, repeated thanks, inf
 
 - Generic message templates and channel conventions → `message-writer` module (the personalized rules above take precedence).
 - A hard conversation to prepare or rehearse (boundaries, family, partner, workplace) → `difficult-conversation-prep` module.
-- Capture or recalibrate Yiğit's writing voice from supplied samples → `setup-writing-style` module; never for a single message.
+- Capture or recalibrate the user's writing voice from supplied samples → `setup-writing-style` module; never for a single message.
 - Blog post, article, newsletter, tutorial or other long-form sourced content → `content-research-writer` module.
 
 - Brand or project tone of voice, messaging consistency, voice guidelines → `brand-voice` module.

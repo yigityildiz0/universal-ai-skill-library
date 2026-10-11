@@ -3,6 +3,16 @@ name: ai-agent-builder
 description: "Builds and maintains AI tooling: writes, merges, ports and audits skills and plugins, security-checks downloaded skill packages, builds MCP servers and ChatGPT Apps SDK apps, converts Claude Code agent kits for Codex, audits context and skill budgets, and compares AI models, providers and subscriptions for a task. Turkish triggers: skill yaz/düzenle/birleştir, eklenti kur, bu skill güvenli mi, MCP sunucusu yap, ChatGPT app, hangi model daha iyi, Claude mu ChatGPT mi, context şişti. More triggers: becerileri karşılaştır, tetikleyiciyi düzelt, kaliteyi koruyarak güncelle, skill senkronla, guardrail ve komutları uyarla, API karşılaştır, yerel mi bulut mu."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # AI Agent Builder
 
 Build and maintain AI tooling: skills, plugins, MCP servers, ChatGPT apps, agent configuration and model choice.
@@ -20,20 +30,9 @@ Build and maintain AI tooling: skills, plugins, MCP servers, ChatGPT apps, agent
 | Context, skill or tool budget audit | `context-budget` |
 | Which AI model, provider or subscription for a task | `ai-model-route-evaluator` |
 
-## Host facts (verify against current docs before relying on them)
+## Host installation and maintenance
 
-- Codex and the ChatGPT desktop app read personal skills from `~/.agents/skills` (and `~/.codex/skills`); per-skill enable/disable lives in `~/.codex/config.toml` under `[[skills.config]]`.
-- ChatGPT web and mobile use skills bundled in plugins, or Plugins → Skills → Create → Upload on eligible plans. Desktop and web skills do not sync.
-- Claude Code reads `~/.claude/skills`; claude.ai uploads one ZIP per skill (the skill folder at the ZIP root, at most 200 files, description at most 200 characters in the uploader).
-- Skill names: at most 64 characters, lowercase letters, digits and hyphens; never "claude" or "anthropic". Descriptions: third person, front-loaded with triggers, no XML tags.
-
-## Yiğit's skill workflow (single source of truth)
-
-- Master copy: `<SKILL_MASTER>/`. `skills/` holds every skill with its long bilingual description; `variants/codex|claude|cloud/` hold platform-specific copies (e.g. the Weizhena `research` family, the <=200-file cloud subset of `ai-research-skills`); `claude-descriptions.json` holds <=200-char descriptions for claude.ai; `targets.json` lists ChatGPT-only, local-only and install-location overrides; `externals/` holds agent files (web-search agents).
-- Two kinds of skills: (1) Yiğit's own hubs — personal skills merged as `modules/<name>/MODULE.md`; (2) upstream skills he supplied from the web (ui-ux-pro-max family, caveman, Weizhena research, primary-source-research, ai-research-skills, gemini-deep-research, parallel-web, graphify) — kept SEPARATE, complete and current, never shortened; his customized copy lives inside the same skill under `yigit/`. Never duplicate a skill in two places.
-- To update an upstream skill: pull the new upstream version into `skills/<name>` (keep `yigit/` and the appended "Yiğit" sections), keep the original description and append Turkish triggers.
-- Never edit installed copies directly. Edit the master, then run `python <SKILL_MASTER>/sync_skills.py` (`--check` = drift report only). It deploys to Codex/ChatGPT desktop (`~/.agents/skills`, Weizhena to `~/.codex/skills`), Claude Code (`~/.claude/skills`), agent files, and rebuilds the Desktop upload ZIPs; OpenCode follows automatically. Archive retention follows `targets.json` → `keep_backups`; Yiğit disabled it, so do not create archive/backup copies.
-- After a sync, cloud copies (ChatGPT web/mobile, claude.ai) remain stale until the current `Desktop/Yigit-Skill-Paketleri/ChatGPT.zip` plugin or the individual skill ZIPs inside `Claude.zip` are re-uploaded. This Desktop folder contains exactly these two files; both have the same personal skill list. Literature examples remain separate. Do not recreate the old detailed upload folders or archives.
+Read the collection's INSTALL.md and verify the current host documentation. Use a user-selected source repository and output directory. Edit source, regenerate selected editions, then validate before installation. Do not assume an existing local deployment, cloud upload, agent account or shared configuration.
 
 ## Rules
 

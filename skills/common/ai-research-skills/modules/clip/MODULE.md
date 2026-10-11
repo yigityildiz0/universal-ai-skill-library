@@ -14,7 +14,7 @@ OpenAI's model that understands images from natural language.
 - Image-text similarity/matching
 - Semantic image search
 - Content moderation (detect NSFW, violence)
-- Visual question answering
+- Candidate-answer ranking (not free-form visual question answering)
 - Cross-modal retrieval (image→text, text→image)
 
 **Metrics**:
@@ -102,8 +102,8 @@ image_features /= image_features.norm(dim=-1, keepdim=True)
 text_features /= text_features.norm(dim=-1, keepdim=True)
 
 # Cosine similarity
-similarity = (image_features @ text_features.T).item()
-print(f"Similarity: {similarity:.4f}")
+similarities = image_features @ text_features.T  # [images, candidate texts]
+print(similarities)  # .item() only works for a single image/text pair.
 ```
 
 ## Semantic image search
@@ -138,6 +138,10 @@ for idx, score in zip(top_k.indices, top_k.values):
 ```
 
 ## Content moderation
+
+Candidate-relative softmax scores are not calibrated safety probabilities.
+Validate thresholds/false negatives on labeled data; this is one signal, not a
+complete moderation decision.
 
 ```python
 # Define categories

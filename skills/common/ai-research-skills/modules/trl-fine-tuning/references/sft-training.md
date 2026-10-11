@@ -72,7 +72,7 @@ trainer = SFTTrainer(
     model=model,
     args=config,
     train_dataset=dataset,
-    tokenizer=tokenizer
+    processing_class=tokenizer
 )
 trainer.train()
 ```
@@ -86,7 +86,7 @@ trainer = SFTTrainer(
     model=model,
     args=config,
     train_dataset=dataset,  # Messages format
-    tokenizer=tokenizer
+    processing_class=tokenizer
     # Chat template applied automatically
 )
 ```
@@ -108,7 +108,7 @@ Pack multiple sequences into one to maximize GPU utilization:
 ```python
 config = SFTConfig(
     packing=True,  # Enable packing
-    max_seq_length=2048,
+    max_length=2048,
     dataset_text_field="text"
 )
 ```

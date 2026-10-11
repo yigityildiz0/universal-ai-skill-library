@@ -57,12 +57,14 @@ pip install autoawq[kernels]
 
 **Solutions**:
 
-1. **Reduce calibration samples**:
+1. **Reduce simultaneous calibration work first** (legacy AutoAWQ API):
 ```python
 model.quantize(
     tokenizer,
     quant_config=quant_config,
-    max_calib_samples=64  # Reduce from 128
+    max_calib_samples=128,  # Total dataset coverage, not batch size
+    n_parallel_calib_samples=1,  # Concurrent samples affect peak memory
+    max_calib_seq_len=512
 )
 ```
 

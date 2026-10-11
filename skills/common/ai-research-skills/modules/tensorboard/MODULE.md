@@ -100,8 +100,8 @@ writer = SummaryWriter('runs/experiment_1')
 writer = SummaryWriter(comment='baseline')
 
 # Log data
-writer.add_scalar('Loss/train', 0.5, step=0)
-writer.add_scalar('Loss/train', 0.3, step=1)
+writer.add_scalar('Loss/train', 0.5, global_step=0)
+writer.add_scalar('Loss/train', 0.3, global_step=1)
 
 # Flush and close
 writer.flush()
@@ -284,17 +284,18 @@ for lr in [0.001, 0.01, 0.1]:
         # Create unique run directory
         writer = SummaryWriter(f'runs/lr{lr}_bs{batch_size}')
 
-        # Log hyperparameters
-        writer.add_hparams(
-            {'lr': lr, 'batch_size': batch_size},
-            {'hparam/accuracy': final_acc, 'hparam/loss': final_loss}
-        )
-
+        # Application helpers must reset model/optimizer for EACH trial.
+        reset_model_and_optimizer(lr)
         # Train and log
         for epoch in range(10):
             loss = train(lr, batch_size)
             writer.add_scalar('Loss/train', loss, epoch)
 
+        final_acc, final_loss = evaluate()  # Metrics from THIS completed trial
+        writer.add_hparams(
+            {'lr': lr, 'batch_size': batch_size},
+            {'hparam/accuracy': final_acc, 'hparam/loss': final_loss}
+        )
         writer.close()
 
 # Compare in TensorBoard's "HParams" tab
@@ -325,7 +326,10 @@ Precision-Recall curves for classification.
 from torch.utils.tensorboard import SummaryWriter
 
 # Get predictions and labels
-predictions = model(test_data)  # Shape: (N, num_classes)
+model.eval()
+with torch.no_grad():
+    predictions = model(test_data).softmax(dim=-1)  # Probabilities, not logits
+# For binary single-logit outputs use sigmoid(), not softmax over one class.
 labels = test_labels  # Shape: (N,)
 
 # Log PR curve for each class

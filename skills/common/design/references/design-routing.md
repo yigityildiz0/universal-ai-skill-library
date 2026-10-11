@@ -9,11 +9,11 @@ When to use each design sub-skill.
 | brand | Brand identity, voice, assets | SKILL.md + 10 references + 3 scripts |
 | design-system | Token architecture, specs | SKILL.md + 7 references + 2 scripts |
 | ui-styling | Component implementation | SKILL.md + 7 references + 2 scripts |
-| logo-design | AI logo generation (55 styles, 30 palettes) | SKILL.md + 4 references + 2 scripts |
-| cip-design | Corporate Identity Program (50 deliverables) | SKILL.md + 3 references + 3 scripts |
+| Logo (built into design) | AI logo generation (55 styles, 30 palettes) | `references/logo-design.md`, `scripts/logo/` |
+| CIP (built into design) | Corporate Identity Program (50 deliverables) | `references/cip-design.md`, `scripts/cip/` |
 | slides | HTML presentations with Chart.js | SKILL.md + 4 references |
 | banner-design | Banners for social, ads, web, print (22 styles) | SKILL.md + 1 reference |
-| icon-design | SVG icon generation (15 styles, Gemini 3.1 Pro) | SKILL.md + 1 reference + 1 script |
+| Icon (built into design) | SVG icon generation (15 styles; optional provider) | `references/icon-design.md`, `scripts/icon/` |
 
 ## Routing by Task Type
 
@@ -47,7 +47,7 @@ When to use each design sub-skill.
 - Build accessible components
 
 ### Logo Design Tasks
-**→ logo-design**
+**→ this skill's `references/logo-design.md`**
 
 - Create logos with AI (Gemini Nano Banana)
 - Search logo styles, color palettes, industry guidelines
@@ -55,7 +55,7 @@ When to use each design sub-skill.
 - Explore 55+ styles (minimalist, vintage, luxury, geometric, etc.)
 
 ### Corporate Identity Program Tasks
-**→ cip-design**
+**→ this skill's `references/cip-design.md`**
 
 - Generate CIP deliverables (business cards, letterheads, signage, vehicles, apparel)
 - Create CIP briefs with industry/style analysis
@@ -80,7 +80,7 @@ When to use each design sub-skill.
 - 22 art direction styles (minimalist, bold typography, gradient, glassmorphism, etc.)
 
 ### Icon Design Tasks
-**→ icon-design**
+**→ this skill's `references/icon-design.md`**
 
 - Generate SVG icons with AI (Gemini 3.1 Pro Preview)
 - Batch icon variations in multiple styles

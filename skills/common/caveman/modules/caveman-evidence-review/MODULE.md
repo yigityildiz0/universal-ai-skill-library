@@ -1,7 +1,10 @@
-# Module: caveman-evidence-review
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-evidence-review/`.
-> Original trigger scope: Read-only review of Caveman Cloud evidence: cost, Cave Score, workflows, traces, latency, errors, routing, savings. Use when asked what Caveman found or where LLM spend goes.
+---
+name: caveman-evidence-review
+description: >
+  Read-only review of Caveman Cloud evidence: cost, Cave Score, workflows,
+  traces, latency, errors, routing, savings. Use when asked what Caveman found
+  or where LLM spend goes.
+---
 
 # Review Caveman evidence
 

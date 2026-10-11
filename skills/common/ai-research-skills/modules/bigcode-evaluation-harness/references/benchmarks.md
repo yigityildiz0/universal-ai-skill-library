@@ -136,7 +136,7 @@ accelerate launch main.py \
 # Step 2: Evaluate in Docker
 docker pull ghcr.io/bigcode-project/evaluation-harness-multiple
 docker run -v $(pwd)/generations.json:/app/generations.json:ro \
-  -it evaluation-harness-multiple python3 main.py \
+  -it ghcr.io/bigcode-project/evaluation-harness-multiple python3 main.py \
   --tasks multiple-js,multiple-java,multiple-cpp \
   --load_generations_path /app/generations.json \
   --allow_code_execution

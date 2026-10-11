@@ -70,7 +70,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-2. **Quantize layer by layer**:
+2. **Inspect placement and peak memory**: sequential device placement alone does not fix OOM. Use a smaller model, supported CPU offload or sufficient host/device memory for the unquantized layer and workspace.
 ```python
 from hqq.models.hf.base import AutoHQQHFModel
 
@@ -81,11 +81,11 @@ model = AutoHQQHFModel.from_pretrained(
 )
 ```
 
-3. **Reduce group size**:
+3. **Measure group-size trade-offs**: smaller groups add scale/zero metadata and do not universally reduce peak memory.
 ```python
 config = HqqConfig(
     nbits=4,
-    group_size=32  # Smaller groups use less memory during quantization
+    group_size=32  # More metadata; benchmark peak memory and quality
 )
 ```
 

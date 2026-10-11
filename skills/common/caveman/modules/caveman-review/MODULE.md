@@ -1,7 +1,9 @@
-# Module: caveman-review
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-review/`.
-> Original trigger scope: Compressed code review - one line per finding with location, problem and fix. Use for /caveman-review, "review this PR", or "review the diff".
+---
+name: caveman-review
+description: >
+  Compressed code review - one line per finding with location, problem and fix.
+  Use for /caveman-review, "review this PR", or "review the diff".
+---
 
 Write code review comments terse and actionable. One line per finding. Location, problem, fix. No throat-clearing.
 

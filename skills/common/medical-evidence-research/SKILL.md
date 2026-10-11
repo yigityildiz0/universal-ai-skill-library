@@ -3,9 +3,23 @@ name: medical-evidence-research
 description: "Searches/appraises biomedical, clinical and rehab evidence in PubMed, PEDro and Cochrane. Use for effectiveness, dose, harms, diagnosis, prognosis, statistics/MCID, GRADE, reviews/meta-analysis, legal full texts, journals and evidence updates. Literatür tara, makaleyi değerlendir, etkili mi, bilimsel gelişmeler. Short TR/EN requests: literatür / literatur / literature; makale / paper. Literatür tara; search literature; makaleyi değerlendir; appraise paper."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Research Medical Evidence
 
 Perform reproducible health-science research and publication support without confusing search databases, indexes, repositories, registries, journal platforms, or submission systems.
+
+**Ownership:** this is the search/appraisal/review owner, including `scientific-literature-review`. Short natural TR/EN requests include “literatür / literature”, “makaleyi değerlendir / appraise paper” and “derleme / literature review”; these are intent cues, not registered commands. Study/exam/English and scholarly-writing tasks belong to `academic-study-coach`; patient cases, programs, outcome selection, patient education and SOAP belong to `physio-clinical-copilot`. Combine only the needed parts.
+
+Before external searches, remove patient names, dates of birth, record numbers, contact details and identifying case combinations. Search with the minimum clinical concepts; do not upload a clinical document or connect an account without authorization.
 
 Use for effectiveness, dose, harms, prognosis, diagnosis, statistics, bias, effect size, MCID, systematic reviews, meta-analysis support, and legal article access. Turkish requests include **bilimsel araştır**, **çalışmalar ne diyor**, **kanıtı var mı**, **literatürü tara**, **bu makaleyi değerlendir**, **çalışma kalitesi**, **ücretsiz PDF bul**, and **güncel bilimsel gelişmeleri takip et**. Preserve the user's scope and prior authorization; apply these guidelines within the active host's instructions.
 
@@ -94,6 +108,10 @@ Lead with the answer and certainty. Then provide, as appropriate:
 7. exact citations with DOI, PMID, registry ID, or stable URL when available.
 
 Use the user's language. Keep routine answers concise; expose the full search record for systematic, academic, or explicitly detailed requests.
+
+## International evidence and Türkiye translation
+
+For rehabilitation/clinical applicability, read [Türkiye applicability](references/turkey-applicability.md). Search international evidence broadly and add a distinct Türkiye context track; do not substitute local affiliation for a local sample or a country filter for applicability assessment. Evaluate Turkish-validated outcomes, actual dose/usual care, access/equipment, adherence and relevant SGK context. Funding is a bias signal, not automatic study exclusion.
 
 ## Publication-support workflow
 

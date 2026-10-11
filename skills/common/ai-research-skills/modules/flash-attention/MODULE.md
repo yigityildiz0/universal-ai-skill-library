@@ -30,8 +30,11 @@ pip install flash-attn --no-build-isolation
 ```python
 from flash_attn import flash_attn_func
 
-# q, k, v: [batch, seqlen, nheads, headdim]
-out = flash_attn_func(q, k, v, dropout_p=0.0, causal=True)
+# Convert the preceding BHSD tensors to BSHD expected by this library.
+out = flash_attn_func(
+    q.transpose(1, 2).contiguous(), k.transpose(1, 2).contiguous(),
+    v.transpose(1, 2).contiguous(), dropout_p=0.0, causal=False,
+).transpose(1, 2)  # Back to BHSD; causal=False matches the preceding SDPA call.
 ```
 
 ## Common workflows
@@ -75,11 +78,8 @@ out = F.scaled_dot_product_attention(q, k, v, attn_mask=mask)
 
 Force Flash Attention backend:
 ```python
-with torch.backends.cuda.sdp_kernel(
-    enable_flash=True,
-    enable_math=False,
-    enable_mem_efficient=False
-):
+from torch.nn.attention import sdpa_kernel, SDPBackend
+with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
     out = F.scaled_dot_product_attention(q, k, v)
 ```
 
@@ -92,7 +92,7 @@ def test_attention(use_flash):
     q, k, v = [torch.randn(2, 8, 2048, 64, device='cuda', dtype=torch.float16) for _ in range(3)]
 
     if use_flash:
-        with torch.backends.cuda.sdp_kernel(enable_flash=True):
+        with sdpa_kernel(SDPBackend.FLASH_ATTENTION):
             return F.scaled_dot_product_attention(q, k, v)
     else:
         attn = (q @ k.transpose(-2, -1) / 8.0).softmax(dim=-1)
@@ -314,13 +314,18 @@ Verify GPU supports Flash Attention:
 ```python
 import torch
 print(torch.cuda.get_device_capability())
-# Should be ≥(7, 5) for Turing+
+# Capability alone is insufficient; check selected backend/build support.
 ```
 
-Flash Attention requires:
-- Ampere (A100, A10): ✅ Full support
-- Turing (T4): ✅ Supported
-- Volta (V100): ❌ Not supported
+Backend-specific support (also check dtype/head dimension/release):
+- Upstream FA2 CUDA: Ampere, Ada, Hopper. Turing is not this install path;
+  older FA1 or separate Turing implementations differ.
+- FA3: Hopper-focused implementation, not a universal FA2 upgrade.
+- PyTorch SDPA has independent kernel dispatch/support and a math fallback.
+  Forcing FLASH_ATTENTION may fail while ordinary SDPA succeeds.
+- Blackwell/RTX 50 requires an explicitly supporting build/CUDA combination;
+  a numerical compute-capability comparison is insufficient.
+- AMD ROCm uses separate CK/Triton backends with their own device requirements.
 
 **Issue: Accuracy degradation**
 

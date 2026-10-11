@@ -1,7 +1,7 @@
 # Module: test-driven-development
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/test-driven-development/`).
-> Original trigger scope: Use when implementing any feature or bugfix, before writing implementation code. Turkish triggers: test güdümlü geliştirme, önce başarısız test sonra düzeltme, regresyon testi.
+> Trigger scope: Test-first development when requested, required by the repository, or useful for behavior changes with meaningful regression risk. Turkish triggers: test güdümlü geliştirme, önce başarısız test sonra düzeltme, regresyon testi.
 
 # Test-Driven Development (TDD)
 
@@ -11,38 +11,30 @@ Write the test first. Watch it fail. Write minimal code to pass.
 
 **Core principle:** If you didn't watch the test fail, you don't know if it tests the right thing.
 
-**Violating the letter of the rules is violating the spirit of the rules.**
+Scale testing to risk and preserve existing user code. A reversible low-impact documentation/configuration edit may need only a targeted check; do not create tests that merely mirror the implementation.
 
 ## When to Use
 
-**Always:**
+**Prefer test-first work for meaningful behavior changes:**
 - New features
 - Bug fixes
 - Refactoring
 - Behavior changes
 
-**Exceptions (ask your human partner):**
+**Use proportionate verification rather than an automatic permission question for:**
 - Throwaway prototypes
 - Generated code
 - Configuration files
 
-Thinking "skip TDD just this once"? Stop. That's rationalization.
+Use the smallest check that meaningfully verifies the requirement; follow explicit repository test policy.
 
 ## The Iron Law
 
 ```
-NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
+WHEN USING TDD: OBSERVE THE INTENDED FAILURE, IMPLEMENT, THEN OBSERVE PASSING BEHAVIOR
 ```
 
-Write code before the test? Delete it. Start over.
-
-**No exceptions:**
-- Don't keep it as "reference"
-- Don't "adapt" it while writing tests
-- Don't look at it
-- Delete means delete
-
-Implement fresh from tests. Period.
+If implementation already exists, preserve it. Add meaningful behavior/characterization tests and reproduce the regression using a disposable copy or a precisely reversible isolated change when needed. Never delete user code, reset a branch, or restart working implementation merely to impose test-first chronology. Report honestly whether the test was written before or after the implementation.
 
 ## Red-Green-Refactor
 
@@ -133,7 +125,7 @@ Write simplest code to pass the test.
 
 <Good>
 ```typescript
-async function retryOperation<T>(fn: () => Promise<T>): Promise<T> {
+async function retryOperation<T>(fn: () => T | Promise<T>): Promise<T> {
   for (let i = 0; i < 3; i++) {
     try {
       return await fn();
@@ -207,7 +199,7 @@ Next failing test for next feature.
 
 **"I'll write tests after to verify it works"**
 
-Tests written after code pass immediately. Passing immediately proves nothing:
+Tests written after code may pass immediately. They can still verify behavior, but immediate success alone does not prove they detect the intended regression:
 - Might test wrong thing
 - Might test implementation, not behavior
 - Might miss edge cases you forgot
@@ -227,11 +219,7 @@ Automated tests are systematic. They run the same way every time.
 
 **"Deleting X hours of work is wasteful"**
 
-Sunk cost fallacy. The time is already gone. Your choice now:
-- Delete and rewrite with TDD (X more hours, high confidence)
-- Keep it and add tests after (30 min, low confidence, likely bugs)
-
-The "waste" is keeping code you can't trust. Working code without real tests is technical debt.
+Preserve working and user-authored code. Improve confidence with contract-based tests and a safe regression reproduction; discarding implementation is not a verification technique. Rewrite only when evidence and authorized scope justify it.
 
 **"TDD is dogmatic, being pragmatic means adapting"**
 
@@ -241,51 +229,36 @@ TDD IS pragmatic:
 - Documents behavior (tests show how to use code)
 - Enables refactoring (change freely, tests catch breaks)
 
-"Pragmatic" shortcuts = debugging in production = slower.
+The useful outcome is trustworthy behavior evidence, not ritual or guaranteed timing claims.
 
 **"Tests after achieve the same goals - it's spirit not ritual"**
 
-No. Tests-after answer "What does this do?" Tests-first answer "What should this do?"
-
-Tests-after are biased by your implementation. You test what you built, not what's required. You verify remembered edge cases, not discovered ones.
-
-Tests-first force edge case discovery before implementing. Tests-after verify you remembered everything (you didn't).
-
-30 minutes of tests after ≠ TDD. You get coverage, lose proof tests work.
+Tests before and after implementation can both assess requirements. Test-first helps expose assumptions early; later tests need care to avoid copying implementation details. Validate regression sensitivity safely. Do not call tests-after TDD, but do not dismiss valid evidence or delete code to change chronology.
 
 ## Common Rationalizations
 
 | Excuse | Reality |
 |--------|---------|
-| "Too simple to test" | Simple code breaks. Test takes 30 seconds. |
-| "I'll test after" | Tests passing immediately prove nothing. |
-| "Tests after achieve same goals" | Tests-after = "what does this do?" Tests-first = "what should this do?" |
+| "Too simple to test" | Match the check to meaningful behavior and regression risk; no universal time estimate. |
+| "I'll test after" | Preserve the code; test the contract and establish regression sensitivity safely. |
+| "Tests after achieve same goals" | Both can check requirements; later tests need independent cases and safe regression-sensitivity evidence. |
 | "Already manually tested" | Ad-hoc ≠ systematic. No record, can't re-run. |
-| "Deleting X hours is wasteful" | Sunk cost fallacy. Keeping unverified code is technical debt. |
-| "Keep as reference, write tests first" | You'll adapt it. That's testing after. Delete means delete. |
-| "Need to explore first" | Fine. Throw away exploration, start with TDD. |
+| "Deleting X hours is wasteful" | Do not delete code for chronology; improve verification. |
+| "Keep as reference, write tests first" | Keep existing work and label the chronology accurately. |
+| "Need to explore first" | Use a bounded spike; preserve useful/user work and verify the resulting behavior. |
 | "Test hard = design unclear" | Listen to test. Hard to test = hard to use. |
 | "TDD will slow me down" | TDD faster than debugging. Pragmatic = test-first. |
 | "Manual test faster" | Manual doesn't prove edge cases. You'll re-test every change. |
 | "Existing code has no tests" | You're improving it. Add tests for existing code. |
 
-## Red Flags - STOP and Start Over
+## Signals to Improve Verification
 
-- Code before test
-- Test after implementation
-- Test passes immediately
-- Can't explain why test failed
-- Tests added "later"
-- Rationalizing "just this once"
-- "I already manually tested it"
-- "Tests after achieve the same purpose"
-- "It's about spirit not ritual"
-- "Keep as reference" or "adapt existing code"
-- "Already spent X hours, deleting is wasteful"
-- "TDD is dogmatic, I'm being pragmatic"
-- "This is different because..."
+- A failure cannot be explained or is caused by broken setup rather than behavior.
+- The test copies the implementation or only asserts mock call counts.
+- A relevant boundary/error case is missing.
+- A passing regression test has not been shown to detect the original bug.
 
-**All of these mean: Delete code. Start over with TDD.**
+Investigate and strengthen the checks without deleting existing work. Reproduce red only through a reversible isolated change or disposable copy; restore and verify the final state.
 
 ## Example: Bug Fix
 
@@ -328,8 +301,8 @@ Extract validation for multiple fields if needed.
 
 Before marking work complete:
 
-- [ ] Every new function/method has a test
-- [ ] Watched each test fail before implementing
+- [ ] Meaningful changed behavior and relevant risks have suitable checks
+- [ ] For test-first work, observed the intended failure before implementing; otherwise chronology and evidence are clear
 - [ ] Each test failed for expected reason (feature missing, not typo)
 - [ ] Wrote minimal code to pass each test
 - [ ] All tests pass
@@ -337,7 +310,7 @@ Before marking work complete:
 - [ ] Tests use real code (mocks only if unavoidable)
 - [ ] Edge cases and errors covered
 
-Can't check all boxes? You skipped TDD. Start over.
+An unchecked applicable item means a verification gap to address or disclose, not permission to delete implementation.
 
 ## When Stuck
 
@@ -352,7 +325,7 @@ Can't check all boxes? You skipped TDD. Start over.
 
 Bug found? Write failing test reproducing it. Follow TDD cycle. Test proves fix and prevents regression.
 
-Never fix bugs without a test.
+For meaningful behavior regressions prefer an automated reproduction; use targeted evidence for low-impact changes where an automated test adds no value.
 
 ## Testing Anti-Patterns
 
@@ -368,4 +341,4 @@ Production code → test exists and failed first
 Otherwise → not TDD
 ```
 
-No exceptions without your human partner's permission.
+Follow the requested method and repository policy; do not ask for ceremonial exceptions on low-risk work.

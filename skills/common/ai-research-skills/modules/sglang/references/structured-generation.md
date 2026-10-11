@@ -14,11 +14,14 @@ def basic_json(s, text):
     s += f"Extract person info from: {text}\n"
     s += "Output as JSON:\n"
 
-    # Simple regex for JSON object
+    # Brace-matching regex is not JSON validation; require a schema instead.
     s += sgl.gen(
         "json",
         max_tokens=150,
-        regex=r'\{[^}]+\}'  # Basic JSON pattern
+        json_schema={"type": "object", "properties": {
+            "name": {"type": "string"}, "age": {"type": "integer"},
+            "profession": {"type": "string"}},
+            "required": ["name", "age", "profession"]}
     )
 
 state = basic_json.run(text="Alice is a 28-year-old doctor")

@@ -1,28 +1,29 @@
 # Module: llama-cpp
 
 > Upstream orchestra-research/AI-research-SKILLs skill, unchanged. Paths are relative to this module folder.
-> Original trigger scope: Runs LLM inference on CPU, Apple Silicon, and consumer GPUs without NVIDIA hardware. Use for edge deployment, M1/M2/M3 Macs, AMD/Intel GPUs, or when CUDA is unavailable. Supports GGUF quantization (1.5-8 bit) for reduced memory and 4-10× speedup vs PyTorch on CPU.
+> Scope: GGUF inference on CPU, Apple Silicon, NVIDIA CUDA and supported AMD/Intel GPUs; local/offloaded deployment and quantization. Benchmark speed for the actual hardware and workload.
 
 # llama.cpp
 
-Pure C/C++ LLM inference with minimal dependencies, optimized for CPUs and non-NVIDIA hardware.
+Pure C/C++ LLM inference with minimal dependencies and CPU, NVIDIA CUDA, Metal and other GPU backends.
 
 ## When to use llama.cpp
 
 **Use llama.cpp when:**
 - Running on CPU-only machines
+- Running quantized GGUF on NVIDIA consumer GPUs, including partial CPU offload
 - Deploying on Apple Silicon (M1/M2/M3/M4)
 - Using AMD or Intel GPUs (no CUDA)
 - Edge deployment (Raspberry Pi, embedded systems)
 - Need simple deployment without Docker/Python
 
 **Use TensorRT-LLM instead when:**
-- Have NVIDIA GPUs (A100/H100)
+- Need TensorRT-specific optimization on supported NVIDIA GPUs
 - Need maximum throughput (100K+ tok/s)
 - Running in datacenter with CUDA
 
 **Use vLLM instead when:**
-- Have NVIDIA GPUs
+- Need high-concurrency serving on supported GPU systems
 - Need Python-first API
 - Want PagedAttention
 
@@ -37,16 +38,20 @@ brew install llama.cpp
 # Or build from source
 git clone https://github.com/ggerganov/llama.cpp
 cd llama.cpp
-make
+cmake -B build
+cmake --build build --config Release -j
 
 # With Metal (Apple Silicon)
-make LLAMA_METAL=1
+cmake -B build-metal -DGGML_METAL=ON
+cmake --build build-metal --config Release -j
 
 # With CUDA (NVIDIA)
-make LLAMA_CUDA=1
+cmake -B build-cuda -DGGML_CUDA=ON
+cmake --build build-cuda --config Release -j
 
 # With ROCm (AMD)
-make LLAMA_HIP=1
+cmake -B build-hip -DGGML_HIP=ON
+cmake --build build-hip --config Release -j
 ```
 
 ### Download model
@@ -133,7 +138,8 @@ Q3_K_M or Q4_K_S  # Lower bits to fit in memory
 
 ```bash
 # Build with Metal
-make LLAMA_METAL=1
+cmake -B build-metal -DGGML_METAL=ON
+cmake --build build-metal --config Release -j
 
 # Run with GPU acceleration (automatic)
 ./llama-cli -m model.gguf -ngl 999  # Offload all layers
@@ -145,7 +151,8 @@ make LLAMA_METAL=1
 
 ```bash
 # Build with CUDA
-make LLAMA_CUDA=1
+cmake -B build-cuda -DGGML_CUDA=ON
+cmake --build build-cuda --config Release -j
 
 # Offload layers to GPU
 ./llama-cli -m model.gguf -ngl 35  # Offload 35/40 layers
@@ -158,7 +165,8 @@ make LLAMA_CUDA=1
 
 ```bash
 # Build with ROCm
-make LLAMA_HIP=1
+cmake -B build-hip -DGGML_HIP=ON
+cmake --build build-hip --config Release -j
 
 # Run with AMD GPU
 ./llama-cli -m model.gguf -ngl 999

@@ -4,6 +4,16 @@ description: "Plans a marketing campaign for a product, service or personal proj
 license: Apache-2.0
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Campaign planning
 
 Adapted from Anthropic's Marketing campaign workflow; see [SOURCE.md](SOURCE.md).

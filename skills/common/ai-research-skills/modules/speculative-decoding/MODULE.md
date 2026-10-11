@@ -74,7 +74,7 @@ outputs = target_model.generate(
     temperature=0.7,
 )
 
-response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+response = tokenizer.decode(outputs[0, inputs.input_ids.shape[1]:], skip_special_tokens=True)
 print(response)
 ```
 
@@ -97,14 +97,17 @@ prompt = "Write a Python function to calculate fibonacci numbers:"
 inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 
 outputs = model.medusa_generate(
-    **inputs,
-    max_new_tokens=256,
+    inputs.input_ids,  # Medusa expects a token tensor
+    max_steps=256,
     temperature=0.7,
     posterior_threshold=0.09,  # Acceptance threshold
     posterior_alpha=0.3,       # Tree construction parameter
 )
 
-response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+response = ""
+for result in outputs:  # Upstream Medusa yields generated-text dictionaries
+    response = result["text"]
+print(response)
 ```
 
 ### Lookahead Decoding (Jacobi Iteration)
@@ -148,27 +151,42 @@ print(output)
 4. Reject first disagreement, continue from there
 
 ```python
-def speculative_decode(target_model, draft_model, prompt, K=4):
-    """Speculative decoding algorithm."""
-    # 1. Generate K draft tokens
-    draft_tokens = draft_model.generate(prompt, max_new_tokens=K)
+import torch
 
-    # 2. Target model evaluates all K tokens in one forward pass
-    target_logits = target_model(draft_tokens)  # Parallel!
+def speculative_step(target_model, draft_model, input_ids, K=4):
+    """Batch=1 tensor example; same tokenizer/device, eval mode, temperature=1.
 
-    # 3. Accept/reject based on probability match
-    accepted = []
-    for i in range(K):
-        p_draft = softmax(draft_model.logits[i])
-        p_target = softmax(target_logits[i])
-
-        # Acceptance probability
-        if random.random() < min(1, p_target[draft_tokens[i]] / p_draft[draft_tokens[i]]):
-            accepted.append(draft_tokens[i])
+    No KV cache or EOS handling; caller stops at EOS/length. No top-k truncation.
+    Production implementations cache draft passes and batch verification.
+    """
+    assert input_ids.ndim == 2 and input_ids.shape[0] == 1 and K > 0
+    prefix = input_ids
+    drafts, qs = [], []
+    with torch.no_grad():
+        for _ in range(K):
+            q = draft_model(input_ids=prefix).logits[0, -1].float().softmax(-1)
+            token = torch.multinomial(q, 1)
+            drafts.append(token.item())
+            qs.append(q)
+            prefix = torch.cat([prefix, token.view(1, 1)], dim=1)
+        L = input_ids.shape[1]
+        ps = target_model(input_ids=prefix).logits[0, L-1:L+K].float().softmax(-1)
+        accepted = []
+        for i, token in enumerate(drafts):
+            if torch.rand((), device=ps.device) < torch.minimum(
+                torch.ones((), device=ps.device), ps[i, token] / qs[i][token]
+            ):
+                accepted.append(token)
+            else:
+                residual = (ps[i] - qs[i]).clamp_min(0)
+                mass = residual.sum()
+                if mass <= 0:
+                    raise RuntimeError("Numerically invalid rejection distribution")
+                accepted.append(torch.multinomial(residual / mass, 1).item())
+                break
         else:
-            break  # Reject, resample from target
-
-    return accepted
+            accepted.append(torch.multinomial(ps[K], 1).item())  # Full-accept bonus
+    return torch.tensor([accepted], device=input_ids.device, dtype=input_ids.dtype)
 ```
 
 **Performance**:
@@ -317,7 +335,8 @@ for batch in dataloader:
         logits = head(hidden_states)
         # Target: tokens shifted by (i+1) positions
         target = batch['input_ids'][:, i+1:]
-        loss += F.cross_entropy(logits[:, :-i-1], target)
+        loss += F.cross_entropy(logits[:, :-i-1].reshape(-1, logits.size(-1)),
+                                target.reshape(-1))  # Class axis is vocabulary
 
     # Backward
     optimizer.zero_grad()
@@ -327,23 +346,11 @@ for batch in dataloader:
 
 ### Hybrid: Speculative + Medusa
 
-```python
-# Use Medusa as draft model for speculative decoding
-draft_medusa = MedusaModel.from_pretrained("medusa-vicuna-7b")
-target_model = AutoModelForCausalLM.from_pretrained("vicuna-33b")
-
-# Draft generates multiple candidates with Medusa
-draft_tokens = draft_medusa.medusa_generate(prompt, max_new_tokens=5)
-
-# Target verifies in single forward pass
-outputs = target_model.generate(
-    prompt,
-    assistant_model=draft_medusa,  # Use Medusa as draft
-    max_new_tokens=256
-)
-
-# Combines benefits: Medusa speed + large model quality
-```
+A Medusa/draft hybrid is a research integration, not a drop-in
+`assistant_model=...` recipe. It needs an adapter passing candidate trees and
+proposal probabilities to the verifier, rejection handling and KV-cache rollback,
+plus sampling-correctness tests. Generating and discarding Medusa candidates does
+not create a hybrid. Use the supported basic assisted-generation workflow above.
 
 ### Optimal Draft Model Selection
 
@@ -399,8 +406,8 @@ K = 8  # Aggressive (lower acceptance, but more when accepted)
 ```python
 # Posterior threshold (acceptance confidence)
 posterior_threshold = 0.09  # Standard (from paper)
-posterior_threshold = 0.05  # More conservative (slower, higher quality)
-posterior_threshold = 0.15  # More aggressive (faster, may degrade quality)
+posterior_threshold = 0.05  # Lower is more permissive (all else equal)
+posterior_threshold = 0.15  # Higher is stricter (all else equal)
 
 # Tree depth (how many steps ahead)
 medusa_choices = [[0], [0, 0], [0, 1], [0, 0, 0]]  # Depth 3 (standard)

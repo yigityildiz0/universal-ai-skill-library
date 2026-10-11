@@ -5,7 +5,9 @@
 
 # AWQ (Activation-aware Weight Quantization)
 
-4-bit quantization that preserves salient weights based on activation patterns, achieving 3x speedup with minimal accuracy loss.
+4-bit quantization using activation statistics to preserve important weights.
+Speed/quality depend on model, calibration, kernel, hardware and workload;
+measure against a matched FP16/BF16 baseline instead of promising fixed ratios.
 
 ## When to use AWQ
 
@@ -28,10 +30,15 @@
 
 ## Quick start
 
-### Installation
+### Legacy AutoAWQ reproduction environment
+
+AutoAWQ is deprecated. For new deployments use a maintained AWQ runtime/exporter
+and check model/GPU support (for example vLLM AWQ serving). The AutoAWQ recipes
+below are legacy APIs: use a separate pinned environment instead of installing
+them into an existing current stack. Status: https://github.com/casper-hansen/AutoAWQ
 
 ```bash
-# Default (Triton kernels)
+# Legacy reproduction only (Triton kernels)
 pip install autoawq
 
 # With optimized CUDA kernels + Flash Attention
@@ -97,8 +104,8 @@ tokenizer.save_pretrained("mistral-7b-awq")
 
 | Feature | AWQ | GPTQ | bitsandbytes |
 |---------|-----|------|--------------|
-| **Speedup (4-bit)** | ~2.5-3x | ~2x | ~1.5x |
-| **Accuracy loss** | <5% | ~5-10% | ~5-15% |
+| **Speedup (4-bit)** | Benchmark runtime | Benchmark runtime | Benchmark runtime |
+| **Accuracy loss** | Evaluate per task | Evaluate per task | Evaluate per task |
 | **Calibration** | Minimal (128-1K tokens) | More extensive | None |
 | **Overfitting risk** | Low | Higher | N/A |
 | **Best for** | Production inference | GPU inference | Easy integration |

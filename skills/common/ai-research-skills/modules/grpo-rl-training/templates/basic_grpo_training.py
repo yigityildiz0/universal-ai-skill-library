@@ -179,7 +179,7 @@ def main():
 
         # Batch settings
         per_device_train_batch_size=1,
-        gradient_accumulation_steps=4,
+        gradient_accumulation_steps=8,  # Generation batch 8 is divisible by num_generations
 
         # GRPO specific
         num_generations=8,

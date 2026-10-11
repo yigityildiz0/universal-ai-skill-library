@@ -1,4 +1,4 @@
-# Yiğit's safety-adapted Caveman
+# the user's safety-adapted Caveman
 
 # Caveman
 

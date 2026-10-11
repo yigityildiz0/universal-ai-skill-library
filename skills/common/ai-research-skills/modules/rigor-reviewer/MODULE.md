@@ -104,7 +104,9 @@ For each claim-experiment pair linked through Proof/Verifies:
 
 **Scoring anchors:**
 - **5**: Type-appropriate, relevant evidence for every claim; multi-experiment support where needed
-- **4**: Evidence relevant for all claims, minor type mismatches (e.g., causal claim with correlation-only evidence)
+- **4**: Relevant evidence for all central claims; minor peripheral gaps only.
+  A central causal claim supported only by correlation is a major validity gap,
+  requiring a lower relevance score and causal evidence or a narrower claim.
 - **3**: Most claim-experiment pairs are relevant, 1-2 weak matches where evidence doesn't quite address the claim
 - **2**: Multiple claims where cited experiments don't substantively address what the claim asserts
 - **1**: Majority of claims cite experiments that are irrelevant to their statements
@@ -117,7 +119,9 @@ For each claim's Falsification criteria field:
 
 - **Actionability**: Could an independent researcher execute this criterion? Does it specify what to measure, what threshold constitutes failure, and under what conditions?
 - **Non-triviality**: Is the criterion non-tautological? ("If the method doesn't work" is trivial. "Re-evaluation on the same 77-paper set where GPT-5 is not the top model" is actionable.)
-- **Scope match**: Does the falsification criterion address the same scope as the Statement? (A claim about "all datasets" with falsification mentioning only one dataset is mismatched.)
+- **Scope match**: Does the criterion test the claim's quantifier and scope? A
+  single valid in-scope counterexample falsifies "all datasets". Average-effect
+  or probabilistic claims need appropriate sampling and statistical tests.
 - **Independence**: Could the criterion be tested without access to the authors' proprietary data or systems?
 
 **Scoring anchors:**
@@ -221,15 +225,16 @@ Sort findings by severity: critical first, then major, minor, suggestion.
 
 ### Step 6: Compute Overall Grade
 
-Calculate the mean of the six dimension scores. Apply the grade mapping:
+Calculate the mean of the six dimension scores. Apply this ordered mapping;
+Reject has priority and the remaining conditions are mutually exclusive:
 
 | Grade | Condition |
 |-------|-----------|
-| **Strong Accept** | mean ≥ 4.5 AND no dimension < 3 |
-| **Accept** | mean ≥ 3.8 AND no dimension < 2 |
-| **Weak Accept** | mean ≥ 3.0 AND no dimension < 2 |
-| **Weak Reject** | mean ≥ 2.0 AND (mean < 3.0 OR any dimension < 2) |
-| **Reject** | mean < 2.0 OR any dimension = 1 |
+| **Reject** | mean < 2.0 OR any dimension = 1 (evaluate first) |
+| **Strong Accept** | Not Reject; mean ≥ 4.5 AND no dimension < 3 |
+| **Accept** | Neither above; mean ≥ 3.8 |
+| **Weak Accept** | None above; mean ≥ 3.0 |
+| **Weak Reject** | None above (2.0 ≤ mean < 3.0) |
 
 ### Step 7: Write Report
 
@@ -244,7 +249,7 @@ Write `level2_report.json` to the artifact root:
 
   "overall": {
     "grade": "Accept",
-    "mean_score": 4.1,
+    "mean_score": 3.83,
     "one_line_summary": "<1 sentence: what makes this ARA strong or weak>",
     "strengths_summary": ["<top 2-3 strengths across all dimensions>"],
     "weaknesses_summary": ["<top 2-3 weaknesses across all dimensions>"]

@@ -207,7 +207,7 @@ training_args = GRPOConfig(
 
     # Batch settings
     per_device_train_batch_size=1,
-    gradient_accumulation_steps=4,  # Effective batch = 4
+    gradient_accumulation_steps=8,  # Single-GPU effective/generation batch = 8
 
     # GRPO-specific
     num_generations=8,            # Group size: 8-16 recommended
@@ -216,7 +216,7 @@ training_args = GRPOConfig(
 
     # Training duration
     num_train_epochs=1,
-    max_steps=None,               # Or set fixed steps (e.g., 500)
+    max_steps=-1,                 # Epoch-based; use a positive integer for fixed steps
 
     # Optimization
     bf16=True,                    # Faster on A100/H100
@@ -236,7 +236,7 @@ training_args = GRPOConfig(
     output_dir="outputs/grpo-model",
     learning_rate=1e-5,
     per_device_train_batch_size=4,
-    gradient_accumulation_steps=2,
+    gradient_accumulation_steps=4,  # Single-GPU effective/generation batch = 16
     num_generations=16,           # Larger groups = better signal
     max_prompt_length=512,
     max_completion_length=1024,
@@ -340,11 +340,11 @@ trainer.train()
 
 ## Critical Training Insights
 
-### 1. Loss Behavior (EXPECTED PATTERN)
-- **Loss starts near 0 and INCREASES during training**
-- This is CORRECT - loss measures KL divergence from initial policy
-- Model is learning (diverging from original behavior to optimize rewards)
-- Monitor reward metrics instead of loss for progress
+### 1. Loss Behavior
+- GRPO loss includes the policy objective and, when `beta > 0`, a reference-policy KL penalty. It is not just KL divergence.
+- A rising loss is neither required nor sufficient evidence of healthy training. Inspect reward, reward variance, clipping, KL (when enabled), held-out quality and generated samples together.
+- The generation batch must be divisible by `num_generations`. The single-GPU examples use 8/8 and 16/16; verify the effective generation batch for your TRL version, world size and any explicit generation-batch override.
+- API reference (checked 2026-10-08): https://huggingface.co/docs/trl/grpo_trainer . Check your installed TRL version before copying version-sensitive options such as `max_prompt_length` or vLLM configuration.
 
 ### 2. Reward Tracking
 Key metrics to watch:

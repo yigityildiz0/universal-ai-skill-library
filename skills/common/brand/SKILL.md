@@ -6,6 +6,16 @@ metadata:
   version: "1.0.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Brand
 
 Brand identity, voice, messaging, asset management, and consistency frameworks.
@@ -106,6 +116,6 @@ intentional, re-run with `--force`.
 2. Load corresponding `references/{subcommand}.md`
 3. Execute with remaining arguments
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The instructions above are the current upstream skill, unchanged. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

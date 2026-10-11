@@ -29,9 +29,11 @@ Scale the plan to the change. The sections below are a menu for substantial chan
 ## Risks, edge cases, and unresolved decisions
 ```
 
-Every step must identify the outcome, likely files/symbols, prerequisites, behavior preserved, validation, and rollback. Separate read-only diagnosis, local edits, and external/deployment actions; planning does not authorize publishing or production changes.
+For substantial steps identify the outcome, likely files/symbols, prerequisites, behavior preserved, validation, and relevant rollback. Small reversible steps may share this context at plan level. Separate read-only diagnosis, local edits, and external/deployment actions; planning does not authorize publishing or production changes.
 
 ## Quality gate
+
+Apply the relevant checks below; migrations and operational signals are not required for changes that do not affect those concerns.
 
 - paths and current behavior were verified;
 - acceptance criteria are observable;

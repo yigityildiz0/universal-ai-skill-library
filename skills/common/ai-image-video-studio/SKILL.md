@@ -3,6 +3,16 @@ name: ai-image-video-studio
 description: "AI image and video production: ComfyUI workflow design and repair (FLUX, SDXL, SD3, Wan, Hunyuan, LTXV, LoRA, ControlNet, IPAdapter, PuLID, inpaint, upscale, img2vid; missing nodes or models, Failed to fetch, VRAM, identity drift), AI product photography, source-preserving image edits and rendered-video QA. Turkish triggers: ComfyUI workflow yap, iş akışını düzelt, node eksik, model bulunamadı, VRAM hatası, ürün fotoğrafı, görseli düzenle, arka planı değiştir, rötuş ve varyasyon, videoyu kontrol et. More triggers: güvenli onarım, workflow'u bozmadan modül ekle, ışık ve kompozisyon, çekim listesi, çözünürlük/ses/kare kontrolü."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # AI Image & Video Studio
 
 ## Choose the module

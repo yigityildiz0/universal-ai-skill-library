@@ -43,7 +43,7 @@ pip install audiocraft
 pip install git+https://github.com/facebookresearch/audiocraft.git
 
 # Or use HuggingFace Transformers
-pip install transformers torch torchaudio
+pip install transformers torch torchaudio scipy
 ```
 
 ### Basic text-to-music (AudioCraft)
@@ -477,9 +477,11 @@ def generate_music(prompt, duration, temperature, cfg_coef):
     with torch.no_grad():
         wav = model.generate([prompt])
 
-    # Save to temp file
-    path = "temp_output.wav"
-    torchaudio.save(path, wav[0].cpu(), sample_rate=32000)
+    # Unique per request; retain until served, then expire it.
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as output:
+        path = output.name
+    torchaudio.save(path, wav[0].cpu(), sample_rate=model.sample_rate)
     return path
 
 demo = gr.Interface(
@@ -494,7 +496,7 @@ demo = gr.Interface(
     title="MusicGen Demo"
 )
 
-demo.launch()
+demo.queue(default_concurrency_limit=1).launch()
 ```
 
 ## Performance optimization
@@ -528,6 +530,11 @@ for desc in descriptions:
 ```
 
 ### GPU memory requirements
+
+Workload-dependent estimates, not fit guarantees: duration, batch, precision,
+backend and caches affect peak VRAM. On a 12 GB GPU start with `musicgen-small`,
+batch 1 and a short clip; measure peaks before scaling. Serialize demo requests
+to avoid shared generation-parameter races.
 
 | Model | FP32 VRAM | FP16 VRAM |
 |-------|-----------|-----------|

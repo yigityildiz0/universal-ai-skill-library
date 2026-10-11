@@ -1,4 +1,4 @@
-# Yiğit's safety-adapted caveman-review
+# the user's safety-adapted caveman-review
 
 > Original trigger scope: Manual Caveman-style code-review mode that produces concise findings with exact locations, evidence, impact, and a concrete fix while retaining necessary rationale for high-risk issues. Use only when explicitly invoked as $caveman-review, /caveman-review, 'Caveman review', or an equally unambiguous Caveman-style review request. Never activate for ordinary code review, PR review, or diff-review requests. Turkish triggers: Caveman review, mağara modu kod incelemesi.
 

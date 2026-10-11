@@ -73,10 +73,10 @@ print(results)
 ### 1. Create collection
 
 ```python
-# Simple collection
-collection = client.create_collection("my_docs")
+# Simple collection; repeatable for the same embedding configuration
+collection = client.get_or_create_collection("my_docs")
 
-# With custom embedding function
+# Alternative: a separate collection with a custom embedding function
 from chromadb.utils import embedding_functions
 
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
@@ -85,21 +85,18 @@ openai_ef = embedding_functions.OpenAIEmbeddingFunction(
 )
 
 collection = client.create_collection(
-    name="my_docs",
+    name="my_docs_openai",
     embedding_function=openai_ef
 )
 
-# Get existing collection
+# Return to the default collection used below
 collection = client.get_collection("my_docs")
-
-# Delete collection
-client.delete_collection("my_docs")
 ```
 
 ### 2. Add documents
 
 ```python
-# Add with auto-generated IDs
+# IDs are explicitly supplied by the caller; Chroma does not generate these.
 collection.add(
     documents=["Doc 1", "Doc 2", "Doc 3"],
     metadatas=[
@@ -148,7 +145,7 @@ results = collection.query(
 # Access results
 print(results["documents"])      # List of matching documents
 print(results["metadatas"])      # Metadata for each doc
-print(results["distances"])      # Similarity scores
+print(results["distances"])      # Distances: lower is nearer, metric-dependent
 print(results["ids"])            # Document IDs
 ```
 

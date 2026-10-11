@@ -4,19 +4,29 @@ description: "AI/ML engineering and research library: 98 modules for model train
 license: MIT
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # AI Research Skills Library
 
 Upstream [orchestra-research/AI-research-SKILLs](https://github.com/orchestra-research/AI-research-SKILLs) (MIT, 773a529 2026-06-15) — full library. Upstream technical resources are retained; controlling instructions in autoresearch and research-manager have documented authorization/privacy adaptations; 19 absent-reference routes and the existing Llama Guard 3 model-card identifier are corrected in yigit/reference-repairs.json; paths inside a module are relative to that module's folder.
 
 ## Execution protocol
 
-Read [research execution and data boundaries](yigit/execution-protocol.md) before any module. Existing host permissions and task-specific authorization apply to every technical example.
+Read [research execution and data boundaries](yigit/execution-protocol.md) before any module. Existing host permissions and task-specific authorization apply to every technical example. Before choosing a local or distributed recipe, consult [hardware and example validation](yigit/resource-profiles.md).
 
 ## How to use
 
 - Starting or steering an AI/ML research project end to end → `autoresearch` module; it routes to the domain modules below.
 - A specific framework, technique or deliverable → open that module directly and read it completely.
-- Research or thesis ideas in any field → `brainstorming-research-ideas`, then `creative-thinking-for-research`; translate CS/ML examples to the user's field.
+- AI/ML research ideas → `brainstorming-research-ideas`, then `creative-thinking-for-research`. For biomedical/rehabilitation thesis ideas, first use the available `medical-evidence-research` hub for clinical importance, evidence gaps and study feasibility; use these ideation modules as optional support. Clinical cases belong to `physio-clinical-copilot`, and study/exam or general academic presentation tasks to `academic-study-coach` when those skills are installed.
 - Install the Python packages a module lists only when the task needs them; ask before installing GPU, cloud or paid tooling.
 
 ## Modules by category
@@ -43,7 +53,7 @@ Read [research execution and data boundaries](yigit/execution-protocol.md) befor
 - [`axolotl`](modules/axolotl/MODULE.md) — Expert guidance for fine-tuning LLMs with Axolotl - YAML configs, 100+ models, LoRA/QLoRA, DPO/KTO/ORPO/GRPO, multimodal support
 - [`llama-factory`](modules/llama-factory/MODULE.md) — Expert guidance for fine-tuning LLMs with LLaMA-Factory - WebUI no-code, 100+ models, 2/3/4/5/6/8-bit QLoRA, multimodal support
 - [`peft`](modules/peft/MODULE.md) — Parameter-efficient fine-tuning for LLMs using LoRA, QLoRA, and 25+ methods.
-- [`unsloth`](modules/unsloth/MODULE.md) — Expert guidance for fast fine-tuning with Unsloth - 2-5x faster training, 50-80% less memory, LoRA/QLoRA optimization
+- [`unsloth`](modules/unsloth/MODULE.md) — Memory-efficient LoRA/QLoRA fine-tuning; benchmark speed and peak memory for the selected model, sequence length and backend.
 
 ### 04-mechanistic-interpretability
 
@@ -92,9 +102,9 @@ Read [research execution and data boundaries](yigit/execution-protocol.md) befor
 
 ### 10-optimization
 
-- [`awq`](modules/awq/MODULE.md) — Activation-aware weight quantization for 4-bit LLM compression with 3x speedup and minimal accuracy loss.
-- [`bitsandbytes`](modules/bitsandbytes/MODULE.md) — Quantizes LLMs to 8-bit or 4-bit for 50-75% memory reduction with minimal accuracy loss.
-- [`flash-attention`](modules/flash-attention/MODULE.md) — Optimizes transformer attention with Flash Attention for 2-4x speedup and 10-20x memory reduction.
+- [`awq`](modules/awq/MODULE.md) — Activation-aware low-bit weight quantization; distinguish legacy tooling, quantization-time resources and inference quality.
+- [`bitsandbytes`](modules/bitsandbytes/MODULE.md) — 8-bit/4-bit loading and memory-efficient optimizers; verify supported hardware and task-specific quality.
+- [`flash-attention`](modules/flash-attention/MODULE.md) — Memory-efficient attention with explicit tensor layout and backend/GPU compatibility checks.
 - [`gguf`](modules/gguf/MODULE.md) — GGUF format and llama.cpp quantization for efficient CPU/GPU inference.
 - [`gptq`](modules/gptq/MODULE.md) — Post-training 4-bit quantization for LLMs with minimal accuracy loss.
 - [`hqq`](modules/hqq/MODULE.md) — Half-Quadratic Quantization for LLMs without calibration data.
@@ -108,7 +118,7 @@ Read [research execution and data boundaries](yigit/execution-protocol.md) befor
 
 ### 12-inference-serving
 
-- [`llama-cpp`](modules/llama-cpp/MODULE.md) — Runs LLM inference on CPU, Apple Silicon, and consumer GPUs without NVIDIA hardware.
+- [`llama-cpp`](modules/llama-cpp/MODULE.md) — GGUF inference on CPU, Apple Silicon and supported GPUs, including NVIDIA CUDA and partial CPU/GPU offload.
 - [`sglang`](modules/sglang/MODULE.md) — Fast structured generation and serving for LLMs with RadixAttention prefix caching.
 - [`tensorrt-llm`](modules/tensorrt-llm/MODULE.md) — Optimizes LLM inference with NVIDIA TensorRT for maximum throughput and lowest latency.
 - [`vllm`](modules/vllm/MODULE.md) — Serves LLMs with high throughput using vLLM's PagedAttention and continuous batching.

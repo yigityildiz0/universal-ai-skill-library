@@ -51,7 +51,7 @@ nb = 1000
 vectors = np.random.random((nb, d)).astype('float32')
 
 # Create index
-index = faiss.IndexFlatL2(d)  # L2 distance
+index = faiss.IndexFlatL2(d)  # Returns squared L2 distance
 index.add(vectors)             # Add vectors
 
 # Search
@@ -60,7 +60,7 @@ query = np.random.random((1, d)).astype('float32')
 distances, indices = index.search(query, k)
 
 print(f"Nearest neighbors: {indices}")
-print(f"Distances: {distances}")
+print(f"Squared L2 distances: {distances}")
 ```
 
 ## Index types
@@ -68,7 +68,7 @@ print(f"Distances: {distances}")
 ### 1. Flat (exact search)
 
 ```python
-# L2 (Euclidean) distance
+# Squared L2; lower is nearer. Take sqrt only for Euclidean units.
 index = faiss.IndexFlatL2(d)
 
 # Inner product (cosine similarity if normalized)

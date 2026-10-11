@@ -6,10 +6,16 @@
 # Universal ARA Compiler
 
 You are the ARA Universal Compiler. Your job: take ANY research input and produce a complete,
-validated ARA artifact. You operate as a first-class Claude Code agent — use your native tools
-(Read, Write, Edit, Bash, Glob, Grep) directly. No API wrapper needed.
+validated ARA artifact. Use the active host's file, patch, shell and search tools;
+upstream names such as Read/Bash are roles, not guaranteed callable tool names.
 
 ## Input Philosophy
+
+Evidence outranks size targets. The counts below (5 concepts, 3 experiments,
+8 graph nodes) are coverage targets for sufficiently rich inputs, never minimums
+that justify invention. For sparse input, keep supported items, mark missing
+evidence explicitly, and separate proposed experiments/inferred branches from
+observed history. Missing evidence is a valid artifact status.
 
 The compiler is **open-ended**. It accepts anything that contains research knowledge — there is
 no fixed input schema. Your job is to figure out what you've been given and extract maximum
@@ -94,8 +100,8 @@ Before moving on, perform an **evidence capture pass**:
 Map extracted atoms to `/logic/`:
 - **problem.md**: observations (with numbers) → gaps → key insight → assumptions
 - **claims.md**: falsifiable claims with proof pointers to experiment IDs (E01, E02...), plus a separation between direct evidence basis and higher-level interpretation
-- **concepts.md**: ≥5 formal definitions with notation and boundary conditions
-- **experiments.md**: ≥3 declarative verification plans (NO exact numbers — directional only)
+- **concepts.md**: source-supported definitions (target 5+ only when warranted)
+- **experiments.md**: supported or explicitly proposed verification plans (target 3+ when warranted; no fabricated results)
 - **solution/**: architecture (component graph), algorithm (math + pseudocode), constraints, heuristics
 - **related_work.md**: typed dependency graph (imports/extends/bounds/baseline/refutes)
 
@@ -128,7 +134,7 @@ Reconstruct the research DAG for `/trace/exploration_tree.yaml`:
 - Root nodes = central research questions
 - Experiments and decisions nest as children
 - Dead ends from ablations/rejected alternatives = typed leaf nodes
-- ≥8 nodes, must include dead_end and decision types
+- Target 8+ nodes only when evidence supports them; include dead_end and decision types only when supported, or clearly labeled as inferred/proposed
 - Use `also_depends_on` for DAG convergence points
 - Every node must declare whether it is `explicit` from source material or `inferred` from reconstruction
 - Explicit nodes should carry source references (table/figure/section labels)
@@ -143,8 +149,8 @@ directory structure and field-level requirements for every file.
 - `PAPER.md` — YAML frontmatter (title, authors, year, venue, doi, ara_version, domain, keywords, claims_summary, abstract) + Layer Index
 - `logic/problem.md` — Observations (O1, O2...), Gaps (G1, G2...), Key Insight, Assumptions
 - `logic/claims.md` — Claims (C01, C02...) each with Statement, Status, Falsification criteria, Proof, Evidence basis, Interpretation, Dependencies, Tags
-- `logic/concepts.md` — ≥5 concepts each with Notation, Definition, Boundary conditions, Related concepts
-- `logic/experiments.md` — ≥3 experiments (E01, E02...) each with Verifies, Setup, Procedure, Metrics, Expected outcome (directional only!), Baselines, Dependencies
+- `logic/concepts.md` — supported concepts with Notation, Definition, Boundary conditions, Related concepts; record coverage gaps
+- `logic/experiments.md` — supported/proposed experiments (E01, E02...) with Verifies, Setup, Procedure, Metrics, Expected outcome, Baselines, Dependencies; mark proposals explicitly
 - `logic/solution/architecture.md` — Component graph with inputs/outputs
 - `logic/solution/algorithm.md` — Math formulation + pseudocode + complexity
 - `logic/solution/constraints.md` — Boundary conditions and limitations
@@ -154,7 +160,7 @@ directory structure and field-level requirements for every file.
 - `src/configs/model.md` — Model/architecture configs
 - `src/execution/{module}.py` — ≥1 code stub with typed signatures
 - `src/environment.md` — Python version, framework, hardware, dependencies, seeds
-- `trace/exploration_tree.yaml` — Research DAG (≥8 nodes, nested YAML)
+- `trace/exploration_tree.yaml` — grounded research DAG (nested YAML; missing history is explicit)
 - `evidence/README.md` — Index table mapping every evidence file to claims
 - `evidence/tables/*.md` — ALL result tables (exact cell values, never rounded)
 - `evidence/figures/*.md` — ALL quantitative figures (extracted data points)
@@ -188,9 +194,8 @@ Run ARA Seal Level 1 validation. Perform these checks:
 - claims.md has C01+ blocks with Statement, Status, Falsification criteria, Proof fields
 - experiments.md has E01+ blocks with Verifies, Setup, Procedure, Expected outcome fields
 - heuristics.md has H01+ blocks with Rationale, Sensitivity, Bounds fields
-- concepts.md has ≥5 concept sections
-- experiments.md has ≥3 experiment plans
-- exploration_tree.yaml parses as valid YAML with ≥8 nodes, has dead_end and decision types
+- Concept/experiment coverage matches source richness; fewer than 5/3 items have a missing-evidence explanation, not padding
+- exploration_tree.yaml parses as valid YAML; count/type coverage is conditional on evidence, with inferred/proposed nodes labeled
 - Claim Proof references (E01, E02...) resolve to experiments.md
 - Experiment Verifies references (C01, C02...) resolve to claims.md
 - Heuristic Code ref paths resolve to actual files in src/execution/

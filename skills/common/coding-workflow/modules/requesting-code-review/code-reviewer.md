@@ -1,11 +1,11 @@
 # Code Reviewer Prompt Template
 
-Use this template when dispatching a code reviewer subagent.
+Use this template for an inline review or an explicitly authorized reviewer subagent. The wrapper is conceptual; use the host's actual available interface, not an assumed tool named `Task`.
 
 **Purpose:** Review completed work against requirements and code quality standards before it cascades into more work.
 
-```
-Task tool (general-purpose):
+````text
+Supported review interface (or inline application):
   description: "Review code changes"
   prompt: |
     You are a Senior Code Reviewer with expertise in software architecture,
@@ -20,15 +20,23 @@ Task tool (general-purpose):
 
     {PLAN_OR_REQUIREMENTS}
 
-    ## Git Range to Review
+    ## Review Scope
 
     **Base:** {BASE_SHA}
     **Head:** {HEAD_SHA}
+    **Task paths / uncommitted files:** {REVIEW_PATHS}
+    **Baseline rationale:** {BASELINE_CONTEXT}
 
     ```bash
     git diff --stat {BASE_SHA}..{HEAD_SHA}
     git diff {BASE_SHA}..{HEAD_SHA}
+    git diff --cached -- {REVIEW_PATHS}
+    git diff -- {REVIEW_PATHS}
+    git ls-files --others --exclude-standard -- {REVIEW_PATHS}
     ```
+
+    Inspect listed untracked task files separately; preserve unrelated edits.
+    For non-Git work compare explicit files against the provided baseline.
 
     ## What to Check
 
@@ -119,13 +127,15 @@ Task tool (general-purpose):
     - Give feedback on code you didn't actually read
     - Be vague ("improve error handling")
     - Avoid giving a clear verdict
-```
+````
 
 **Placeholders:**
 - `{DESCRIPTION}` — brief summary of what was built
 - `{PLAN_OR_REQUIREMENTS}` — what it should do (plan file path, task text, or requirements)
 - `{BASE_SHA}` — starting commit
 - `{HEAD_SHA}` — ending commit
+- `{REVIEW_PATHS}` — explicit task files including staged, unstaged, and untracked scope
+- `{BASELINE_CONTEXT}` — verified PR base, merge-base, task-start commit, or non-Git baseline; never assume HEAD~1
 
 **Reviewer returns:** Strengths, Issues (Critical / Important / Minor), Recommendations, Assessment
 

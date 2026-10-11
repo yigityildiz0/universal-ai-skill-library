@@ -68,7 +68,7 @@ for segment in result["segments"]:
 models = ["tiny", "base", "small", "medium", "large", "turbo"]
 
 # Load specific model
-model = whisper.load_model("turbo")  # Fastest, good quality
+model = whisper.load_model("turbo")  # Fast transcription; not trained for translation
 ```
 
 | Model | Parameters | English-only | Multilingual | Speed | VRAM |
@@ -102,8 +102,9 @@ result = model.transcribe("audio.mp3", language="en")
 # Transcription (default)
 result = model.transcribe("audio.mp3", task="transcribe")
 
-# Translation to English
-result = model.transcribe("spanish.mp3", task="translate")
+# Translation to English: turbo was not trained for this task.
+translation_model = whisper.load_model("medium")  # Or multilingual large
+result = translation_model.transcribe("spanish.mp3", task="translate")
 # Input: Spanish audio → Output: English text
 ```
 

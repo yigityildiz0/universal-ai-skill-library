@@ -1,4 +1,4 @@
-# Yiğit's safety-adapted caveman-compress
+# the user's safety-adapted caveman-compress
 
 > Original trigger scope: Manual Caveman-style prose compressor for Markdown or plain-text memory and instruction files, with invariant validation, unified-diff preview, explicit approval, atomic replacement, and timestamped backup. Use only when explicitly invoked as $caveman-compress, /caveman-compress, 'Caveman compress', or an unambiguous Caveman memory-file compression request. Never activate for ordinary summarization, ZIP/archive compression, or generic file cleanup; never overwrite during preview. Turkish triggers: Caveman compress, mağara modu metin sıkıştırma.
 

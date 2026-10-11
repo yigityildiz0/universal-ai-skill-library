@@ -227,16 +227,9 @@ See [references/visualization.md](references/visualization.md) for more chart an
 ### 5. Local and Self-Hosted Workflows
 
 ```python
-import os
 import swanlab
 
-# Self-hosted or cloud login
-swanlab.login(
-    api_key=os.environ["SWANLAB_API_KEY"],
-    host="http://your-server:5092",
-)
-
-# Local-only logging
+# Local-only logging needs no login or API key.
 run = swanlab.init(
     project="offline-demo",
     mode="local",
@@ -248,7 +241,7 @@ run.finish()
 ```
 
 ```bash
-# View local logs
+# View local logs (no authentication required)
 swanlab watch -l ./swanlog
 
 # Sync local logs later
@@ -363,6 +356,8 @@ import torch
 import swanlab
 
 checkpoint_path = "checkpoints/best.pth"
+from pathlib import Path
+Path(checkpoint_path).parent.mkdir(parents=True, exist_ok=True)
 torch.save(model.state_dict(), checkpoint_path)
 
 swanlab.log(

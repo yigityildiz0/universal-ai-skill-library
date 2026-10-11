@@ -1,7 +1,9 @@
-# Module: caveman-commit
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-commit/`.
-> Original trigger scope: Write a Conventional Commits message compressed to intent only. Use for "write a commit", "commit message", /commit or /caveman-commit.
+---
+name: caveman-commit
+description: >
+  Write a Conventional Commits message compressed to intent only. Use for
+  "write a commit", "commit message", /commit or /caveman-commit.
+---
 
 Write commit messages terse and exact. Conventional Commits format. No fluff. Why over what.
 

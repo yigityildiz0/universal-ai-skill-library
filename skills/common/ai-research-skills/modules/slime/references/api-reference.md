@@ -197,7 +197,8 @@ For multi-turn or tool-calling scenarios:
 
 ```python
 # custom_generate.py
-from slime.data import Sample
+from copy import deepcopy
+from slime.utils.types import Sample
 
 async def custom_generate(args, samples: list[Sample], evaluation: bool = False) -> list[Sample]:
     """
@@ -212,10 +213,11 @@ async def custom_generate(args, samples: list[Sample], evaluation: bool = False)
         List of Sample objects with responses and rewards
     """
     for sample in samples:
-        conversation = sample.prompt if isinstance(sample.prompt, list) else [
+        conversation = deepcopy(sample.prompt) if isinstance(sample.prompt, list) else [
             {"role": "user", "content": sample.prompt}
         ]
 
+        response = ""
         for turn in range(args.max_turns):
             # Generate response
             response = await generate_single(conversation)
@@ -232,6 +234,11 @@ async def custom_generate(args, samples: list[Sample], evaluation: bool = False)
                 sample.response = response
                 break
 
+        # Preserve the last response even if the loop reaches its turn limit.
+        sample.response = response
+        # Sketch only: collect all assistant/tool turns and token/logprob spans,
+        # set tokens and response_length, preserve tool_call_id, then construct a
+        # token-aligned mask from that full trace. Mask prompt/tool tokens out.
         # Compute reward
         sample.reward = compute_reward(sample)
 

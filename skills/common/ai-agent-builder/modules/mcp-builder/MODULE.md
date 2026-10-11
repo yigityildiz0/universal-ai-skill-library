@@ -145,6 +145,13 @@ Review for:
 
 See language-specific guides for detailed testing approaches and quality checklists.
 
+If the server exposes mutating tools, also add acceptance tests using mocked
+backends or disposable local fixtures: authorization denial, schema validation,
+the intended state change, duplicate/retry behavior (idempotency where promised),
+partial failures, and rollback/cleanup. A read-only evaluation cannot validate
+write semantics. Never run destructive, paid, or externally visible production
+operations just to test the server; record skipped live checks explicitly.
+
 ---
 
 ### Phase 4: Create Evaluations

@@ -77,4 +77,8 @@ Never claim a precise free-context percentage when the active limit or loaded pr
 - Do not edit, disable, uninstall, or delete during an audit.
 - Do not treat a large skill library as fully injected if the host uses metadata routing and on-demand bodies.
 - Do not recommend removal solely because a file is long; check trigger frequency and unique capability.
-- Use context-optimization for quality-preserving reductions during an active task.
+- For quality-preserving reductions during an active task: first preserve the goal,
+  constraints, verified evidence, decisions, changed paths, pending checks, and next
+  step in a compact handoff; then replace repeated outputs with references, request
+  bounded tool results, and load only the next needed module. Recheck that no
+  requirement or unresolved failure was lost. Do not invoke a nonexistent module.

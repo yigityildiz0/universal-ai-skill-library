@@ -39,7 +39,7 @@ Structure context from most persistent to most transient:
 
 Create a rules file that persists across sessions. This is the highest-leverage context you can provide.
 
-**AGENTS.md** (for Codex):
+**AGENTS.md** (for OpenCode, Codex, and other hosts that support it; respect host-specific precedence):
 ```markdown
 # Project: [Name]
 
@@ -50,7 +50,8 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 ## Commands
 - Build: `npm run build`
 - Test: `npm test`
-- Lint: `npm run lint --fix`
+- Lint check: `npm run lint` (inspect the script first; use its non-mutating check mode)
+- Lint fixes: only when authorized and in scope; `--fix` is a mutation, not verification
 - Dev: `npm run dev`
 - Type check: `npx tsc --noEmit`
 
@@ -75,7 +76,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 - `.cursorrules` or `.cursor/rules/*.md` (Cursor)
 - `.windsurfrules` (Windsurf)
 - `.github/copilot-instructions.md` (GitHub Copilot)
-- `AGENTS.md` (OpenAI Codex)
+- `AGENTS.md` (OpenCode, OpenAI Codex, and compatible hosts)
 
 ### Level 2: Specs and Architecture
 
@@ -183,7 +184,7 @@ For richer context, use Model Context Protocol servers:
 
 | MCP Server | What It Provides |
 |-----------|-----------------|
-| **Context7** | Auto-fetches relevant documentation for libraries |
+| **Context7** | Explicitly invoke the available resolver, then query-docs for current library documentation; not automatic background retrieval |
 | **Chrome DevTools** | Live browser state, DOM, console, network |
 | **PostgreSQL** | Direct database schema and query results |
 | **Filesystem** | Project file access and search |
@@ -200,7 +201,7 @@ Spec says:         "Use REST for all endpoints"
 Existing code has: GraphQL for the user profile query
 ```
 
-**Do NOT** silently pick one interpretation. Surface it:
+For a material conflict affecting behavior, scope, authorization, or irreversible choices, surface it. Resolve minor reversible details from repository precedent and state the assumption:
 
 ```
 CONFUSION:
@@ -220,8 +221,8 @@ C) Ask — this seems like an intentional decision I shouldn't override
 If the spec doesn't cover a case you need to implement:
 
 1. Check existing code for precedent
-2. If no precedent exists, **stop and ask**
-3. Don't invent requirements — that's the human's job
+2. If no precedent exists and the choice materially affects behavior, scope, or risk, ask; pause only dependent work
+3. For a low-impact reversible detail, choose a sensible default, state the assumption, and continue without inventing new requirements
 
 ```
 MISSING REQUIREMENT:

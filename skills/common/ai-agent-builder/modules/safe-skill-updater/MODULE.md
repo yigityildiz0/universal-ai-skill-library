@@ -9,14 +9,16 @@ Improve a skill only when evidence shows a measurable benefit. "No change" is a 
 
 ## Scope Boundary
 
-- Limit write and modification targets to user-owned Codex/ChatGPT personal
-  skills. In ChatGPT Work Mode, resolve and edit
+- Limit write and modification targets to the user-owned canonical source and
+  explicitly requested host targets (Codex, ChatGPT, Claude, or OpenCode). In ChatGPT Work Mode, resolve and edit
   user-owned skills through the active personal Skills checkout and follow the
   installed `skill-creator` save and verification workflow; never claim an
   account-level update from a scratch copy.
-- Do not install or mirror this updater into OpenCode.
+- For generated host editions, edit the canonical source or generator; use the
+  authorized build/sync process rather than editing generated copies.
 - Do not edit managed plugin caches, system skills, marketplace checkouts, or generated runtime caches. Update their source package or leave a report.
-- Do not change Claude/OpenCode variants unless the user names those targets separately.
+- A multi-host update may include Claude/OpenCode when the user requests those
+  targets; do not broaden a single-host request without authorization.
 - Before importing an untrusted package, inspect its archive paths, manifest, dependencies and executable files without running them. Use `skill-package-security-audit` if it is available; otherwise do this inspection directly and record its limits. A static review does not authorize execution.
 
 ## Preservation-First Workflow

@@ -1,13 +1,13 @@
 # Module: git-commit
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/git-commit/`).
-> Original trigger scope: Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions \"/commit\". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping. Turkish triggers: git commit oluştur, değişiklikleri gözden geçir ve commit mesajı yaz.
+> Trigger scope: Requested Git commits or commit messages using repository conventions, diff inspection, and explicit-path staging. This module does not register a slash command. Turkish triggers: git commit oluştur, değişiklikleri gözden geçir ve commit mesajı yaz.
 
 # Git Commit with Conventional Commits
 
 ## Overview
 
-Create standardized, semantic git commits using the Conventional Commits specification. Analyze the actual diff to determine appropriate type, scope, and message.
+Inspect repository instructions and recent messages first. Follow its commit convention; Conventional Commits below are an optional fallback. This module does not register a `/commit` command. A message-only request does not authorize staging or committing.
 
 ## Conventional Commit Format
 
@@ -68,17 +68,12 @@ If nothing is staged or you want to group changes differently:
 
 ```bash
 # Stage specific files
-git add path/to/file1 path/to/file2
-
-# Stage by pattern
-git add *.test.*
-git add src/components/*
-
-# Interactive staging
-git add -p
+git add -- "path/to/file1" "path/to/file2"
+git diff --cached --stat
+git diff --cached
 ```
 
-**Never commit secrets** (.env, credentials.json, private keys).
+Use explicit reviewed paths, not broad globs or `git add .`. Never run unattended `git add -p`; interactive staging requires an attended session. If unrelated changes share a file, use a reviewed noninteractive patch or clarify that material boundary. Preserve pre-existing staged and unstaged user changes; never unstage them automatically. **Never commit secrets** (.env, credentials.json, private keys).
 
 ### 3. Generate Commit Message
 
@@ -89,6 +84,8 @@ Analyze the diff to determine:
 - **Description**: One-line summary of what changed (present tense, imperative mood, <72 chars)
 
 ### 4. Execute Commit
+
+Only after commit authorization. Multiline heredocs below are Bash; in PowerShell use repeated `git commit -m "subject" -m "body"` arguments or a UTF-8 message file with `-F`.
 
 ```bash
 # Single line

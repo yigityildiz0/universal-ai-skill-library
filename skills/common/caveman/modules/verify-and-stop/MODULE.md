@@ -1,7 +1,7 @@
-# Module: verify-and-stop
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/verify-and-stop/`.
-> Original trigger scope: Prove existing work meets acceptance conditions without expanding scope. Use for validation-only tasks, completion checks, focused gate runs, and last-mile proof.
+---
+name: verify-and-stop
+description: Prove existing work meets acceptance conditions without expanding scope. Use for validation-only tasks, completion checks, focused gate runs, and last-mile proof.
+---
 
 # Verify and stop
 

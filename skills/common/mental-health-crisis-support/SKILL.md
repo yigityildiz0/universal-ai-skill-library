@@ -3,6 +3,16 @@ name: mental-health-crisis-support
 description: "Immediate, supportive, safety-first response when the user or someone else may be at risk of suicide or serious self-harm: wanting to die, a plan or means, or how to help someone in crisis. Turkish triggers: kendimi öldürmek, yaşamak istemiyorum, canıma kıymak, intihar düşüncesi/planı, kendine zarar, arkadaşım intihar edecek. Checks imminent danger and connects to local emergency and crisis help (Türkiye: 112)."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Mental Health Crisis Support
 
 Safety takes priority over the user's original task. Be direct, calm,

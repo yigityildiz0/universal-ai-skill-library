@@ -1,6 +1,6 @@
 # Module: trend-research
 
-> Yiğit's earlier skill restored from archive, unchanged. Paths relative to this module folder.
+> the user's earlier skill restored from archive, unchanged. Paths relative to this module folder.
 > Original trigger scope: Research any topic across Reddit, X (Twitter), and the web to identify recent trends (last 30 days) and generate production-ready prompts or recommendations
 
 # Trend Research & Prompt Generation

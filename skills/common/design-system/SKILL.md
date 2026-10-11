@@ -7,6 +7,16 @@ metadata:
   version: "1.0.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Design System
 
 Token architecture, component specifications, systematic design, slide generation.
@@ -110,7 +120,7 @@ node scripts/validate-tokens.cjs --dir src/
 
 ## Slide System
 
-Brand-compliant presentations using design tokens + Chart.js + contextual decision system.
+Brand-compliant HTML presentations using design tokens + Chart.js + contextual decision system. For a full HTML deck workflow use `slides`. For editable PPTX use the host's available presentation tool, not an HTML rename. Academic/FTR, thesis and conference content routes first to `academic-study-coach`; tokens can support its approved visual direction.
 
 ### Source of Truth
 
@@ -179,36 +189,40 @@ System calculates pattern breaks at 1/3 and 2/3 positions.
 
 ### Slide Requirements
 
-**ALL slides MUST:**
-1. Import `assets/design-tokens.css` - single source of truth
-2. Use CSS variables: `var(--color-primary)`, `var(--slide-bg)`, etc.
-3. Use Chart.js for charts (NOT CSS-only bars)
-4. Include navigation (keyboard arrows, click, progress bar)
-5. Center align content
-6. Focus on persuasion/conversion
+Choose the format and audience; all three modes remain supported:
+
+- **HTML marketing/pitch:** import the project’s actual token stylesheet, use its CSS variables, and include keyboard/click navigation and progress. Chart.js remains available when it fits the existing stack. Centering and persuasion are composition choices, not universal requirements.
+- **Academic/clinical/data-heavy:** prioritize methods, uncertainty, readable tables, axis units, sample size, confidence intervals and claim-adjacent sources. Use left-aligned reading blocks when clearer; no forced conversion narrative. Coordinate the outline with `academic-study-coach`.
+- **Editable PPTX:** use a native presentation-capable tool and map semantic tokens to theme colors/fonts. HTML, screenshots and PDF are not editable PPTX. This mode does not require CSS or Chart.js.
 
 ### Chart.js Integration
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-<canvas id="revenueChart"></canvas>
+<!-- Load the project’s existing Chart.js bundle first; this example assumes global Chart. -->
+<canvas id="revenueChart" role="img" aria-label="Illustrative series: Sep 5, Oct 12, Nov 28, Dec 45"
+        style="color: var(--color-primary)">Illustrative values, not observed revenue.</canvas>
 <script>
-new Chart(document.getElementById('revenueChart'), {
+const canvas = document.getElementById('revenueChart');
+// Resolve the actual theme color; canvas does not interpret CSS var() strings.
+const seriesColor = getComputedStyle(canvas).color;
+new Chart(canvas, {
     type: 'line',
     data: {
         labels: ['Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             data: [5, 12, 28, 45],
-            borderColor: '#FF6B6B',  // Use brand coral
-            backgroundColor: 'rgba(255, 107, 107, 0.1)',
-            fill: true,
-            tension: 0.4
+            label: 'Illustrative values',
+            borderColor: seriesColor,
+            backgroundColor: seriesColor,
+            fill: false,
+            tension: 0
         }]
     }
 });
 </script>
 ```
+
+For real data, include units, source, date and an accessible data table. Refresh resolved colors when the theme changes. See [Chart.js colors](https://www.chartjs.org/docs/latest/general/colors.html).
 
 ### Token Compliance
 
@@ -244,8 +258,8 @@ assets/designs/slides/claudekit-pitch-251223.html
 3. Component tokens enable per-component customization
 4. Use HSL format for opacity control
 5. Document every token's purpose
-6. **Slides must import design-tokens.css and use var() exclusively**
+6. **HTML slides reuse the project token stylesheet; native slides map the same semantic roles to the presentation theme.**
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The upstream design workflow is retained with local slide-format and token-example corrections. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

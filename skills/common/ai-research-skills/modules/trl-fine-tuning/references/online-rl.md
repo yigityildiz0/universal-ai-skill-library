@@ -69,11 +69,14 @@ trainer.train()
 
 ## Memory Comparison
 
-| Method | Memory (7B) | Speed | Use Case |
-|--------|-------------|-------|----------|
-| PPO | 40GB | Medium | Maximum control |
-| GRPO | 24GB | Fast | **Memory-constrained** |
-| OnlineDPO | 28GB | Fast | No reward model |
+| Method | Main memory drivers | Use case |
+|--------|---------------------|----------|
+| PPO | Policy, value/reward/reference models, optimizer, rollout cache | Maximum control |
+| GRPO | Policy/reference, group rollout cache; no separate critic | Group rewards |
+| OnlineDPO | Policy/reference, generation and preference feedback | Online preferences |
+
+No fixed 7B VRAM fit: two BF16 weight copies alone are ~28GB decimal before
+training state. Measure the exact quantization/PEFT/offload configuration.
 
 ## References
 

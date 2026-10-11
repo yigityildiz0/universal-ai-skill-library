@@ -308,26 +308,22 @@ class MyLLMBlock(Block):
 
 ### Docker production setup
 
-```yaml
-# docker-compose.prod.yml
-services:
-  rest_server:
-    image: autogpt/platform-backend
-    environment:
-      - DATABASE_URL=postgresql://...
-      - REDIS_URL=redis://redis:6379
-    ports:
-      - "8006:8006"
+Use the complete Compose manifest shipped with the checked-out release. A
+three-service sketch omits database, cache, broker, authentication and shared
+executor configuration and is not deployable.
 
-  executor:
-    image: autogpt/platform-backend
-    command: poetry run executor
-
-  frontend:
-    image: autogpt/platform-frontend
-    ports:
-      - "3000:3000"
+```bash
+cd AutoGPT/autogpt_platform
+# Populate the release's documented environment files first.
+docker compose config --quiet
+docker compose up -d
+docker compose ps
 ```
+
+Apply production overrides to that manifest: persistence, backups, matching
+database/cache/broker endpoints and encryption key for API and executor,
+health checks, and localhost binding or authenticated TLS ingress. Confirm
+service names with `docker compose config --services` before targeting one.
 
 ### Environment variables
 
@@ -381,9 +377,14 @@ poetry run prisma migrate deploy
 # Check RabbitMQ queue
 # Visit http://localhost:15672 (guest/guest)
 
-# Clear stuck executions
+# Restart for recovery, not durable cancellation
 docker compose restart executor
 ```
+
+A restart does not cancel persisted schedules. Disable schedules/webhooks and
+cancel runs through the installed release's controls; verify run and queue
+state. Persisted triggers can launch work after restart. Abandoning active runs
+on shutdown is distinct from removing queued work or schedules.
 
 ## References
 

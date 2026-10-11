@@ -44,7 +44,10 @@ import ray
 ds = ray.data.read_parquet("s3://bucket/data/*.parquet")
 
 # Transform data (lazy execution)
-ds = ds.map_batches(lambda batch: {"processed": batch["text"].str.lower()})
+ds = ds.map_batches(
+    lambda batch: {"processed": batch["text"].str.lower().to_numpy()},
+    batch_format="pandas",
+)
 
 # Consume data
 for batch in ds.iter_batches(batch_size=100):
@@ -74,7 +77,7 @@ def train_func(config):
 trainer = TorchTrainer(
     train_func,
     datasets={"train": train_ds},
-    scaling_config=ScalingConfig(num_workers=4, use_gpu=True)
+    scaling_config=ScalingConfig(num_workers=1, use_gpu=False)  # Local CPU smoke test
 )
 trainer.fit()
 ```
@@ -257,11 +260,12 @@ ds = (
 
 ```python
 # Convert to PyTorch
-torch_ds = ds.to_torch(label_column="label", batch_size=32)
+torch_ds = ds.to_torch(feature_columns=["features"], label_column="label", batch_size=32)
 
-for batch in torch_ds:
-    # batch is dict with tensors
-    inputs, labels = batch["features"], batch["label"]
+for inputs, labels in torch_ds:
+    # to_torch yields a (features, label) tuple, not a dict.
+    pass
+# For named tensor dictionaries instead, use ds.iter_torch_batches().
 ```
 
 ### TensorFlow

@@ -1,7 +1,10 @@
-# Module: caveman-setup
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-setup/`.
-> Original trigger scope: Wire a repository through the Caveman Cloud gateway so every LLM request is measured, with no behavior change. Use for "set up caveman" or adding LLM spend observability.
+---
+name: caveman-setup
+description: >
+  Wire a repository through the Caveman Cloud gateway so every LLM request is
+  measured, with no behavior change. Use for "set up caveman" or adding LLM
+  spend observability.
+---
 
 You are wiring this repository through the Caveman gateway. Caveman is a
 byte-preserving LLM proxy: in record mode it measures what your app sends and

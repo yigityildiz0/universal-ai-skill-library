@@ -4,11 +4,23 @@ description: "Use ONLY when the user explicitly asks for Parallel (parallel.ai) 
 license: MIT
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Parallel Web (gated)
 
-Upstream [parallel-web/parallel-agent-skills](https://github.com/parallel-web/parallel-agent-skills) (MIT), all skills unchanged as modules.
+Upstream [parallel-web/parallel-agent-skills](https://github.com/parallel-web/parallel-agent-skills) (MIT), preserved as modules. The execution gate below governs their use on the current host.
 
-**Gate:** Parallel's CLI and APIs need an installed, authenticated and funded `parallel-cli`, or a configured Parallel Search MCP. Use this skill only when the user explicitly asks for Parallel or it is already configured. Otherwise ordinary research belongs to `research-analyst`. Never create accounts or keys; `parallel-cli-setup` explains setup when the user asks for it.
+**Current profile:** preserve the complete upstream service documentation, but do not execute Parallel CLI/API/MCP calls under the user’s no-extra-cost preference, even if configured. For search, extraction, deep research and multi-item discovery, use `research-analyst` with existing host tools or local data. Setup and migration modules are documentation, not an instruction to open an account, buy credits or change providers. Explain any service-only capability that has no available equivalent.
+
+“Paralel araştır / work in parallel” does not by itself name Parallel.ai. Discover the actual connector/CLI before following a module; installed documentation is not proof of authentication, funding or live availability. Do not auto-install, open accounts, buy credits, start monitoring/subscriptions, or upload local/private datasets. A configured search connector authorizes neither a paid Task/FindAll run nor a data upload; obtain task-specific consent where needed. Module trigger phrases are natural-language examples, not registered host commands. Use the parent gate even when a module says “always” or “automatic”.
 
 ## Modules
 

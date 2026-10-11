@@ -22,7 +22,7 @@ from langchain_anthropic import ChatAnthropic
 # Define tools
 def calculator(expression: str) -> str:
     """Evaluate a math expression."""
-    return str(eval(expression))
+    return str(calculate(expression))  # Copy MODULE.md's bounded AST helper first
 
 def search(query: str) -> str:
     """Search for information."""
@@ -127,8 +127,8 @@ system_prompt = """You are a customer support agent.
 Uses native function calling for best performance:
 
 ```python
-from langchain.agents import create_tool_calling_agent, AgentExecutor
-from langchain.prompts import ChatPromptTemplate
+from langchain_classic.agents import create_tool_calling_agent, AgentExecutor
+from langchain_core.prompts import ChatPromptTemplate
 
 # Create prompt
 prompt = ChatPromptTemplate.from_messages([
@@ -162,7 +162,7 @@ result = agent_executor.invoke({"input": "What is the weather in Paris?"})
 Shows step-by-step reasoning:
 
 ```python
-from langchain.agents import create_react_agent
+from langchain_classic.agents import create_react_agent
 
 # ReAct prompt shows thought process
 react_prompt = """Answer the following questions as best you can. You have access to the following tools:
@@ -200,8 +200,8 @@ result = agent_executor.invoke({"input": "What is 25 * 17 + 142?"})
 Remembers conversation history:
 
 ```python
-from langchain.agents import create_conversational_retrieval_agent
-from langchain.memory import ConversationBufferMemory
+from langchain_classic.agents.agent_toolkits import create_conversational_retrieval_agent
+from langchain_classic.memory import ConversationBufferMemory
 
 # Add memory
 memory = ConversationBufferMemory(
@@ -291,7 +291,7 @@ for step in agent_executor.stream({"input": "Research quantum computing"}):
 ### Stream LLM tokens
 
 ```python
-from langchain.callbacks import StreamingStdOutCallbackHandler
+from langchain_core.callbacks import StreamingStdOutCallbackHandler
 
 # Stream model responses
 agent_executor = AgentExecutor(
@@ -330,13 +330,11 @@ agent_executor = AgentExecutor(
 ### Timeout handling
 
 ```python
-from langchain.callbacks import TimeoutCallback
-
 # Set timeout
 agent_executor = AgentExecutor(
     agent=agent,
     tools=[slow_tool],
-    callbacks=[TimeoutCallback(timeout=30)],  # 30 second timeout
+    max_execution_time=30,  # Loop budget; set transport timeouts on individual tools too
     max_iterations=10
 )
 ```
@@ -344,13 +342,10 @@ agent_executor = AgentExecutor(
 ### Retry logic
 
 ```python
-from langchain.callbacks import RetryCallback
-
 # Retry on failure
 agent_executor = AgentExecutor(
     agent=agent,
     tools=[unreliable_tool],
-    callbacks=[RetryCallback(max_retries=3)],
     max_execution_time=60
 )
 ```
@@ -392,14 +387,14 @@ agent = create_agent(
 )
 
 result = agent.invoke({
-    "input": "Compare revenue growth of top 3 tech companies over 5 years"
+    "messages": [{"role": "user", "content": "Compare revenue growth of top 3 tech companies over 5 years"}]
 })
 ```
 
 ### Structured output from agents
 
 ```python
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
 class ResearchReport(BaseModel):
     summary: str = Field(description="Executive summary")
@@ -407,8 +402,9 @@ class ResearchReport(BaseModel):
     sources: list[str] = Field(description="Source URLs")
 
 # Agent returns structured output
-structured_agent = agent.with_structured_output(ResearchReport)
-report = structured_agent.invoke({"input": "Research AI safety"})
+structured_agent = create_agent(model=model, tools=[search], response_format=ResearchReport)
+state = structured_agent.invoke({"messages": [{"role": "user", "content": "Research AI safety"}]})
+report = state["structured_response"]
 print(report.summary, report.findings)
 ```
 
@@ -417,7 +413,7 @@ print(report.summary, report.findings)
 ### Custom agent middleware
 
 ```python
-from langchain.agents import AgentExecutor
+from langchain_classic.agents import AgentExecutor
 
 def logging_middleware(agent_executor):
     """Log all agent actions."""
@@ -439,13 +435,11 @@ agent_executor = logging_middleware(agent_executor)
 ### Custom stopping conditions
 
 ```python
-from langchain.agents import EarlyStoppingMethod
-
 # Stop early if confident
 agent_executor = AgentExecutor(
     agent=agent,
     tools=[search],
-    early_stopping_method=EarlyStoppingMethod.GENERATE,  # or FORCE
+    early_stopping_method="force",  # "generate" support depends on the classic agent
     max_iterations=10
 )
 ```

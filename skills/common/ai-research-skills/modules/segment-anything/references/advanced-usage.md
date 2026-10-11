@@ -147,7 +147,8 @@ class BatchedSAM:
 # Usage
 batch_sam = BatchedSAM("sam_vit_h_4b8939.pth")
 
-images = [cv2.imread(f"image_{i}.jpg") for i in range(10)]
+images = [cv2.cvtColor(cv2.imread(f"image_{i}.jpg"), cv2.COLOR_BGR2RGB)
+          for i in range(10)]  # SamPredictor expects RGB by default
 prompts = [{"point": np.array([[100, 100]]), "label": np.array([1])} for _ in range(10)]
 
 results = batch_sam.process_batch(images, prompts)

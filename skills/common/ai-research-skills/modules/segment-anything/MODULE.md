@@ -62,6 +62,7 @@ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
 ### Basic usage with SamPredictor
 
 ```python
+import cv2
 import numpy as np
 from segment_anything import sam_model_registry, SamPredictor
 
@@ -127,14 +128,10 @@ masks = processor.image_processor.post_process_masks(
 ### Model architecture
 
 ```
-SAM Architecture:
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  Image Encoder  │────▶│ Prompt Encoder  │────▶│  Mask Decoder   │
-│     (ViT)       │     │ (Points/Boxes)  │     │ (Transformer)   │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-        │                       │                       │
-   Image Embeddings      Prompt Embeddings         Masks + IoU
-   (computed once)       (per prompt)             predictions
+Image ──▶ Image Encoder (ViT) ──▶ Image embeddings ──┐
+                                                   ├──▶ Mask Decoder ──▶ Masks + IoU
+Points/boxes/masks ──▶ Prompt Encoder ──▶ Embeddings ┘
+          (parallel branches; cache image embeddings across prompts)
 ```
 
 ### Model variants
@@ -280,7 +277,8 @@ stable_masks = [m for m in masks if m['stability_score'] > 0.95]
 
 ```python
 # Process multiple images efficiently
-images = [cv2.imread(f"image_{i}.jpg") for i in range(10)]
+images = [cv2.cvtColor(cv2.imread(f"image_{i}.jpg"), cv2.COLOR_BGR2RGB)
+          for i in range(10)]  # SamPredictor expects RGB by default
 
 all_masks = []
 for image in images:

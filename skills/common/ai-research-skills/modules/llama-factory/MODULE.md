@@ -20,26 +20,42 @@ This skill should be triggered when:
 
 ### Common Patterns
 
-*Quick reference patterns will be added as you use the skill.*
+The extracted references below contain damaged text and missing tab/code content. Use this verified entry point for executable commands; preserve references as historical context and check the linked upstream page when a section is incomplete.
+
+### Verified quick start (2026-10-08)
+
+Source: https://github.com/hiyouga/LLaMA-Factory and its `examples/README.md`.
+
+```bash
+git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e .
+pip install -r requirements/metrics.txt
+llamafactory-cli version
+llamafactory-cli webui
+```
+
+For training, inspect an existing YAML under `examples/train_lora/` or `examples/train_qlora/` for the installed commit, select a supported model/template pair, register the dataset in `data/dataset_info.json`, then run `llamafactory-cli train path/to/config.yaml`. Record the commit and effective config with results. Set `stage: sft`, `finetuning_type: lora`, `do_train: true`; QLoRA additionally needs a supported quantization backend and `quantization_bit: 4`. Merge/export with the matching `examples/merge_lora/` recipe; do not merge into an already quantized base.
+
+**Portable local profile:** Windows + a 12 GB NVIDIA GPU should start with a supported small model (roughly 0.5–3B), 4-bit QLoRA where available, batch size 1 and short `cutoff_len` (256–512). Verify the installed PyTorch/CUDA build supports the GPU architecture (including RTX 50-series); an old CUDA wheel is not a universal fix. Measure peak VRAM before increasing context. Linux multi-GPU/DeepSpeed and large-model recipes are separate remote profiles. CPU offload trades speed and RAM for VRAM and is not universal backend support.
 
 ## Reference Files
 
 This skill includes comprehensive documentation in `references/`:
 
-- **_images.md** -  Images documentation
 - **advanced.md** - Advanced documentation
 - **getting_started.md** - Getting Started documentation
 - **other.md** - Other documentation
 
-Use `view` to read specific reference files when detailed information is needed.
+Use the host's read tool to inspect the linked reference files.
 
 ## Working with This Skill
 
 ### For Beginners
-Start with the getting_started or tutorials reference files for foundational concepts.
+Start with the verified quick start above, then `references/getting_started.md` and its upstream links.
 
 ### For Specific Features
-Use the appropriate category reference file (api, guides, etc.) for detailed information.
+Use `references/advanced.md` for training/data/export options and `references/other.md` for supporting material.
 
 ### For Code Examples
 The quick reference section above contains common patterns extracted from the official docs.

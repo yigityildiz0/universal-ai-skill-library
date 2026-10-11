@@ -1,4 +1,4 @@
-# Yiğit's message profile
+# Message voice guidance
 
 ## Voice
 
@@ -6,7 +6,7 @@
 - Put the real request early. Give only the context needed to make it reasonable.
 - Prefer short sentences and concrete verbs. Avoid bureaucratic filler and AI-like transitions.
 - Do not overuse “acaba,” “rahatsız ediyorum,” “değerli dönüşlerinizi,” “gereğini arz ederim,” or repeated apologies.
-- Preserve Yiğit's firmness when the situation warrants it; politeness must not obscure the remedy requested.
+- Preserve the user's firmness when the situation warrants it; politeness must not obscure the remedy requested.
 
 ## Identity and privacy
 
@@ -24,7 +24,7 @@ Greeting if needed, one-sentence context, direct request, easy next step. Usuall
 
 - Subject: course/topic + specific request
 - Greeting with known title/name; otherwise a neutral respectful greeting
-- Identify self once when the recipient may not recognize Yiğit
+- Identify self once when the recipient may not recognize the sender
 - State the issue and requested action precisely
 - Mention attachment only if verified
 - Close with name; add student number only if useful for lookup

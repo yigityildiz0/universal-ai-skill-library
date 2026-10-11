@@ -177,7 +177,7 @@ Each proofed experiment should in turn be backed by evidence files whose rows or
 
 ## logic/concepts.md
 
-≥5 concepts. One section per concept:
+Target 5+ concepts only when source-supported; sparse sources may have fewer with an explicit missing-evidence note. One section per concept:
 ```markdown
 ## {Term Name}
 - **Notation**: {LaTeX or symbolic notation}
@@ -190,7 +190,9 @@ Each proofed experiment should in turn be backed by evidence files whose rows or
 
 ## logic/experiments.md
 
-≥3 experiments. Declarative plans, NOT scripts. NO exact numerical results.
+Target 3+ experiments only when warranted. Label additional proposals as proposed,
+not source-reported history. Sparse sources may have fewer with a missing-evidence
+note. Declarative plans, NOT scripts; no invented numerical results.
 
 ```markdown
 ## E{NN}: {Short title}

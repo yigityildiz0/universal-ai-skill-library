@@ -1,7 +1,7 @@
 ---
 name: find-docs
 description: >-
-  Retrieves up-to-date documentation, API references, and code examples for any
+  Primary documentation router: retrieves up-to-date API references and code examples for any
   developer technology. Use this skill whenever the user asks about a specific
   library, framework, SDK, CLI tool, or cloud service — even for well-known ones
   like React, Next.js, Prisma, Express, Tailwind, Django, or Spring Boot. Your
@@ -17,9 +17,30 @@ description: >-
   library documentation and API details.
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Documentation Lookup
 
-Retrieve current documentation and code examples for any library using the Context7 CLI.
+This is the primary route for general developer documentation questions. Use `context7-mcp` instead only for an explicit Context7 workflow/compatibility request; both preserve Context7 access, but do not load both bodies or repeat the same lookup. Respect the active MCP tool call limits. Refactoring, business-logic review and general programming concepts without a library/API question do not need this route.
+
+Retrieve current documentation and code examples using the connected Context7 MCP
+when available: discover and call `resolve-library-id` with `libraryName` and a
+specific `query`, then `query-docs` with the returned `libraryId` and a single-concept
+`query`. Skip resolution only for a user-supplied exact library ID. Prefer official,
+version-matched sources and cite them. Do not send secrets or private code.
+
+The CLI below is a fallback when MCP is unavailable. Check its availability first;
+running `npx ...@latest` can download and execute a package and needs installation/
+network authorization when not already granted. Do not install merely to answer a
+question if official documentation can be fetched read-only.
 
 Run commands with `npx ctx7@latest` so setup always uses the latest CLI without a global install:
 

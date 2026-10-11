@@ -150,14 +150,14 @@ litgpt finetune_lora \
   microsoft/phi-2 \
   --data JSON \
   --data.json_path data/my_dataset.json \
-  --lora_r 16 \          # LoRA rank (8-64, higher=more capacity)
-  --lora_alpha 32 \      # LoRA scaling (typically 2×r)
-  --lora_dropout 0.05 \  # Prevent overfitting
-  --lora_query true \    # Apply LoRA to query projection
-  --lora_key false \     # Usually not needed
-  --lora_value true \    # Apply LoRA to value projection
-  --lora_projection true \  # Apply LoRA to output projection
-  --lora_mlp false \     # Usually not needed
+  --lora_r 16 \
+  --lora_alpha 32 \
+  --lora_dropout 0.05 \
+  --lora_query true \
+  --lora_key false \
+  --lora_value true \
+  --lora_projection true \
+  --lora_mlp false \
   --lora_head false      # Usually not needed
 ```
 
@@ -313,14 +313,13 @@ results = [llm.generate(p) for p in prompts]
 Reduce model size with minimal quality loss:
 
 ```bash
-# 8-bit quantization (50% size reduction)
-litgpt convert_lit_checkpoint \
+# NF4 is 4-bit loading, not an 8-bit checkpoint conversion
+litgpt generate \
   out/phi2-lora/final \
-  --dtype bfloat16 \
   --quantize bnb.nf4
 
 # 4-bit quantization (75% size reduction)
-litgpt convert_lit_checkpoint \
+litgpt generate \
   out/phi2-lora/final \
   --quantize bnb.nf4-dq  # Double quantization
 ```
@@ -380,11 +379,12 @@ Use LoRA instead of full fine-tuning:
 litgpt finetune_lora  # Only needs 12-16GB
 ```
 
-Or enable gradient checkpointing:
+Reduce micro-batch and derive accumulation from global batch (distinct from activation checkpointing):
 ```bash
 litgpt finetune_lora \
   ... \
-  --train.gradient_accumulation_iters 4  # Accumulate gradients
+  --train.micro_batch_size 1 \
+  --train.global_batch_size 4
 ```
 
 **Issue: Training too slow**
@@ -398,8 +398,7 @@ Enable Flash Attention (built-in, automatic on compatible hardware):
 Use smaller micro-batch and accumulate:
 ```bash
 --train.micro_batch_size 1 \
---train.global_batch_size 32 \
---train.gradient_accumulation_iters 32  # Effective batch=32
+--train.global_batch_size 32
 ```
 
 **Issue: Model not loading**
@@ -430,7 +429,7 @@ Apply LoRA to fewer layers:
 ```bash
 --lora_query true \
 --lora_value true \
---lora_projection false \  # Disable this
+--lora_projection false \
 --lora_mlp false  # And this
 ```
 

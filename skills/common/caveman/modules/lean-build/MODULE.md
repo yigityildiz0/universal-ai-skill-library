@@ -1,7 +1,7 @@
-# Module: lean-build
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/lean-build/`.
-> Original trigger scope: Build feature work with high overbuilding risk. Use for new behavior, product slices, or integrations where repository reuse, strict scope, and an explicit stop condition matter.
+---
+name: lean-build
+description: Build feature work with high overbuilding risk. Use for new behavior, product slices, or integrations where repository reuse, strict scope, and an explicit stop condition matter.
+---
 
 # Lean build
 

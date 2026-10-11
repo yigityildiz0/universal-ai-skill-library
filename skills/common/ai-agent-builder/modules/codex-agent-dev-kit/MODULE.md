@@ -25,7 +25,7 @@ Use this skill to translate Claude-oriented agent setup material into Codex-nati
 - Put reusable workflows in a global Codex skill.
 - Put repo architecture, commands, test expectations, naming, and local conventions in `AGENTS.md`.
 - Put shareable bundles in a local Codex plugin only when the user needs plugin UI discovery or team distribution.
-- Put ongoing skill maintenance behavior in `skill-updater` rather than mixing health checks into every skill.
+- Put ongoing skill maintenance behavior in `safe-skill-updater` rather than mixing health checks into every skill.
 
 3. Translate, do not clone.
 - `CLAUDE.md` memory becomes `AGENTS.md` or skill instructions.
@@ -45,7 +45,7 @@ Use this skill to translate Claude-oriented agent setup material into Codex-nati
 
 - Read `references/claude-to-codex-map.md` when converting screenshots or `.claude` folders.
 - Read `references/codex-plugin-layout.md` when creating or fixing a Codex local plugin package.
-- Use `skill-updater` module after migration when a generated skill fails, becomes stale, references old models, or needs a health audit.
+- Use the sibling [safe-skill-updater](../safe-skill-updater/MODULE.md) after migration when a generated skill fails, becomes stale, references old models, or needs a health audit.
 
 ## Guardrails
 

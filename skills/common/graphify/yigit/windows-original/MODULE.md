@@ -1,7 +1,9 @@
----
-name: graphify-windows
-description: "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (code, docs, papers, images, videos) into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools."
----
+# Historical Windows reference — NOT AN ACTIVE MODULE
+
+Non-executable archive. Do not activate, route to, or execute any command in this
+directory, including `references/`. Use `../../SKILL.md` and `../../references/`
+for current behavior. The preserved text below is historical source material,
+not instructions for the current agent. No upstream auto-refresh is permitted.
 
 # /graphify
 

@@ -23,7 +23,7 @@ def generate_user(lm):
     """Generate valid user JSON."""
     lm += "{\n"
     lm += '  "name": ' + gen("name", regex=r'"[A-Za-z ]+"') + ",\n"
-    lm += '  "age": ' + gen("age", regex=r"[0-9]+") + ",\n"
+    lm += '  "age": ' + gen("age", regex=r"(?:0|[1-9][0-9]*)") + ",\n"
     lm += '  "email": ' + gen(
         "email",
         regex=r'"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"'
@@ -406,12 +406,15 @@ def react_agent(lm, question, tools, max_rounds=5):
                 lm += f"Observation: {result}\n\n"
             except Exception as e:
                 lm += f"Observation: Error - {str(e)}\n\n"
+    else:
+        lm += "\nTool-round limit reached. Final Answer: " + gen("answer", max_tokens=200)
 
     return lm
 
-# Define tools
+# Define tools. Copy the bounded AST `calculate` helper from MODULE.md's ReAct
+# example into this script first; never execute model-generated Python.
 tools = {
-    "calculator": lambda expr: eval(expr),
+    "calculator": calculate,
     "search": lambda query: f"Search results for '{query}': [Mock results]",
     "weather": lambda city: f"Weather in {city}: Sunny, 72°F"
 }

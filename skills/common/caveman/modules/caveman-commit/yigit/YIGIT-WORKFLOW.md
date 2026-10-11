@@ -1,4 +1,4 @@
-# Yiğit's safety-adapted caveman-commit
+# the user's safety-adapted caveman-commit
 
 > Original trigger scope: Manual Caveman-style Conventional Commit message generator that preserves intent, rationale, breaking-change details, and repository conventions. Use only when explicitly invoked as $caveman-commit, /caveman-commit, 'Caveman commit', or an equally unambiguous request for a Caveman-style commit message. Never activate for generic commit, staging, or commit-message requests. Turkish triggers: Caveman commit, mağara modu commit mesajı.
 

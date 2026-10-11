@@ -340,7 +340,7 @@ from tokenizers.processors import TemplateProcessing
 
 tokenizer.post_processor = TemplateProcessing(
     single="[CLS] $A [SEP]",
-    pair="[CLS] $A [SEP] $B [SEP]",
+    pair="[CLS] $A [SEP] $B:1 [SEP]:1",
     special_tokens=[
         ("[CLS]", 101),
         ("[SEP]", 102),
@@ -490,7 +490,7 @@ tokenizer.pre_tokenizer = BertPreTokenizer()
 # Post-processing
 tokenizer.post_processor = TemplateProcessing(
     single="[CLS] $A [SEP]",
-    pair="[CLS] $A [SEP] $B [SEP]",
+    pair="[CLS] $A [SEP] $B:1 [SEP]:1",
     special_tokens=[("[CLS]", 101), ("[SEP]", 102)],
 )
 
@@ -560,7 +560,9 @@ tokenizer.decoder = MetaspaceDecoder(replacement="▁", add_prefix_space=True)
 
 ## Alignment tracking
 
-Track token positions in original text.
+Track positions in the exact original text passed to `encode`; do not slice a separately normalized string. For pairs, use `sequence_ids` to select the source string and skip special tokens with empty offsets.
+
+Generic Unicode lowercasing is not Turkish locale-aware (`I/ı`, `İ/i`); accent stripping can destroy meaningful distinctions. Preserve a pretrained model's normalization. Test Turkish examples explicitly when training a new tokenizer.
 
 ### Basic alignment
 

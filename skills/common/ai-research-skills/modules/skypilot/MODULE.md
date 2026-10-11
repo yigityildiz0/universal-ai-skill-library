@@ -328,6 +328,9 @@ file_mounts:
 
 ```yaml
 # service.yaml
+setup: |
+  pip install vllm
+
 service:
   readiness_probe: /health
   replica_policy:
@@ -416,6 +419,7 @@ secrets:
 
 ```yaml
 name: llm-finetune
+workdir: .  # Upload the local project containing train.py and its dependencies
 
 file_mounts:
   /checkpoints:
@@ -440,6 +444,10 @@ run: |
 
 ```yaml
 name: hp-sweep-${RUN_ID}
+workdir: .  # Upload the local project containing train.py
+
+setup: |
+  pip install transformers accelerate
 
 envs:
   RUN_ID: 0

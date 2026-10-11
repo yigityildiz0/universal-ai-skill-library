@@ -219,14 +219,14 @@ for layer in range(model.cfg.n_layers):
     # Check attention from repeated positions to position after first occurrence
     for offset in range(1, 10):
         q_pos = 10 + offset  # Position in second half
-        k_pos = offset       # Should attend to corresponding position in first half
+        k_pos = offset + 1   # Successor of first occurrence, not the same token
 
         # Average attention to the "correct" position
         induction_scores[layer] += pattern[:, q_pos, k_pos]
 
     induction_scores[layer] /= 9  # Average over offsets
 
-# Find top induction heads
+# Candidate heads only; compare no-repeat controls and causal ablations.
 print("Top induction heads:")
 for layer in range(model.cfg.n_layers):
     for head in range(model.cfg.n_heads):

@@ -4,11 +4,27 @@ description: "Physiotherapy/FTR clinical copilot for patient cases: triage and r
 license: MIT
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Physio Clinical Copilot
 
 Own end-to-end physiotherapy clinical decision support. This skill consolidates the reviewed user-owned Physio AI Skill Suite v2.0.0 modules into one automatic router so the user does not need to invoke specialist names. Preserve the included `LICENSE` when redistributing this derived package.
 
+Own cases, programs, outcomes, patient education and SOAP. Literature searches/appraisals/reviews belong to `medical-evidence-research`; study/exams/English and scholarly writing belong to `academic-study-coach`. “Fizyo / physio / rehabilitation” are natural-language intent cues, not installed slash commands. Use only available host tools; missing connectors do not remove the local clinical workflow or justify invented evidence.
+
 Always read [references/safety-core.md](references/safety-core.md). Read [references/specialty-safeguards.md](references/specialty-safeguards.md) whenever population, setting, diagnosis, device, or procedure changes risk. Use [references/routing-and-output.md](references/routing-and-output.md) to choose depth.
+
+## Applying international evidence in Türkiye
+
+Keep the international effect estimate separate from the local implementation choice. Compare patient severity/baseline risk, actual usual care, dose/progression/supervision, equipment and access. Verify the exact Turkish-validated scale and population-specific MCID/MDC, not merely a translated name. Check current SGK/service conditions only if relevant; state cultural, language and adherence uncertainties without stereotyping. A foreign study is not automatically unsuitable and a Turkish study is not automatically better. Use `medical-evidence-research` for the full search/applicability matrix; an adapted program remains a clinician-verified draft, not a tested equivalent of the trial.
 
 ## Route to the needed modules
 

@@ -21,6 +21,7 @@ const GENERATE_TOKENS_SCRIPT = path.resolve(
   __dirname,
   '..',
   '..',
+  '..',
   'design-system',
   'scripts',
   'generate-tokens.cjs'

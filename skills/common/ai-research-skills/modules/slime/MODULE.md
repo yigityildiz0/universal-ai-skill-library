@@ -203,10 +203,14 @@ Use this workflow for training agents with tool use or multi-step reasoning.
 
 ```python
 # custom_generate.py
+from copy import deepcopy
+
 async def custom_generate(args, samples, evaluation=False):
-    """Multi-turn generation with tool calling."""
+    """Control-flow sketch; helpers and token accounting must be implemented."""
     for sample in samples:
-        conversation = sample.prompt
+        conversation = (deepcopy(sample.prompt) if isinstance(sample.prompt, list)
+                        else [{"role": "user", "content": sample.prompt}])
+        response = ""
 
         for turn in range(args.max_turns):
             # Generate response
@@ -221,6 +225,10 @@ async def custom_generate(args, samples, evaluation=False):
             else:
                 break
 
+        # Final text alone is NOT a trainable multi-turn rollout. Retain all
+        # assistant turns, token IDs/logprobs, response_length, and an aligned
+        # loss_mask (assistant=1, tool/environment=0). Preserve tool_call_id and
+        # the model's chat template; do not tokenize each turn independently.
         sample.response = response
         sample.reward = compute_reward(sample)
 
@@ -228,6 +236,9 @@ async def custom_generate(args, samples, evaluation=False):
 ```
 
 ### Step 2: Launch with Custom Function
+
+The preceding sketch is not a drop-in training callback. Implement and test the
+token/mask helpers against the installed slime revision before this launch.
 
 ```bash
 python train.py \

@@ -223,9 +223,13 @@ researcher = Agent(
 
 ### Custom tools
 
+Copy [safe_calculator.py](references/safe_calculator.py) beside your application.
+It parses a bounded numeric AST; model expressions never reach `eval`.
+
 ```python
 from crewai.tools import BaseTool
 from pydantic import Field
+from safe_calculator import calculate
 
 class CalculatorTool(BaseTool):
     name: str = "Calculator"
@@ -233,7 +237,7 @@ class CalculatorTool(BaseTool):
 
     def _run(self, expression: str) -> str:
         try:
-            result = eval(expression)
+            result = calculate(expression)
             return f"Result: {result}"
         except Exception as e:
             return f"Error: {str(e)}"
@@ -384,8 +388,15 @@ class MyFlow(Flow[MyState]):
 
     @listen(gather_data)
     def analyze(self, data):
-        self.state.confidence = 0.85
-        return analysis_crew.kickoff(inputs=data)
+        # Configure the application task's output_pydantic with confidence.
+        result = analysis_crew.kickoff(inputs=data)
+        if result.pydantic is None:
+            raise ValueError("Structured analysis output required")
+        score = float(result.pydantic.confidence)
+        if not 0.0 <= score <= 1.0:
+            raise ValueError("Confidence must be in [0, 1]")
+        self.state.confidence = score
+        return result
 
     @router(analyze)
     def decide(self):
@@ -395,12 +406,20 @@ class MyFlow(Flow[MyState]):
     def generate_report(self):
         return report_crew.kickoff()
 
+    @listen("low")
+    def request_more_evidence(self):
+        return {"status": "needs_review", "confidence": self.state.confidence}
+
 # Run flow
 flow = MyFlow()
 result = flow.kickoff()
 ```
 
 See [Flows Guide](references/flows.md) for complete documentation.
+
+This wiring assumes application-defined analysis/report crews. Test scores 0.9
+and 0.4 to cover both routes. Self-reported confidence is not calibrated evidence
+of correctness; choose a validated task-specific decision criterion.
 
 ## Memory system
 
@@ -420,6 +439,12 @@ crew = Crew(
 **Memory types:** Short-term (ChromaDB), Long-term (SQLite), Entity (ChromaDB)
 
 ## LLM providers
+
+Choose one provider below. For an entirely local crew, assign the Ollama LLM to
+every agent and any enabled manager/planner/function-calling model. Memory and
+RAG tools have separate embedding/provider settings: configure a supported local
+embedder explicitly, or set `memory=False` until configured. Verify endpoints;
+setting a local LLM alone must not be described as a fully local workflow.
 
 ```python
 from crewai import LLM

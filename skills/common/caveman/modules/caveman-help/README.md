@@ -18,15 +18,16 @@ Also triggers on "caveman help", "what caveman commands", "how do I use caveman"
 
 ```
 Modes:
-  /caveman              full (default)
-  /caveman lite         lighter
-  /caveman ultra        extreme
-  /caveman wenyan       classical Chinese
+  /caveman              the voice (default)
+  /ultracave            grammar stripped
+  /megacave             classical Chinese
+  /caveman status       report the mode, change nothing
 
 Skills:
   /caveman-commit       terse Conventional Commits
   /caveman-review       one-line PR comments
-  /caveman-stats        session token savings
+  /caveman-compress     smaller Markdown memory files
+  /caveman-stats        recorded token usage (savings unknown)
 
 Deactivate:
   "stop caveman" or "normal mode"
@@ -34,5 +35,5 @@ Deactivate:
 
 ## See also
 
-- [`SKILL.md`](./MODULE.md) — full reference card
-- [Caveman README](https://github.com/JuliusBrussee/caveman#readme) — repo overview
+- [`SKILL.md`](./SKILL.md) — full reference card
+- [Caveman README](../../README.md) — repo overview

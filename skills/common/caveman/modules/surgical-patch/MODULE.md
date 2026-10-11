@@ -1,7 +1,7 @@
-# Module: surgical-patch
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/surgical-patch/`.
-> Original trigger scope: Fix bugs and small behavior changes at the narrowest responsible layer. Use when regression proof, preserved surrounding behavior, and task-relevant tests matter.
+---
+name: surgical-patch
+description: Fix bugs and small behavior changes at the narrowest responsible layer. Use when regression proof, preserved surrounding behavior, and task-relevant tests matter.
+---
 
 # Surgical patch
 

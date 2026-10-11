@@ -13,19 +13,23 @@ cp -r ./src/openpi/models_pytorch/transformers_replace/* \
 
 **Verify the patch is active:**
 
-Check that modified files in the transformers package directory have recent timestamps matching the patch application.
+Compare the installed patch files with the pinned repository's replacement files
+(content hashes), then run the repository's documented import/smoke check.
+Timestamps alone do not establish patch identity or compatibility.
 
-## Patch survives reinstall
+## Reinstall overwrites the patch
 
 If `uv sync` or `pip install` reinstalls `transformers`, the patch is overwritten.
 
-Fix: reapply patches after any dependency reinstall, or run:
+Fix: after inspecting the lockfile, reinstall the matching dependency if needed:
 
 ```bash
-uv cache clean transformers
+uv sync --reinstall-package transformers
 ```
 
-Then reapply the patch.
+Then reapply the matching patch. `uv cache clean transformers` only clears cache;
+it does not modify the installed package. Locate site-packages for the active
+interpreter instead of assuming the Python 3.11 Linux path on other platforms.
 
 ## OOM while loading checkpoints
 

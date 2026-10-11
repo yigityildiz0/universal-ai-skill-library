@@ -31,6 +31,9 @@ Every generated repo should satisfy the relevant parts of this contract.
 
 ### 4. Widget
 
+This section is conditional: `tool-only` apps have no widget and mark these checks
+not applicable, while retaining the server/tool/security checks.
+
 - The widget initializes the MCP Apps bridge when needed.
 - The widget can receive `ui/notifications/tool-result`.
 - The widget renders from `structuredContent`.

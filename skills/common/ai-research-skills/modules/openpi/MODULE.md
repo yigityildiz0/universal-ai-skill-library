@@ -344,19 +344,19 @@ client = websocket_client_policy.WebsocketClientPolicy(
     host="gpu-server.local", port=8000
 )
 
-# Build observation (keys must match policy transforms)
-observation = {
-    "image": np.random.rand(224, 224, 3),  # RGB image
-    "state": np.zeros(7),                   # Joint positions
-    "prompt": "pick up the red block",
-}
+# Application-supplied adapter: obtain a real observation from the matching
+# simulator, using the policy's camera keys, RGB uint8 layout, state dimension,
+# normalization statistics and prompt contract. This is an integration scaffold.
+observation = simulator_adapter.observe()
 
 # Get actions
 result = client.infer(observation)
 actions = result["actions"]  # shape: (action_chunk_size, action_dim)
 
-# Execute first action on robot
-robot.step(actions[0])
+# Check the checkpoint's action horizon/dimension, units and control frequency.
+assert np.isfinite(actions).all()
+assert actions.shape == simulator_adapter.expected_action_shape
+simulator_adapter.step(actions[0])  # Simulation first; not a robot deployment test.
 ```
 
 ---
@@ -389,7 +389,7 @@ Fix: ensure config name exists in `src/openpi/training/config.py` (exact match f
 
 **Issue: PyTorch training diverges after library changes**
 
-Fix: reapply the transformer patch. Run `uv cache clean transformers` to reset, then reapply.
+Fix: inspect the lockfile and installed versions, run `uv sync --reinstall-package transformers`, then reapply the repository's matching transformer patch. `uv cache clean transformers` removes cached downloads only; it does not reinstall the environment.
 
 **Issue: `serve_policy.py` crashes with `ModuleNotFoundError`**
 
@@ -429,7 +429,10 @@ Remove stale `.lock` files if a previous download was interrupted.
 
 **Issue: Policy server exits with code `137`**
 
-Fix: OOM kill. Set JAX memory variables:
+Exit 137 conventionally means SIGKILL (128 + 9), not proof of OOM. Inspect
+kernel/cgroup or scheduler logs for an OOM event, timeout, or explicit kill.
+If memory pressure is confirmed, reduce the workload; these JAX settings can
+reduce preallocation but do not make an oversized model fit:
 
 ```bash
 export XLA_PYTHON_CLIENT_PREALLOCATE=false

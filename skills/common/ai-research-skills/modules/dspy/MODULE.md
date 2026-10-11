@@ -364,9 +364,14 @@ class MathQA(dspy.Module):
     def forward(self, problem):
         solution = self.solve(problem=problem).solution
 
-        # Assert solution is numeric
+        # Conversion can fail before dspy.Assert; turn it into a predicate.
+        import math
+        try:
+            numeric = math.isfinite(float(solution))
+        except (ValueError, TypeError, OverflowError):
+            numeric = False
         dspy.Assert(
-            isinstance(float(solution), float),
+            numeric,
             "Solution must be a number",
             backtrack=backtrack_handler
         )
@@ -510,7 +515,7 @@ class SummarizeArticle(dspy.Signature):
 ```python
 # Create diverse training examples
 trainset = [
-    dspy.Example(question="factual", answer="...).with_inputs("question"),
+    dspy.Example(question="factual", answer="...").with_inputs("question"),
     dspy.Example(question="reasoning", answer="...").with_inputs("question"),
     dspy.Example(question="calculation", answer="...").with_inputs("question"),
 ]

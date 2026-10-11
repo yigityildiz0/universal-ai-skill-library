@@ -3,6 +3,16 @@ name: office-docs-qa
 description: "Quality-first handling of office files and diagrams: Word DOCX, PDF (extract, merge, split, OCR, forms, redaction), Excel/CSV workbooks, PowerPoint file checks, large or unknown files, workflow diagrams (Mermaid, SVG, HTML) and Markdown knowledge bases, preserving structure and verifying the output. Turkish triggers: Word dosyası, PDF birleştir/böl, Excel düzenle, PPTX kontrol, dosyayı oku, diyagram çiz, akış şeması, not arşivi düzenle. More triggers: bilgi tabanı kur, indeks ve bağlantılar, iş akışını görselleştir, süreç veya sistem haritası, Mermaid."
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Office Docs QA
 
 Planning and quality checks for office files and diagrams. Use the host's native document, PDF, spreadsheet and presentation tools for the actual file operations; these modules add preservation and validation.

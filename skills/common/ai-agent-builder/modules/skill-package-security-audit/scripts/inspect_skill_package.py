@@ -19,11 +19,13 @@ MAX_ENTRY_SIZE = 1024 * 1024 * 1024
 MAX_RATIO = 1000
 EXECUTABLE_SUFFIXES = {
     ".bat", ".cmd", ".com", ".dll", ".exe", ".jar", ".msi", ".ps1",
-    ".scr", ".sh", ".so", ".vbs",
+    ".scr", ".sh", ".so", ".vbs", ".js", ".jsx", ".mjs", ".cjs",
+    ".ts", ".tsx", ".mts", ".cts",
 }
 TEXT_SUFFIXES = {
     ".cfg", ".ini", ".json", ".jsonc", ".md", ".ps1", ".py", ".sh",
-    ".toml", ".txt", ".yaml", ".yml",
+    ".toml", ".txt", ".yaml", ".yml", ".js", ".jsx", ".mjs", ".cjs",
+    ".ts", ".tsx", ".mts", ".cts",
 }
 PATTERNS = {
     "process_execution": re.compile(r"\b(subprocess\.|os\.system\s*\(|Start-Process\b|Invoke-Expression\b|child_process\b)", re.I),

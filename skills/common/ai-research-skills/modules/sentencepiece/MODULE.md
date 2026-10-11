@@ -47,7 +47,9 @@ sudo make install
 ```bash
 # Command-line (BPE with 8000 vocab)
 spm_train --input=data.txt --model_prefix=m --vocab_size=8000 --model_type=bpe
+```
 
+```python
 # Python API
 import sentencepiece as spm
 
@@ -180,12 +182,17 @@ spm.SentencePieceTrainer.train(
     model_type='unigram',
     user_defined_symbols=[f'<extra_id_{i}>' for i in range(100)],
     unk_id=2,
+    bos_id=-1,  # T5 has no BOS; default BOS=1 would collide with EOS=1
     eos_id=1,
     pad_id=0
 )
 ```
 
 ### Integration with transformers
+
+This is a T5-inspired tokenizer trained from scratch, not a replacement for a
+pretrained T5 vocabulary. T5's sentinel ordering is handled by its tokenizer
+wrapper; preserve the original tokenizer and IDs when using pretrained weights.
 
 ```python
 from transformers import T5Tokenizer

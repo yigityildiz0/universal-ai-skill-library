@@ -284,7 +284,7 @@ def monitor_job(ip: str, ssh_key_path: str, log_file: str = "train.log"):
 #!/bin/bash
 #SBATCH --job-name=llm-training
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=8
 #SBATCH --time=24:00:00
 #SBATCH --output=logs/%j.out
@@ -297,7 +297,8 @@ export MASTER_PORT=29500
 # Launch training
 srun torchrun \
     --nnodes=$SLURM_NNODES \
-    --nproc_per_node=$SLURM_GPUS_PER_NODE \
+    --nproc_per_node=8 \
+    --rdzv_id=$SLURM_JOB_ID \
     --rdzv_backend=c10d \
     --rdzv_endpoint=$MASTER_ADDR:$MASTER_PORT \
     train.py \
@@ -351,7 +352,10 @@ rclone sync s3:my-bucket/dataset /lambda/nfs/storage/datasets/
 ```python
 # Instance 1: Write checkpoints
 checkpoint_path = "/lambda/nfs/shared/checkpoints/model_step_1000.pt"
-torch.save(model.state_dict(), checkpoint_path)
+if not torch.distributed.is_initialized() or torch.distributed.get_rank() == 0:
+    torch.save(model.state_dict(), checkpoint_path)
+# Rank-zero applies to ordinary replicated DDP saves, not sharded collective
+# checkpoint APIs (FSDP/DeepSpeed may require every rank to participate).
 
 # Instance 2: Read checkpoints
 model.load_state_dict(torch.load(checkpoint_path))

@@ -10,14 +10,14 @@ The core class representing a Sparse Autoencoder.
 from sae_lens import SAE
 
 # From official releases
-sae, cfg_dict, sparsity = SAE.from_pretrained(
+sae, cfg_dict, sparsity = SAE.from_pretrained_with_cfg_and_sparsity(
     release="gpt2-small-res-jb",
     sae_id="blocks.8.hook_resid_pre",
     device="cuda"
 )
 
 # From HuggingFace
-sae, cfg_dict, sparsity = SAE.from_pretrained(
+sae, cfg_dict, sparsity = SAE.from_pretrained_with_cfg_and_sparsity(
     release="username/repo-name",
     sae_id="path/to/sae",
     device="cuda"
@@ -28,6 +28,10 @@ sae = SAE.load_from_disk("/path/to/sae", device="cuda")
 ```
 
 ### SAE Attributes
+
+Current `SAE.from_pretrained(...)` returns the SAE. Use the explicit
+`from_pretrained_with_cfg_and_sparsity(...)` method for the metadata tuple.
+Pin the installed version when following older notebooks; do not mix APIs.
 
 | Attribute | Shape | Description |
 |-----------|-------|-------------|

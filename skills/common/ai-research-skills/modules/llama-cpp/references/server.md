@@ -56,7 +56,7 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y git build-essential
 RUN git clone https://github.com/ggerganov/llama.cpp
 WORKDIR /llama.cpp
-RUN make LLAMA_CUDA=1
+RUN cmake -B build -DGGML_CUDA=ON && cmake --build build --config Release -j
 COPY models/ /models/
 EXPOSE 8080
 CMD ["./llama-server", "-m", "/models/model.gguf", "--host", "0.0.0.0", "--port", "8080"]

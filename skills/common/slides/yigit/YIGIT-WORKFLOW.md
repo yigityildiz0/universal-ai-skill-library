@@ -1,6 +1,6 @@
-# Yiğit's customized slides workflow
+# the user's customized slides workflow
 
-> Yiğit's earlier customized copy of `slides-workflow`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
+> the user's earlier customized copy of `slides-workflow`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
 > Original trigger scope: Sunum anlatısı, slayt düzeni ve çıktı bütünlüğü için ek sunum iş akışı uygula.
 
 # Slides
@@ -34,6 +34,12 @@ python "<skill-dir>/scripts/search-slides.py" "problem urgency" -d copy --json
 ~~~
 
 Use returned patterns as candidates; adapt them to the audience and evidence.
+
+Other bundled helpers (run from the target project root):
+
+- `scripts/generate-slide.py --json <content.json> --tokens <tokens.css> --output <deck.html>` embeds token CSS; package any font/image URLs in those tokens separately for offline use. Defaults and `--demo` content are illustrative, not verified claims.
+- `scripts/html-token-validator.py <deck.html>` checks inline token usage; `scripts/slide-token-validator.py` is its compatibility entrypoint. Neither proves visual, keyboard or contrast quality.
+- `scripts/fetch-background.py --help` provides optional background-search guidance using `data/slide-backgrounds.csv`; review its actual options before network access.
 
 ## Implementation rules
 

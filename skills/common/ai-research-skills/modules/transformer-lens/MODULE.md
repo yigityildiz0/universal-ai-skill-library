@@ -189,8 +189,10 @@ def get_head_contribution(layer, head):
     W_O = model.W_O[layer, head]  # [d_head, d_model]
     W_U = model.W_U  # [d_model, vocab]
 
-    # Head contribution to logits at final position
-    contribution = head_out[-1] @ W_O @ W_U
+    # Direct attribution requires the cached final LayerNorm scaling.
+    residual_component = (head_out @ W_O).unsqueeze(0)
+    scaled = cache.apply_ln_to_stack(residual_component, layer=-1)
+    contribution = scaled[0, -1] @ W_U
     return contribution[john_token] - contribution[mary_token]
 
 # 4. Map all heads
@@ -219,21 +221,26 @@ import torch
 
 model = HookedTransformer.from_pretrained("gpt2-small")
 
-# Create repeated sequence: [A][B][A] should predict [B]
-repeated_tokens = torch.tensor([[1000, 2000, 1000]])  # Arbitrary tokens
+# Long repeated sequence separates induction from previous-token attention.
+device = model.cfg.device
+seq = torch.randperm(model.cfg.d_vocab, device=device)[:20].unsqueeze(0)
+repeated_tokens = torch.cat([seq, seq], dim=1)
 
 _, cache = model.run_with_cache(repeated_tokens)
 
-# Induction heads attend from final [A] back to first [B]
-# Check attention from position 2 to position 1
-induction_scores = torch.zeros(model.cfg.n_layers, model.cfg.n_heads)
+# Compare with a no-repeat control; high scores nominate candidates only.
+control_tokens = torch.cat([seq, torch.randint(model.cfg.d_vocab, seq.shape, device=device)], dim=1)
+_, control_cache = model.run_with_cache(control_tokens)
+induction_scores = torch.zeros(model.cfg.n_layers, model.cfg.n_heads, device=device)
+q = torch.arange(20, 39, device=device)
+k = torch.arange(1, 20, device=device)  # Successor of first occurrence
 
 for layer in range(model.cfg.n_layers):
     pattern = cache["pattern", layer][0]  # [head, q_pos, k_pos]
-    # Attention from pos 2 to pos 1
-    induction_scores[layer] = pattern[:, 2, 1]
+    control = control_cache["pattern", layer][0]
+    induction_scores[layer] = (pattern[:, q, k] - control[:, q, k]).mean(-1)
 
-# Heads with high scores are induction heads
+# Validate candidates across seeds and with causal ablations.
 top_heads = torch.topk(induction_scores.flatten(), k=5)
 ```
 
@@ -241,13 +248,9 @@ top_heads = torch.topk(induction_scores.flatten(), k=5)
 
 ### Issue: Hooks persist after debugging
 ```python
-# WRONG: Old hooks remain active
-model.run_with_hooks(tokens, fwd_hooks=[...])  # Debug, add new hooks
-model.run_with_hooks(tokens, fwd_hooks=[...])  # Old hooks still there!
-
-# RIGHT: Always reset hooks
-model.reset_hooks()
-model.run_with_hooks(tokens, fwd_hooks=[...])
+# run_with_hooks removes temporary hooks on exit by default.
+# Manually added hooks or reset_hooks_end=False can persist.
+model.reset_hooks()  # Clear those hooks before a clean run.
 ```
 
 ### Issue: Tokenization gotchas
@@ -301,6 +304,8 @@ from sae_lens import SAE
 
 model = HookedTransformer.from_pretrained("gpt2-small")
 sae = SAE.from_pretrained("gpt2-small-res-jb", "blocks.8.hook_resid_pre")
+# Current SAELens returns an SAE; use from_pretrained_with_cfg_and_sparsity
+# only when you need the explicit (sae, cfg_dict, sparsity) tuple.
 
 # Run with SAE
 tokens = model.to_tokens("Hello world")

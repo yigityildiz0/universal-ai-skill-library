@@ -157,7 +157,7 @@ When exit still won't fire, verify in order:
 
 ## Deliver & verify (standalone HTML)
 
-> **Packaged helper** (`scripts/`): `scripts/seek-shot.sh anim.html 0 1.5 3` freezes the `?t=N` harness and screenshots each moment; `scripts/contact-sheet.sh sheet.png frame-*.png` tiles them for one-glance review. See `scripts/README.md`.
+> **Frame verification:** follow [the shared capture workflow](../../references/capture-workflow.md) with available browser tools. No shell capture or contact-sheet helper is bundled.
 
 The real target is a Next.js app, but to *prove the transition shape* (the enter/exit curve, direction, crossfade) you can ship **one HTML file that opens directly in a browser** — two stub "pages" you toggle, animated with `motion` from CDN or the native View Transitions API. One file is the right tier for validating motion before wiring the router; don't stand up Next just to eyeball a fade.
 

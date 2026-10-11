@@ -2,7 +2,8 @@
 """
 Tailwind CSS Configuration Generator
 
-Generate tailwind.config.js/ts with custom theme configuration.
+Generate Tailwind v3-style tailwind.config.js/ts with custom configuration.
+Tailwind v4 uses CSS-first @theme; this helper is not a v4 migration tool.
 Supports colors, fonts, spacing, breakpoints, and plugin recommendations.
 """
 

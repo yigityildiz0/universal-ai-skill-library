@@ -329,15 +329,16 @@ class Summary(BaseModel):
     main_points: list[str]
     category: str
 
-output_parser = PydanticOutputParser(output_cls=Summary)
-
 query_engine = index.as_query_engine(
-    output_parser=output_parser
+    output_cls=Summary, response_mode="tree_summarize"
 )
 
 response = query_engine.query("Summarize the document")
-# response is a Pydantic model
-print(response.title, response.main_points)
+# The response wrapper contains the Pydantic model.
+summary = response.response
+if not isinstance(summary, Summary):
+    raise TypeError("Expected structured Summary response")
+print(summary.title, summary.main_points)
 ```
 
 ## Source tracking

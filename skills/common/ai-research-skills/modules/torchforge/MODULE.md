@@ -59,6 +59,8 @@ conda create -n forge python=3.12
 conda activate forge
 
 # Install (handles PyTorch nightly + dependencies)
+git clone https://github.com/meta-pytorch/torchforge.git
+cd torchforge
 ./scripts/install.sh
 
 # Verify
@@ -189,12 +191,20 @@ class CustomLoss(nn.Module):
     def forward(
         self,
         logprobs: torch.Tensor,
+        old_logprobs: torch.Tensor,
         ref_logprobs: torch.Tensor,
         advantages: torch.Tensor,
         padding_mask: torch.Tensor,
     ) -> torch.Tensor:
-        # Compute importance ratio
-        ratio = torch.exp(logprobs - ref_logprobs)
+        # old = rollout behavior policy; ref = frozen KL baseline (different roles).
+        mask = padding_mask.bool()
+        if not mask.any():
+            return logprobs.reshape(-1)[:0].sum()  # Differentiable safe zero
+        logprobs = logprobs[mask]
+        old_logprobs = old_logprobs.detach()[mask]
+        ref_logprobs = ref_logprobs.detach()[mask]
+        advantages = advantages.detach().expand_as(padding_mask)[mask]
+        ratio = torch.exp(logprobs - old_logprobs)
 
         # Clipped policy gradient
         clipped_ratio = torch.clamp(
@@ -204,12 +214,11 @@ class CustomLoss(nn.Module):
         )
         pg_loss = -torch.min(ratio * advantages, clipped_ratio * advantages)
 
-        # KL penalty
-        kl = ref_logprobs - logprobs
-
-        # Apply mask and aggregate
-        masked_loss = (pg_loss + self.beta * kl) * padding_mask
-        loss = masked_loss.sum() / padding_mask.sum()
+        # Nonnegative k3 estimator for KL(current || reference) under current-policy
+        # samples. For stale/off-policy rollouts, account for sampling mismatch.
+        log_ratio = ref_logprobs - logprobs
+        kl = torch.expm1(log_ratio) - log_ratio
+        loss = (pg_loss + self.beta * kl).mean()
 
         return loss
 ```
@@ -225,6 +234,7 @@ loss_fn = CustomLoss(clip_range=0.2, beta=0.1)
 # In training loop
 loss = loss_fn(
     logprobs=logprobs,
+    old_logprobs=old_logprobs,
     ref_logprobs=ref_logprobs,
     advantages=advantages,
     padding_mask=padding_mask,

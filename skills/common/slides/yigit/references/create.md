@@ -1,4 +1,3 @@
-Invoke `slides` skill to create persuasive HTML slides using design tokens, Chart.js, and the slide knowledge database.
+# Create an HTML presentation
 
-## Task
-<task>$ARGUMENTS</task>
+Follow [the creation workflow](../../references/create.md) directly; it is part of this same skill, not a recursive skill invocation. Resolve `<SKILL_DIR>` there to the root containing `SKILL.md`. Use the local references here for narrative, layout and copy alternatives.

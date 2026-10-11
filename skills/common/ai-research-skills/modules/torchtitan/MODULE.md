@@ -142,9 +142,12 @@ context_parallel_degree = 1       # Increase for long sequences
 #!/bin/bash
 #SBATCH --job-name=llama70b
 #SBATCH --nodes=32
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=8
 
+export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
+export MASTER_PORT=29500  # Reserve a free shared rendezvous port for this job.
+# One torchrun launcher per node, each spawning eight workers (32*8=256).
 srun torchrun \
   --nnodes=32 \
   --nproc_per_node=8 \
@@ -183,7 +186,8 @@ USE_CPP=0 pip install git+https://github.com/pytorch/ao.git
 
 **Step 2: Configure Float8**
 
-Add to your TOML config:
+Merge these keys into your existing TOML tables; do not append a second
+`[model]` or `[compile]` table (duplicate tables make TOML invalid):
 ```toml
 [model]
 converters = ["quantize.linear.float8"]

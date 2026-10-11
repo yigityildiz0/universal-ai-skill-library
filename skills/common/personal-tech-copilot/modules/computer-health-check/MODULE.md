@@ -11,6 +11,11 @@ Diagnose first; do not repair by default.
 
 Confirm the operating system and whether commands may run locally. Start with non-destructive inspection only. Never delete files, disable startup items, install updates, change drivers, or alter settings during the health check.
 
+Keep diagnostics bounded and redact before displaying: no environment dumps,
+credential stores, process command lines containing tokens, full user-directory
+listings, or raw event payloads with personal data. Report only task-relevant
+metrics and sanitized error excerpts; read-only access is not permission to expose secrets.
+
 ## Workflow
 
 1. Collect a bounded snapshot of uptime, CPU load, memory pressure, storage free space and errors, top active processes, startup load, battery health when present, and recent system/application errors.

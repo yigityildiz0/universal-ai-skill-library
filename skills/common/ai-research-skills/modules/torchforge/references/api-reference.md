@@ -101,7 +101,10 @@ Frozen policy copy for computing KL divergence.
 
 **Location**: `forge.actors.reference_model.ReferenceModel`
 
-Maintains a frozen copy of the policy for computing advantages without gradient computation.
+Maintains a frozen initial/reference policy for KL log-probabilities without
+gradients. It is not the rollout behavior policy and is not refreshed with each
+trainer step. Sync updated policy weights only to the generator; retain the old
+rollout log-probabilities for PPO/GRPO importance ratios.
 
 **Key Methods**:
 - `forward()` → Inference without gradients

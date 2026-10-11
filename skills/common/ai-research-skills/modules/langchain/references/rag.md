@@ -56,7 +56,7 @@ docs = loader.load()
 ### 2. Text splitting
 
 ```python
-from langchain.text_splitter import (
+from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
     CharacterTextSplitter,
     TokenTextSplitter
@@ -173,7 +173,7 @@ docs = retriever.get_relevant_documents("What is Python?")
 ### 6. QA chain
 
 ```python
-from langchain.chains import RetrievalQA
+from langchain_classic.chains import RetrievalQA
 from langchain_anthropic import ChatAnthropic
 
 llm = ChatAnthropic(model="claude-sonnet-4-5-20250929")
@@ -196,8 +196,8 @@ print(f"Sources: {len(result['source_documents'])}")
 ### Conversational RAG
 
 ```python
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
+from langchain_classic.chains import ConversationalRetrievalChain
+from langchain_classic.memory import ConversationBufferMemory
 
 # Add memory
 memory = ConversationBufferMemory(
@@ -223,7 +223,7 @@ result3 = qa({"question": "What about web development?"})
 ### Custom prompt template
 
 ```python
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 # Custom QA prompt
 template = """Use the following pieces of context to answer the question.
@@ -283,7 +283,7 @@ qa_chain = RetrievalQA.from_chain_type(
 ### Multi-query retrieval
 
 ```python
-from langchain.retrievers import MultiQueryRetriever
+from langchain_classic.retrievers import MultiQueryRetriever
 
 # Generate multiple queries for better recall
 retriever = MultiQueryRetriever.from_llm(
@@ -301,8 +301,8 @@ docs = retriever.get_relevant_documents("What is Python?")
 ### Contextual compression
 
 ```python
-from langchain.retrievers import ContextualCompressionRetriever
-from langchain.retrievers.document_compressors import LLMChainExtractor
+from langchain_classic.retrievers import ContextualCompressionRetriever
+from langchain_classic.retrievers.document_compressors import LLMChainExtractor
 
 # Compress retrieved docs to relevant parts only
 compressor = LLMChainExtractor.from_llm(llm)
@@ -319,8 +319,8 @@ compressed_docs = compression_retriever.get_relevant_documents("Python decorator
 ### Ensemble retrieval (hybrid search)
 
 ```python
-from langchain.retrievers import EnsembleRetriever
-from langchain.retrievers import BM25Retriever
+from langchain_classic.retrievers import EnsembleRetriever
+from langchain_community.retrievers import BM25Retriever
 
 # Vector search (semantic)
 vector_retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
@@ -343,8 +343,8 @@ docs = ensemble_retriever.get_relevant_documents("Python async")
 ### Agent-based RAG
 
 ```python
-from langchain.agents import create_tool_calling_agent
-from langchain.tools.retriever import create_retriever_tool
+from langchain_classic.agents import create_tool_calling_agent
+from langchain_core.tools.retriever import create_retriever_tool
 
 # Create retriever tool
 retriever_tool = create_retriever_tool(
@@ -361,7 +361,7 @@ agent = create_tool_calling_agent(
 )
 
 # Agent decides when to retrieve
-from langchain.agents import AgentExecutor
+from langchain_classic.agents import AgentExecutor
 agent_executor = AgentExecutor(agent=agent, tools=[retriever_tool])
 
 result = agent_executor.invoke({"input": "What are Python generators?"})
@@ -384,12 +384,13 @@ numpy_retriever = create_retriever_tool(
 )
 
 # Agent chooses which knowledge base to query
+from langchain.agents import create_agent
 agent = create_agent(
     model=llm,
     tools=[python_retriever, numpy_retriever, search]
 )
 
-result = agent.invoke({"input": "How do I create numpy arrays?"})
+result = agent.invoke({"messages": [{"role": "user", "content": "How do I create numpy arrays?"}]})
 ```
 
 ## Metadata filtering
@@ -397,7 +398,7 @@ result = agent.invoke({"input": "How do I create numpy arrays?"})
 ### Add metadata to documents
 
 ```python
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 # Documents with metadata
 docs = [
@@ -462,14 +463,14 @@ clean_docs = [preprocess_doc(doc) for doc in docs]
 ### Extract structured data
 
 ```python
-from langchain.document_transformers import Html2TextTransformer
+from langchain_community.document_transformers import Html2TextTransformer
 
 # HTML to clean text
 transformer = Html2TextTransformer()
 clean_docs = transformer.transform_documents(html_docs)
 
 # Extract tables
-from langchain.document_loaders import UnstructuredHTMLLoader
+from langchain_community.document_loaders import UnstructuredHTMLLoader
 
 loader = UnstructuredHTMLLoader("data.html")
 docs = loader.load()  # Extracts tables as structured data
@@ -480,7 +481,7 @@ docs = loader.load()  # Extracts tables as structured data
 ### Evaluate retrieval quality
 
 ```python
-from langchain.evaluation import load_evaluator
+from langchain_classic.evaluation import load_evaluator
 
 # Relevance evaluator
 evaluator = load_evaluator("relevance", llm=llm)
@@ -545,8 +546,9 @@ for i, doc in enumerate(result["source_documents"]):
 ### Caching
 
 ```python
-from langchain.cache import InMemoryCache, SQLiteCache
-from langchain.globals import set_llm_cache
+from langchain_core.caches import InMemoryCache
+from langchain_community.cache import SQLiteCache
+from langchain_core.globals import set_llm_cache
 
 # In-memory cache
 set_llm_cache(InMemoryCache())

@@ -9,10 +9,11 @@ import json
 import csv
 import re
 import sys
+import os
 from pathlib import Path
 
-# Project root relative to this script
-PROJECT_ROOT = Path(__file__).parent.parent.parent.parent.parent
+# Project inputs belong to the caller, not the installed skill tree.
+PROJECT_ROOT = Path(os.environ.get('DESIGN_SYSTEM_PROJECT_ROOT', Path.cwd())).resolve()
 TOKENS_PATH = PROJECT_ROOT / 'assets' / 'design-tokens.json'
 BACKGROUNDS_CSV = Path(__file__).parent.parent / 'data' / 'slide-backgrounds.csv'
 
@@ -42,7 +43,7 @@ def load_brand_colors():
     Resolves semantic token references to actual hex values.
     """
     try:
-        with open(TOKENS_PATH) as f:
+        with open(TOKENS_PATH, encoding='utf-8') as f:
             tokens = json.load(f)
 
         colors = tokens.get('primitive', {}).get('color', {})

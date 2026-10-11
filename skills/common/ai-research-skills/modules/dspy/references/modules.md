@@ -286,9 +286,13 @@ class ValidatedQA(dspy.Module):
     def forward(self, question):
         answer = self.qa(question=question).answer
 
-        # Assert answer is numeric
+        import math
+        try:
+            numeric = math.isfinite(float(answer))
+        except (ValueError, TypeError, OverflowError):
+            numeric = False
         dspy.Assert(
-            isinstance(float(answer), float),
+            numeric,
             "Answer must be a number",
             backtrack=backtrack_handler
         )

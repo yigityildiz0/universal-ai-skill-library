@@ -40,11 +40,12 @@ WHEN receiving code review feedback:
 ## Handling Unclear Feedback
 
 ```
-IF any item is unclear:
-  STOP - do not implement anything yet
-  ASK for clarification on unclear items
+IF an item is materially unclear:
+  Identify its dependencies; pause only affected work.
+  Investigate available context, then ask a focused question if still unresolved.
+  Continue clear independent items.
 
-WHY: Items may be related. Partial understanding = wrong implementation.
+WHY: Related changes need shared understanding; independent fixes need not wait.
 ```
 
 **Example:**
@@ -52,8 +53,8 @@ WHY: Items may be related. Partial understanding = wrong implementation.
 your human partner: "Fix 1-6"
 You understand 1,2,3,6. Unclear on 4,5.
 
-❌ WRONG: Implement 1,2,3,6 now, ask about 4,5 later
-✅ RIGHT: "I understand items 1,2,3,6. Need clarification on 4 and 5 before proceeding."
+❌ WRONG: Guess the meaning of 4 and 5 or change dependent code prematurely.
+✅ RIGHT: "I can implement independent items 1,2,3,6; 4 and 5 need clarification on [specific point]."
 ```
 
 ## Source-Specific Handling
@@ -91,7 +92,10 @@ IF conflicts with your human partner's prior decisions:
 IF reviewer suggests "implementing properly":
   grep codebase for actual usage
 
-  IF unused: "This endpoint isn't called. Remove it (YAGNI)?"
+  IF no local callers: check public API contracts, external clients, dynamic/reflection use,
+    plugins, scheduled jobs, compatibility promises, and relevant telemetry.
+    Absence of local callers is not proof an external API is unused.
+    Remove only when evidence and authorized scope justify it.
   IF used: Then implement properly
 ```
 
@@ -101,7 +105,7 @@ IF reviewer suggests "implementing properly":
 
 ```
 FOR multi-item feedback:
-  1. Clarify anything unclear FIRST
+   1. Resolve material ambiguity before dependent changes; continue independent items
   2. Then implement in this order:
      - Blocking issues (breaks, security)
      - Simple fixes (typos, imports)

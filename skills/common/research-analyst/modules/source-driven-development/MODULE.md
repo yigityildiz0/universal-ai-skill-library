@@ -1,6 +1,6 @@
 # Module: source-driven-development
 
-> Yiğit's earlier skill restored from archive, unchanged. Paths relative to this module folder.
+> the user's earlier skill restored from archive, unchanged. Paths relative to this module folder.
 > Original trigger scope: Grounds every implementation decision in official documentation. Use when you want authoritative, source-cited code free from outdated patterns. Use when building with any framework or library where correctness matters.
 
 # Source-Driven Development

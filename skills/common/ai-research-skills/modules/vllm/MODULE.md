@@ -67,7 +67,7 @@ vllm serve meta-llama/Llama-3-8B-Instruct \
   --port 8000
 
 # For 30B-70B models with tensor parallelism
-vllm serve meta-llama/Llama-2-70b-hf \
+vllm serve TheBloke/Llama-2-70B-AWQ \
   --tensor-parallel-size 4 \
   --gpu-memory-utilization 0.9 \
   --quantization awq \
@@ -278,7 +278,10 @@ Test outputs match expected quality:
 
 **Issue: Out of memory during model loading**
 
-Reduce memory usage:
+Distinguish weight-load OOM from KV-cache/activation pressure. Lowering
+`gpu_memory_utilization` does not shrink weights and can leave less KV capacity.
+For weights, select a smaller/prequantized checkpoint or supported sharding.
+For runtime headroom/shorter contexts, tune:
 ```bash
 vllm serve MODEL \
   --gpu-memory-utilization 0.7 \
@@ -287,7 +290,7 @@ vllm serve MODEL \
 
 Or use quantization:
 ```bash
-vllm serve MODEL --quantization awq
+vllm serve TheBloke/Llama-2-7B-AWQ --quantization awq
 ```
 
 **Issue: Slow first token (TTFT > 1 second)**
@@ -304,7 +307,9 @@ vllm serve MODEL --enable-chunked-prefill
 
 **Issue: Model not found error**
 
-Use `--trust-remote-code` for custom models:
+Check repository ID/local path, access, authentication, revision and model support
+first. `--trust-remote-code` does not fix a missing model. Only for an inspected
+custom implementation that explicitly requires it:
 ```bash
 vllm serve MODEL --trust-remote-code
 ```
@@ -320,9 +325,10 @@ Check GPU utilization with `nvidia-smi` - should be >80%.
 
 **Issue: Inference slower than expected**
 
-Verify tensor parallelism uses power of 2 GPUs:
+Choose TP compatible with model head divisibility, backend kernels and GPU
+topology. Powers of two are not a universal requirement:
 ```bash
-vllm serve MODEL --tensor-parallel-size 4  # Not 3
+vllm serve MODEL --tensor-parallel-size 4  # If this model/backend supports it
 ```
 
 Enable speculative decoding for faster generation:

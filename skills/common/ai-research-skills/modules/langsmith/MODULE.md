@@ -175,13 +175,14 @@ from langsmith import evaluate
 
 def my_model(inputs: dict) -> dict:
     # Your model logic
-    return {"answer": generate_answer(inputs["question"])}
+    return {"answer": generate_answer(inputs["question"], retrieve(inputs["question"]))}
 
 def correctness_evaluator(run, example):
     prediction = run.outputs["answer"]
     reference = example.outputs["answer"]
-    score = 1.0 if reference.lower() in prediction.lower() else 0.0
-    return {"key": "correctness", "score": score}
+    normalize = lambda text: " ".join(text.casefold().split())
+    score = float(normalize(reference) == normalize(prediction))
+    return {"key": "normalized_exact_match", "score": score}
 
 results = evaluate(
     my_model,
@@ -397,7 +398,11 @@ os.environ["LANGSMITH_TRACING_SAMPLING_RATE"] = "0.1"
 ```python
 # Hide sensitive/large fields
 @traceable(
-    process_inputs=lambda x: {k: v for k, v in x.items() if k != "large_field"}
+    process_inputs=lambda inputs: {
+        key: ({k: v for k, v in value.items() if k != "large_field"}
+              if key == "data" and isinstance(value, dict) else value)
+        for key, value in inputs.items()
+    }
 )
 def my_function(data):
     pass

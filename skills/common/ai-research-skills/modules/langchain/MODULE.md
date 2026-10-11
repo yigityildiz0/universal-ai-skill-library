@@ -50,6 +50,8 @@ pip install langchain-chroma     # Vector store
 
 ### Basic LLM usage
 
+**API baseline (verified 2026-10-08): LangChain v1.** New agents use `langchain.agents.create_agent` and `{"messages": [...]}`. Older chains/memory use `langchain-classic`; install it separately and retain its distinct input schema. Install `langchain-text-splitters` for splitters. Reference: https://docs.langchain.com/oss/python/migrate/langchain-v1 .
+
 ```python
 from langchain_anthropic import ChatAnthropic
 
@@ -110,8 +112,8 @@ for chunk in llm.stream("Write a poem"):
 ### 2. Chains - Sequential operations
 
 ```python
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+from langchain_classic.chains import LLMChain
+from langchain_core.prompts import PromptTemplate
 
 # Define prompt template
 prompt = PromptTemplate(
@@ -131,25 +133,55 @@ result = chain.run(topic="machine learning")
 **ReAct (Reasoning + Acting) pattern:**
 
 ```python
-from langchain.agents import create_tool_calling_agent, AgentExecutor
-from langchain.tools import Tool
+from langchain_classic.agents import create_tool_calling_agent, AgentExecutor
+from langchain_core.tools import Tool
+from langchain_core.prompts import ChatPromptTemplate
+import ast
+import math
+import operator
+
+def calculate(expression):
+    """Bounded arithmetic: no names, calls, attributes or exponentiation."""
+    if len(expression) > 200:
+        raise ValueError("Expression too long")
+    tree = ast.parse(expression, mode="eval")
+    if sum(1 for _ in ast.walk(tree)) > 64:
+        raise ValueError("Expression too complex")
+    ops = {ast.Add: operator.add, ast.Sub: operator.sub,
+           ast.Mult: operator.mul, ast.Div: operator.truediv}
+    def visit(node):
+        if isinstance(node, ast.Constant) and type(node.value) in (int, float):
+            value = node.value
+        elif isinstance(node, ast.BinOp) and type(node.op) in ops:
+            value = ops[type(node.op)](visit(node.left), visit(node.right))
+        elif isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            value = visit(node.operand) * (-1 if isinstance(node.op, ast.USub) else 1)
+        else:
+            raise ValueError("Numeric arithmetic only")
+        if abs(value) > 1e100 or not math.isfinite(value):
+            raise ValueError("Out of range")
+        return value
+    return visit(tree.body)
 
 # Define custom tool
 calculator = Tool(
     name="Calculator",
-    func=lambda x: eval(x),
-    description="Useful for math calculations. Input: valid Python expression."
+    func=calculate,
+    description="Numeric arithmetic with +, -, *, / and parentheses."
 )
 
 # Create agent with tools
 agent = create_tool_calling_agent(
     llm=llm,
     tools=[calculator, search_web],
-    prompt="Answer questions using available tools"
+    prompt=ChatPromptTemplate.from_messages([
+        ("system", "Answer questions using available tools"),
+        ("human", "{input}"), ("placeholder", "{agent_scratchpad}"),
+    ])
 )
 
 # Create executor
-agent_executor = AgentExecutor(agent=agent, tools=[calculator], verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=[calculator, search_web], verbose=True)
 
 # Run with reasoning
 result = agent_executor.invoke({"input": "What is 25 * 17 + 142?"})
@@ -158,8 +190,8 @@ result = agent_executor.invoke({"input": "What is 25 * 17 + 142?"})
 ### 4. Memory - Conversation history
 
 ```python
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationChain
+from langchain_classic.memory import ConversationBufferMemory
+from langchain_classic.chains import ConversationChain
 
 # Add memory to track conversation
 memory = ConversationBufferMemory()
@@ -181,10 +213,10 @@ conversation.predict(input="What's my name?")  # Remembers "Alice"
 
 ```python
 from langchain_community.document_loaders import WebBaseLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
-from langchain.chains import RetrievalQA
+from langchain_classic.chains import RetrievalQA
 
 # 1. Load documents
 loader = WebBaseLoader("https://docs.python.org/3/tutorial/")
@@ -222,7 +254,7 @@ print(f"Sources: {result['source_documents']}")
 ### Conversational RAG with memory
 
 ```python
-from langchain.chains import ConversationalRetrievalChain
+from langchain_classic.chains import ConversationalRetrievalChain
 
 # RAG with conversation memory
 qa = ConversationalRetrievalChain.from_llm(
@@ -244,7 +276,7 @@ qa({"question": "Can you elaborate on web development?"})  # Remembers context
 ### Structured output
 
 ```python
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
 # Define schema
 class WeatherReport(BaseModel):
@@ -261,7 +293,7 @@ print(result.city, result.temperature, result.condition)
 ### Parallel tool execution
 
 ```python
-from langchain.agents import create_tool_calling_agent
+from langchain_classic.agents import create_tool_calling_agent
 
 # Agent automatically parallelizes independent tool calls
 agent = create_tool_calling_agent(
@@ -291,7 +323,7 @@ for step in agent_executor.stream({"input": "Research AI trends"}):
 ### Multi-document QA
 
 ```python
-from langchain.chains.qa_with_sources import load_qa_with_sources_chain
+from langchain_classic.chains.qa_with_sources import load_qa_with_sources_chain
 
 # Load multiple documents
 docs = [
@@ -403,7 +435,7 @@ loader = CSVLoader("data.csv")
 
 ```python
 # Recursive (recommended for general text)
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,
     chunk_overlap=200,
@@ -411,7 +443,7 @@ splitter = RecursiveCharacterTextSplitter(
 )
 
 # Code-aware
-from langchain.text_splitter import PythonCodeTextSplitter
+from langchain_text_splitters import PythonCodeTextSplitter
 splitter = PythonCodeTextSplitter(chunk_size=500)
 
 # Semantic (by meaning)

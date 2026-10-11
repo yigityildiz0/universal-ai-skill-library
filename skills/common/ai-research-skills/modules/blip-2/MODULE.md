@@ -438,40 +438,46 @@ class ImageSearchEngine:
 
     def index_images(self, image_paths: list):
         """Build index from images."""
-        self.image_paths = image_paths
+        self.image_paths = list(image_paths)
+        self.image_features = []  # Rebuild, including on repeated indexing calls.
+        if not self.image_paths:
+            return
 
-        for path in image_paths:
+        for path in self.image_paths:
             image = Image.open(path).convert("RGB")
             image = self.vis_processors["eval"](image).unsqueeze(0).to(self.device)
 
             with torch.no_grad():
                 features = self.model.extract_features({"image": image}, mode="image")
                 # Use projected features for matching
-                self.image_features.append(
-                    features.image_embeds_proj.mean(dim=1).cpu().numpy()
-                )
+                pooled = features.image_embeds_proj.mean(dim=1)
+                pooled = torch.nn.functional.normalize(pooled, dim=-1)
+                self.image_features.append(pooled.cpu().numpy())
 
         self.image_features = np.vstack(self.image_features)
 
     def search(self, query: str, top_k: int = 5) -> list:
         """Search images by text query."""
+        if not self.image_paths or top_k <= 0:
+            return []
         # Get text features
         text = self.txt_processors["eval"](query)
         text_input = {"text_input": [text]}
 
         with torch.no_grad():
             text_features = self.model.extract_features(text_input, mode="text")
-            text_embeds = text_features.text_embeds_proj[:, 0].cpu().numpy()
+            projected = text_features.text_embeds_proj[:, 0, :]  # CLS: [B, D]
+            text_embeds = torch.nn.functional.normalize(projected, dim=-1).cpu().numpy()
 
         # Compute similarities
-        similarities = np.dot(self.image_features, text_embeds.T).squeeze()
+        similarities = np.dot(self.image_features, text_embeds.T).reshape(-1)
         top_indices = np.argsort(similarities)[::-1][:top_k]
 
         return [(self.image_paths[i], similarities[i]) for i in top_indices]
 
 # Usage
 engine = ImageSearchEngine()
-engine.index_images(["img1.jpg", "img2.jpg", "img3.jpg", ...])
+engine.index_images(["img1.jpg", "img2.jpg", "img3.jpg"])
 
 # Search
 results = engine.search("a sunset over the ocean", top_k=5)
@@ -502,7 +508,7 @@ features = model.extract_features({"image": image}, mode="image")
 features.image_embeds          # [B, 32, 768] - Q-Former outputs
 features.image_embeds_proj     # [B, 32, 256] - Projected for matching
 features.text_embeds          # [B, seq_len, 768] - Text features
-features.text_embeds_proj     # [B, 256] - Projected text (CLS)
+features.text_embeds_proj     # [B, seq_len, 256]; [:, 0, :] selects CLS
 ```
 
 ## Performance optimization

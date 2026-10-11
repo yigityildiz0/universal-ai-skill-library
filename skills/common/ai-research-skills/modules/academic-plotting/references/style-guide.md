@@ -60,9 +60,13 @@ Template: `\usepackage[hyperref]{acl2025}`
 
 ## Color Palettes
 
-### Recommended Colorblind-Safe Palette
+### Palette consistency and accessibility
 
-This palette is distinguishable under all forms of color vision deficiency:
+Use the module's Ocean Dusk palette consistently across a paper (including coral
+`#E76F51` for ours and gray `#B0BEC5` for baselines). The deep palette below is an
+alternative for an entire figure set, not a silent per-figure replacement. No
+palette guarantees distinction for every vision deficiency: retain markers,
+line styles or labels, and check simulated color vision and grayscale output.
 
 ```python
 # "deep" variant — high contrast, good for lines and bars
@@ -81,9 +85,9 @@ PALETTE_DEEP = [
 ### Two-Color Schemes (ours vs. baseline)
 
 ```python
-# High contrast pair
-OURS = "#C44E52"     # red — stands out
-BASELINE = "#8C8C8C" # gray — recedes
+# Default pair, matching MODULE.md and data-visualization.md
+OURS = "#E76F51"     # coral
+BASELINE = "#B0BEC5" # cool gray
 
 # Alternative pair
 OURS = "#4C72B0"     # blue

@@ -113,15 +113,17 @@ Measure:      Zero successful injections in penetration tests
 
 Use structured analysis to reason about competing quality attributes.
 
-**CAP Theorem Decision Matrix**:
+**CAP trade-offs during a network partition**:
 
-| Scenario | Choose CP | Choose AP | Rationale |
-|----------|-----------|-----------|-----------|
-| Financial transactions | Yes | No | Consistency critical; stale balances cause real losses |
-| Social media feed | No | Yes | Availability preferred; eventual consistency acceptable |
-| Inventory management | Yes | No | Overselling is worse than temporary unavailability |
-| User session store | No | Yes | Stale session data tolerable; downtime is not |
-| Configuration service | Yes | No | All nodes must agree on config to avoid split behavior |
+CAP concerns linearizable consistency and availability during partitions; it is not a universal database/domain label or a choice to prevent partitions. Choose behavior per operation and invariant, considering normal-operation latency separately.
+
+| Operation | Candidate partition behavior | What to validate |
+|-----------|------------------------------|------------------|
+| Ledger write | Reject/defer without an authoritative quorum | No double spending; idempotent reconciliation |
+| Feed read | Serve a stale replica when acceptable | Explicit staleness and privacy/deletion limits |
+| Inventory reservation | Quorum, escrow, or bounded local allocation | Oversell invariant and compensation policy |
+| Session authorization/revocation | Fail closed or use explicitly bounded cached claims | Revocation delay; stale sessions are not generally safe |
+| Configuration read | Last-known-safe config or reject unsafe actions | Version compatibility and safety-critical settings |
 
 **Trade-off Analysis Template**:
 
@@ -279,30 +281,14 @@ The C4 model provides four levels of zoom for communicating architecture.
 **Level 1: System Context Diagram** (who uses the system, what does it connect to):
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                   E-Commerce Platform               │
-│                                                     │
-│  ┌─────────┐   ┌──────────┐   ┌─────────────────┐  │
-│  │ Web App │   │ Mobile   │   │ Admin Dashboard  │  │
-│  │ (React) │   │ (Flutter)│   │ (React)          │  │
-│  └────┬────┘   └────┬─────┘   └───────┬─────────┘  │
-│       │              │                 │             │
-│       └──────────────┼─────────────────┘             │
-│                      │                               │
-│              ┌───────▼───────┐                       │
-│              │  API Gateway  │                       │
-│              └───────┬───────┘                       │
-│                      │                               │
-└──────────────────────┼───────────────────────────────┘
-                       │
-        ┌──────────────┼──────────────────┐
-        │              │                  │
-  ┌─────▼─────┐  ┌─────▼──────┐  ┌───────▼──────┐
-  │ Payment   │  │ Shipping   │  │ Email        │
-  │ Provider  │  │ Partner    │  │ Service      │
-  │ (Stripe)  │  │ (FedEx)    │  │ (SendGrid)  │
-  └───────────┘  └────────────┘  └──────────────┘
+[Customer] -- shops / places orders --> [E-Commerce Platform]
+[Administrator] -- manages catalog ---> [E-Commerce Platform]
+                                        |-- charges --> [Payment Provider]
+                                        |-- ships ----> [Shipping Partner]
+                                        |-- notifies -> [Email Service]
 ```
+
+At context level, the platform is one software system with people and external systems. Web/mobile apps, admin UI, gateway, services, and databases belong in the container view, not inside the context box. The next diagram is a backend-focused container excerpt; add client containers and labeled relationships when documenting the complete platform.
 
 **Level 2: Container Diagram** (major deployable units):
 
@@ -370,16 +356,18 @@ Read [references/common-patterns.md](references/common-patterns.md) when choosin
 
 ## Quality Checklist
 
+Apply only relevant checks, at a depth proportional to the system and change. A small local tool does not require CI fitness functions, 10x load work, peer sign-off, and a formal threat model. Use targeted reasoning; add those artifacts for meaningful architectural, scaling, security, or operational risk.
+
 - [ ] Quality attribute scenarios documented for top 5 concerns
 - [ ] Trade-off analysis completed for each contested decision
 - [ ] ADR written for every significant architectural choice
 - [ ] C4 context and container diagrams created and current
 - [ ] Component boundaries align with team boundaries (Conway's Law)
 - [ ] Dependency direction verified (always toward the domain)
-- [ ] Fitness functions implemented and running in CI
-- [ ] Scalability analysis completed (10x current load)
+- [ ] Important enforceable constraints checked; CI fitness functions if warranted
+- [ ] Scalability assessed against realistic expected load where relevant
 - [ ] Failure mode analysis documented (what happens when X goes down?)
-- [ ] Security threat model completed (STRIDE or equivalent)
+- [ ] Security boundaries reviewed; formal threat model if warranted (STRIDE or equivalent)
 - [ ] Data flow diagrams created for sensitive data paths
 - [ ] Architecture reviewed by at least one peer
 
@@ -396,20 +384,22 @@ Read [references/common-patterns.md](references/common-patterns.md) when choosin
 
 ## Verification
 
+Use the same proportional scope as the quality checklist. Mark irrelevant items not applicable rather than creating unnecessary artifacts.
+
 - [ ] C4 context and container diagrams exist and show all external systems and inter-container communication
 - [ ] At least one ADR exists per major architectural decision (data store choice, sync/async boundary, deployment target)
 - [ ] Quality attribute scenarios are documented with measurable targets (e.g., "p99 latency < 200 ms at 1,000 RPS")
 - [ ] CAP theorem trade-offs are documented for every data store that participates in multi-node deployment
 - [ ] Failure mode analysis covers what happens when each external dependency or service is unavailable
-- [ ] Security threat model (STRIDE or equivalent) identifies at least the top three attack surfaces
+- [ ] Relevant security boundaries assessed; formal threat model only if warranted by attack surface/risk
 
-## Related Skills
+## Related Modules
 
-- `ddd-strategic-design` - Domain modeling and bounded context identification
-- `api-design` - API contract design for inter-component communication
-- `microservices-patterns` - Distributed system patterns and resilience
-- `cloud-architect` - Cloud-native architecture and managed service selection
-- `security-review` - Security architecture assessment
+- [implementation-plan](../implementation-plan/MODULE.md) — translate decisions into scoped work
+- [ambiguity-detector](../ambiguity-detector/MODULE.md) — clarify material contract gaps
+- [security-review](../security-review/MODULE.md) — assess security boundaries
+
+Domain modeling, API contracts, distributed systems, and cloud design are optional specialist topics; discover available skills before invoking one rather than assuming those names are installed.
 
 ---
 

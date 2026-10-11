@@ -15,8 +15,8 @@ pip install accelerate
 ```
 
 **Convert PyTorch script** (4 lines):
-```python
-import torch
+```diff
+  import torch
 + from accelerate import Accelerator
 
 + accelerator = Accelerator()
@@ -139,16 +139,14 @@ for batch in dataloader:
 
 **Enable DeepSpeed ZeRO-2**:
 ```python
-from accelerate import Accelerator
+from accelerate import Accelerator, DeepSpeedPlugin
 
-accelerator = Accelerator(
-    mixed_precision='bf16',
-    deepspeed_plugin={
-        "zero_stage": 2,  # ZeRO-2
-        "offload_optimizer": False,
-        "gradient_accumulation_steps": 4
-    }
+plugin = DeepSpeedPlugin(
+    zero_stage=2,
+    offload_optimizer_device="none",
+    gradient_accumulation_steps=4,
 )
+accelerator = Accelerator(mixed_precision="bf16", deepspeed_plugin=plugin)
 
 # Same code as before!
 model, optimizer, dataloader = accelerator.prepare(model, optimizer, dataloader)
@@ -176,7 +174,9 @@ accelerate config
 
 **Launch**:
 ```bash
-accelerate launch --config_file deepspeed_config.json train.py
+accelerate config --config_file accelerate.yaml
+# Select DeepSpeed and enter deepspeed_config.json as its config path.
+accelerate launch --config_file accelerate.yaml train.py
 ```
 
 ### Workflow 4: FSDP (Fully Sharded Data Parallel)
@@ -275,9 +275,9 @@ with accelerator.accumulate(model):
 
 Use accelerator methods:
 ```python
-# Save only on main process
-if accelerator.is_main_process:
-    accelerator.save_state('checkpoint/')
+# All ranks participate: sharded backends may perform collectives here.
+accelerator.wait_for_everyone()
+accelerator.save_state('checkpoint/')
 
 # Load on all processes
 accelerator.load_state('checkpoint/')

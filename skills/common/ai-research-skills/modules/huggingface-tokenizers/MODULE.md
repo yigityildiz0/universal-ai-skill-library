@@ -275,7 +275,7 @@ from tokenizers.processors import TemplateProcessing
 # BERT-style: [CLS] sentence [SEP]
 tokenizer.post_processor = TemplateProcessing(
     single="[CLS] $A [SEP]",
-    pair="[CLS] $A [SEP] $B [SEP]",
+    pair="[CLS] $A [SEP] $B:1 [SEP]:1",
     special_tokens=[
         ("[CLS]", 1),
         ("[SEP]", 2),
@@ -304,7 +304,8 @@ TemplateProcessing(
 Track token positions in original text:
 
 ```python
-output = tokenizer.encode("Hello, world!")
+text = "Hello, world!"
+output = tokenizer.encode(text)
 
 # Get token offsets
 for token, offset in zip(output.tokens, output.offsets):

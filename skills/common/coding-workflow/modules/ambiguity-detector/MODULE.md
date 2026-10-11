@@ -177,7 +177,7 @@ function checkCompleteness(requirementText) {
     const results = [];
 
     for (const dimension of REQUIRED_DIMENSIONS) {
-        const found = dimension.keywords.some(kw => lowerText.includes(kw));
+        const found = dimension.keywords.some(kw => lowerText.includes(kw.toLowerCase()));
         results.push({
             dimension: dimension.name,
             covered: found,
@@ -266,7 +266,10 @@ public class ContradictionDetector {
 
     private List<int[]> findOccurrences(String[] lines, String term) {
         List<int[]> occurrences = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\b" + Pattern.quote(term) + "\\b",
+        // "must not" is a negative requirement, not also a positive "must".
+        String suffix = term.equalsIgnoreCase("must") ? "(?!\\s+not\\b)" : "";
+        String termPattern = term.equalsIgnoreCase("must not") ? "must\\s+not" : Pattern.quote(term);
+        Pattern pattern = Pattern.compile("\\b" + termPattern + "\\b" + suffix,
             Pattern.CASE_INSENSITIVE);
         for (int i = 0; i < lines.length; i++) {
             if (pattern.matcher(lines[i]).find()) {
@@ -280,7 +283,7 @@ public class ContradictionDetector {
 
 ### Step 3: Check for Completeness
 
-Verify that requirements cover all necessary aspects using the INVEST criteria for user stories and a completeness checklist for specifications.
+Verify that requirements cover the relevant aspects using INVEST and a completeness checklist. These keyword scanners only flag candidates: a score is not proof of completeness, and paired terms can legitimately describe different subjects or conditions. Ask only about material gaps that affect correctness, scope, permissions, or an irreversible decision; record reasonable reversible assumptions and continue independent work.
 
 #### INVEST Criteria for User Stories
 

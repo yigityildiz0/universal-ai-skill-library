@@ -122,11 +122,11 @@ model.push_to_hub("username/llama-2-7b-gptq")
 
 | Group Size | Model Size | Accuracy | Speed | Recommendation |
 |------------|------------|----------|-------|----------------|
-| -1 (per-column) | Smallest | Best | Slowest | Research only |
-| 32 | Smaller | Better | Slower | High accuracy needed |
+| -1 (ungrouped/per-channel) | Least metadata | Coarser scaling | Backend-dependent | Check backend support |
+| 32 | More metadata | Often better | Backend-dependent | Evaluate quality benefit |
 | **128** | Medium | Good | **Fast** | **Recommended default** |
-| 256 | Larger | Lower | Faster | Speed critical |
-| 1024 | Largest | Lowest | Fastest | Not recommended |
+| 256 | Less metadata | May be lower | Backend-dependent | Validate quality/kernel |
+| 1024 | Least grouped metadata | May be lower | Backend-dependent | Validate quality/kernel |
 
 **Example**:
 ```
@@ -134,7 +134,8 @@ Weight matrix: [1024, 4096] = 4.2M elements
 
 Group size = 128:
 - Groups: 4.2M / 128 = 32,768 groups
-- Each group: own 4-bit scale + zero-point
+- Each group: its own scale (usually floating point) and packed zero-point;
+  4-bit describes the weights, not necessarily the scale storage.
 - Result: Better granularity → better accuracy
 ```
 
@@ -158,7 +159,7 @@ config = BaseQuantizeConfig(
 - Accuracy: ~1.5% perplexity increase
 - Speed: 3-4× faster than FP16
 
-### High accuracy (3-bit with larger groups)
+### Higher compression (3-bit with standard groups)
 
 ```python
 config = BaseQuantizeConfig(
@@ -344,8 +345,7 @@ model = AutoGPTQForCausalLM.from_quantized(
 # Manual device mapping
 device_map = {
     "model.embed_tokens": 0,
-    "model.layers.0-39": 0,  # First 40 layers on GPU 0
-    "model.layers.40-79": 1,  # Last 40 layers on GPU 1
+    **{f"model.layers.{i}": 0 if i < 40 else 1 for i in range(80)},
     "model.norm": 1,
     "lm_head": 1
 }
@@ -361,7 +361,7 @@ model = AutoGPTQForCausalLM.from_quantized(
 ```python
 # Offload some layers to CPU (for very large models)
 model = AutoGPTQForCausalLM.from_quantized(
-    "TheBloke/Llama-2-405B-GPTQ",
+    "TheBloke/Llama-2-70B-GPTQ",  # Real model family; Llama 2 has no 405B model
     device_map="auto",
     max_memory={
         0: "80GB",  # GPU 0

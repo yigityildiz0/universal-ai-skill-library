@@ -1,7 +1,9 @@
-# Module: caveman-compress
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/caveman-compress/`.
-> Original trigger scope: Compress a memory file such as CLAUDE.md or a todo list into caveman format to save input tokens, keeping a readable backup. Trigger: /caveman-compress.
+---
+name: caveman-compress
+description: >
+  Compress a memory file such as CLAUDE.md or a todo list into caveman format
+  to save input tokens, keeping a readable backup. Trigger: /caveman-compress.
+---
 
 # Caveman Compress
 

@@ -1,7 +1,7 @@
-# Module: investigate-first
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/investigate-first/`.
-> Original trigger scope: Diagnose ambiguous failures before editing. Use for unknown causes, intermittent behavior, performance regressions, or investigations needing evidence-ranked hypotheses.
+---
+name: investigate-first
+description: Diagnose ambiguous failures before editing. Use for unknown causes, intermittent behavior, performance regressions, or investigations needing evidence-ranked hypotheses.
+---
 
 # Investigate first
 

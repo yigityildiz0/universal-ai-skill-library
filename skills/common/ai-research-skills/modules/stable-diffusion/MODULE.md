@@ -74,9 +74,7 @@ pipe = AutoPipelineForText2Image.from_pretrained(
     torch_dtype=torch.float16,
     variant="fp16"
 )
-pipe.to("cuda")
-
-# Enable memory optimization
+# Choose CPU offload on the freshly loaded pipeline, before moving it to CUDA.
 pipe.enable_model_cpu_offload()
 
 image = pipe(
@@ -303,7 +301,9 @@ image = pipe("A portrait in the trained style").images[0]
 # Adjust LoRA strength
 pipe.fuse_lora(lora_scale=0.8)
 
-# Unload LoRA
+# Valid fused-inference workflow: remove adapter modules, keep fused base weights.
+# This does NOT restore the original base. To restore, unfuse_lora() BEFORE
+# unloading while adapter state remains available, or reload the base checkpoint.
 pipe.unload_lora_weights()
 ```
 
@@ -325,11 +325,10 @@ image = pipe("A portrait").images[0]
 ### Enable CPU offloading
 
 ```python
-# Model CPU offload - moves models to CPU when not in use
-pipe.enable_model_cpu_offload()
-
-# Sequential CPU offload - more aggressive, slower
-pipe.enable_sequential_cpu_offload()
+# Choose ONE on a freshly CPU-loaded pipeline; do not stack these methods.
+pipe.enable_model_cpu_offload()  # Faster alternative
+# Or, on a separate freshly loaded pipeline:
+# pipe.enable_sequential_cpu_offload()  # More aggressive, slower alternative
 ```
 
 ### Attention slicing
@@ -428,7 +427,6 @@ pipe = StableDiffusionXLPipeline.from_pretrained(
     torch_dtype=torch.float16,
     variant="fp16"
 )
-pipe.to("cuda")
 pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
 pipe.enable_model_cpu_offload()
 
@@ -483,12 +481,10 @@ pipe = DiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
 
 **Black/noise images:**
 ```python
-# Check VAE configuration
-# Use safety checker bypass if needed
-pipe.safety_checker = None
-
-# Ensure proper dtype consistency
-pipe = pipe.to(dtype=torch.float16)
+# Diagnose safety-checker flags, NaN/Inf values and checkpoint/scheduler mismatch.
+# FP16 VAE is not a universal fix; it can cause numerical overflow.
+# Use the pipeline's supported VAE upcasting path (e.g. SDXL force_upcast)
+# and match latent/decoder dtypes when doing manual VAE decoding.
 ```
 
 **Slow generation:**

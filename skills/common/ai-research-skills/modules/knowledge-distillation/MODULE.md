@@ -42,7 +42,11 @@ import torch
 import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
 
-# 1. Load teacher (large) and student (small) models
+# 1. Load teacher (large) and student (small) models.
+# Remote/multi-GPU example: 70B+7B FP16 weights alone are ~154 GB decimal,
+# excluding logits, activations, gradients and optimizer states. For a 12 GB
+# GPU, use small same-tokenizer models or cached teacher targets; quantization
+# and CPU offload do not make this full training setup fit automatically.
 teacher = AutoModelForCausalLM.from_pretrained(
     "meta-llama/Llama-2-70b-hf",  # Large teacher
     torch_dtype=torch.float16,
@@ -66,18 +70,27 @@ def distillation_loss(student_logits, teacher_logits, labels, temperature=2.0, a
         temperature: Softens probability distributions (higher = softer)
         alpha: Weight for distillation loss (1-alpha for hard loss)
     """
-    # Hard loss: Standard cross-entropy with true labels
-    hard_loss = F.cross_entropy(student_logits.view(-1, student_logits.size(-1)), labels.view(-1))
-
-    # Soft loss: KL divergence between student and teacher
+    # Causal prediction at position t targets token t+1. Labels must mark
+    # padding (and optionally prompt tokens) as -100. Vocabularies must align.
+    student_logits = student_logits[:, :-1].float()
+    teacher_logits = teacher_logits[:, :-1].detach().to(student_logits.device).float()
+    labels = labels[:, 1:].to(student_logits.device)
+    valid = labels.ne(-100)
+    if not valid.any():
+        raise ValueError("Batch has no supervised tokens")
+    hard_loss = F.cross_entropy(student_logits[valid], labels[valid])
     soft_targets = F.softmax(teacher_logits / temperature, dim=-1)
     soft_student = F.log_softmax(student_logits / temperature, dim=-1)
-    soft_loss = F.kl_div(soft_student, soft_targets, reduction='batchmean') * (temperature ** 2)
+    token_kl = F.kl_div(soft_student, soft_targets, reduction='none').sum(-1)
+    soft_loss = token_kl[valid].mean() * (temperature ** 2)
 
     # Combined loss
     return alpha * soft_loss + (1 - alpha) * hard_loss
 
-# 3. Training loop
+# 3. Training loop (dataloader/optimizer supplied by the caller)
+teacher.eval()
+student.train()
+optimizer.zero_grad(set_to_none=True)
 for batch in dataloader:
     # Teacher forward (no grad)
     with torch.no_grad():
@@ -110,21 +123,15 @@ for batch in dataloader:
 **Innovation**: Use reverse KLD instead of forward KLD for better generative model distillation.
 
 ```python
-def reverse_kl_loss(student_logits, teacher_logits, temperature=1.0):
-    """
-    Reverse KL divergence: KL(Teacher || Student)
-    Better for generative models than forward KL.
-    """
-    # Teacher distribution (target)
-    p_teacher = F.softmax(teacher_logits / temperature, dim=-1)
-
-    # Student distribution (model)
-    log_p_student = F.log_softmax(student_logits / temperature, dim=-1)
-
-    # Reverse KL: Sum over teacher, student learns to cover teacher's modes
-    reverse_kl = -(p_teacher * log_p_student).sum(dim=-1).mean()
-
-    return reverse_kl * (temperature ** 2)
+def reverse_kl_loss(student_logits, teacher_logits, labels, temperature=1.0):
+    """Tokenwise KL(student || teacher); not the complete MiniLLM algorithm."""
+    log_s = F.log_softmax(student_logits[:, :-1].float() / temperature, dim=-1)
+    log_t = F.log_softmax(teacher_logits[:, :-1].detach().to(log_s.device).float() / temperature, dim=-1)
+    valid = labels[:, 1:].to(log_s.device).ne(-100)
+    if not valid.any():
+        raise ValueError("Batch has no supervised tokens")
+    token_kl = (log_s.exp() * (log_s - log_t)).sum(-1)
+    return token_kl[valid].mean() * temperature ** 2
 
 # Training with MiniLLM
 for batch in dataloader:
@@ -134,16 +141,17 @@ for batch in dataloader:
     student_logits = student(**batch).logits
 
     # Reverse KLD (better for generation)
-    loss = reverse_kl_loss(student_logits, teacher_logits, temperature=1.0)
+    loss = reverse_kl_loss(student_logits, teacher_logits, batch['labels'], temperature=1.0)
 
+    optimizer.zero_grad(set_to_none=True)
     loss.backward()
     optimizer.step()
 ```
 
 **Why reverse KL?**
-- **Forward KL** (standard): Student learns to match teacher's *mean*
-- **Reverse KL** (MiniLLM): Student learns to *cover* all teacher's modes
-- Better for diverse text generation
+- **Forward KL** `KL(teacher || student)`: generally mode-covering.
+- **Reverse KL** `KL(student || teacher)`: generally mode-seeking.
+- The tokenwise demonstration is not the complete MiniLLM sequence-level training procedure; use the linked official implementation to reproduce that paper.
 
 ### Response Distillation
 
@@ -157,7 +165,7 @@ teacher_responses = []
 for prompt in prompts:
     inputs = tokenizer(prompt, return_tensors='pt').to(teacher.device)
     outputs = teacher.generate(**inputs, max_new_tokens=256, do_sample=True, temperature=0.7)
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    response = tokenizer.decode(outputs[0, inputs['input_ids'].shape[1]:], skip_special_tokens=True)
     teacher_responses.append(response)
 
 # 2. Train student on teacher's responses (standard fine-tuning)
@@ -166,11 +174,20 @@ train_dataset = [
     for prompt, response in zip(prompts, teacher_responses)
 ]
 
-# 3. Fine-tune student
+# 3. Tokenize and create causal labels with padding masked by the collator
+from datasets import Dataset
+from transformers import DataCollatorForLanguageModeling
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token = tokenizer.eos_token
+train_dataset = Dataset.from_list(train_dataset).map(
+    lambda batch: tokenizer(batch['text'], truncation=True, max_length=512),
+    batched=True, remove_columns=['text'],
+)
 trainer = Trainer(
     model=student,
     args=TrainingArguments(output_dir="./student", num_train_epochs=3, learning_rate=2e-5),
     train_dataset=train_dataset,
+    data_collator=DataCollatorForLanguageModeling(tokenizer, mlm=False),
 )
 trainer.train()
 ```

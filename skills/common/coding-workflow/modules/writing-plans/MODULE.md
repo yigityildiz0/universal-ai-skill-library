@@ -7,13 +7,13 @@
 
 ## Overview
 
-Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
+Write an executable plan sized to risk and handoff needs: goal, exact file scope, dependencies, decisions, acceptance criteria, and verification. Small work can use a short checklist. Include complete code only for tricky contracts/examples or when needed for a reliable handoff; do not duplicate the entire implementation in every plan. Commits and worktrees are optional authorized operations.
 
 Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well.
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
-**Context:** If working in an isolated worktree, create or verify it with the installed `using-git-worktrees` skill at execution time.
+**Context:** If isolation is needed, use [using-git-worktrees](../using-git-worktrees/MODULE.md) at execution time; these are internal modules, not separately installed skills.
 
 **Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
 - (User preferences for plan location override this default)
@@ -35,21 +35,21 @@ This structure informs the task decomposition. Each task should produce self-con
 
 ## Bite-Sized Task Granularity
 
-**Each step is one action (2-5 minutes):**
+**Use focused verifiable steps; 2-5 minutes is a rough planning example, not a required duration:**
 - "Write the failing test" - step
 - "Run it to make sure it fails" - step
 - "Implement the minimal code to make the test pass" - step
 - "Run the tests and make sure they pass" - step
-- "Commit" - step
+- "Commit" - only when authorized and useful
 
 ## Plan Document Header
 
-**Every plan MUST start with this header:**
+**Suggested header for a substantial saved plan:**
 
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** Use the installed `subagent-driven-development` skill when delegation is available and permitted, or `executing-plans` for inline execution. Implement this plan task-by-task and track steps with checkbox (`- [ ]`) syntax.
+> **For agentic workers:** Read coding-workflow's `modules/subagent-driven-development/MODULE.md` only when delegation is explicitly authorized, otherwise `modules/executing-plans/MODULE.md` for inline work. Resolve these paths from the skill root, not the saved plan directory. Track verifiable tasks with checkboxes.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -95,29 +95,29 @@ def function(input):
 Run: `pytest tests/path/test.py::test_name -v`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Commit, if authorized**
 
 ```bash
-git add tests/path/test.py src/path/file.py
+git add -- tests/path/test.py src/path/file.py
 git commit -m "feat: add specific feature"
 ```
 ````
 
 ## No Placeholders
 
-Every step must contain the actual content an engineer needs. These are **plan failures** — never write them:
+Every step needs enough detail to execute without guessing material requirements. Avoid:
 - "TBD", "TODO", "implement later", "fill in details"
 - "Add appropriate error handling" / "add validation" / "handle edge cases"
-- "Write tests for the above" (without actual test code)
-- "Similar to Task N" (repeat the code — the engineer may be reading tasks out of order)
-- Steps that describe what to do without showing how (code blocks required for code steps)
+- "Write tests for the above" without specifying the behavior, cases, and pass/fail criterion
+- Unresolvable cross-references; link precise shared context instead of duplicating code
+- Steps missing important contracts or acceptance criteria; full implementation code is optional
 - References to types, functions, or methods not defined in any task
 
 ## Remember
 - Exact file paths always
-- Complete code in every step — if a step changes code, show the code
+- Sufficient contracts, file scope, and examples; complete code only where it adds value
 - Exact commands with expected output
-- DRY, YAGNI, TDD, frequent commits
+- DRY, YAGNI, risk-appropriate tests, commits only when authorized
 
 ## Self-Review
 
@@ -129,24 +129,8 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
 
-If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
+If you find issues, fix them inline, then recheck changed sections and dependent tasks for coverage/type consistency. Do not repeat unrelated checks without a reason. Add missing requirements within authorized scope.
 
 ## Execution Handoff
 
-After saving the plan, offer execution choice:
-
-**"Plan complete and saved to `docs/plans/<filename>.md`. Two execution options:**
-
-**1. Subagent-Driven (when available and permitted)** - Dispatch a fresh subagent per task and review between tasks
-
-**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
-
-**Which approach?"**
-
-**If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use the installed `subagent-driven-development` skill
-- Fresh subagent per task + two-stage review
-
-**If Inline Execution chosen:**
-- **REQUIRED SUB-SKILL:** Use the installed `executing-plans` skill
-- Batch execution with checkpoints for review
+If implementation is already requested, continue without asking whether to execute. Read [executing-plans](../executing-plans/MODULE.md); use [subagent-driven-development](../subagent-driven-development/MODULE.md) only if delegation is explicitly authorized and useful. For plan-only requests, deliver the plan and stop. Ask only about a material unresolved decision, not a routine execution preference.

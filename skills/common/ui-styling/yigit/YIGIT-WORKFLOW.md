@@ -1,6 +1,6 @@
-# Yiğit's customized ui-styling workflow
+# the user's customized ui-styling workflow
 
-> Yiğit's earlier customized copy of `ui-styling`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
+> the user's earlier customized copy of `ui-styling`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
 > Original trigger scope: Mevcut arayüzün stilini, responsive davranışını ve durumlarını mevcut bileşen sistemiyle uygula.
 
 # UI Styling

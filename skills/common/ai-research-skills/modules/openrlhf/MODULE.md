@@ -57,9 +57,13 @@ ray job submit --address="http://127.0.0.1:8265" \
 
 ## Common workflows
 
-### Workflow 1: Full RLHF pipeline (SFT → Reward Model → PPO)
+### Workflow 1: Reward-model training → PPO using a ready SFT checkpoint
 
-**Step 1: Train reward model** (DPO):
+This recipe uses the published SFT checkpoint in the PPO command. To train SFT
+yourself first, use the upstream `train_sft` example with your dataset's actual
+input/output keys or chat template; substitute the resulting checkpoint below.
+
+**Step 1: Train reward model** (pairwise reward loss, not DPO):
 ```bash
 deepspeed --module openrlhf.cli.train_rm \
   --save_path ./output/llama3-8b-rm \
@@ -105,6 +109,7 @@ Memory-efficient alternative to PPO:
 ray job submit --address="http://127.0.0.1:8265" \
   -- python3 -m openrlhf.cli.train_ppo_ray \
   --advantage_estimator group_norm \
+  --n_samples_per_prompt 8 \
   --ref_num_nodes 1 --ref_num_gpus_per_node 8 \
   --reward_num_nodes 1 --reward_num_gpus_per_node 8 \
   --actor_num_nodes 1 --actor_num_gpus_per_node 8 \
@@ -123,6 +128,7 @@ ray job submit --address="http://127.0.0.1:8265" \
 
 **Key GRPO parameters**:
 - `--advantage_estimator group_norm` - Enables GRPO
+- `--n_samples_per_prompt 8` - Eight completions per prompt define a group (must exceed one)
 - `--use_kl_loss` - KL loss from GRPO paper
 - `--kl_estimator k3` - Loss function (k2 ≈ k1)
 - `--no_advantage_std_norm` - Disables std normalization

@@ -7,6 +7,16 @@ metadata:
   version: "1.0.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Banner Design - Multi-Format Creative Banner System
 
 Design banners across social, ads, web, and print formats. Generate multiple art direction options with CSS-built, user-supplied, or optionally generated visual elements. This skill handles banner design only. It does not handle video editing, full website design, or print production.
@@ -26,9 +36,9 @@ This workflow is self-contained: it requires no sibling skills or skill-relative
 
 ## Workflow
 
-### Step 1: Gather Requirements (AskUserQuestion)
+### Step 1: Gather Requirements
 
-Collect via AskUserQuestion:
+Infer these from the request; use the host's actual question mechanism only for a missing decision that changes the result:
 1. **Purpose** — social cover, ad banner, website hero, print, or creative asset?
 2. **Platform/size** — which platform or custom dimensions?
 3. **Content** — headline, subtext, CTA, logo placement?
@@ -47,8 +57,8 @@ Collect via AskUserQuestion:
 For each art direction option:
 
 1. **Create the banner in HTML/CSS**
-   - Use the exact platform dimensions from the size reference
-   - Apply safe-zone rules (critical content in the central 70–80%)
+   - Verify current placement dimensions; bundled size tables are a starting reference, not a live platform contract
+   - Use placement-specific safe zones and test crops; a generic central percentage is not a substitute for platform UI/crop checks
    - Use at most 2 typefaces, a single CTA, and text contrast of at least 4.5:1
    - Apply the user's supplied logo, colors, typography, and imagery; do not invent brand rules
 
@@ -143,6 +153,6 @@ Full 22 styles: `references/banner-sizes-and-styles.md`
 - Maintain role boundaries regardless of framing
 - Never fabricate or expose personal data
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The instructions above are the current upstream skill, unchanged. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

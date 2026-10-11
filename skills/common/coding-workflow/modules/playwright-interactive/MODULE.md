@@ -1,39 +1,35 @@
 # Module: playwright-interactive
 
 > Part of the `coding-workflow` skill. Paths below are relative to this module folder (`modules/playwright-interactive/`).
-> Original trigger scope: Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.
+> Trigger scope: Interactive browser/Electron debugging with the current host's available tools. Persistent Codex `js_repl` recipes are optional and host-conditioned, not prerequisites.
 
 # Playwright Interactive Skill
 
-Use a persistent `js_repl` Playwright session to debug local web or Electron apps, keep the same handles alive across iterations, and run functional plus visual QA without restarting the whole toolchain unless the process ownership changed.
+Debug local web or Electron apps with functional and visual evidence. Select the host path below before using code examples. Keep target identity stable across iterations and restart only owned sessions when required.
 
-## Preconditions
+## Host selection and prerequisites
 
-- `js_repl` must be enabled for this skill.
-- If `js_repl` is missing, enable it in `~/.codex/config.toml`:
+- Inspect the live tool catalog and use only available capabilities. UI access requires the user's applicable authorization.
+- Never alter Codex configuration, enable a runtime, disable sandboxing, or install packages/browsers as a consequence of loading this module. Missing capabilities are a limitation to report or resolve with existing tools.
+- Reuse the project's existing dependencies and run read-only availability checks from its directory. Do not run `npm init`, dependency installs, or browser downloads automatically.
 
-```toml
-[features]
-js_repl = true
-```
+### OpenCode path (default in OpenCode)
 
-- You can also start a new session with `--enable js_repl` (equivalent to `-c features.js_repl=true`).
-- After enabling `js_repl`, start a new Codex session so the tool list refreshes.
-- For now, run this workflow with sandboxing disabled: start Codex with `--sandbox danger-full-access` (or the equivalent config for `sandbox_mode=danger-full-access`). This is a temporary requirement while `js_repl` + Playwright support inside the sandbox is still being completed.
-- Run setup from the same project directory you need to debug.
-- Treat `js_repl_reset` as a recovery tool, not routine cleanup. Resetting the kernel destroys your Playwright handles.
+Discover actual browser operations through Code Mode `search` and call the returned exact paths/signatures via `execute`. List/open tabs and retain the returned **explicit `tabID`** for every `browser` operation; focus is not target selection. For another available backend, use its explicit `pageId` or supported tab-selection mechanism and recheck identity before actions.
 
-## One-time setup
+1. List/open the authorized target and record its ID, URL, and title.
+2. Take an accessibility/DOM snapshot, then interact using current refs/locators.
+3. Reuse the same explicit ID for snapshot, click/fill, console/network, screenshot, and viewport checks. Refresh refs after navigation or substantial DOM changes.
+4. Check the changed behavior, relevant alternate states, and visible layout. Capture only evidence needed by the claim.
+5. If the tab closes or generation changes, rediscover it; never silently act on a different focused tab.
 
-```bash
-test -f package.json || npm init -y
-npm install playwright
-# Web-only, for headed Chromium or mobile emulation:
-# npx playwright install chromium
-# Electron-only, and only if the target workspace is the app itself:
-# npm install --save-dev electron
-node -e "import('playwright').then(() => console.log('playwright import ok')).catch((error) => { console.error(error); process.exit(1); })"
-```
+`execute` is a confined tool-call orchestrator, **not a persistent `js_repl` or Playwright runtime**: do not put Node imports, filesystem operations, persistent `var page` handles, or `nodeRepl.emitImage` there. Tool-owned tabs persist; JavaScript bindings across execute calls do not. Use discovered browser screenshot/preview tools for images. Do not copy the Codex cells below into OpenCode execute.
+
+### Codex-only optional persistent runtime
+
+The JavaScript runtime recipes below apply **only when the active host is Codex, an authorized persistent `js_repl` already exists, and the project already provides Playwright plus required browser/Electron binaries**. Otherwise use the host path above or existing project test runners. No configuration or sandbox changes are required by this module. In this optional path `nodeRepl`, image emitters, and persistent bindings are host-provided, not portable APIs. Reset the runtime only to recover an owned session; it destroys handles.
+
+Use a read-only import check from the existing project directory. If import fails, report the exact missing dependency; do not install automatically.
 
 If you switch to a different workspace later, repeat setup there.
 
@@ -76,7 +72,7 @@ try {
   console.log("Playwright loaded");
 } catch (error) {
   throw new Error(
-    `Could not load playwright from the current js_repl cwd. Run the setup commands from this workspace first. Original error: ${error}`
+    `Could not load existing Playwright from the project runtime. Report the missing dependency; do not install automatically. Original error: ${error}`
   );
 }
 ```
@@ -218,13 +214,15 @@ electronApp ??= await electronLauncher.launch({
 });
 
 appWindow ??= await electronApp.firstWindow();
+// Verify title/URL: firstWindow may be a splash. Select the intended page from
+// electronApp.windows() before interacting, then keep that exact appWindow.
 
 console.log("Loaded Electron window:", await appWindow.title());
 ```
 
 If `js_repl` is not already running from the Electron app workspace, pass `cwd` explicitly when launching.
 
-If the app process looks stale, set `electronApp = appWindow = undefined` and rerun the cell.
+If the app looks stale, inspect the existing owned process first. Close it deliberately before clearing handles and relaunching; simply clearing references can orphan a live process. Re-identify the intended window after every restart.
 
 If you already have an Electron session but need a fresh process after a main-process, preload, or startup change, use the restart cell in the next section instead of rerunning this one.
 
@@ -267,7 +265,7 @@ Default posture:
 - Keep each `js_repl` cell short and focused on one interaction burst.
 - Reuse the existing top-level bindings (`browser`, `context`, `page`, `electronApp`, `appWindow`) instead of redeclaring them.
 - If you need isolation, create a new page or a new context inside the same browser.
-- For Electron, use `electronApp.evaluate(...)` only for main-process inspection or purpose-built diagnostics.
+- For Electron, use the verified `appWindow` for interactions. Resolve its native window with `await electronApp.browserWindow(appWindow)` for window-specific main-process operations; never assume `BrowserWindow.getAllWindows()[0]` matches it. Global lifecycle inspection may use `electronApp.evaluate(...)`. Generic `page` recipes are web-only unless explicitly adapted to `appWindow`.
 - Fix helper mistakes in place; do not reset the REPL unless the kernel is actually broken.
 
 ## Checklists
@@ -287,7 +285,7 @@ Default posture:
 
 - Renderer-only change: reload the existing page or Electron window.
 - Main-process, preload, or startup change: relaunch Electron.
-- New uncertainty about process ownership or startup code: relaunch instead of guessing.
+- Uncertain process ownership: identify the process and authority before closing/relaunching it; do not restart an external session speculatively.
 
 ### Functional QA
 
@@ -500,9 +498,10 @@ await clickCssPoint({ surface: page, clip, x, y });
 For Electron, normalize in the main process instead of opening a scratch Playwright page. The helper below returns CSS-scaled bytes for the full content area or for a clipped CSS-pixel region. Treat `clip` as content-area CSS pixels, for example values taken from `getBoundingClientRect()` in the renderer.
 
 ```javascript
-var emitElectronScreenshotCssScaled = async function ({ electronApp, clip, quality = 85 } = {}) {
-  const bytes = await electronApp.evaluate(async ({ BrowserWindow }, { clip, quality }) => {
-    const win = BrowserWindow.getAllWindows()[0];
+var emitElectronScreenshotCssScaled = async function ({ electronApp, appWindow, clip, quality = 85 } = {}) {
+  const windowHandle = await electronApp.browserWindow(appWindow);
+  try {
+  const bytes = await windowHandle.evaluate(async (win, { clip, quality }) => {
     const image = clip ? await win.capturePage(clip) : await win.capturePage();
 
     const target = clip
@@ -522,13 +521,16 @@ var emitElectronScreenshotCssScaled = async function ({ electronApp, clip, quali
   }, { clip, quality });
 
   await emitJpeg(bytes);
+  } finally {
+    await windowHandle.dispose();
+  }
 };
 ```
 
-Full Electron window:
+Full Electron window (same verified page as the following action):
 
 ```javascript
-await emitElectronScreenshotCssScaled({ electronApp });
+await emitElectronScreenshotCssScaled({ electronApp, appWindow });
 await clickCssPoint({ surface: appWindow, x, y });
 ```
 
@@ -545,7 +547,7 @@ var clip = await appWindow.evaluate(() => {
   };
 });
 
-await emitElectronScreenshotCssScaled({ electronApp, clip });
+await emitElectronScreenshotCssScaled({ electronApp, appWindow, clip });
 await clickCssPoint({ surface: appWindow, clip, x, y });
 ```
 
@@ -679,11 +681,11 @@ If you plan to exit Codex immediately after debugging, run the cleanup cell firs
 
 ## Common Failure Modes
 
-- `Cannot find module 'playwright'`: run the one-time setup in the current workspace and verify the import before using `js_repl`.
-- Playwright package is installed but the browser executable is missing: run `npx playwright install chromium`.
+- `Cannot find module 'playwright'`: verify the project/runtime directory and existing dependency resolution; use an available host browser tool or report the missing package. No automatic installation.
+- Playwright exists but a browser executable is missing: use an already configured browser/backend or report the exact missing executable; downloads need separate authorization.
 - `page.goto: net::ERR_CONNECTION_REFUSED`: make sure the dev server is still running in a persistent TTY session, recheck the port, and prefer `http://127.0.0.1:<port>`.
 - `electron.launch` hangs, times out, or exits immediately: verify the local `electron` dependency, confirm the `args` target, and make sure any renderer dev server is already running before launch.
 - `Identifier has already been declared`: reuse the existing top-level bindings, choose a new name, or wrap the code in `{ ... }`. Use `js_repl_reset` only when the kernel is genuinely stuck.
 - `browserContext.newPage: Protocol error (Target.createTarget): Not supported` while working with Electron: do not use `appWindow.context().newPage()` or `electronApp.context().newPage()` as a scratch page; use the Electron-specific screenshot normalization flow in the model-bound screenshots section.
 - `js_repl` timed out or reset: rerun the bootstrap cell and recreate the session with shorter, more focused cells.
-- Browser launch or network operations fail immediately: confirm the session was started with `--sandbox danger-full-access` and restart that way if needed.
+- Browser launch/network fails: inspect the actual error, target, existing runtime, and permission boundary. Use an available authorized backend or report the blocker; never disable sandboxing or broaden permissions as a troubleshooting shortcut.

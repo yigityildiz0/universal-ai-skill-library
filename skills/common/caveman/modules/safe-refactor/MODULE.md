@@ -1,7 +1,7 @@
-# Module: safe-refactor
-
-> Upstream JuliusBrussee/caveman skill, unchanged. Paths are relative to `modules/safe-refactor/`.
-> Original trigger scope: Restructure code while preserving behavior. Use for extraction, consolidation, ownership moves, or cleanup where verification must bracket structural edits.
+---
+name: safe-refactor
+description: Restructure code while preserving behavior. Use for extraction, consolidation, ownership moves, or cleanup where verification must bracket structural edits.
+---
 
 # Safe refactor
 

@@ -102,7 +102,10 @@ model_13b = "liuhaotian/llava-v1.5-13b"
 model_34b = "liuhaotian/llava-v1.6-34b"
 
 # 4-bit quantization for lower VRAM
-load_4bit = True  # Reduces VRAM by ~4×
+tokenizer, model, image_processor, context_len = load_pretrained_model(
+    model_path=model_7b, model_base=None,
+    model_name=get_model_name_from_path(model_7b), load_4bit=True,
+)  # Quantizes supported weights; total VRAM also includes vision/activations/KV cache
 ```
 
 ## CLI usage
@@ -261,14 +264,43 @@ LLaVA achieves competitive scores on:
 ### LangChain
 
 ```python
-from langchain.llms.base import LLM
+from langchain_core.language_models.llms import LLM
+from typing import Any
+
+def ask_llava(image, question):
+    """Uses tokenizer/model/image_processor loaded in the basic example."""
+    if image is None:
+        raise ValueError("Provide an image")
+    tensors = process_images([image.convert("RGB")], image_processor, model.config)
+    tensors = ([t.to(model.device, dtype=torch.float16) for t in tensors]
+               if isinstance(tensors, list) else tensors.to(model.device, dtype=torch.float16))
+    conv = conv_templates["llava_v1"].copy()
+    conv.append_message(conv.roles[0], DEFAULT_IMAGE_TOKEN + "\n" + question)
+    conv.append_message(conv.roles[1], None)
+    ids = tokenizer_image_token(conv.get_prompt(), tokenizer, IMAGE_TOKEN_INDEX,
+                                return_tensors="pt").unsqueeze(0).to(model.device)
+    with torch.inference_mode():
+        output = model.generate(ids, images=tensors, image_sizes=[image.size],
+                                do_sample=False, max_new_tokens=256)
+    # LLaVA versions can return only new tokens or include the prompt prefix.
+    if output.shape[1] >= ids.shape[1] and torch.equal(output[0, :ids.shape[1]], ids[0]):
+        output = output[:, ids.shape[1]:]
+    return tokenizer.decode(output[0], skip_special_tokens=True).strip()
 
 class LLaVALLM(LLM):
-    def _call(self, prompt, stop=None):
-        # Custom LLaVA inference
+    image: Any
+
+    @property
+    def _llm_type(self):
+        return "local-llava"
+
+    def _call(self, prompt, stop=None, run_manager=None, **kwargs):
+        response = ask_llava(self.image, prompt)
+        if stop:
+            response = response[:min([response.find(s) for s in stop if s in response] or [len(response)])]
         return response
 
-llm = LLaVALLM()
+llm = LLaVALLM(image=Image.open("image.jpg"))
 ```
 
 ### Gradio App
@@ -276,8 +308,9 @@ llm = LLaVALLM()
 ```python
 import gradio as gr
 
-def chat(image, text, history):
-    response = ask_llava(model, image, text)
+def chat(text, history, image):
+    # Single-turn visual QA: history is not included in this minimal adapter.
+    response = ask_llava(image, text)
     return response
 
 demo = gr.ChatInterface(

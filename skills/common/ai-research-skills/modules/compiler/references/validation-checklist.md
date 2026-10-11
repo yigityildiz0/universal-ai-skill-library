@@ -55,7 +55,7 @@ All must exist with >10 bytes:
 - Has Key Insight section (`## Key Insight` or `**Insight**`)
 
 ### logic/experiments.md
-- Has `## E\d+` blocks (at least 3)
+- Has supported/proposed `## E\d+` blocks, or explicitly records missing evidence
 - Contains `**Verifies**`
 - Contains `**Setup**`
 - Contains `**Procedure**`
@@ -75,13 +75,13 @@ All must exist with >10 bytes:
   citation footprint
 
 ### logic/concepts.md
-- Has `## ` sections (at least 5)
+- Has source-supported `## ` concept sections, or explicitly records missing evidence
 - Contains `**Definition**`
 
 ## 5. Count Checks
 
-- `logic/concepts.md`: ≥5 concept sections (`## ` headers)
-- `logic/experiments.md`: ≥3 experiment blocks (`## E\d+`)
+- Concept coverage target 5+ and experiment target 3+ apply only to rich sources;
+  fewer items are valid with explicit coverage gaps. Never pad counts.
 - `src/execution/`: ≥1 `.py` file
 - `evidence/tables/` or `evidence/figures/`: ≥1 `.md` file
 
@@ -109,7 +109,9 @@ For each file in `evidence/tables/*.md` and `evidence/figures/*.md`:
 
 - Parses as valid YAML
 - Has top-level `tree` key
-- ≥8 nodes total (counted recursively through children)
+- Target 8+ nodes only when evidence warrants; fewer nodes are valid with an
+  explicit missing-history note. Inferred/proposed nodes are labeled, never
+  fabricated as observed dead ends or decisions.
 - All node types in {question, decision, experiment, dead_end, pivot}
 - At least 1 `dead_end` node exists
 - At least 1 `decision` node exists

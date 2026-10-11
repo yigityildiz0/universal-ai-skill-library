@@ -372,11 +372,38 @@ print(lm["answer"])
 ```python
 from guidance import models, gen, select, guidance
 
+import ast
+import math
+import operator
+
+def calculate(expression):
+    """Bounded arithmetic only: no names, calls, attributes or exponentiation."""
+    if len(expression) > 200:
+        raise ValueError("Expression too long")
+    tree = ast.parse(expression, mode="eval")
+    if sum(1 for _ in ast.walk(tree)) > 64:
+        raise ValueError("Expression too complex")
+    operations = {ast.Add: operator.add, ast.Sub: operator.sub,
+                  ast.Mult: operator.mul, ast.Div: operator.truediv}
+    def visit(node):
+        if isinstance(node, ast.Constant) and type(node.value) in (int, float):
+            value = node.value
+        elif isinstance(node, ast.BinOp) and type(node.op) in operations:
+            value = operations[type(node.op)](visit(node.left), visit(node.right))
+        elif isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            value = visit(node.operand) * (-1 if isinstance(node.op, ast.USub) else 1)
+        else:
+            raise ValueError("Only numeric arithmetic is allowed")
+        if abs(value) > 1e100 or not math.isfinite(value):
+            raise ValueError("Result out of range")
+        return value
+    return visit(tree.body)
+
 @guidance(stateless=False)
 def react_agent(lm, question):
     """ReAct agent with tool use."""
     tools = {
-        "calculator": lambda expr: eval(expr),
+        "calculator": calculate,
         "search": lambda query: f"Search results for: {query}",
     }
 
@@ -398,8 +425,14 @@ def react_agent(lm, question):
 
         # Execute tool
         if lm["action"] in tools:
-            result = tools[lm["action"]](lm["action_input"])
+            try:
+                result = tools[lm["action"]](lm["action_input"])
+            except (ValueError, SyntaxError, ZeroDivisionError, OverflowError) as exc:
+                result = f"Calculation error: {exc}"
             lm += f"Observation: {result}\n\n"
+
+    else:
+        lm += "\nTool-round limit reached. Final Answer: " + gen("answer", max_tokens=100)
 
     return lm
 

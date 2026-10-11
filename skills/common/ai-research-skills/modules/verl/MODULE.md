@@ -33,14 +33,14 @@ verl is a flexible, efficient, and production-ready RL training library for larg
 
 ```bash
 # Option 1: pip install
-pip install verl[vllm]  # or verl[sglang] for SGLang backend
+pip install 'verl[vllm]'  # or 'verl[sglang]' for SGLang backend
 
 # Option 2: Docker (recommended for production)
 docker pull verlai/verl:vllm011.latest
 
 # Option 3: From source
 git clone https://github.com/volcengine/verl.git
-cd verl && pip install -e .[vllm,math]
+cd verl && pip install -e '.[vllm,math]'
 ```
 
 ## Quick Start: GRPO Training
@@ -106,22 +106,24 @@ df.to_parquet("train.parquet")
 # reward_function.py
 import re
 
-def compute_reward(responses, ground_truths):
-    rewards = []
-    for response, gt in zip(responses, ground_truths):
-        # Extract answer from response
-        match = re.search(r'\\boxed{([^}]+)}', response)
-        if match and match.group(1).strip() == gt.strip():
-            rewards.append(1.0)
-        else:
-            rewards.append(0.0)
-    return rewards
+def compute_reward(data_source, solution_str, ground_truth, extra_info=None):
+    # Per-example callback for the default reward manager (toy boxed parser).
+    match = re.search(r'\\boxed{([^}]+)}', solution_str)
+    return float(bool(match) and match.group(1).strip() == str(ground_truth).strip())
 ```
 
 ### Step 3: Create Training Config
 
 ```yaml
 # config/grpo_math.yaml
+defaults:
+  - ppo_trainer
+  - _self_
+
+custom_reward_function:
+  path: /absolute/path/to/reward_function.py
+  name: compute_reward
+
 algorithm:
   adv_estimator: grpo
   gamma: 1.0
@@ -339,7 +341,7 @@ trainer.async_weight_update=true
 
 **Solution**: Use compatible versions:
 ```bash
-pip install vllm>=0.8.5,<=0.12.0
+pip install 'vllm>=0.8.5,<=0.12.0'  # Historical range; match your pinned verl release
 # Avoid vLLM 0.7.x (known bugs)
 ```
 

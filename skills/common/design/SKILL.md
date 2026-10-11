@@ -7,9 +7,23 @@ metadata:
   version: "2.1.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Design
 
 Unified design skill: brand, tokens, UI, logo, CIP, slides, banners, social photos, icons.
+
+## Host tool adapter
+
+`AskUserQuestion` below means the host's supported clarification tool, not a required literal name. In DeepSeek Harness call `tools.ask_user_question` inside `run_code`; if unavailable, ask a concise question in the conversation. Likewise, use catalog-confirmed equivalents for upstream `Bash`/`Agent` names: Harness has `tools.pwsh` and authorized `tools.subagent` / `tools.subagent_fork`, accessed through `run_code`. Translate POSIX shell examples for PowerShell rather than running them verbatim, and honor no-delegation instructions. Do not install dependencies or invoke paid generators merely because this skill was loaded. On other hosts retain their supported native tools.
 
 ## When to Use
 
@@ -331,6 +345,6 @@ logo workflow leaves at the provider default.
 **Bundled sub-skills:** brand, design-system, ui-styling
 **Related Skills:** ui-ux-pro-max
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The instructions above are the current upstream skill, unchanged. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

@@ -1,7 +1,7 @@
 # Module: physio-study-coach
 
 > Part of the `academic-study-coach` skill. Paths below are relative to this module folder (`modules/physio-study-coach/`).
-> Original trigger scope: Automatically turn physiotherapy and rehabilitation lecture slides, PDFs, textbook pages, class notes, screenshots, cases, or learning objectives into an exam-ready study system. Use when Yiğit asks to explain an FTR topic, summarize material, prepare for an exam, identify high-yield points, create tables, flashcards, active-recall questions, quizzes, case questions, OSCE stations, mnemonics, or a study plan—even if he only uploads course material and says "çalıştır", "anlat", or "not çıkar". Preserve source fidelity, separate source content from added clinical context, detect unreadable/missing material, and adapt depth to a fourth-year physiotherapy student. Do not invent lecture content, exam questions presented as real, or patient-specific treatment.
+> Original trigger scope: Automatically turn physiotherapy and rehabilitation lecture slides, PDFs, textbook pages, class notes, screenshots, cases, or learning objectives into an exam-ready study system. Use when the user asks to explain an FTR topic, summarize material, prepare for an exam, identify high-yield points, create tables, flashcards, active-recall questions, quizzes, case questions, OSCE stations, mnemonics, or a study plan—even if he only uploads course material and says "çalıştır", "anlat", or "not çıkar". Preserve source fidelity, separate source content from added clinical context, detect unreadable/missing material, and adapt depth to a the learner's stated training level. Do not invent lecture content, exam questions presented as real, or patient-specific treatment.
 
 # Physio Study Coach
 

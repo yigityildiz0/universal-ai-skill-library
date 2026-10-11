@@ -1,6 +1,6 @@
-# Yiğit's customized banner-design workflow
+# the user's customized banner-design workflow
 
-> Yiğit's earlier customized copy of `banner-design`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
+> the user's earlier customized copy of `banner-design`, kept alongside the current upstream skill. Paths below are relative to this `yigit/` folder.
 > Original trigger scope: Banner, kapak ve reklam görsellerini hedef ölçü, güvenli alan ve okunabilirliğe göre tasarla.
 
 # Banner Design

@@ -30,7 +30,7 @@ When invoked (after the task is done):
    heuristics, pivots, AI actions.
 3. **Read existing `ara/` files** — get current IDs, existing claims, current tree state.
    If `ara/` does not exist, create it (see Initialization below).
-4. **Write updates** — append new entries to the correct files, update existing entries
+4. **Write updates** — append new entries and status-change events to the correct files; never edit historical records
    where status changed, create session record.
 5. **Report what was captured** — one-line summary at the end.
 
@@ -299,7 +299,9 @@ While reviewing `staging/observations.yaml`:
 1. Read existing `ara/` files to get current state (IDs, claims, tree).
 2. Review only research-relevant events of the authorized current task for research-significant events.
 3. Classify each event and assign provenance.
-4. Append new entries to the correct files. Update existing entries if status changed.
+4. Append new entries. For a status change, append a new event referencing the
+   original record ID, prior status, new status, timestamp and supporting evidence.
+   Derive current status by folding events in order; retain the historical record.
 5. Create session record at `ara/trace/sessions/YYYY-MM-DD_NNN.yaml`.
 6. Append session to `ara/trace/sessions/session_index.yaml`.
 7. Run maturity tracker on staging area.

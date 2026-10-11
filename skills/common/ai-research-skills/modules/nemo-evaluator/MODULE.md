@@ -231,6 +231,10 @@ defaults:
 execution:
   output_dir: ./comparison_results
 
+target:
+  api_endpoint:
+    api_key_name: NGC_API_KEY  # Environment variable name, not its secret value
+
 evaluation:
   nemo_evaluator_config:
     config:
@@ -306,6 +310,7 @@ target:
     type: vlm  # Vision-language endpoint
     model_id: nvidia/llama-3.2-90b-vision-instruct
     url: https://integrate.api.nvidia.com/v1/chat/completions
+    api_key_name: NGC_API_KEY
 
 evaluation:
   tasks:
@@ -391,7 +396,7 @@ evaluation:
   nemo_evaluator_config:
     config:
       params:
-        temperature: 0.0  # Deterministic
+        temperature: 0.0  # Greedy; backend/kernels/revisions can still vary
         num_fewshot: 5    # Check paper's fewshot count
 ```
 

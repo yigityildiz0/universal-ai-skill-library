@@ -6,6 +6,16 @@ metadata:
   version: "1.0.0"
 ---
 
+
+## Portable execution
+
+Read [the portable execution adapter](PORTABLE.md) before using host-specific tool examples.
+
+## No-extra-cost execution profile
+
+Use the existing host session and tools, public/open-access sources and local computation. Do not route to separately billed APIs, cloud jobs, credits, subscriptions or paid-trial fallbacks, even if a key or connector exists. Provider examples remain reference material; choose an available no-extra-cost equivalent or name the missing capability. This changes cost routing, not skill features or host permissions.
+
+
 # Slides
 
 Strategic HTML presentation design with data visualization.
@@ -25,7 +35,13 @@ Strategic HTML presentation design with data visualization.
 
 ## Script Paths
 
-Script paths in this skill and its `references/` are relative to the directory that contains this SKILL.md, not to the project: `scripts/<file>` is this skill's own `scripts/` folder, and `../<skill>/scripts/<file>` is a sibling sub-skill installed alongside it. Build the full path from that directory (Claude Code reports it as the skill's base directory when the skill loads) and keep the working directory at the project root — the scripts read and write project files such as `docs/brand-guidelines.md`, `assets/design-tokens.json` or `src/` relative to it.
+Resolve `<SKILL_DIR>` to the directory containing this file. The bundled helpers and CSV databases live in `yigit/scripts/` and `yigit/data/`; no sibling skill is required. Run helpers by absolute path with the working directory at the target project root. Read [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md) for the narrative workflow and helper usage; its `<skill-dir>` means `<SKILL_DIR>/yigit`.
+
+## Output routing
+
+- This skill builds HTML decks. For an explicitly requested editable `.pptx`, use an available PowerPoint/presentation tool and its actual schema; do not rename HTML to PPTX or imply an export was tested.
+- Academic, thesis, conference, seminar and FTR teaching talks route first to `academic-study-coach`; return here only for a requested HTML rendering of the approved academic outline.
+- Infer format from the request; ask only if HTML versus editable PPTX materially changes the deliverable. Do not generate an image, PDF or extra file merely to answer a planning question.
 
 ## References (Knowledge Base)
 
@@ -38,10 +54,10 @@ Script paths in this skill and its `references/` are relative to the directory t
 
 ## Routing
 
-1. Parse subcommand from `$ARGUMENTS` (first word)
-2. Load corresponding `references/{subcommand}.md`
-3. Execute with remaining arguments
+1. Use the user's request directly; `$ARGUMENTS` is optional host syntax.
+2. For creation, read `references/create.md` and execute it directly.
+3. Read only the additional references required by the deliverable.
 
-## Yiğit's working rules (added)
+## the user's working rules (added)
 
-The instructions above are the current upstream skill, unchanged. Yiğit's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.
+The upstream HTML workflow is retained with local script-path and output-routing adaptations. the user's earlier customized workflow for this skill is kept in [yigit/YIGIT-WORKFLOW.md](yigit/YIGIT-WORKFLOW.md). Read it as well; where it is stricter (keep the existing stack, no new dependencies, verify accessibility and the rendered result, preserve brand assets), follow it. Otherwise the upstream instructions apply.

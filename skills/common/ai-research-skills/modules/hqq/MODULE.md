@@ -377,10 +377,16 @@ model = torch.compile(model)
 # 4. Benchmark
 import time
 inputs = tokenizer("Hello", return_tensors="pt").to(model.device)
-start = time.time()
+for _ in range(2):  # Exclude compilation and kernel warm-up
+    model.generate(**inputs, max_new_tokens=100)
+if torch.cuda.is_available():
+    torch.cuda.synchronize()
+start = time.perf_counter()
 for _ in range(10):
     model.generate(**inputs, max_new_tokens=100)
-print(f"Avg time: {(time.time() - start) / 10:.2f}s")
+if torch.cuda.is_available():
+    torch.cuda.synchronize()
+print(f"Avg time: {(time.perf_counter() - start) / 10:.2f}s")
 ```
 
 ## Best practices
@@ -396,13 +402,14 @@ print(f"Avg time: {(time.time() - start) / 10:.2f}s")
 
 **Out of memory during quantization:**
 ```python
-# Quantize layer-by-layer
+# Sequential placement is not a peak-memory guarantee. Budget the largest
+# unquantized layer, quantization workspace, quantized weights and KV cache.
 from hqq.models.hf.base import AutoHQQHFModel
 
 model = AutoHQQHFModel.from_pretrained(
     "meta-llama/Llama-3.1-8B",
     quantization_config=config,
-    device_map="sequential"  # Load layers sequentially
+    device_map="sequential"  # Device placement order; not automatic CPU offloading
 )
 ```
 
