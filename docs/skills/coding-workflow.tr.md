@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/coding-workflow/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [ambiguity-detector](../../skills/common/coding-workflow/modules/ambiguity-detector/MODULE.md) | Detect ambiguous, incomplete, or contradictory requirements and specifications with structured clarification templates. Use when reviewing requirements, user stories, API specifica |
 | [architecture-design](../../skills/common/coding-workflow/modules/architecture-design/MODULE.md) | System architecture design including requirements analysis, trade-off evaluation, ADRs, and system decomposition. Use when designing new systems, evaluating architectures, or docum |

@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/yigit-writer/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [ai-writing-detox](../../skills/common/yigit-writer/modules/ai-writing-detox/MODULE.md) | Eliminates AI-generated writing patterns that erode reader trust. Use when writing or editing articles, docs, or press releases. |
 | [brand-voice](../../skills/common/yigit-writer/modules/brand-voice/MODULE.md) | Define, discover, apply, or audit a brand voice across copy, decks, pages, prompts, and product messaging. Use for tone of voice, messaging consistency, editorial rules, brand lang |

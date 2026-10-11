@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/ai-image-video-studio/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [comfyui-workflow](../../skills/common/ai-image-video-studio/modules/comfyui-workflow/MODULE.md) | Automatically design or substantially modify a ComfyUI workflow when the user wants a new image/video pipeline or capability for FLUX, SDXL, SD3, Wan, Hunyuan, LTXV, Mochi, Cosmos, |
 | [comfyui-workflow-guardian](../../skills/common/ai-image-video-studio/modules/comfyui-workflow-guardian/MODULE.md) | Automatically audit, repair, refactor, and stabilize an existing ComfyUI workflow or Windows runtime when the user shares workflow JSON, an error/screenshot, or reports startup/que |

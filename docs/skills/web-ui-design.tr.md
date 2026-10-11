@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/web-ui-design/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [accessibility-review](../../skills/common/web-ui-design/modules/accessibility-review/MODULE.md) | Audit a web, mobile, desktop, document, or product flow for practical accessibility issues using current WCAG 2.2 AA-oriented checks, code, screenshots, and interaction evidence. U |
 | [browser-testing-with-devtools](../../skills/common/web-ui-design/modules/browser-testing-with-devtools/MODULE.md) | Test and debug web interfaces in a real browser using whatever browser, DevTools, Playwright, or computer-use capability is already available. Use for DOM, console, network, access |

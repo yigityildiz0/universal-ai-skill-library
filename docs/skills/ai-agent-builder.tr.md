@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/ai-agent-builder/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [ai-model-route-evaluator](../../skills/common/ai-agent-builder/modules/ai-model-route-evaluator/MODULE.md) | Compare current AI models, providers, gateways, subscriptions, local routes, and free/paid endpoints for a concrete task. Evaluate exact model identity, modality, Turkish and multi |
 | [chatgpt-apps](../../skills/common/ai-agent-builder/modules/chatgpt-apps/MODULE.md) | Build, scaffold, refactor, and troubleshoot ChatGPT Apps SDK applications that combine an MCP server and widget UI. Use when Codex needs to design tools. Turkish triggers: ChatGPT  |

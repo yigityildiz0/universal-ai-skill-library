@@ -41,7 +41,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/caveman/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [cavecrew](../../skills/common/caveman/modules/cavecrew/MODULE.md) | cavecrew |
 | [caveman](../../skills/common/caveman/modules/caveman/MODULE.md) | caveman |

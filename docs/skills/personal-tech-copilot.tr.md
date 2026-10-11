@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/personal-tech-copilot/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [computer-health-check](../../skills/common/personal-tech-copilot/modules/computer-health-check/MODULE.md) | Perform a bounded, read-only health check of a Windows, macOS, or Linux computer, covering storage, memory pressure, CPU activity, startup load, battery where available, updates, a |
 | [harness-health-check](../../skills/common/personal-tech-copilot/modules/harness-health-check/MODULE.md) | harness health check |

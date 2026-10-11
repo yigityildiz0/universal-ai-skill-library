@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/physio-clinical-copilot/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [physio-clinical-reasoning](../../skills/common/physio-clinical-copilot/modules/physio-clinical-reasoning/MODULE.md) | Structure safety-first, evidence-based physiotherapy reasoning for a patient case. Use for vaka/case prompts involving symptoms, examination findings, surgery or injury, triage, di |
 | [physio-documentation](../../skills/common/physio-clinical-copilot/modules/physio-documentation/MODULE.md) | Draft accurate, traceable physiotherapy documentation from supplied facts. Use for initial evaluation, visit/daily note, re-examination/progress report, discharge or episode summar |

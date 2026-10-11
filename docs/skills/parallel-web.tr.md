@@ -39,7 +39,7 @@ Paket model ağırlığı, izin, hesap veya API kredisi sağlamaz. Bu sürüm me
 
 [SKILL.md](../../skills/common/parallel-web/SKILL.md) · [Installation](../INSTALL.md) · [License scope](../LICENSE-SCOPE.md)
 
-| Module | Source scope |
+| Modül | Kaynak kapsamı |
 |---|---|
 | [choose-your-parallel-api](../../skills/common/parallel-web/modules/choose-your-parallel-api/MODULE.md) | Choose the right Parallel API and configuration for cost, latency, and answer quality. Use when adding live web data to an app: current events and prices, a cited answer in a chat, |
 | [migrate-to-parallel](../../skills/common/parallel-web/modules/migrate-to-parallel/MODULE.md) | Migrate Exa, Tavily, Perplexity, or Firecrawl web-data integrations completely to the appropriate Parallel products while preserving application behavior. Use when replacing these  |
