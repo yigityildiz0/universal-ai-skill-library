@@ -6,4 +6,4 @@ Use README and DOWNLOADS for the current edition. Old tags/downloads may contain
 
 Türkçe: Güncel kapsam current-release.json ile tanımlanır. Eski katalog ve kaynaklar izlenebilirlik için korunur; eski sayı ve test iddiaları güncel kapsam değildir. Güncel README/indirmeleri kullan. Eski sürümler farklı sağlayıcı/host varsayımları içerebilir. Gemini Deep Research güncel sürümde yoktur; eski `slides` artık `html-slides` (yalnız tarayıcı sunumu), PowerPoint işleri `presentation-studio`'da.
 
-[Previous README at the preserved base commit](https://github.com/yigityildiz0/universal-ai-skill-library/blob/216cdc9915ab09aa91eae494aeabdc6730666ddf/README.md).
+[Previous README at the preserved base commit](https://github.com/yigityildiz0/universal-ai-skill-library/blob/4f63adc1c42882f869cb64e5465cd88ad93aef8e/README.md).
