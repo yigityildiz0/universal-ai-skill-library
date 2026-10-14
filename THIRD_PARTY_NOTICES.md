@@ -19,6 +19,7 @@ Original license files stay with source; missing evidence is not an MIT grant. H
 | design-system | [LICENSE](skills/common/design-system/LICENSE) | evidence-present-scope-review |
 | find-docs | not supplied / sağlanmamış | root-license-not-specified |
 | graphify | [LICENSE](skills/common/graphify/LICENSE) · [LICENSE-MIT](skills/common/graphify/LICENSE-MIT) | evidence-present-scope-review |
+| html-slides | [LICENSE](skills/common/html-slides/LICENSE) | evidence-present-scope-review |
 | medical-evidence-research | not supplied / sağlanmamış | root-license-not-specified |
 | mental-health-crisis-support | not supplied / sağlanmamış | root-license-not-specified |
 | modern-web-guidance | [LICENSE](skills/common/modern-web-guidance/LICENSE) | evidence-present-scope-review |
@@ -27,11 +28,11 @@ Original license files stay with source; missing evidence is not an MIT grant. H
 | personal-tech-copilot | not supplied / sağlanmamış | root-license-not-specified |
 | physio-clinical-copilot | [LICENSE](skills/common/physio-clinical-copilot/LICENSE) | evidence-present-scope-review |
 | plan-smart-routes | not supplied / sağlanmamış | root-license-not-specified |
+| presentation-studio | [LICENSE](skills/common/presentation-studio/LICENSE) | evidence-present-scope-review |
 | primary-source-research | [LICENSE](skills/common/primary-source-research/LICENSE) | evidence-present-scope-review |
 | purchase-advisor | not supplied / sağlanmamış | root-license-not-specified |
 | research-analyst | not supplied / sağlanmamış | root-license-not-specified |
 | site-seo-audit | [LICENSE](skills/common/site-seo-audit/LICENSE) | evidence-present-scope-review |
-| slides | [LICENSE](skills/common/slides/LICENSE) | evidence-present-scope-review |
 | ui-styling | [LICENSE.txt](skills/common/ui-styling/LICENSE.txt) | evidence-present-scope-review |
 | ui-ux-pro-max | [LICENSE](skills/common/ui-ux-pro-max/LICENSE) | evidence-present-scope-review |
 | web-animation | [LICENSE](skills/common/web-animation/LICENSE) | evidence-present-scope-review |

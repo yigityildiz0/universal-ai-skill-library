@@ -20,13 +20,13 @@
         ]
       },
       "SKILL.md": {
-        "sha256": "c58609542f0ad0b9c743df3b583c24c6cc55b6389f1d9b79a67e02532145aa18",
+        "sha256": "169e6eb9b4f599d0f766a55d807e2908bf398ec716fae66046e24f0b175596a7",
         "locations": [
           "academic-study-coach/SKILL.md"
         ]
       },
       "modules/academic-presentations/MODULE.md": {
-        "sha256": "463e11f3885cccfbf4bfd61cdc13fad659064283aeb26f4d017b591bf3f1f1b5",
+        "sha256": "71ba65bf04ff9e6a95912b4e4ce58b626d6105fe5fa951874cfaacd53cc23f9b",
         "locations": [
           "academic-study-coach/modules/academic-presentations/MODULE.md"
         ]
@@ -182,7 +182,7 @@
         ]
       },
       "yigit/host-manifest.json": {
-        "sha256": "2b0195c01c4a8eb1a84fef651ba378387bf7208a47537dcfad26966701304172",
+        "sha256": "1d8e8a24241d681a3bc5f542d943a16fb313c96ec72abf8b5ae4caa558eb8be7",
         "locations": [
           "academic-study-coach/yigit/host-manifest.json"
         ]
@@ -194,7 +194,7 @@
         ]
       },
       "yigit/source-SKILL.md": {
-        "sha256": "f3babfacd400e2a76944bb9799e7021fdbb5808f5824e049239c44fc1c28e9e3",
+        "sha256": "7a4e0088621265293eb460f04570eab022b4f3dbf7cb156cb80037d9c6328dd3",
         "locations": [
           "academic-study-coach/yigit/source-SKILL.md"
         ]
@@ -960,7 +960,7 @@
         ]
       },
       "SKILL.md": {
-        "sha256": "880203f4f2b08c57a21ad66b1f74613e34d6f4acd87bd21c8ec91d0b3a0a740e",
+        "sha256": "585bbb3620969e647129bd2a3a986b406f984cef641ab4defef675b8e228a6c3",
         "locations": [
           "ai-research-skills-part-001/yigit/complete-host-entrypoint.md",
           "ai-research-skills-part-002/yigit/complete-host-entrypoint.md",
@@ -3550,7 +3550,7 @@
         ]
       },
       "yigit/host-manifest.json": {
-        "sha256": "09f09fc57a4c6e665ac295c84b5a024591e0a0f4c1aa6915ffc87bef53006020",
+        "sha256": "86d24e2d3faf622a434ad587638641a27bd7672643df8471de264eed7179d5de",
         "locations": [
           "ai-research-skills-part-001/yigit/host-manifest.json",
           "ai-research-skills-part-002/yigit/host-manifest.json",
@@ -3590,7 +3590,7 @@
         ]
       },
       "yigit/source-SKILL.md": {
-        "sha256": "a8bc2ffcd5f9a4d992d9b6c782331b377f58e3184a563b493bad92559d2ef3bb",
+        "sha256": "392ad3b4f99c304f852bafffa0a3d8b3925d972eb79c3174dbf461cc7d34785b",
         "locations": [
           "ai-research-skills-part-001/yigit/source-SKILL.md",
           "ai-research-skills-part-002/yigit/source-SKILL.md",
@@ -5089,7 +5089,7 @@
         ]
       },
       "SKILL.md": {
-        "sha256": "7aabb56e5531f91e6bc49e0ad8be03ce80e16486c8e7115e574f847e120056fd",
+        "sha256": "2afb9e759b04c0804ab06750f9bb299d06515db6d34a544cc48212de9965d011",
         "locations": [
           "design/SKILL.md"
         ]
@@ -5299,13 +5299,13 @@
         ]
       },
       "yigit/YIGIT-WORKFLOW.md": {
-        "sha256": "874def3beae68075d9f410d78208523dd0fb2109eb35a14889c10e0361ee4654",
+        "sha256": "ca2bce0b08fdf591044e73a1ca242b52400ce17b32d9b5ceb21517fe87394e59",
         "locations": [
           "design/yigit/YIGIT-WORKFLOW.md"
         ]
       },
       "yigit/host-manifest.json": {
-        "sha256": "165ab4d49875379345296b2dde3530b48f70cef6c593f5e19b1d4feec4c31734",
+        "sha256": "747b354e14a9bd53f63dca82c8cb98ebc3dc284225c732574da45df9daa7a86c",
         "locations": [
           "design/yigit/host-manifest.json"
         ]
@@ -5317,7 +5317,7 @@
         ]
       },
       "yigit/source-SKILL.md": {
-        "sha256": "a55f622e1db65613ac11db346f6a092f30beccbdfa2109d1331538e8beb49878",
+        "sha256": "287631c4e6c0911ffc8b476d81e98f757bc465f6e448fbd38fb9e64e69e16b2e",
         "locations": [
           "design/yigit/source-SKILL.md"
         ]
@@ -5345,7 +5345,7 @@
         ]
       },
       "SKILL.md": {
-        "sha256": "62f07333084fdafb1b8d69d193a8e9f9cb8c1d3724559bb57d7acd8829e66e64",
+        "sha256": "86f7c8e118d8beae1259175c4215de30f018c71119546a4a8414b36785230098",
         "locations": [
           "design-system/SKILL.md"
         ]
@@ -5507,7 +5507,7 @@
         ]
       },
       "yigit/host-manifest.json": {
-        "sha256": "36a24cda09b2654ec6a0b5cfd5ce0199146a5557721b33c9faf7f729ff2678c9",
+        "sha256": "0ab36854629a2445d8702c9a42dabec02f4ceb0f4fa978d332662a0c2457eeb9",
         "locations": [
           "design-system/yigit/host-manifest.json"
         ]
@@ -5585,7 +5585,7 @@
         ]
       },
       "yigit/source-SKILL.md": {
-        "sha256": "bd1c8a6840aa47c716bc7a851f6b1ee033791d069b48c65d0843bf1e63e5d5e9",
+        "sha256": "a7289c3a98a2ece708a045cf6889f1d0f09c67d7b236fd4b06c2e995ffe12ec7",
         "locations": [
           "design-system/yigit/source-SKILL.md"
         ]
@@ -5854,6 +5854,202 @@
         "sha256": "c18fa98e608797d1c9dbe71f3ae01b4132e7517d07544cccf0c04e7c8172bd76",
         "locations": [
           "graphify/yigit/windows-original/references/update.md"
+        ]
+      }
+    }
+  },
+  "html-slides": {
+    "source_skill": "html-slides",
+    "split": false,
+    "parts": [
+      "html-slides"
+    ],
+    "modules": [],
+    "files": {
+      "LICENSE": {
+        "sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
+        "locations": [
+          "html-slides/LICENSE"
+        ]
+      },
+      "PORTABLE.md": {
+        "sha256": "1ef57269f64ebf62c91d70aba00d1d1aabfbfc5163019a96fed3dc824826f0c9",
+        "locations": [
+          "html-slides/PORTABLE.md"
+        ]
+      },
+      "SKILL.md": {
+        "sha256": "ae75ee9364beb15b615241b4343756bba4119e895a756a539e547fa2d25c3c14",
+        "locations": [
+          "html-slides/SKILL.md"
+        ]
+      },
+      "references/copywriting-formulas.md": {
+        "sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
+        "locations": [
+          "html-slides/references/copywriting-formulas.md"
+        ]
+      },
+      "references/create.md": {
+        "sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
+        "locations": [
+          "html-slides/references/create.md"
+        ]
+      },
+      "references/html-template.md": {
+        "sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
+        "locations": [
+          "html-slides/references/html-template.md"
+        ]
+      },
+      "references/layout-patterns.md": {
+        "sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
+        "locations": [
+          "html-slides/references/layout-patterns.md"
+        ]
+      },
+      "references/slide-strategies.md": {
+        "sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
+        "locations": [
+          "html-slides/references/slide-strategies.md"
+        ]
+      },
+      "yigit/YIGIT-WORKFLOW.md": {
+        "sha256": "fe1b19094456b0116ea104d3abfbb5e8322be8f93558597c05e622a01f518100",
+        "locations": [
+          "html-slides/yigit/YIGIT-WORKFLOW.md"
+        ]
+      },
+      "yigit/data/slide-backgrounds.csv": {
+        "sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
+        "locations": [
+          "html-slides/yigit/data/slide-backgrounds.csv"
+        ]
+      },
+      "yigit/data/slide-charts.csv": {
+        "sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
+        "locations": [
+          "html-slides/yigit/data/slide-charts.csv"
+        ]
+      },
+      "yigit/data/slide-color-logic.csv": {
+        "sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
+        "locations": [
+          "html-slides/yigit/data/slide-color-logic.csv"
+        ]
+      },
+      "yigit/data/slide-copy.csv": {
+        "sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
+        "locations": [
+          "html-slides/yigit/data/slide-copy.csv"
+        ]
+      },
+      "yigit/data/slide-layout-logic.csv": {
+        "sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
+        "locations": [
+          "html-slides/yigit/data/slide-layout-logic.csv"
+        ]
+      },
+      "yigit/data/slide-layouts.csv": {
+        "sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
+        "locations": [
+          "html-slides/yigit/data/slide-layouts.csv"
+        ]
+      },
+      "yigit/data/slide-strategies.csv": {
+        "sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
+        "locations": [
+          "html-slides/yigit/data/slide-strategies.csv"
+        ]
+      },
+      "yigit/data/slide-typography.csv": {
+        "sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
+        "locations": [
+          "html-slides/yigit/data/slide-typography.csv"
+        ]
+      },
+      "yigit/host-manifest.json": {
+        "sha256": "37fa287574f24519437207848c2aeb86081a93b2c270346badcdb2769ca3de67",
+        "locations": [
+          "html-slides/yigit/host-manifest.json"
+        ]
+      },
+      "yigit/host-runtime.md": {
+        "sha256": "7340e97e88e7f03880a60b1d98aece1c9d0ac8ea8b7dcaebe04889699090f6ec",
+        "locations": [
+          "html-slides/yigit/host-runtime.md"
+        ]
+      },
+      "yigit/references/copywriting-formulas.md": {
+        "sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
+        "locations": [
+          "html-slides/yigit/references/copywriting-formulas.md"
+        ]
+      },
+      "yigit/references/create.md": {
+        "sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
+        "locations": [
+          "html-slides/yigit/references/create.md"
+        ]
+      },
+      "yigit/references/html-template.md": {
+        "sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
+        "locations": [
+          "html-slides/yigit/references/html-template.md"
+        ]
+      },
+      "yigit/references/layout-patterns.md": {
+        "sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
+        "locations": [
+          "html-slides/yigit/references/layout-patterns.md"
+        ]
+      },
+      "yigit/references/slide-strategies.md": {
+        "sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
+        "locations": [
+          "html-slides/yigit/references/slide-strategies.md"
+        ]
+      },
+      "yigit/scripts/fetch-background.py": {
+        "sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
+        "locations": [
+          "html-slides/yigit/scripts/fetch-background.py"
+        ]
+      },
+      "yigit/scripts/generate-slide.py": {
+        "sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
+        "locations": [
+          "html-slides/yigit/scripts/generate-slide.py"
+        ]
+      },
+      "yigit/scripts/html-token-validator.py": {
+        "sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
+        "locations": [
+          "html-slides/yigit/scripts/html-token-validator.py"
+        ]
+      },
+      "yigit/scripts/search-slides.py": {
+        "sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
+        "locations": [
+          "html-slides/yigit/scripts/search-slides.py"
+        ]
+      },
+      "yigit/scripts/slide-token-validator.py": {
+        "sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
+        "locations": [
+          "html-slides/yigit/scripts/slide-token-validator.py"
+        ]
+      },
+      "yigit/scripts/slide_search_core.py": {
+        "sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
+        "locations": [
+          "html-slides/yigit/scripts/slide_search_core.py"
+        ]
+      },
+      "yigit/source-SKILL.md": {
+        "sha256": "5bfcc704d064418d497adcc300a0666a4b330ce83bee7ab5d666deca02d52d12",
+        "locations": [
+          "html-slides/yigit/source-SKILL.md"
         ]
       }
     }
@@ -7235,7 +7431,7 @@
         ]
       },
       "SKILL.md": {
-        "sha256": "c9c334634d2e4bff1819a599dabf01b79b2fc7089c519f97cc0e1f2d5d44bc62",
+        "sha256": "027e3b8e3dbe2a486674df3047b855e0d806818d3e7bfc175ec2c7c1d3c0a1fc",
         "locations": [
           "office-docs-qa/SKILL.md"
         ]
@@ -7247,7 +7443,7 @@
         ]
       },
       "modules/file-reading-workflow/MODULE.md": {
-        "sha256": "7946f4800d9ae0cc2bfea02567f2befe19adbe68f07c77e7ce817806e1d859e9",
+        "sha256": "b6c92b1f37a650b396559571955ae1cc07e3e2aaf444e08e72c0d3e9fba8f3ba",
         "locations": [
           "office-docs-qa/modules/file-reading-workflow/MODULE.md"
         ]
@@ -7283,7 +7479,7 @@
         ]
       },
       "yigit/host-manifest.json": {
-        "sha256": "2731ad0a2f5e1a63a7998223a98f700af0ccf8b6d4e8eb23e626ed737831685d",
+        "sha256": "a593045434894f47f9a6fe4f507d839b17563c9a6f598a6208f9268f1cae53a1",
         "locations": [
           "office-docs-qa/yigit/host-manifest.json"
         ]
@@ -7295,7 +7491,7 @@
         ]
       },
       "yigit/source-SKILL.md": {
-        "sha256": "83eb3462ad7e409d35b6a0aa14c263eebfdd22d8bc19062539166a10ff090ef7",
+        "sha256": "ed88566cd0e684fc2028733f558c9e1079bad3db2fd22c58d44c775a88a3051a",
         "locations": [
           "office-docs-qa/yigit/source-SKILL.md"
         ]
@@ -7987,6 +8183,196 @@
         "sha256": "cd556ce3c655af6ff4f3ae8bf32be58a7830e665aae4d2e29737c0d6a971dfdd",
         "locations": [
           "plan-smart-routes/yigit/source-SKILL.md"
+        ]
+      }
+    }
+  },
+  "presentation-studio": {
+    "source_skill": "presentation-studio",
+    "split": false,
+    "parts": [
+      "presentation-studio"
+    ],
+    "modules": [],
+    "files": {
+      "KULLANIM-KILAVUZU.md": {
+        "sha256": "e3ab0965df3680deadf6053fc70f26cf84b737a5c2c1ae4b10568d02cb6633f0",
+        "locations": [
+          "presentation-studio/KULLANIM-KILAVUZU.md"
+        ]
+      },
+      "LICENSE": {
+        "sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd",
+        "locations": [
+          "presentation-studio/LICENSE"
+        ]
+      },
+      "PORTABLE.md": {
+        "sha256": "1ef57269f64ebf62c91d70aba00d1d1aabfbfc5163019a96fed3dc824826f0c9",
+        "locations": [
+          "presentation-studio/PORTABLE.md"
+        ]
+      },
+      "SKILL.md": {
+        "sha256": "7f1845452d8aa8056d04394457e2e10043b91a8aabdbed603641a02b2ea94d6c",
+        "locations": [
+          "presentation-studio/SKILL.md"
+        ]
+      },
+      "assets/deck-kit-py/deck_kit.py": {
+        "sha256": "25506214782890657fe58c02a4726b6639e5abf093b286c01acb99af0c19250b",
+        "locations": [
+          "presentation-studio/assets/deck-kit-py/deck_kit.py"
+        ]
+      },
+      "assets/deck-kit/build.js": {
+        "sha256": "5a923fec397a3e17b16224286fc61194db4b435170788ab20bf91913e18f6627",
+        "locations": [
+          "presentation-studio/assets/deck-kit/build.js"
+        ]
+      },
+      "assets/deck-kit/deck.example.json": {
+        "sha256": "9c4ef764716b1b7124d8174637231ff9bee82b2df0265135c78e1cdb597128bf",
+        "locations": [
+          "presentation-studio/assets/deck-kit/deck.example.json"
+        ]
+      },
+      "assets/deck-kit/kit.js": {
+        "sha256": "04ca712aca9e72b2e4aaef344f5a215d6c9b068998e1d7892f267208e0ac567b",
+        "locations": [
+          "presentation-studio/assets/deck-kit/kit.js"
+        ]
+      },
+      "evals/trigger-cases.json": {
+        "sha256": "b07283fe2e18fa94ecdefb9ea0f7a2c69581a5f5dfef020f681547f58e5b79a4",
+        "locations": [
+          "presentation-studio/evals/trigger-cases.json"
+        ]
+      },
+      "references/academic-content.md": {
+        "sha256": "f93603a00f3b4a38e422a0d8857b48ad116930c91a58bc3b1801486feb71a8d2",
+        "locations": [
+          "presentation-studio/references/academic-content.md"
+        ]
+      },
+      "references/brief-and-rules.md": {
+        "sha256": "fefd0aa2a90119989d990ca75626d96b55104ef65694ca51ac50a9af0fd10ab7",
+        "locations": [
+          "presentation-studio/references/brief-and-rules.md"
+        ]
+      },
+      "references/course-profiles.md": {
+        "sha256": "e34a20f4b51824b9d5e54ec3c8b0fe9615b3d5e322f6915d48a210da657b8026",
+        "locations": [
+          "presentation-studio/references/course-profiles.md"
+        ]
+      },
+      "references/design-system.md": {
+        "sha256": "f224d8e5fb4589ad1bce604844345c78f363369603226bec71412b5c187347bf",
+        "locations": [
+          "presentation-studio/references/design-system.md"
+        ]
+      },
+      "references/general-presentations.md": {
+        "sha256": "46178e1c9947473b0b82e907a2ece2560b67e14859ba0489231dbaa97d103ad6",
+        "locations": [
+          "presentation-studio/references/general-presentations.md"
+        ]
+      },
+      "references/production-by-host.md": {
+        "sha256": "81773cdf15eec590ab0b17efe95f444d5d9ef71da3a36fa0ec6f2620bfc2c55a",
+        "locations": [
+          "presentation-studio/references/production-by-host.md"
+        ]
+      },
+      "references/qa-and-delivery.md": {
+        "sha256": "9dc6e6c0f60e67c1e4d9c1d53d8ddad4d975c6104f4e48e821901dc9344dd9e1",
+        "locations": [
+          "presentation-studio/references/qa-and-delivery.md"
+        ]
+      },
+      "references/speaker-notes.md": {
+        "sha256": "d3bfb64377e13a91edb34553db2c8580ce788e58b42bf4cabe8a41c03c88cb47",
+        "locations": [
+          "presentation-studio/references/speaker-notes.md"
+        ]
+      },
+      "references/visuals-and-images.md": {
+        "sha256": "4bf15059df86d29372420ff0d433cf2a2afeb2ec5a0a27e8bfe25cec3722d177",
+        "locations": [
+          "presentation-studio/references/visuals-and-images.md"
+        ]
+      },
+      "scripts/contact_sheet.py": {
+        "sha256": "ce9c68b727702ad100bbc1b761bda0f0ef6d3c671d052706a7ec2871c8632cee",
+        "locations": [
+          "presentation-studio/scripts/contact_sheet.py"
+        ]
+      },
+      "scripts/find_images.py": {
+        "sha256": "3d3d92267e54d727208ec6047ab20a032fc86353c2305b1ce428334ef793fd51",
+        "locations": [
+          "presentation-studio/scripts/find_images.py"
+        ]
+      },
+      "scripts/make_reading_guide.py": {
+        "sha256": "ebc4a6b245d48498adc480a17a07eff685fa049262b2ff81666551635b1f9080",
+        "locations": [
+          "presentation-studio/scripts/make_reading_guide.py"
+        ]
+      },
+      "scripts/pptx_audit.py": {
+        "sha256": "0b49f0567d6696257c57e85f7c938625980153a59b95e052b5400ba21e59476e",
+        "locations": [
+          "presentation-studio/scripts/pptx_audit.py"
+        ]
+      },
+      "scripts/render_pptx.ps1": {
+        "sha256": "8a174d988d0b0364413de7d2119e24af4ecd7e5c1c291183f3505a456d71aa3a",
+        "locations": [
+          "presentation-studio/scripts/render_pptx.ps1"
+        ]
+      },
+      "templates/brief.md": {
+        "sha256": "00032252692f53d19772a312a8c8616561fd7d78dc5162b4242e636e639d96d0",
+        "locations": [
+          "presentation-studio/templates/brief.md"
+        ]
+      },
+      "templates/claims.json": {
+        "sha256": "6c64c8f9f079bb0000865a083672d5c8b62f03be52aafecbf079e4333893636d",
+        "locations": [
+          "presentation-studio/templates/claims.json"
+        ]
+      },
+      "templates/deck-plan.md": {
+        "sha256": "f571666dcacb3abff6bf1a17016db63ee03e29f449e0b640df7f4de02d5a7f79",
+        "locations": [
+          "presentation-studio/templates/deck-plan.md"
+        ]
+      },
+      "templates/ledger.md": {
+        "sha256": "e52e8dea493e2cfd3c8964ca77c0f3429ae63fd946c0a2620ed018869fac6a6c",
+        "locations": [
+          "presentation-studio/templates/ledger.md"
+        ]
+      },
+      "yigit/host-manifest.json": {
+        "sha256": "1ff43737beeaf84a759b7af1935f8c2526757d57df97cad53e701ba771890281",
+        "locations": [
+          "presentation-studio/yigit/host-manifest.json"
+        ]
+      },
+      "yigit/host-runtime.md": {
+        "sha256": "7340e97e88e7f03880a60b1d98aece1c9d0ac8ea8b7dcaebe04889699090f6ec",
+        "locations": [
+          "presentation-studio/yigit/host-runtime.md"
+        ]
+      },
+      "yigit/source-SKILL.md": {
+        "sha256": "f6109d5684ab62f5792e27728df8810060c676ed88021b1005636ae68419b9e1",
+        "locations": [
+          "presentation-studio/yigit/source-SKILL.md"
         ]
       }
     }
@@ -8691,202 +9077,6 @@
         "sha256": "1ad68add2aa621a101addab82ba105d5fc669bafe07bbbde60125d182f7a8e1e",
         "locations": [
           "site-seo-audit/yigit/source-SKILL.md"
-        ]
-      }
-    }
-  },
-  "slides": {
-    "source_skill": "slides",
-    "split": false,
-    "parts": [
-      "slides"
-    ],
-    "modules": [],
-    "files": {
-      "LICENSE": {
-        "sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
-        "locations": [
-          "slides/LICENSE"
-        ]
-      },
-      "PORTABLE.md": {
-        "sha256": "1ef57269f64ebf62c91d70aba00d1d1aabfbfc5163019a96fed3dc824826f0c9",
-        "locations": [
-          "slides/PORTABLE.md"
-        ]
-      },
-      "SKILL.md": {
-        "sha256": "3238612c67933c16d6e232d746561e245cd159d0ae474829e4cde05286a27953",
-        "locations": [
-          "slides/SKILL.md"
-        ]
-      },
-      "references/copywriting-formulas.md": {
-        "sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
-        "locations": [
-          "slides/references/copywriting-formulas.md"
-        ]
-      },
-      "references/create.md": {
-        "sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
-        "locations": [
-          "slides/references/create.md"
-        ]
-      },
-      "references/html-template.md": {
-        "sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
-        "locations": [
-          "slides/references/html-template.md"
-        ]
-      },
-      "references/layout-patterns.md": {
-        "sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
-        "locations": [
-          "slides/references/layout-patterns.md"
-        ]
-      },
-      "references/slide-strategies.md": {
-        "sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
-        "locations": [
-          "slides/references/slide-strategies.md"
-        ]
-      },
-      "yigit/YIGIT-WORKFLOW.md": {
-        "sha256": "fe1b19094456b0116ea104d3abfbb5e8322be8f93558597c05e622a01f518100",
-        "locations": [
-          "slides/yigit/YIGIT-WORKFLOW.md"
-        ]
-      },
-      "yigit/data/slide-backgrounds.csv": {
-        "sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
-        "locations": [
-          "slides/yigit/data/slide-backgrounds.csv"
-        ]
-      },
-      "yigit/data/slide-charts.csv": {
-        "sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
-        "locations": [
-          "slides/yigit/data/slide-charts.csv"
-        ]
-      },
-      "yigit/data/slide-color-logic.csv": {
-        "sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
-        "locations": [
-          "slides/yigit/data/slide-color-logic.csv"
-        ]
-      },
-      "yigit/data/slide-copy.csv": {
-        "sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
-        "locations": [
-          "slides/yigit/data/slide-copy.csv"
-        ]
-      },
-      "yigit/data/slide-layout-logic.csv": {
-        "sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
-        "locations": [
-          "slides/yigit/data/slide-layout-logic.csv"
-        ]
-      },
-      "yigit/data/slide-layouts.csv": {
-        "sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
-        "locations": [
-          "slides/yigit/data/slide-layouts.csv"
-        ]
-      },
-      "yigit/data/slide-strategies.csv": {
-        "sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
-        "locations": [
-          "slides/yigit/data/slide-strategies.csv"
-        ]
-      },
-      "yigit/data/slide-typography.csv": {
-        "sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
-        "locations": [
-          "slides/yigit/data/slide-typography.csv"
-        ]
-      },
-      "yigit/host-manifest.json": {
-        "sha256": "9c007347eeca42b4f9c1977dfd50cefdf16d5170d3459dcf9715ec348db17683",
-        "locations": [
-          "slides/yigit/host-manifest.json"
-        ]
-      },
-      "yigit/host-runtime.md": {
-        "sha256": "7340e97e88e7f03880a60b1d98aece1c9d0ac8ea8b7dcaebe04889699090f6ec",
-        "locations": [
-          "slides/yigit/host-runtime.md"
-        ]
-      },
-      "yigit/references/copywriting-formulas.md": {
-        "sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
-        "locations": [
-          "slides/yigit/references/copywriting-formulas.md"
-        ]
-      },
-      "yigit/references/create.md": {
-        "sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
-        "locations": [
-          "slides/yigit/references/create.md"
-        ]
-      },
-      "yigit/references/html-template.md": {
-        "sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
-        "locations": [
-          "slides/yigit/references/html-template.md"
-        ]
-      },
-      "yigit/references/layout-patterns.md": {
-        "sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
-        "locations": [
-          "slides/yigit/references/layout-patterns.md"
-        ]
-      },
-      "yigit/references/slide-strategies.md": {
-        "sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
-        "locations": [
-          "slides/yigit/references/slide-strategies.md"
-        ]
-      },
-      "yigit/scripts/fetch-background.py": {
-        "sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
-        "locations": [
-          "slides/yigit/scripts/fetch-background.py"
-        ]
-      },
-      "yigit/scripts/generate-slide.py": {
-        "sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
-        "locations": [
-          "slides/yigit/scripts/generate-slide.py"
-        ]
-      },
-      "yigit/scripts/html-token-validator.py": {
-        "sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
-        "locations": [
-          "slides/yigit/scripts/html-token-validator.py"
-        ]
-      },
-      "yigit/scripts/search-slides.py": {
-        "sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
-        "locations": [
-          "slides/yigit/scripts/search-slides.py"
-        ]
-      },
-      "yigit/scripts/slide-token-validator.py": {
-        "sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
-        "locations": [
-          "slides/yigit/scripts/slide-token-validator.py"
-        ]
-      },
-      "yigit/scripts/slide_search_core.py": {
-        "sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
-        "locations": [
-          "slides/yigit/scripts/slide_search_core.py"
-        ]
-      },
-      "yigit/source-SKILL.md": {
-        "sha256": "f3b8c69d46f570b3a501b426dee5ffabbec6f349a33ec6a97ffffb3971a632f7",
-        "locations": [
-          "slides/yigit/source-SKILL.md"
         ]
       }
     }

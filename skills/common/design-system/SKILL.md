@@ -120,7 +120,7 @@ node scripts/validate-tokens.cjs --dir src/
 
 ## Slide System
 
-Brand-compliant HTML presentations using design tokens + Chart.js + contextual decision system. For a full HTML deck workflow use `slides`. For editable PPTX use the host's available presentation tool, not an HTML rename. Academic/FTR, thesis and conference content routes first to `academic-study-coach`; tokens can support its approved visual direction.
+Brand-compliant HTML presentations using design tokens + Chart.js + contextual decision system. For a full HTML deck workflow use `html-slides`. Every editable PowerPoint/PPTX deck goes to `presentation-studio` (never an HTML rename). Academic/FTR argument comes from `academic-study-coach`; tokens can support the approved visual direction.
 
 ### Source of Truth
 

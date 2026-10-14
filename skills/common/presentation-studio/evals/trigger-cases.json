@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Routing and rule-behaviour acceptance cases for presentation-studio.",
+  "cases": [
+    { "id": "positive-course-deck", "type": "positive", "prompt": "Ölçme değerlendirme dersi için kas kuvveti konulu sunum hazırla, 30-45 dakika.", "expected": "activate", "reason": "Course presentation request; owns PPTX decks." },
+    { "id": "positive-pptx-plain", "type": "positive", "prompt": "Bu konuda bir PowerPoint yap.", "expected": "activate", "reason": "PowerPoint without academic context still belongs here." },
+    { "id": "positive-notes", "type": "positive", "prompt": "Sunumumun konuşmacı notlarını yeniden yaz, kısaltmaların okunuşunu ekle.", "expected": "activate", "reason": "Speaker notes are owned by this skill." },
+    { "id": "positive-article-seminar", "type": "positive", "prompt": "Seminer için 8 makalelik son araştırmalar sunumu hazırla.", "expected": "activate_with_seminar_profile", "reason": "Article presentation profile." },
+    { "id": "positive-improve-deck", "type": "positive", "prompt": "Ekteki slaytları güzelleştir, tasarımı çok sade ve sıkıcı.", "expected": "activate", "reason": "Redesign of an existing deck." },
+    { "id": "negative-html", "type": "negative", "prompt": "Web sitesinde gösterilecek HTML slayt gösterisi yap, scroll animasyonlu.", "expected": "route_to_html-slides", "reason": "Explicit HTML/web presentation." },
+    { "id": "negative-summary", "type": "negative", "prompt": "Bu ders slaytlarını sınav için özetle.", "expected": "route_to_academic-study-coach", "reason": "Studying from slides is not making a deck." },
+    { "id": "negative-pdf-merge", "type": "negative", "prompt": "Bu iki PDF'i birleştir.", "expected": "route_to_office-docs-qa", "reason": "Generic file operation." },
+    { "id": "conflict-small-font", "type": "behaviour", "prompt": "Sunumu hazırla ama madde metinleri 24 punto olsun.", "expected": "ask_conflict_question_before_building", "reason": "Contradicts the 36 pt floor default." },
+    { "id": "conflict-font-family", "type": "behaviour", "prompt": "Yazı tipi Montserrat olsun.", "expected": "ask_conflict_question_before_building", "reason": "Not a cross-computer safe font." },
+    { "id": "no-conflict-colour", "type": "behaviour", "prompt": "Tema renkleri yeşil tonlarında olsun.", "expected": "apply_without_asking", "reason": "Colour choice does not contradict a rule (theme doga)." }
+  ]
+}

@@ -7,11 +7,33 @@
 
 [English](README.md) · [Türkçe](README.tr.md)
 
+![Edition](https://img.shields.io/badge/edition-2026.10.14-0f6e8c) [![Validate](https://github.com/yigityildiz0/universal-ai-skill-library/actions/workflows/validate.yml/badge.svg)](https://github.com/yigityildiz0/universal-ai-skill-library/actions/workflows/validate.yml) [![Release](https://img.shields.io/github/v/release/yigityildiz0/universal-ai-skill-library?display_name=tag&sort=date)](https://github.com/yigityildiz0/universal-ai-skill-library/releases/latest) ![Skills](https://img.shields.io/badge/skills-36-b0303f) ![Languages](https://img.shields.io/badge/EN%20%2B%20TR-guides-e0a43a)
+
 **Source-led workflows for development, design, research, clinical reasoning and everyday work.**
 
-35 maintained entry points. Choose one for the job; do not load the entire library into context.
+36 maintained entry points. Choose one for the job; do not load the entire library into context.
 
 [Start here](docs/INSTALL.md) · [Browse the catalog](https://yigityildiz0.github.io/universal-ai-skill-library/) · [Downloads](DOWNLOADS.md) · [Maintenance model](MAINTAINING.md)
+
+## New in 2026.10.14
+
+- **presentation-studio** (new): complete editable PowerPoint decks — course rules as defaults, slide plan, real licensed photos, JS and Python deck kits, timed speaker notes with pronunciations, PowerPoint render QA, `pptx_audit.py` and a pre-talk reading guide.
+- `slides` is renamed **html-slides** and only handles browser decks; PowerPoint requests route to presentation-studio.
+- academic-study-coach, office-docs-qa, design and design-system now hand deck building to presentation-studio (fixes a broken PPTX QA link).
+- Gemini packages (CLI folders and filtered Gemini app uploads), an installation table for every app and a real GitHub Release with SHA-256 checksums.
+
+## Works with
+
+| App | Package |
+|---|---|
+| Claude Code | portable folder → ~/.claude/skills |
+| Claude.ai | one upload ZIP per skill |
+| Codex / ChatGPT desktop | Codex.zip → ~/.codex/skills |
+| ChatGPT web | plugin ZIP where the account offers import |
+| Gemini CLI / app | ~/.gemini/skills · Skills upload (filtered copy) |
+| OpenCode · DeepSeek Harness | portable folder + skills path |
+
+Step-by-step: [Installation](docs/INSTALL.md). A file on disk is not proof of activation; test with one example request.
 
 ## Start with the work you want to do
 
@@ -67,7 +89,7 @@
 </details>
 
 <details open>
-<summary><strong>Design & create</strong> · 12</summary>
+<summary><strong>Design & create</strong> · 13</summary>
 
 | Skill | What it helps with |
 |---|---|
@@ -77,8 +99,9 @@
 | [campaign-plan](docs/skills/campaign-plan.en.md) | Plan a campaign with audience, channels, content, resources and measurable outcomes. |
 | [design](docs/skills/design.en.md) | Route a design task to the right brand, interface, icon, banner or slide workflow. |
 | [design-system](docs/skills/design-system.en.md) | Connect design tokens, component specifications and audience-appropriate presentations. |
+| [html-slides](docs/skills/html-slides.en.md) | Build browser-based HTML presentations with Chart.js, design tokens and responsive layouts; PowerPoint decks belong to presentation-studio. |
+| [presentation-studio](docs/skills/presentation-studio.en.md) | Make complete, editable PowerPoint decks: course rules as defaults, slide plan, real licensed photos, a design kit, timed speaker notes with pronunciations, rendered QA and an audit. |
 | [site-seo-audit](docs/skills/site-seo-audit.en.md) | Audit observable technical and content SEO without pretending recommendations were deployed. |
-| [slides](docs/skills/slides.en.md) | Structure a clear presentation with honest HTML, PDF and editable-slide distinctions. |
 | [ui-styling](docs/skills/ui-styling.en.md) | Implement interface styling that respects the project’s existing components and tokens. |
 | [ui-ux-pro-max](docs/skills/ui-ux-pro-max.en.md) | Search design intelligence across styles, palettes, typography, charts and platform stacks. |
 | [web-animation](docs/skills/web-animation.en.md) | Apply GSAP/Motion patterns while preserving accessibility and existing integrations. |
@@ -133,4 +156,4 @@ The canonical source is [Universal AI Skill Library](https://github.com/yigityil
 - Source licenses remain attached; no blanket third-party license is assumed.
 
 ---
-Maintained by [Yigit Yildiz](https://github.com/yigityildiz0) · Source edition 2026.10.11
+Maintained by [Yigit Yildiz](https://github.com/yigityildiz0) · Source edition 2026.10.14

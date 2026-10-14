@@ -1,11 +1,11 @@
 {
-  "edition": "2026.10.11",
+  "edition": "2026.10.14",
   "files": [
     {
       "path": "academic-study-coach/modules/academic-presentations/MODULE.md",
-      "source_sha256": "463e11f3885cccfbf4bfd61cdc13fad659064283aeb26f4d017b591bf3f1f1b5",
-      "published_sha256": "463e11f3885cccfbf4bfd61cdc13fad659064283aeb26f4d017b591bf3f1f1b5",
-      "bytes": 2333,
+      "source_sha256": "71ba65bf04ff9e6a95912b4e4ce58b626d6105fe5fa951874cfaacd53cc23f9b",
+      "published_sha256": "71ba65bf04ff9e6a95912b4e4ce58b626d6105fe5fa951874cfaacd53cc23f9b",
+      "bytes": 2611,
       "legal_notice": false,
       "modified": false
     },
@@ -211,9 +211,9 @@
     },
     {
       "path": "academic-study-coach/SKILL.md",
-      "source_sha256": "45c2772f7b5de27beef361908e9bc0955090fde1c01601f8e5ea15650d511710",
-      "published_sha256": "f3babfacd400e2a76944bb9799e7021fdbb5808f5824e049239c44fc1c28e9e3",
-      "bytes": 7425,
+      "source_sha256": "22f84a82ba043c3fea5126d6dbdda33c362c6c98f35a67a9531f08945cda8acc",
+      "published_sha256": "7a4e0088621265293eb460f04570eab022b4f3dbf7cb156cb80037d9c6328dd3",
+      "bytes": 7608,
       "legal_notice": false,
       "modified": true
     },
@@ -4131,9 +4131,9 @@
     },
     {
       "path": "ai-research-skills/SKILL.md",
-      "source_sha256": "cf94062813796f767c667834a7b83ac2a94099bb67874e898bddf0476fc5ca54",
-      "published_sha256": "a8bc2ffcd5f9a4d992d9b6c782331b377f58e3184a563b493bad92559d2ef3bb",
-      "bytes": 17567,
+      "source_sha256": "484f3dbf04fc7875b940f37cdd2f13a204f02e3c6becc6e270b0b3d83b13641f",
+      "published_sha256": "392ad3b4f99c304f852bafffa0a3d8b3925d972eb79c3174dbf461cc7d34785b",
+      "bytes": 17594,
       "legal_notice": false,
       "modified": true
     },
@@ -6019,17 +6019,17 @@
     },
     {
       "path": "design/SKILL.md",
-      "source_sha256": "7daf44816de6476094311dc30a493c906d71c9e9d20a600bc062c6fc6aebf25d",
-      "published_sha256": "a55f622e1db65613ac11db346f6a092f30beccbdfa2109d1331538e8beb49878",
-      "bytes": 16247,
+      "source_sha256": "d1764b16fad54c52905d17c242ae8c41ca334ed173e5c63a8bf57f156872adcf",
+      "published_sha256": "287631c4e6c0911ffc8b476d81e98f757bc465f6e448fbd38fb9e64e69e16b2e",
+      "bytes": 16013,
       "legal_notice": false,
       "modified": true
     },
     {
       "path": "design/yigit/YIGIT-WORKFLOW.md",
-      "source_sha256": "c863700f6296e40b6c0efcd2fcd71e0aa7a9f4720294675244c6e1cef0c9a53d",
-      "published_sha256": "874def3beae68075d9f410d78208523dd0fb2109eb35a14889c10e0361ee4654",
-      "bytes": 2678,
+      "source_sha256": "266c43a3c096924f68c308697208404e75fc46ed740e897e81fe5ebade08f906",
+      "published_sha256": "ca2bce0b08fdf591044e73a1ca242b52400ce17b32d9b5ceb21517fe87394e59",
+      "bytes": 2669,
       "legal_notice": false,
       "modified": true
     },
@@ -6235,9 +6235,9 @@
     },
     {
       "path": "design-system/SKILL.md",
-      "source_sha256": "4eba31d8731b137cd4dc41190fd42687dd877d2ce116827beac6c40b85578247",
-      "published_sha256": "bd1c8a6840aa47c716bc7a851f6b1ee033791d069b48c65d0843bf1e63e5d5e9",
-      "bytes": 10208,
+      "source_sha256": "595156245b8d3be3b04f6f84da37472e9283295c643c944cb4f0f1ab32078daa",
+      "published_sha256": "a7289c3a98a2ece708a045cf6889f1d0f09c67d7b236fd4b06c2e995ffe12ec7",
+      "bytes": 9934,
       "legal_notice": false,
       "modified": true
     },
@@ -6608,6 +6608,222 @@
       "bytes": 9143,
       "legal_notice": false,
       "modified": false
+    },
+    {
+      "path": "html-slides/LICENSE",
+      "source_sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
+      "published_sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
+      "bytes": 1096,
+      "legal_notice": true,
+      "modified": false
+    },
+    {
+      "path": "html-slides/references/copywriting-formulas.md",
+      "source_sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
+      "published_sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
+      "bytes": 2668,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/references/create.md",
+      "source_sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
+      "published_sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
+      "bytes": 1279,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/references/html-template.md",
+      "source_sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
+      "published_sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
+      "bytes": 10878,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/references/layout-patterns.md",
+      "source_sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
+      "published_sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
+      "bytes": 3808,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/references/slide-strategies.md",
+      "source_sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
+      "published_sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
+      "bytes": 2789,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/SKILL.md",
+      "source_sha256": "ca2e85f3d2802790fbee0f902d8b928964ad9f49308d3c474196c2f12be29ce0",
+      "published_sha256": "5bfcc704d064418d497adcc300a0666a4b330ce83bee7ab5d666deca02d52d12",
+      "bytes": 3433,
+      "legal_notice": false,
+      "modified": true
+    },
+    {
+      "path": "html-slides/yigit/data/slide-backgrounds.csv",
+      "source_sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
+      "published_sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
+      "bytes": 1038,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-charts.csv",
+      "source_sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
+      "published_sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
+      "bytes": 8631,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-color-logic.csv",
+      "source_sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
+      "published_sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
+      "bytes": 877,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-copy.csv",
+      "source_sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
+      "published_sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
+      "bytes": 6427,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-layout-logic.csv",
+      "source_sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
+      "published_sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
+      "bytes": 981,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-layouts.csv",
+      "source_sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
+      "published_sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
+      "bytes": 8760,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-strategies.csv",
+      "source_sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
+      "published_sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
+      "bytes": 8232,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/data/slide-typography.csv",
+      "source_sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
+      "published_sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
+      "bytes": 735,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/references/copywriting-formulas.md",
+      "source_sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
+      "published_sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
+      "bytes": 2574,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/references/create.md",
+      "source_sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
+      "published_sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
+      "bytes": 303,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/references/html-template.md",
+      "source_sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
+      "published_sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
+      "bytes": 10597,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/references/layout-patterns.md",
+      "source_sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
+      "published_sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
+      "bytes": 3661,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/references/slide-strategies.md",
+      "source_sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
+      "published_sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
+      "bytes": 2685,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/fetch-background.py",
+      "source_sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
+      "published_sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
+      "bytes": 12368,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/generate-slide.py",
+      "source_sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
+      "published_sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
+      "bytes": 28700,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/html-token-validator.py",
+      "source_sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
+      "published_sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
+      "bytes": 3557,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/search-slides.py",
+      "source_sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
+      "published_sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
+      "bytes": 9210,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/slide-token-validator.py",
+      "source_sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
+      "published_sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
+      "bytes": 973,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/scripts/slide_search_core.py",
+      "source_sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
+      "published_sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
+      "bytes": 14756,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "html-slides/yigit/YIGIT-WORKFLOW.md",
+      "source_sha256": "231139e6dcc5d7cbdf3ea6bd21952646f41c7dc747f7b33954992c4af39bfe16",
+      "published_sha256": "fe1b19094456b0116ea104d3abfbb5e8322be8f93558597c05e622a01f518100",
+      "bytes": 3300,
+      "legal_notice": false,
+      "modified": true
     },
     {
       "path": "medical-evidence-research/assets/icon.svg",
@@ -8283,9 +8499,9 @@
     },
     {
       "path": "office-docs-qa/modules/file-reading-workflow/MODULE.md",
-      "source_sha256": "7946f4800d9ae0cc2bfea02567f2befe19adbe68f07c77e7ce817806e1d859e9",
-      "published_sha256": "7946f4800d9ae0cc2bfea02567f2befe19adbe68f07c77e7ce817806e1d859e9",
-      "bytes": 3565,
+      "source_sha256": "b6c92b1f37a650b396559571955ae1cc07e3e2aaf444e08e72c0d3e9fba8f3ba",
+      "published_sha256": "b6c92b1f37a650b396559571955ae1cc07e3e2aaf444e08e72c0d3e9fba8f3ba",
+      "bytes": 3602,
       "legal_notice": false,
       "modified": false
     },
@@ -8331,9 +8547,9 @@
     },
     {
       "path": "office-docs-qa/SKILL.md",
-      "source_sha256": "a2d5ea31da88abd36ef2991267d22713dc26799ec2e42ed392e8b6d51e204a32",
-      "published_sha256": "83eb3462ad7e409d35b6a0aa14c263eebfdd22d8bc19062539166a10ff090ef7",
-      "bytes": 3991,
+      "source_sha256": "a40d3b54920f52dae817b570d5e1be0f3f124443fce47520dcc694b42e8d7a6b",
+      "published_sha256": "ed88566cd0e684fc2028733f558c9e1079bad3db2fd22c58d44c775a88a3051a",
+      "bytes": 4005,
       "legal_notice": false,
       "modified": true
     },
@@ -9040,6 +9256,214 @@
       "bytes": 12235,
       "legal_notice": false,
       "modified": true
+    },
+    {
+      "path": "presentation-studio/assets/deck-kit/build.js",
+      "source_sha256": "5a923fec397a3e17b16224286fc61194db4b435170788ab20bf91913e18f6627",
+      "published_sha256": "5a923fec397a3e17b16224286fc61194db4b435170788ab20bf91913e18f6627",
+      "bytes": 8149,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/assets/deck-kit/deck.example.json",
+      "source_sha256": "9c4ef764716b1b7124d8174637231ff9bee82b2df0265135c78e1cdb597128bf",
+      "published_sha256": "9c4ef764716b1b7124d8174637231ff9bee82b2df0265135c78e1cdb597128bf",
+      "bytes": 5753,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/assets/deck-kit/kit.js",
+      "source_sha256": "04ca712aca9e72b2e4aaef344f5a215d6c9b068998e1d7892f267208e0ac567b",
+      "published_sha256": "04ca712aca9e72b2e4aaef344f5a215d6c9b068998e1d7892f267208e0ac567b",
+      "bytes": 24476,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/assets/deck-kit-py/deck_kit.py",
+      "source_sha256": "25506214782890657fe58c02a4726b6639e5abf093b286c01acb99af0c19250b",
+      "published_sha256": "25506214782890657fe58c02a4726b6639e5abf093b286c01acb99af0c19250b",
+      "bytes": 33239,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/evals/trigger-cases.json",
+      "source_sha256": "b07283fe2e18fa94ecdefb9ea0f7a2c69581a5f5dfef020f681547f58e5b79a4",
+      "published_sha256": "b07283fe2e18fa94ecdefb9ea0f7a2c69581a5f5dfef020f681547f58e5b79a4",
+      "bytes": 2457,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/KULLANIM-KILAVUZU.md",
+      "source_sha256": "e3ab0965df3680deadf6053fc70f26cf84b737a5c2c1ae4b10568d02cb6633f0",
+      "published_sha256": "e3ab0965df3680deadf6053fc70f26cf84b737a5c2c1ae4b10568d02cb6633f0",
+      "bytes": 11165,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/LICENSE",
+      "source_sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd",
+      "published_sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd",
+      "bytes": 1064,
+      "legal_notice": true,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/academic-content.md",
+      "source_sha256": "f93603a00f3b4a38e422a0d8857b48ad116930c91a58bc3b1801486feb71a8d2",
+      "published_sha256": "f93603a00f3b4a38e422a0d8857b48ad116930c91a58bc3b1801486feb71a8d2",
+      "bytes": 4974,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/brief-and-rules.md",
+      "source_sha256": "fefd0aa2a90119989d990ca75626d96b55104ef65694ca51ac50a9af0fd10ab7",
+      "published_sha256": "fefd0aa2a90119989d990ca75626d96b55104ef65694ca51ac50a9af0fd10ab7",
+      "bytes": 6079,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/course-profiles.md",
+      "source_sha256": "e34a20f4b51824b9d5e54ec3c8b0fe9615b3d5e322f6915d48a210da657b8026",
+      "published_sha256": "e34a20f4b51824b9d5e54ec3c8b0fe9615b3d5e322f6915d48a210da657b8026",
+      "bytes": 3705,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/design-system.md",
+      "source_sha256": "f224d8e5fb4589ad1bce604844345c78f363369603226bec71412b5c187347bf",
+      "published_sha256": "f224d8e5fb4589ad1bce604844345c78f363369603226bec71412b5c187347bf",
+      "bytes": 6845,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/general-presentations.md",
+      "source_sha256": "46178e1c9947473b0b82e907a2ece2560b67e14859ba0489231dbaa97d103ad6",
+      "published_sha256": "46178e1c9947473b0b82e907a2ece2560b67e14859ba0489231dbaa97d103ad6",
+      "bytes": 1794,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/production-by-host.md",
+      "source_sha256": "81773cdf15eec590ab0b17efe95f444d5d9ef71da3a36fa0ec6f2620bfc2c55a",
+      "published_sha256": "81773cdf15eec590ab0b17efe95f444d5d9ef71da3a36fa0ec6f2620bfc2c55a",
+      "bytes": 4453,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/qa-and-delivery.md",
+      "source_sha256": "9dc6e6c0f60e67c1e4d9c1d53d8ddad4d975c6104f4e48e821901dc9344dd9e1",
+      "published_sha256": "9dc6e6c0f60e67c1e4d9c1d53d8ddad4d975c6104f4e48e821901dc9344dd9e1",
+      "bytes": 4484,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/speaker-notes.md",
+      "source_sha256": "d3bfb64377e13a91edb34553db2c8580ce788e58b42bf4cabe8a41c03c88cb47",
+      "published_sha256": "d3bfb64377e13a91edb34553db2c8580ce788e58b42bf4cabe8a41c03c88cb47",
+      "bytes": 4727,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/references/visuals-and-images.md",
+      "source_sha256": "4bf15059df86d29372420ff0d433cf2a2afeb2ec5a0a27e8bfe25cec3722d177",
+      "published_sha256": "4bf15059df86d29372420ff0d433cf2a2afeb2ec5a0a27e8bfe25cec3722d177",
+      "bytes": 4519,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/scripts/contact_sheet.py",
+      "source_sha256": "ce9c68b727702ad100bbc1b761bda0f0ef6d3c671d052706a7ec2871c8632cee",
+      "published_sha256": "ce9c68b727702ad100bbc1b761bda0f0ef6d3c671d052706a7ec2871c8632cee",
+      "bytes": 1999,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/scripts/find_images.py",
+      "source_sha256": "3d3d92267e54d727208ec6047ab20a032fc86353c2305b1ce428334ef793fd51",
+      "published_sha256": "3d3d92267e54d727208ec6047ab20a032fc86353c2305b1ce428334ef793fd51",
+      "bytes": 6903,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/scripts/make_reading_guide.py",
+      "source_sha256": "ebc4a6b245d48498adc480a17a07eff685fa049262b2ff81666551635b1f9080",
+      "published_sha256": "ebc4a6b245d48498adc480a17a07eff685fa049262b2ff81666551635b1f9080",
+      "bytes": 11265,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/scripts/pptx_audit.py",
+      "source_sha256": "0b49f0567d6696257c57e85f7c938625980153a59b95e052b5400ba21e59476e",
+      "published_sha256": "0b49f0567d6696257c57e85f7c938625980153a59b95e052b5400ba21e59476e",
+      "bytes": 12183,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/scripts/render_pptx.ps1",
+      "source_sha256": "8a174d988d0b0364413de7d2119e24af4ecd7e5c1c291183f3505a456d71aa3a",
+      "published_sha256": "8a174d988d0b0364413de7d2119e24af4ecd7e5c1c291183f3505a456d71aa3a",
+      "bytes": 1525,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/SKILL.md",
+      "source_sha256": "54a767fe478a0969cc454b6e60036a7bd13ce562e9f992c490eeddc3d04bc194",
+      "published_sha256": "f6109d5684ab62f5792e27728df8810060c676ed88021b1005636ae68419b9e1",
+      "bytes": 8351,
+      "legal_notice": false,
+      "modified": true
+    },
+    {
+      "path": "presentation-studio/templates/brief.md",
+      "source_sha256": "00032252692f53d19772a312a8c8616561fd7d78dc5162b4242e636e639d96d0",
+      "published_sha256": "00032252692f53d19772a312a8c8616561fd7d78dc5162b4242e636e639d96d0",
+      "bytes": 1653,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/templates/claims.json",
+      "source_sha256": "6c64c8f9f079bb0000865a083672d5c8b62f03be52aafecbf079e4333893636d",
+      "published_sha256": "6c64c8f9f079bb0000865a083672d5c8b62f03be52aafecbf079e4333893636d",
+      "bytes": 792,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/templates/deck-plan.md",
+      "source_sha256": "f571666dcacb3abff6bf1a17016db63ee03e29f449e0b640df7f4de02d5a7f79",
+      "published_sha256": "f571666dcacb3abff6bf1a17016db63ee03e29f449e0b640df7f4de02d5a7f79",
+      "bytes": 835,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "presentation-studio/templates/ledger.md",
+      "source_sha256": "e52e8dea493e2cfd3c8964ca77c0f3429ae63fd946c0a2620ed018869fac6a6c",
+      "published_sha256": "e52e8dea493e2cfd3c8964ca77c0f3429ae63fd946c0a2620ed018869fac6a6c",
+      "bytes": 782,
+      "legal_notice": false,
+      "modified": false
     },
     {
       "path": "primary-source-research/agents/openai.yaml",
@@ -9760,222 +10184,6 @@
       "bytes": 495,
       "legal_notice": false,
       "modified": false
-    },
-    {
-      "path": "slides/LICENSE",
-      "source_sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
-      "published_sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
-      "bytes": 1096,
-      "legal_notice": true,
-      "modified": false
-    },
-    {
-      "path": "slides/references/copywriting-formulas.md",
-      "source_sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
-      "published_sha256": "457f02a661570cbc732eff8fc6b79762f61b0c62f36b0adadf529b496fc501de",
-      "bytes": 2668,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/references/create.md",
-      "source_sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
-      "published_sha256": "65d3011e70e481d9342fdea4544cd3e09eb985f5367afc84d67575785b0cf59d",
-      "bytes": 1279,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/references/html-template.md",
-      "source_sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
-      "published_sha256": "8fcb5d851b35df483d3bbcdae8172da9faa8ce3b05ed8785ce06c3e2815eb03f",
-      "bytes": 10878,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/references/layout-patterns.md",
-      "source_sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
-      "published_sha256": "0e9c746e209742e26a09100a44d1c1a27a16dff5a217c30770fbd4298da0782d",
-      "bytes": 3808,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/references/slide-strategies.md",
-      "source_sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
-      "published_sha256": "9146c346b10f1b2866ecd585bddc12cb0882564e75b8caf8eb0e45457de9f3cd",
-      "bytes": 2789,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/SKILL.md",
-      "source_sha256": "d8421c16f2200f51a8e33236668884e3d4b3c475da753731e0060ac3aecd7fe7",
-      "published_sha256": "f3b8c69d46f570b3a501b426dee5ffabbec6f349a33ec6a97ffffb3971a632f7",
-      "bytes": 3426,
-      "legal_notice": false,
-      "modified": true
-    },
-    {
-      "path": "slides/yigit/data/slide-backgrounds.csv",
-      "source_sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
-      "published_sha256": "d1bb701b87bef493d72974d6fac1087c8ba4e2df14185fe3e0c36a13fe35f3d1",
-      "bytes": 1038,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-charts.csv",
-      "source_sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
-      "published_sha256": "12ef876cd76e67a6553444bfa2ebf1d5d4d6216289d34db052a6e87421135033",
-      "bytes": 8631,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-color-logic.csv",
-      "source_sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
-      "published_sha256": "ea68c737075f1615b2a7e461e2878c06bfe8f803dcabfbcc2977ffe5f9ec9ded",
-      "bytes": 877,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-copy.csv",
-      "source_sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
-      "published_sha256": "43152937a0e598b3fbfdd418684311c105d44e3c5b333703ddb0b8cb28e40658",
-      "bytes": 6427,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-layout-logic.csv",
-      "source_sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
-      "published_sha256": "26b5b75782d5aba89836c0479acd3111cc69b67853db9c2259b30ac1e966bc62",
-      "bytes": 981,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-layouts.csv",
-      "source_sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
-      "published_sha256": "95d558c1b7d2552d7a75402dc68facbd16125e574985851db5729d1145e14896",
-      "bytes": 8760,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-strategies.csv",
-      "source_sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
-      "published_sha256": "f656be0ab0b3a85fa7fc74202e9701a7236220412d67d5f63eb6dbb100bb2639",
-      "bytes": 8232,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/data/slide-typography.csv",
-      "source_sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
-      "published_sha256": "b96cd11dd4ff1dea8a9454b0b9e898e7f82f9243182f8f237af1f2c9b8824ce5",
-      "bytes": 735,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/references/copywriting-formulas.md",
-      "source_sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
-      "published_sha256": "212bd9c15d57c46ab3632ba78a8173b8fd2441fe84389525c6ff4f7ace415f26",
-      "bytes": 2574,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/references/create.md",
-      "source_sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
-      "published_sha256": "5134b81e2a0d258d078de9cce62ba2a3bbb76a86d2376296214e47f601996865",
-      "bytes": 303,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/references/html-template.md",
-      "source_sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
-      "published_sha256": "1f13c3866ad6fd3da0ab095d14c821dc17a7a593d153810b056add40fe5cf7f9",
-      "bytes": 10597,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/references/layout-patterns.md",
-      "source_sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
-      "published_sha256": "974e97e5127c00611b62882e713c1d217c7b1eb9c3e4f88a210b469b0e98f74a",
-      "bytes": 3661,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/references/slide-strategies.md",
-      "source_sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
-      "published_sha256": "fd9ab34b7efc8a05e47301fdaadd47de694796208576dcfcc3bb9e32dd37c2d4",
-      "bytes": 2685,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/fetch-background.py",
-      "source_sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
-      "published_sha256": "cbc3c13bbd32152ec1152d8febb6bd2bb0a1d4efb88cc5b292af92c76d08c8d3",
-      "bytes": 12368,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/generate-slide.py",
-      "source_sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
-      "published_sha256": "60dc59587b7feb1d2ba0c785f2111cb3923086ead9115038cb98b1567a1afa4b",
-      "bytes": 28700,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/html-token-validator.py",
-      "source_sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
-      "published_sha256": "0297277ed98b7ba6e16107e92a4da2295147a2fb44c87d98e58165bd3ed38d85",
-      "bytes": 3557,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/search-slides.py",
-      "source_sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
-      "published_sha256": "fded9548bc1bbe1303da67fabe34006c6a7c57934c9d171ea3dc3eb5f6eee010",
-      "bytes": 9210,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/slide-token-validator.py",
-      "source_sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
-      "published_sha256": "66da5da5e8e659d405a89b342e13dd1e469e79726c46002d9d2368c3c7aaf945",
-      "bytes": 973,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/scripts/slide_search_core.py",
-      "source_sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
-      "published_sha256": "2464050ae338eb50728086046b644845fa7ae943f32efead3908fdbe1473edbe",
-      "bytes": 14756,
-      "legal_notice": false,
-      "modified": false
-    },
-    {
-      "path": "slides/yigit/YIGIT-WORKFLOW.md",
-      "source_sha256": "231139e6dcc5d7cbdf3ea6bd21952646f41c7dc747f7b33954992c4af39bfe16",
-      "published_sha256": "fe1b19094456b0116ea104d3abfbb5e8322be8f93558597c05e622a01f518100",
-      "bytes": 3300,
-      "legal_notice": false,
-      "modified": true
     },
     {
       "path": "ui-styling/canvas-fonts/ArsenalSC-OFL.txt",
@@ -13346,6 +13554,14 @@
       "modified": false
     },
     {
+      "path": "super-memory/PORTABLE.md",
+      "source_sha256": "1ef57269f64ebf62c91d70aba00d1d1aabfbfc5163019a96fed3dc824826f0c9",
+      "published_sha256": "1ef57269f64ebf62c91d70aba00d1d1aabfbfc5163019a96fed3dc824826f0c9",
+      "bytes": 1720,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
       "path": "super-memory/scripts/supermemory.py",
       "source_sha256": "a7cca40aef7d7a91cc08b7a8317d6e52ed19d41634daff846af63ed5457a308e",
       "published_sha256": "a7cca40aef7d7a91cc08b7a8317d6e52ed19d41634daff846af63ed5457a308e",
@@ -13355,11 +13571,11 @@
     },
     {
       "path": "super-memory/SKILL.md",
-      "source_sha256": "24fdedbff976519313cf7b091e0bf186655a88a7434f22a7bde1497fcc51a5b1",
+      "source_sha256": "3821be345bfa771dd34eff87f3f28da2f787eae890b05d1cf83d881c3da40c53",
       "published_sha256": "3821be345bfa771dd34eff87f3f28da2f787eae890b05d1cf83d881c3da40c53",
       "bytes": 5739,
       "legal_notice": false,
-      "modified": true
+      "modified": false
     }
   ],
   "licenses": [
@@ -13651,6 +13867,21 @@
       "status": "evidence-present-scope-review"
     },
     {
+      "skill": "html-slides",
+      "declared": null,
+      "root_license_files": [
+        "html-slides/LICENSE"
+      ],
+      "notice_files": [
+        {
+          "path": "html-slides/LICENSE",
+          "sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055"
+        }
+      ],
+      "modules_without_local_or_root_notice": [],
+      "status": "evidence-present-scope-review"
+    },
+    {
       "skill": "medical-evidence-research",
       "declared": null,
       "root_license_files": [],
@@ -13756,6 +13987,21 @@
       "notice_files": [],
       "modules_without_local_or_root_notice": [],
       "status": "root-license-not-specified"
+    },
+    {
+      "skill": "presentation-studio",
+      "declared": null,
+      "root_license_files": [
+        "presentation-studio/LICENSE"
+      ],
+      "notice_files": [
+        {
+          "path": "presentation-studio/LICENSE",
+          "sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd"
+        }
+      ],
+      "modules_without_local_or_root_notice": [],
+      "status": "evidence-present-scope-review"
     },
     {
       "skill": "primary-source-research",
@@ -13871,21 +14117,6 @@
         {
           "path": "site-seo-audit/LICENSE",
           "sha256": "d448781f9df6190a0b2d74b4a8c9667989bd05d63aa8fa23ced9d4fd7b764763"
-        }
-      ],
-      "modules_without_local_or_root_notice": [],
-      "status": "evidence-present-scope-review"
-    },
-    {
-      "skill": "slides",
-      "declared": null,
-      "root_license_files": [
-        "slides/LICENSE"
-      ],
-      "notice_files": [
-        {
-          "path": "slides/LICENSE",
-          "sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055"
         }
       ],
       "modules_without_local_or_root_notice": [],
@@ -14337,6 +14568,14 @@
       "reason": "portable host adaptation / private machine context removal"
     },
     {
+      "path": "html-slides/SKILL.md",
+      "reason": "portable host adaptation / private machine context removal"
+    },
+    {
+      "path": "html-slides/yigit/YIGIT-WORKFLOW.md",
+      "reason": "portable host adaptation / private machine context removal"
+    },
+    {
       "path": "medical-evidence-research/SKILL.md",
       "reason": "portable host adaptation / private machine context removal"
     },
@@ -14366,6 +14605,10 @@
     },
     {
       "path": "plan-smart-routes/SKILL.md",
+      "reason": "portable host adaptation / private machine context removal"
+    },
+    {
+      "path": "presentation-studio/SKILL.md",
       "reason": "portable host adaptation / private machine context removal"
     },
     {
@@ -14445,14 +14688,6 @@
       "reason": "portable host adaptation / private machine context removal"
     },
     {
-      "path": "slides/SKILL.md",
-      "reason": "portable host adaptation / private machine context removal"
-    },
-    {
-      "path": "slides/yigit/YIGIT-WORKFLOW.md",
-      "reason": "portable host adaptation / private machine context removal"
-    },
-    {
       "path": "ui-styling/SKILL.md",
       "reason": "portable host adaptation / private machine context removal"
     },
@@ -14486,10 +14721,6 @@
     },
     {
       "path": "yigit-writer/SKILL.md",
-      "reason": "portable host adaptation / private machine context removal"
-    },
-    {
-      "path": "super-memory/SKILL.md",
       "reason": "portable host adaptation / private machine context removal"
     }
   ]

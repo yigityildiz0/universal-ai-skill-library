@@ -18,6 +18,7 @@
     "design-system",
     "find-docs",
     "graphify",
+    "html-slides",
     "medical-evidence-research",
     "mental-health-crisis-support",
     "modern-web-guidance",
@@ -26,11 +27,11 @@
     "personal-tech-copilot",
     "physio-clinical-copilot",
     "plan-smart-routes",
+    "presentation-studio",
     "primary-source-research",
     "purchase-advisor",
     "research-analyst",
     "site-seo-audit",
-    "slides",
     "super-memory",
     "ui-styling",
     "ui-ux-pro-max",
@@ -47,6 +48,6 @@
     "bilingual"
   ],
   "repository": "universal-ai-skill-library",
-  "base_commit": "79fdd7d4bffd15d4738107d0f6a1e589495e308e",
+  "base_commit": "af72827e7594b22d9bba0ca3a1c1fffd7f771d2e",
   "canonical_repository": "universal-ai-skill-library"
 }

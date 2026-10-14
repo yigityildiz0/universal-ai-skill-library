@@ -45,7 +45,8 @@ Unified design skill: brand, tokens, UI, logo, CIP, slides, banners, social phot
 | shadcn/ui, Tailwind, code | `ui-styling` | Bundled sibling skill |
 | Logo creation, AI generation | Logo (built-in) | `references/logo-design.md` |
 | CIP mockups, deliverables | CIP (built-in) | `references/cip-design.md` |
-| Presentations, pitch decks | Slides (built-in) | `references/slides.md` |
+| HTML presentations, web pitch decks | Slides (built-in) | `references/slides.md` |
+| PowerPoint/PPTX decks, speaker notes, course talks | `presentation-studio` skill | its `SKILL.md` |
 | Banners, covers, headers | Banner (built-in) | `references/banner-sizes-and-styles.md` |
 | Social media images/photos | Social Photos (built-in) | `references/social-photos-design.md` |
 | SVG icons, icon sets | Icon (built-in) | `references/icon-design.md` |

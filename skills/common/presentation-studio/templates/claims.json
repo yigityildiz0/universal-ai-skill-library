@@ -1,0 +1,19 @@
+{
+  "_howto": "One entry per number or factual claim used on slides, notes or the reading guide. Verify against the full text. status: standard | guideline | single-study | author-proposal | calculation | teaching-illustration.",
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Manual muscle testing grade 4–5 misses weakness detected by dynamometry",
+      "source": "Bohannon, 2005",
+      "doi_or_pmid": "10.1191/0269215505cr873oa",
+      "value": "sensitivity ≤ 75 %",
+      "population": "107 patients, knee extension",
+      "protocol": "MMT vs hand-held dynamometry",
+      "design": "cross-sectional",
+      "status": "single-study",
+      "verified_in": "full text | abstract only",
+      "limitation": "one muscle group, clinical sample",
+      "slides": [4]
+    }
+  ]
+}

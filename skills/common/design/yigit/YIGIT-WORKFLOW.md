@@ -16,8 +16,9 @@ Coordinate the design family without duplicating specialist instructions.
 | Product direction, UX evidence, stack guidance | ui-ux-pro-max |
 | Tailwind, component styling, responsive implementation | ui-styling |
 | Campaign banner, cover, ad, hero image | banner-design |
-| Pitch deck or HTML presentation | slides (HTML); available presentation tool for editable PPTX |
-| Academic/FTR, thesis or conference talk | academic-study-coach; choose rendering format afterward |
+| HTML/web presentation | html-slides |
+| Any PowerPoint/PPTX deck, pitch deck file, speaker notes | presentation-studio |
+| Academic/FTR, thesis or conference talk | academic-study-coach for the argument, presentation-studio for the deck |
 
 For logos, icons, illustration, or photography, use the active host's native design or image-generation capability and the brand/design-system constraints. Do not require a fixed provider or model.
 

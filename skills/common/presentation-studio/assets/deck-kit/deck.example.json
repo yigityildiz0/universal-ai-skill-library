@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Kas Kuvvetinin Nicel Değerlendirilmesi",
+    "author": "Ad Soyad",
+    "output": "ornek-sunum.pptx",
+    "theme": "akademik",
+    "font": "Calibri",
+    "targetMinutes": [3, 8],
+    "wordsPerMinute": 112,
+    "pausePerSlide": 7,
+    "abbreviationMode": "every",
+    "sourceEverySlide": true,
+    "type": { "minBody": 36, "title": 40, "exceptions": { "source": 16, "references": 16, "slideNumber": 14, "credit": 14 } }
+  },
+  "abbreviations": {
+    "HHD": ["eyç-eyç-di", "el dinamometresi"],
+    "ICC": ["ay-si-si", "sınıf içi korelasyon katsayısı"],
+    "MMT": ["em-em-ti", "manuel kas testi"],
+    "MDC": ["em-di-si", "minimal saptanabilir değişim"]
+  },
+  "names": { "Bohannon": "bohenın", "Pinto-Ramos": "pinto ramos" },
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "Kas Kuvvetinin Nicel Değerlendirilmesi",
+      "subtitle": "Taşınabilir dinamometrelerle ölçüm ve yorum",
+      "meta": "Ad Soyad · Fizyoterapide Ölçme ve Değerlendirme",
+      "image": { "file": "img/kapak.jpg", "alt": "El dinamometresiyle kavrama ölçümü" },
+      "credit": "Görsel: yazar, lisans",
+      "notes": { "say": "Kas kuvvetini sayıyla ölçmeyi ve bu sayıyı doğru yorumlamayı anlatacağım.", "transition": "Önce neden sayıya ihtiyaç duyduğumuzla başlayalım." }
+    },
+    {
+      "layout": "agenda",
+      "title": "Dört soruya cevap arayacağız",
+      "items": ["Neden kuvveti sayıyla ölçmeliyiz?", "Hangi cihazı ne zaman seçeriz?", "Ölçümü nasıl standart hâle getiririz?", "Çıkan sayıyı nasıl yorumlarız?"],
+      "notes": { "say": "Sunumu dört soru etrafında kurdum; her bölüm bir soruya cevap veriyor.", "transition": "İlk soruyla başlıyorum." }
+    },
+    { "layout": "section", "num": 1, "title": "Neden sayıyla ölçüyoruz?", "subtitle": "Manuel kas testinin sınırları", "notes": { "say": "İlk bölümde manuel testin neyi kaçırdığını göstereceğim." } },
+    {
+      "layout": "stat",
+      "title": "Manuel kas testi zayıflığı kaçırabilir",
+      "stats": [ { "big": "≤ %75", "label": "duyarlılık" }, { "big": "107", "label": "hasta, diz ekstansiyonu" } ],
+      "takeaway": "\"Normal\" denen kas aslında zayıf olabilir.",
+      "source": "Bohannon, 2005",
+      "notes": {
+        "say": "MMT'de 4 ile 5 arası çok geniş bir kuvvet aralığını kapsar. HHD ile ölçüldüğünde normal sanılan kasların bir kısmı zayıf çıkıyor.",
+        "summary": "MMT 4–5 aralığında duyarsız; kuvveti sayıyla ölçmek gerekir.",
+        "research": {
+          "cite": "Bohannon, 2005",
+          "why": "Manuel testin sınırını sayıyla gösteren çalışma.",
+          "what": "107 hastada diz ekstansiyonu MMT ve HHD ile karşılaştırılmış; duyarlılık en fazla yüzde 75.",
+          "interpret": "Dört zayıf kastan biri 'normal' görünebilir; tarama için MMT tek başına yetmez."
+        },
+        "terms": [ { "term": "duyarlılık", "def": "gerçekten zayıf olanı doğru yakalama oranı" } ],
+        "transition": "Peki hangi cihazla ölçüyoruz?"
+      }
+    },
+    {
+      "layout": "photoSteps",
+      "title": "Örnek protokol: diz ekstansiyonu",
+      "steps": ["Oturur, diz 60° fleksiyon", "Sensör: medial malleolün 5 cm proksimali", "5 sn maksimal itme (make)", "2 deneme, 60 sn dinlenme", "Sonuç: iki denemenin ortalaması"],
+      "image": { "file": "img/protokol.jpg", "alt": "HHD ile diz ekstansiyonu ölçümü, yakın plan" },
+      "callout": "Ortalama ile ICC 0,978",
+      "source": "Pinto-Ramos ve ark., 2022 (görsel CC BY 4.0)",
+      "notes": {
+        "say": "Pozisyon, sensörün yeri, komut ve deneme sayısı protokolün kimliğidir; biri değişirse sayı da değişir.",
+        "research": {
+          "cite": "Pinto-Ramos ve ark., 2022",
+          "why": "Adım adım tekrarlanabilir bir HHD protokolü veriyor.",
+          "what": "29 rehabilitasyon hastası; iki denemenin ortalamasıyla ICC 0,978.",
+          "interpret": "ICC 0,90 üzerindeyse güvenirlik mükemmel kabul edilir; protokol aynen uygulanırsa sonuç tekrarlanabilir."
+        },
+        "transition": "Aynı ölçümü iki farklı teknikle yapabiliriz."
+      }
+    },
+    {
+      "layout": "compare",
+      "title": "Make mi, break mi? İki farklı test",
+      "left": { "head": "Make", "items": ["Hasta sabit sensöre iter", "Ağrılı hastada daha güvenli"] },
+      "right": { "head": "Break", "items": ["Değerlendirici pozisyonu aşar", "Değerler daha yüksek çıkar"] },
+      "takeaway": "Takipte test tipini değiştirme.",
+      "source": "Bohannon, 1988",
+      "notes": { "say": "Make testinde hasta iter; break testinde değerlendirici kasın tutuşunu bozar. İkisinin sonucu birbirinin yerine kullanılamaz.", "transition": "Şimdi sonucu yorumlamaya geçelim." }
+    },
+    {
+      "layout": "chart",
+      "title": "Ölçüm hatası, değişimi yorumlamayı belirler",
+      "chartType": "bar",
+      "data": [ { "name": "kg", "labels": ["Ölçüm 1", "Ölçüm 2", "MDC"], "values": [30, 32, 5] } ],
+      "takeaway": "2 kg'lık fark MDC'nin altında: gerçek değişim sayılmaz.",
+      "source": "Kavram kaynağı: Weir, 2005",
+      "notes": { "say": "İki ölçüm arasındaki fark ölçüm hatasından küçükse gerçek değişim diyemeyiz.", "summary": "Fark MDC'den küçükse değişim kanıtlanmadı." }
+    },
+    {
+      "layout": "references",
+      "title": "Kaynakça",
+      "items": [
+        "Bohannon, R. W. (2005). Manual muscle testing: Does it meet the standards of an adequate screening test? Clinical Rehabilitation, 19(6), 662–667.",
+        "Örnek künye: tam künyeyi PubMed/Crossref'ten doğrulayıp APA 7 ile yazın."
+      ]
+    }
+  ]
+}
