@@ -1,0 +1,41 @@
+/* Design languages. Add ONE class to <body>, e.g. <body class="theme-akademik">. Fonts fall back safely and all cover Turkish. */
+
+.theme-akademik {      /* calm, scholarly: serif headings, navy + crimson accent */
+  --font-head: Cambria, Caladea, Georgia, "DejaVu Serif", "Times New Roman", serif;
+  --ink: #1d2433; --muted: #596273; --rule: #cfd5de; --accent: #8e2330; --accent-soft: #f6eaec;
+}
+.theme-akademik h1, .theme-akademik h2 { letter-spacing: .1px; }
+.theme-akademik h2 { border-bottom: 1px solid var(--rule); padding-bottom: .15em; }
+
+.theme-klinik {        /* clean clinical teal, sans-serif, airy */
+  --ink: #1b2b34; --muted: #566975; --rule: #d3e0e5; --accent: #0e7c86; --accent-soft: #e4f2f4;
+}
+.theme-klinik h2 { color: var(--accent); }
+.theme-klinik th { background: var(--accent-soft); }
+
+.theme-editoryal {     /* magazine feel: large serif title, generous whitespace, warm accent */
+  --font-head: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  --font-body: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  --body-size: 11.2pt; --leading: 1.6;
+  --ink: #26221f; --muted: #6a625b; --rule: #ddd5cc; --accent: #b4561f; --accent-soft: #fbf0e6;
+}
+.theme-editoryal h1 { font-size: 2.3em; font-weight: 400; }
+
+.theme-teknik {        /* technical report: dense, numbered feel, graphite + blue */
+  --body-size: 10.5pt; --leading: 1.42;
+  --ink: #20262d; --muted: #5d6772; --rule: #cfd6dd; --accent: #2f5da8; --accent-soft: #e8eef8;
+}
+.theme-teknik h2 { border-left: 4px solid var(--accent); padding-left: .5em; }
+.theme-teknik table { font-size: .9em; }
+
+.theme-modern {        /* modern cards: soft panels, bold numbers, violet-teal */
+  --ink: #1e2230; --muted: #5d6478; --rule: #dfe3ee; --accent: #5b4bdb; --accent-soft: #eeecfd;
+}
+.theme-modern .card { background: #fbfbff; border-color: var(--rule); }
+.theme-modern h2 { color: var(--accent); }
+
+.theme-minimal {       /* black and white, print-friendly, no fills */
+  --ink: #111; --muted: #555; --rule: #bbb; --accent: #111; --accent-soft: #f3f3f3;
+}
+.theme-minimal th { background: #eee; }
+.theme-minimal .callout { border-left-color: #111; }

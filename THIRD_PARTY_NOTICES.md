@@ -25,6 +25,7 @@ Original license files stay with source; missing evidence is not an MIT grant. H
 | modern-web-guidance | [LICENSE](skills/common/modern-web-guidance/LICENSE) | evidence-present-scope-review |
 | office-docs-qa | not supplied / sağlanmamış | root-license-not-specified |
 | parallel-web | [LICENSE](skills/common/parallel-web/LICENSE) | evidence-present-scope-review |
+| pdf-studio | [LICENSE](skills/common/pdf-studio/LICENSE) | evidence-present-scope-review |
 | personal-tech-copilot | not supplied / sağlanmamış | root-license-not-specified |
 | physio-clinical-copilot | [LICENSE](skills/common/physio-clinical-copilot/LICENSE) | evidence-present-scope-review |
 | plan-smart-routes | not supplied / sağlanmamış | root-license-not-specified |

@@ -1,0 +1,87 @@
+/* pdf-studio print kit — layout rules. Link this BEFORE a theme file from themes.css.
+   Tested with Chromium print-to-PDF (Edge/Chrome headless). Rules degrade gracefully elsewhere. */
+
+@page {
+  size: A4 portrait;               /* build_pdf.py can override size/orientation */
+  margin: 19mm 18mm 21mm 18mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font: 9pt/1 var(--font-body, Calibri, Arial, sans-serif); color: #666; }
+}
+@page :first { @bottom-center { content: none; } }          /* no number on a cover; remove if no cover */
+@page landscape-section { size: A4 landscape; }              /* use class .landscape on a wide section */
+
+:root {
+  --font-body: Calibri, Carlito, "Noto Sans", "DejaVu Sans", Arial, "Liberation Sans", sans-serif;
+  --font-head: var(--font-body);
+  --font-mono: Consolas, "Cascadia Mono", "DejaVu Sans Mono", "Liberation Mono", monospace;
+  --ink: #1f2933; --muted: #5b6770; --rule: #d5dbe0; --accent: #0e6a78; --accent-soft: #e5f1f3; --paper: #fff;
+  --body-size: 11pt; --leading: 1.5;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--body-size); line-height: var(--leading);
+  font-kerning: normal; text-rendering: geometricPrecision;
+  overflow-wrap: break-word; hyphens: manual;             /* turn on hyphens:auto only after testing the language */
+  orphans: 3; widows: 3;
+}
+
+/* ---- text ---- */
+h1, h2, h3, h4, h5 { font-family: var(--font-head); line-height: 1.2; margin: 1.4em 0 .5em; color: var(--ink);
+  break-after: avoid; page-break-after: avoid; break-inside: avoid; page-break-inside: avoid; }
+h1 { font-size: 1.9em; margin-top: 0; } h2 { font-size: 1.45em; } h3 { font-size: 1.15em; } h4 { font-size: 1em; }
+h2 + *, h3 + * { break-before: avoid; }                      /* first block after a heading stays with it */
+p { margin: 0 0 .7em; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 .8em 1.3em; padding: 0; } li { margin: 0 0 .25em; break-inside: avoid; }
+a { color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
+blockquote { margin: 1em 0; padding: .4em 1em; border-left: 3px solid var(--accent); background: var(--accent-soft); break-inside: avoid; }
+code, kbd, samp { font-family: var(--font-mono); font-size: .92em; overflow-wrap: anywhere; }
+pre { font-family: var(--font-mono); font-size: .88em; white-space: pre-wrap; overflow-wrap: anywhere; background: #f4f6f8;
+  padding: .6em .8em; border: 1px solid var(--rule); border-radius: 3px; break-inside: avoid; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 1.2em 0; }
+sub, sup { line-height: 0; }
+
+/* ---- blocks that must never be cut ---- */
+.keep, figure, .callout, .card, .kpi, .box, blockquote, pre, .formula, .steps > li { break-inside: avoid; page-break-inside: avoid; }
+.callout { border: 1px solid var(--rule); border-left: 4px solid var(--accent); background: var(--accent-soft); padding: .6em .9em; margin: 1em 0; border-radius: 3px; }
+.callout > :last-child { margin-bottom: 0; }
+.card { border: 1px solid var(--rule); border-radius: 4px; padding: .7em .9em; margin: .8em 0; background: #fff; }
+.kpi { display: inline-block; min-width: 28mm; padding: .5em .8em; border: 1px solid var(--rule); border-radius: 4px; margin: 0 .4em .4em 0; }
+.kpi b { display: block; font-size: 1.6em; color: var(--accent); line-height: 1.1; }
+.page-break { break-before: page; page-break-before: always; }
+.avoid-break-before { break-before: avoid; }
+
+/* ---- figures ---- */
+figure { margin: 1em 0; text-align: center; }
+figure img, img { max-width: 100%; height: auto; break-inside: avoid; }
+figcaption { font-size: .88em; color: var(--muted); margin-top: .35em; text-align: left; break-before: avoid; }
+
+/* ---- tables ---- */
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .93em; table-layout: auto; }
+thead { display: table-header-group; }                        /* header repeats on every page */
+tfoot { display: table-footer-group; }
+tr, td, th { break-inside: avoid; page-break-inside: avoid; }
+th, td { padding: .35em .55em; border: 1px solid var(--rule); vertical-align: top; text-align: left; overflow-wrap: anywhere; }
+th { background: #eef2f4; font-weight: 700; }
+tbody tr:nth-child(even) td { background: #fafbfc; }
+caption { caption-side: top; text-align: left; font-weight: 700; padding-bottom: .3em; break-after: avoid; }
+table.keep { break-inside: avoid; }                           /* small table: whole table on one page */
+table.wide { font-size: .85em; }                              /* wide table: reduce a little, never below 9pt body equivalent */
+.landscape { page: landscape-section; }
+
+/* ---- layout helpers (avoid flex/grid around content that has to paginate) ---- */
+.cols-2 { column-count: 2; column-gap: 8mm; }
+.cols-2 > * { break-inside: avoid; }
+.row { display: block; }
+.grid-2, .grid-3 { display: block; }                           /* print: stack. Use real tables or multi-column instead of grid for paginating content */
+.small { font-size: .88em; color: var(--muted); }
+.nowrap { white-space: nowrap; }
+
+/* ---- cover ---- */
+.cover { min-height: 245mm; display: flex; flex-direction: column; justify-content: center; padding: 0 4mm; break-after: page; }
+.cover h1 { font-size: 2.6em; line-height: 1.1; margin-bottom: .3em; }
+.cover .sub { font-size: 1.2em; color: var(--muted); }
+.cover .meta { margin-top: 2.5em; color: var(--muted); }
+
+@media print { .no-print { display: none !important; } }

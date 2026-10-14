@@ -25,8 +25,9 @@ CSS = """
 @page { size: A4; margin: 16mm 15mm; }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11.5pt; color: #1f2733; line-height: 1.45; }
 h1 { font-size: 22pt; margin: 0 0 4mm; color: #1b2430; }
-h2 { font-size: 15pt; margin: 9mm 0 3mm; color: #b0303f; border-bottom: 1px solid #d9dee5; padding-bottom: 1mm; }
-h3 { font-size: 12.5pt; margin: 5mm 0 1.5mm; color: #1b2430; }
+h2 { font-size: 15pt; margin: 9mm 0 3mm; color: #b0303f; border-bottom: 1px solid #d9dee5; padding-bottom: 1mm; break-after: avoid; }
+h3 { font-size: 12.5pt; margin: 5mm 0 1.5mm; color: #1b2430; break-after: avoid; }
+thead { display: table-header-group; } tr, td, th { break-inside: avoid; } .box { break-inside: avoid; } p, li { orphans: 3; widows: 3; } td, th { overflow-wrap: anywhere; }
 table { border-collapse: collapse; width: 100%; margin: 2mm 0; font-size: 10.5pt; }
 th, td { border: 1px solid #d9dee5; padding: 1.5mm 2mm; vertical-align: top; text-align: left; }
 th { background: #1b2430; color: #fff; }

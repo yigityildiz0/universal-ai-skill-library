@@ -1,5 +1,5 @@
 {
-  "edition": "2026.10.14",
+  "edition": "2026.10.14.2",
   "files": [
     {
       "path": "academic-study-coach/modules/academic-presentations/MODULE.md",
@@ -8515,9 +8515,9 @@
     },
     {
       "path": "office-docs-qa/modules/pdf-workflow/MODULE.md",
-      "source_sha256": "5e7529fa1b724561f1d94be54674c3c962e1cac4b9b4e8eae0ece39face55735",
-      "published_sha256": "5e7529fa1b724561f1d94be54674c3c962e1cac4b9b4e8eae0ece39face55735",
-      "bytes": 2545,
+      "source_sha256": "6a595a3496b99e4784b60a4160a8124747d98971378a7137acf9d486412da4dd",
+      "published_sha256": "6a595a3496b99e4784b60a4160a8124747d98971378a7137acf9d486412da4dd",
+      "bytes": 2647,
       "legal_notice": false,
       "modified": false
     },
@@ -8547,9 +8547,9 @@
     },
     {
       "path": "office-docs-qa/SKILL.md",
-      "source_sha256": "a40d3b54920f52dae817b570d5e1be0f3f124443fce47520dcc694b42e8d7a6b",
-      "published_sha256": "ed88566cd0e684fc2028733f558c9e1079bad3db2fd22c58d44c775a88a3051a",
-      "bytes": 4005,
+      "source_sha256": "fde03e4c392124733e5faaa592ed47deec63a45c70c94787b4ee347144919f53",
+      "published_sha256": "7ad4a351cb85b0b61ac69dce444f939c04653265c425c337c2e1c3e7f5cb2653",
+      "bytes": 4038,
       "legal_notice": false,
       "modified": true
     },
@@ -8758,6 +8758,126 @@
       "source_sha256": "60a7e0c47a3d8db71e71aa5d63f2ea41d01847611249b766783e34fda7f9ec09",
       "published_sha256": "8e305c5980681f66fe4c7d3bbec863b20d73efaa04c82a23e1cfb206df6328c4",
       "bytes": 4534,
+      "legal_notice": false,
+      "modified": true
+    },
+    {
+      "path": "pdf-studio/assets/pdf-kit/print.css",
+      "source_sha256": "8ce91183a4f520fc928106466403c233876b7f75a992ccf7a9fed6073cefcf3e",
+      "published_sha256": "8ce91183a4f520fc928106466403c233876b7f75a992ccf7a9fed6073cefcf3e",
+      "bytes": 5593,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/assets/pdf-kit/template.html",
+      "source_sha256": "b4ca1ddbce5dc357c3f45a5e2019dd2b8755c9aa9664005bf17bbf65bdb5d488",
+      "published_sha256": "b4ca1ddbce5dc357c3f45a5e2019dd2b8755c9aa9664005bf17bbf65bdb5d488",
+      "bytes": 1555,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/assets/pdf-kit/themes.css",
+      "source_sha256": "19bc500ff76d024ed171f2d7c27debca6ce8e2c25130862ef2c2c07490230372",
+      "published_sha256": "19bc500ff76d024ed171f2d7c27debca6ce8e2c25130862ef2c2c07490230372",
+      "bytes": 2126,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/evals/trigger-cases.json",
+      "source_sha256": "0561838a657eb4c2a21df53c4cf8b4681fa0b3480f7725e77f10d818d6e6c36a",
+      "published_sha256": "0561838a657eb4c2a21df53c4cf8b4681fa0b3480f7725e77f10d818d6e6c36a",
+      "bytes": 1923,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/KULLANIM-KILAVUZU.md",
+      "source_sha256": "0ede6a175de004c48ff6af69a0f532f989350e826949f8bb3a33f59f3658fa01",
+      "published_sha256": "0ede6a175de004c48ff6af69a0f532f989350e826949f8bb3a33f59f3658fa01",
+      "bytes": 2261,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/LICENSE",
+      "source_sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd",
+      "published_sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd",
+      "bytes": 1064,
+      "legal_notice": true,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/references/ai-pdf-failure-modes.md",
+      "source_sha256": "9c9d3bb35b7325e4a098115970ab0f3940a7a66b77056cc21a05bbd27c6ff4f7",
+      "published_sha256": "9c9d3bb35b7325e4a098115970ab0f3940a7a66b77056cc21a05bbd27c6ff4f7",
+      "bytes": 5830,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/references/design-languages.md",
+      "source_sha256": "e869b6003f87f17558c080f70dcfd042c3e8236531193e2fa0866a95436de29e",
+      "published_sha256": "e869b6003f87f17558c080f70dcfd042c3e8236531193e2fa0866a95436de29e",
+      "bytes": 2777,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/references/engines.md",
+      "source_sha256": "1b02d0e14e5f47eeadc2fe3f33b46deccf1a6612459e76ce25b5894b62920b34",
+      "published_sha256": "1b02d0e14e5f47eeadc2fe3f33b46deccf1a6612459e76ce25b5894b62920b34",
+      "bytes": 3901,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/references/intake-questions.md",
+      "source_sha256": "28aa293eaa028ceb5b72007ae1097f2dd522d61e9e08af8f97dd4870606fd788",
+      "published_sha256": "28aa293eaa028ceb5b72007ae1097f2dd522d61e9e08af8f97dd4870606fd788",
+      "bytes": 2859,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/references/layout-rules.md",
+      "source_sha256": "64963f057bc918f2ddc6e0ab0310847895d9a6fd4d8f82292a15686022fb7c62",
+      "published_sha256": "64963f057bc918f2ddc6e0ab0310847895d9a6fd4d8f82292a15686022fb7c62",
+      "bytes": 3755,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/scripts/build_pdf.py",
+      "source_sha256": "9670873023576dbfeae74a6cc4bd3d3196957f9e7084414c1224cb4bb9d39214",
+      "published_sha256": "9670873023576dbfeae74a6cc4bd3d3196957f9e7084414c1224cb4bb9d39214",
+      "bytes": 4615,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/scripts/html_lint.py",
+      "source_sha256": "043c169245a986fb2fa40613bac22db38e2c436dba5346b04011ba8d5034bd1a",
+      "published_sha256": "043c169245a986fb2fa40613bac22db38e2c436dba5346b04011ba8d5034bd1a",
+      "bytes": 7685,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/scripts/pdf_audit.py",
+      "source_sha256": "8d4aa3ef5d9489e47d8948897d2b0ad1d2451f87ce104ad2a90799e93fe80de1",
+      "published_sha256": "8d4aa3ef5d9489e47d8948897d2b0ad1d2451f87ce104ad2a90799e93fe80de1",
+      "bytes": 9339,
+      "legal_notice": false,
+      "modified": false
+    },
+    {
+      "path": "pdf-studio/SKILL.md",
+      "source_sha256": "70f2afcc640ff6c17a7688ce0079051e68cbf424c517b9c4e9fb7538eac2d079",
+      "published_sha256": "8e11f6c7ff7bc4ce6ee5b9586c99e6fa9b122ffc7895e932fe6c994d539d35ea",
+      "bytes": 6654,
       "legal_notice": false,
       "modified": true
     },
@@ -9403,9 +9523,9 @@
     },
     {
       "path": "presentation-studio/scripts/make_reading_guide.py",
-      "source_sha256": "ebc4a6b245d48498adc480a17a07eff685fa049262b2ff81666551635b1f9080",
-      "published_sha256": "ebc4a6b245d48498adc480a17a07eff685fa049262b2ff81666551635b1f9080",
-      "bytes": 11265,
+      "source_sha256": "2db7353db53decfe9bf14b7240848e6dd5821ced2c78082e6aac41cd08e49587",
+      "published_sha256": "2db7353db53decfe9bf14b7240848e6dd5821ced2c78082e6aac41cd08e49587",
+      "bytes": 11242,
       "legal_notice": false,
       "modified": false
     },
@@ -9427,9 +9547,9 @@
     },
     {
       "path": "presentation-studio/SKILL.md",
-      "source_sha256": "54a767fe478a0969cc454b6e60036a7bd13ce562e9f992c490eeddc3d04bc194",
-      "published_sha256": "f6109d5684ab62f5792e27728df8810060c676ed88021b1005636ae68419b9e1",
-      "bytes": 8351,
+      "source_sha256": "2f9a4c85cee798f67d3bbf4c4ef4ffe4a80b8cadf395617f9be1225cde4067b6",
+      "published_sha256": "bca2be81d24743b20e83f90dde302308ad5e8aa8ebbc2e31b7f68e52eb4ce5e3",
+      "bytes": 8463,
       "legal_notice": false,
       "modified": true
     },
@@ -13955,6 +14075,21 @@
       "status": "evidence-present-scope-review"
     },
     {
+      "skill": "pdf-studio",
+      "declared": null,
+      "root_license_files": [
+        "pdf-studio/LICENSE"
+      ],
+      "notice_files": [
+        {
+          "path": "pdf-studio/LICENSE",
+          "sha256": "5332b0a3bf1d35f38d023d758297f4e5f2eca8e9d16f4559e7bd24f39a395ffd"
+        }
+      ],
+      "modules_without_local_or_root_notice": [],
+      "status": "evidence-present-scope-review"
+    },
+    {
       "skill": "personal-tech-copilot",
       "declared": null,
       "root_license_files": [],
@@ -14593,6 +14728,10 @@
     },
     {
       "path": "parallel-web/SKILL.md",
+      "reason": "portable host adaptation / private machine context removal"
+    },
+    {
+      "path": "pdf-studio/SKILL.md",
       "reason": "portable host adaptation / private machine context removal"
     },
     {

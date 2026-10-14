@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Routing and behaviour acceptance cases for pdf-studio.",
+  "cases": [
+    {"id": "positive-guide", "type": "positive", "prompt": "Bu notlardan sınav için PDF çalışma kılavuzu hazırla.", "expected": "activate_and_ask_intake_questions", "reason": "Creating a PDF document; asks orientation, design language, sources first."},
+    {"id": "positive-fix-split", "type": "positive", "prompt": "PDF'te tablo iki sayfaya bölünmüş, başlık sayfa sonunda kalmış, düzelt.", "expected": "activate", "reason": "Pagination faults are the core of this skill."},
+    {"id": "positive-handout", "type": "positive", "prompt": "Hastalar için tek sayfalık egzersiz föyü PDF yap.", "expected": "activate_and_ask_intake_questions", "reason": "New PDF handout."},
+    {"id": "negative-deck", "type": "negative", "prompt": "Sunum hazırla, PowerPoint olsun.", "expected": "route_to_presentation-studio", "reason": "Slide decks belong to presentation-studio."},
+    {"id": "negative-merge", "type": "negative", "prompt": "Bu iki PDF'i birleştir ve sayfaları döndür.", "expected": "route_to_office-docs-qa", "reason": "Operating on existing PDFs."},
+    {"id": "behaviour-skip-questions", "type": "behaviour", "prompt": "A4 dikey, klinik temiz tasarım, 6 sayfa, kaynaklı, kapak yok: kas kuvveti özeti PDF.", "expected": "do_not_ask_answered_questions", "reason": "All core answers given; only missing facts are asked."},
+    {"id": "behaviour-conflict", "type": "behaviour", "prompt": "PDF'i tek sayfaya sığdır, yazılar 6 punto olsun.", "expected": "ask_conflict_question", "reason": "Contradicts the 9–10 pt floors; ask rule or wish."},
+    {"id": "behaviour-turkish", "type": "behaviour", "prompt": "Başlıkta ığşİ harfleri olan bir rapor PDF'i hazırla.", "expected": "use_unicode_safe_fonts_and_check_glyphs", "reason": "Turkish glyph coverage is verified."}
+  ]
+}

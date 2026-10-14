@@ -64,7 +64,7 @@ course, template); otherwise continue with defaults and list assumptions in the 
    changed slides → stop when clean.
 9. **Audit** — `python scripts/pptx_audit.py out.pptx --min 36 --target A-B`; zero HARD findings.
    Delivery claims (font sizes, timing) are copied from this output, never from memory.
-10. **Deliver** — PPTX + PDF + pre-talk reading guide (`scripts/make_reading_guide.py`), files named
+10. **Deliver** (the reading guide and any extra PDF follow the `pdf-studio` page rules: no split tables, no stranded headings) — PPTX + PDF + pre-talk reading guide (`scripts/make_reading_guide.py`), files named
     and placed per brief, a short message: what was made, assumptions, exceptions, what was not checked.
 
 ## Choose the production route for the host

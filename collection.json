@@ -24,6 +24,7 @@
     "modern-web-guidance",
     "office-docs-qa",
     "parallel-web",
+    "pdf-studio",
     "personal-tech-copilot",
     "physio-clinical-copilot",
     "plan-smart-routes",
@@ -48,6 +49,6 @@
     "bilingual"
   ],
   "repository": "universal-ai-skill-library",
-  "base_commit": "af72827e7594b22d9bba0ca3a1c1fffd7f771d2e",
+  "base_commit": "ecec0ee83eacdadb5af8bbc129e876f8feea00e5",
   "canonical_repository": "universal-ai-skill-library"
 }
